@@ -37,6 +37,12 @@
   "jobTitle": "Conferencista e historiadora de América Latina",
   "description": "Eunice López, conferencista e historiadora de América Latina. Convierto el pasado en historias que la gente siente, recuerda y cuenta. Conferencias en español, portugués, inglés y francés.",
   "knowsLanguage": ["es", "pt", "en", "fr"],
+  "knowsAbout": [
+    "Historia de América Latina",
+    "Constelaciones familiares",
+    "Biodecodificación",
+    "Coaching empresarial"
+  ],
   "sameAs": [
     "https://www.instagram.com/eunice.historiaviva",
     "https://www.youtube.com/@eunice.historiaviva",
@@ -232,6 +238,53 @@
   .fact b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--indigo); line-height: 1; }
   .fact span { font-size: 0.86rem; color: var(--mute); }
 
+  /* ---------- el ser (puente entre lo académico y lo humano) ---------- */
+  .ser { background: var(--cream-warm); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+  .bridge {
+    display: grid; grid-template-columns: 1fr; gap: 1.4rem; align-items: center;
+    max-width: 920px; margin: 0 auto clamp(2.4rem, 5vw, 3.6rem);
+  }
+  @media (min-width: 800px) { .bridge { grid-template-columns: 1fr auto 1fr; gap: 1.6rem; } .bridge-side { align-self: start; } }
+  .bridge-side .lbl {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; margin: 0 0 0.8rem;
+  }
+  .bridge-side.acad .lbl { color: var(--indigo); }
+  .bridge-side.ser-side .lbl { color: var(--coral); }
+  .bridge .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .bridge .chip {
+    background: #fff; border: 1px solid var(--hair); border-radius: 999px;
+    padding: 0.4rem 0.85rem; font-size: 0.84rem; font-weight: 600; color: var(--ink);
+  }
+  .bridge-side.acad .chip { border-color: color-mix(in srgb, var(--indigo) 24%, transparent); }
+  .bridge-side.ser-side .chip { border-color: color-mix(in srgb, var(--coral) 34%, transparent); }
+  .bridge-link { display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+  .bridge-link .rail {
+    height: 2px; width: clamp(70px, 18vw, 110px); border-radius: 999px;
+    background: linear-gradient(90deg, var(--indigo), var(--gold) 55%, var(--coral));
+  }
+  .bridge-link .tip {
+    font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--coral); line-height: 1;
+  }
+  @media (max-width: 799px) { .bridge-link .rail { width: 2px; height: 46px; background: linear-gradient(180deg, var(--indigo), var(--gold) 55%, var(--coral)); } .bridge-link { flex-direction: column; } }
+
+  .ser-path { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 920px; margin: 0 auto; }
+  @media (min-width: 760px) { .ser-path { grid-template-columns: 1fr 1fr; } }
+  .cert {
+    background: #fff; border: 1px solid var(--hair); border-radius: 16px; padding: 1.7rem;
+    display: flex; flex-direction: column; gap: 0.65rem;
+    box-shadow: 0 20px 40px -34px rgba(30,27,36,0.4);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .cert:hover { border-color: var(--coral); transform: translateY(-3px); }
+  .cert .cnum { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--coral); }
+  .cert h3 { font-size: 1.14rem; }
+  .cert .ask { font-family: var(--serif); font-style: italic; font-size: 1.04rem; color: var(--indigo); margin: 0; line-height: 1.4; }
+  .cert p { margin: 0; color: var(--mute); font-size: 0.95rem; }
+  .ser-close { max-width: 64ch; margin: clamp(2.4rem, 5vw, 3.6rem) auto 0; text-align: center; }
+  .ser-close p { font-size: clamp(1.1rem, 2.6vw, 1.42rem); line-height: 1.5; margin: 0 0 1rem; }
+  .ser-close p:last-child { margin-bottom: 0; }
+
   /* ---------- servicios ---------- */
   .svc-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
   @media (min-width: 640px) { .svc-grid { grid-template-columns: 1fr 1fr; } }
@@ -305,6 +358,7 @@
     <nav class="nav-links">
       <a href="#conferencias">Conferencias</a>
       <a href="#about">Quién soy</a>
+      <a href="#el-ser">El ser</a>
       <a href="#servicios">Servicios</a>
       <a href="#testimonios">Testimonios</a>
     </nav>
@@ -428,6 +482,78 @@
       </div>
     </div>
   </section>
+
+</main>
+
+<!-- EL SER — puente entre lo académico y lo humano -->
+<section class="ser" id="el-ser">
+  <div class="shell">
+    <div class="sec-head">
+      <p class="eyebrow">El ser</p>
+      <h2>La otra mitad de mi formación.</h2>
+      <p>Hay algo que no aparece en ningún currículum y que, sin embargo, explica cómo cuento la historia. No empezó como una carrera, empezó como una pregunta que nadie me estaba respondiendo.</p>
+    </div>
+
+    <div class="bridge reveal">
+      <div class="bridge-side acad">
+        <p class="lbl">Lo académico y lo profesional</p>
+        <div class="chips">
+          <span class="chip">Licenciada en Lenguas Extranjeras</span>
+          <span class="chip">Negocios Internacionales, en formación</span>
+          <span class="chip">+15 años en eventos globales</span>
+          <span class="chip">4 idiomas</span>
+        </div>
+      </div>
+      <div class="bridge-link" aria-hidden="true">
+        <span class="rail"></span>
+        <span class="tip">&rarr;</span>
+      </div>
+      <div class="bridge-side ser-side">
+        <p class="lbl">El ser</p>
+        <div class="chips">
+          <span class="chip">Biodecodificación</span>
+          <span class="chip">Constelaciones familiares</span>
+          <span class="chip">Coaching empresarial</span>
+          <span class="chip">Tarot terapéutico</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ser-path">
+      <article class="cert reveal">
+        <span class="cnum">Certificación 01</span>
+        <h3>Biodecodificación</h3>
+        <p class="ask">¿Por qué me enfermaba tanto?</p>
+        <p>Llegué por una pregunta médica, no espiritual. Me enfermaba una y otra vez, y las respuestas que recibía dejaron de alcanzarme. Empecé a dudar, a leer, a buscar en otro lado, hasta preguntarme qué me estaba diciendo mi cuerpo que yo no estaba escuchando.</p>
+      </article>
+      <article class="cert reveal">
+        <span class="cnum">Certificación 02</span>
+        <h3>Constelaciones familiares</h3>
+        <p class="ask">¿Cuánto de lo que vivo empezó antes de mí?</p>
+        <p>Aquí se abrió todo lo demás. Al mirar la historia de mi familia, la de mis ancestros, los que migraron antes que yo, entendí que la historia no es información: se hereda, y decide cómo vemos la vida. Lo que hago hoy con un continente lo aprendí haciéndolo con un apellido.</p>
+      </article>
+      <article class="cert reveal">
+        <span class="cnum">Certificación 03</span>
+        <h3>Coaching empresarial</h3>
+        <p class="ask">¿Y cómo se lleva esto al mundo real?</p>
+        <p>El puente entre mis dos mundos. Me dio el método para que un proceso interno no se quede en la conversación, sino que se convierta en decisiones, plazos y resultados dentro de una organización o un equipo.</p>
+      </article>
+      <article class="cert reveal">
+        <span class="cnum">Certificación 04</span>
+        <h3>Tarot terapéutico</h3>
+        <p class="ask">¿Qué sabes que todavía no te has dicho?</p>
+        <p>Una herramienta de conversación, no de predicción. Sirve para ponerle palabras a algo que la persona ya sabe pero aún no ha dicho en voz alta. Es la misma función que cumple un buen relato histórico.</p>
+      </article>
+    </div>
+
+    <div class="ser-close reveal">
+      <p>Por eso mis conferencias no terminan en la fecha. <span class="mark-hl">Un país que no sabe de dónde viene se comporta igual que una persona que no sabe de dónde viene: repite.</span></p>
+      <p>Mirar el linaje de una familia y mirar el de un continente es <span class="serif-em">el mismo trabajo a distinta escala</span>. Ahí se juntan la académica y el ser, y esa es, exactamente, la razón por la que la historia importa.</p>
+    </div>
+  </div>
+</section>
+
+<main class="shell">
 
   <!-- SERVICIOS -->
   <section id="servicios">
