@@ -238,6 +238,42 @@
   .fact b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--indigo); line-height: 1; }
   .fact span { font-size: 0.86rem; color: var(--mute); }
 
+  /* ---------- trayectoria (línea de tiempo tipo registro) ---------- */
+  .tl { max-width: 900px; margin: 0 auto; border-top: 1px solid var(--hair); }
+  .tl-row {
+    display: grid; grid-template-columns: 1fr; gap: 0.3rem;
+    padding: 1.5rem 1rem; border-bottom: 1px solid var(--hair);
+    border-left: 2px solid transparent;
+    transition: background 0.15s ease, border-left-color 0.15s ease;
+  }
+  @media (min-width: 760px) {
+    .tl-row { grid-template-columns: 9rem 1fr; gap: 0 2rem; align-items: start; }
+  }
+  .tl-row:hover { background: var(--marfil-2); border-left-color: var(--coral); }
+  .tl-row .yr {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--coral);
+    letter-spacing: 0.03em; white-space: nowrap; padding-top: 0.25rem;
+  }
+  .tl-row .org { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.2rem 0.7rem; }
+  .tl-row h3 { font-size: 1.1rem; }
+  .tl-row .place { font-size: 0.78rem; color: var(--mute); letter-spacing: 0.03em; }
+  .tl-row .role {
+    font-family: var(--serif); font-style: italic; font-size: 1rem;
+    color: var(--indigo); margin: 0.15rem 0 0; line-height: 1.35;
+  }
+  .tl-row p.desc { margin: 0.5rem 0 0; color: var(--mute); font-size: 0.96rem; max-width: 62ch; }
+  .tl-row .para {
+    margin: 0.6rem 0 0; font-size: 0.84rem; color: var(--mute);
+    border-left: 2px solid var(--gold-soft); padding-left: 0.7rem; max-width: 58ch;
+  }
+  .tl-more {
+    max-width: 900px; margin: 1.6rem auto 0; padding: 0 1rem;
+    font-size: 0.86rem; color: var(--mute); line-height: 1.7;
+  }
+  .tl-more b { color: var(--ink); font-weight: 700; }
+  .tl-close { max-width: 62ch; margin: clamp(2.2rem, 5vw, 3rem) auto 0; text-align: center; }
+  .tl-close p { font-size: clamp(1.05rem, 2.4vw, 1.32rem); line-height: 1.5; margin: 0; }
+
   /* ---------- el ser (puente entre lo académico y lo humano) ---------- */
   .ser { background: var(--cream-warm); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
   .bridge {
@@ -358,6 +394,7 @@
     <nav class="nav-links">
       <a href="#conferencias">Conferencias</a>
       <a href="#about">Quién soy</a>
+      <a href="#trayectoria">Trayectoria</a>
       <a href="#el-ser">El ser</a>
       <a href="#servicios">Servicios</a>
       <a href="#testimonios">Testimonios</a>
@@ -480,6 +517,98 @@
         <p>En paralelo me estoy formando en <b>Negocios Internacionales</b>, y no es un desvío: la historia de América Latina es, en gran parte, la historia de su comercio. La plata que salió de Potosí, el azúcar, el caucho, el café, la deuda, los tratados que se firman hoy. Entender cómo se mueve el dinero entre países es entender <span class="serif-em">por qué nos pasó lo que nos pasó</span>, y qué está en juego en las decisiones que tomamos ahora.</p>
         <p>Ahí se juntan mis mundos: la educadora, la productora de experiencias y la historiadora. Llevo el pasado de nuestro continente al escenario con rigor y con oficio. Porque saber de dónde venimos es lo que nos ayuda a decidir hacia dónde vamos.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- TRAYECTORIA -->
+  <section id="trayectoria">
+    <div class="sec-head">
+      <p class="eyebrow">Trayectoria</p>
+      <h2>Antes de subirme a un escenario, pasé quince años construyéndolos.</h2>
+      <p>No llegué a la historia desde un aula. Llegué desde la operación, desde el evento que tiene que salir bien, desde la sala que hay que sostener. Esto es lo que hay detrás.</p>
+    </div>
+
+    <div class="tl">
+
+      <article class="tl-row reveal">
+        <p class="yr">2025 — hoy</p>
+        <div>
+          <div class="org"><h3>ValuSignal</h3><span class="place">Texas, Estados Unidos</span></div>
+          <p class="role">Event Ops Architect &amp; Sponsor Partnerships</p>
+          <p class="desc">Diseño y opero la primera conferencia virtual nacional para los tasadores de Estados Unidos, 80+ conferencistas, los 50 estados. Toda la capa operativa, tecnológica y comercial del evento, incluida la relación con los ponentes. Hoy armo el escenario donde hablan otros.</p>
+          <p class="para">En paralelo: asesora de IA y sistemas de eventos en <b>Demand Frontier</b> (Austin), y estrategia de crecimiento en <b>Hola Amigo</b>.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2025 — 2026</p>
+        <div>
+          <div class="org"><h3>Nómada del Alma</h3><span class="place">Colombia</span></div>
+          <p class="role">Fundadora</p>
+          <p class="desc">Mi primer proyecto propio: enseñar a profesionales a construir carreras remotas con estructura y sistemas. Produje un podcast de mujeres viajeras y llevé un club de lectura de finanzas para mujeres. Fue donde aprendí a sostener una audiencia que me eligió a mí, no a una empresa.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2024</p>
+        <div>
+          <div class="org"><h3>Copa Mundial Femenina Sub-20 de la FIFA</h3><span class="place">Cali, Colombia</span></div>
+          <p class="role">Guest Operations</p>
+          <p class="desc">Logística VIP y experiencia de invitados para más de 50 personalidades en uno de los eventos más grandes del mundo, con 98% de satisfacción. La presión más alta bajo la que he trabajado, y la mejor escuela de ejecución en vivo que he tenido.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2022 — 2024</p>
+        <div>
+          <div class="org"><h3>Sales Outcomes &amp; Event Outcomes</h3><span class="place">Florida, Estados Unidos</span></div>
+          <p class="role">Webinar Director · Project Manager · CRM</p>
+          <p class="desc">Dirigí webinars de alta conversión de la estrategia a la ejecución, con +35% de engagement y +25% de conversión, y lideré operaciones de CRM en más de 50 proyectos. Aprendí a medir si una audiencia se quedó o se fue, y por qué.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2021 — 2022</p>
+        <div>
+          <div class="org"><h3>Publicize</h3><span class="place">Colorado, Estados Unidos</span></div>
+          <p class="role">Manager of Events &amp; Public Relations Manager</p>
+          <p class="desc">Llevé los eventos globales de startups con Stanford, USC, el Tec de Monterrey y EAFIT, y dirigí Connect, el pitch en vivo que salió en Forbes y TechCrunch. +50% de producción de eventos en 8 meses y alianzas con Fortune, Reuters y Fast Company.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2020 — 2021</p>
+        <div>
+          <div class="org"><h3>webinar.net</h3><span class="place">California, Estados Unidos</span></div>
+          <p class="role">Client Engagement &amp; Success Project Manager Lead</p>
+          <p class="desc">56+ webinars y 18 proyectos de mejora en un startup que crecía rápido, con un portafolio de socios de $2M. Aquí confirmé algo que uso hoy: un evento virtual se gana o se pierde en la operación, no en el contenido.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2011 — 2019</p>
+        <div>
+          <div class="org"><h3>Cisco y AT&amp;T</h3><span class="place">Colombia</span></div>
+          <p class="role">Project &amp; Events Manager · Senior Technical Support Manager</p>
+          <p class="desc">Ocho años de corporativo global. Dirigí el programa premiado de e-learning de Cisco con un equipo de 280 personas y 0% de rotación durante 24 meses, y en AT&amp;T lideré equipos multiculturales y más de 7 proyectos de implementación global. Fue mi escuela de hablarle a salas grandes y que me entendieran.</p>
+        </div>
+      </article>
+
+      <article class="tl-row reveal">
+        <p class="yr">2007 — 2010</p>
+        <div>
+          <div class="org"><h3>Aulas de Valencia</h3><span class="place">Venezuela</span></div>
+          <p class="role">Profesora de inglés</p>
+          <p class="desc">El origen de todo. Más de 70 planes de clase propios y salones de hasta 40 estudiantes. Ahí descubrí lo que sigo haciendo hoy: enseñar es contar bien una historia, y si la cuentas bien, nadie se distrae.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="tl-more reveal">También pasé por <b>Norwegian Cruise Line</b> (operación comercial a bordo), <b>Quantica BPO</b>, <b>Discovery Zone Coaching</b> (dirección de eventos virtuales), el bootcamp de JavaScript de <b>DEV.F</b> y la preincubación de <b>Five One Labs</b>. Cada uno dejó una herramienta que hoy uso arriba del escenario.</p>
+
+    <div class="tl-close reveal">
+      <p>Quince años montando eventos para que otros hablaran. <span class="mark-hl">Hoy la que habla soy yo</span>, y hablo de lo único que nunca dejé de estudiar.</p>
     </div>
   </section>
 
