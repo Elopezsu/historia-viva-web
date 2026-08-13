@@ -238,42 +238,62 @@
   .fact b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--indigo); line-height: 1; }
   .fact span { font-size: 0.86rem; color: var(--mute); }
 
-  /* ---------- trayectoria (línea de tiempo tipo registro) ---------- */
+  /* ---------- trayectoria (línea de tiempo desplegable) ---------- */
   .tl { max-width: 900px; margin: 0 auto; border-top: 1px solid var(--hair); }
-  .tl-row {
-    display: grid; grid-template-columns: 1fr; gap: 0.3rem;
-    padding: 1.5rem 1rem; border-bottom: 1px solid var(--hair);
-    border-left: 2px solid transparent;
-    transition: background 0.15s ease, border-left-color 0.15s ease;
+  .tl-item { border-bottom: 1px solid var(--hair); border-left: 2px solid transparent; transition: background .15s ease, border-left-color .15s ease; }
+  .tl-item:hover { background: var(--marfil-2); border-left-color: var(--coral); }
+  .tl-item[open] { background: var(--marfil-2); border-left-color: var(--coral); }
+  .tl-item summary {
+    list-style: none; cursor: pointer; padding: 1.35rem 1rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 1rem; align-items: center;
   }
+  .tl-item summary::-webkit-details-marker { display: none; }
   @media (min-width: 760px) {
-    .tl-row { grid-template-columns: 9rem 1fr; gap: 0 2rem; align-items: start; }
+    .tl-item summary { grid-template-columns: 9rem 1fr auto; gap: 0 2rem; }
+    .tl-item summary .yr { grid-row: auto; }
   }
-  .tl-row:hover { background: var(--marfil-2); border-left-color: var(--coral); }
-  .tl-row .yr {
+  .tl-item .yr {
     font-family: var(--mono); font-size: 0.8rem; color: var(--coral);
-    letter-spacing: 0.03em; white-space: nowrap; padding-top: 0.25rem;
+    letter-spacing: 0.03em; white-space: nowrap;
   }
-  .tl-row .org { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.2rem 0.7rem; }
-  .tl-row h3 { font-size: 1.1rem; }
-  .tl-row .place { font-size: 0.78rem; color: var(--mute); letter-spacing: 0.03em; }
-  .tl-row .role {
-    font-family: var(--serif); font-style: italic; font-size: 1rem;
-    color: var(--indigo); margin: 0.15rem 0 0; line-height: 1.35;
+  .tl-item .lab {
+    font-size: clamp(1.08rem, 2.4vw, 1.35rem); font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.2; text-wrap: balance;
   }
-  .tl-row p.desc { margin: 0.5rem 0 0; color: var(--mute); font-size: 0.96rem; max-width: 62ch; }
-  .tl-row .para {
-    margin: 0.6rem 0 0; font-size: 0.84rem; color: var(--mute);
-    border-left: 2px solid var(--gold-soft); padding-left: 0.7rem; max-width: 58ch;
+  .tl-item .lab .org {
+    display: block; font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 0.92rem; color: var(--mute); letter-spacing: 0; margin-top: 0.2rem;
   }
-  .tl-row.pivot { background: var(--cream-warm); border-left-color: var(--coral); }
-  .tl-row.pivot:hover { background: var(--gold-soft); }
-  .tl-row.pivot .yr { color: var(--indigo); }
-  .tl-row.pivot .flagline {
-    font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+  .tl-item .plus {
+    width: 26px; height: 26px; flex: none; border-radius: 50%; border: 1px solid var(--hair);
+    display: grid; place-items: center; color: var(--coral); font-size: 1.05rem; line-height: 1;
+    transition: transform .2s ease, background .15s ease, color .15s ease;
+    grid-column: 2; grid-row: 1 / span 2;
+  }
+  @media (min-width: 760px) { .tl-item .plus { grid-column: 3; grid-row: auto; } }
+  .tl-item:hover .plus { background: var(--coral); color: #fff; border-color: var(--coral); }
+  .tl-item[open] .plus { transform: rotate(45deg); background: var(--coral); color: #fff; border-color: var(--coral); }
+  .tl-body { padding: 0 1rem 1.6rem; }
+  @media (min-width: 760px) { .tl-body { padding-left: calc(9rem + 2rem + 1rem); } }
+  .tl-body .role {
+    font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--indigo);
+    margin: 0 0 0.8rem; line-height: 1.35;
+  }
+  .tl-body p { margin: 0 0 0.9rem; color: var(--mute); font-size: 0.98rem; max-width: 62ch; }
+  .tl-body .left {
+    margin: 0; color: var(--ink); font-size: 0.98rem;
+    border-left: 2px solid var(--gold); padding-left: 0.9rem; max-width: 58ch;
+  }
+  .tl-body .left b { font-weight: 800; }
+  .tl-item.pivot { background: var(--cream-warm); border-left-color: var(--coral); }
+  .tl-item.pivot:hover, .tl-item.pivot[open] { background: var(--cream-warm); }
+  .tl-item.pivot .yr { color: var(--indigo); }
+  .tl-item .flagline {
+    display: block; font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase;
     font-weight: 700; color: var(--coral); margin: 0 0 0.3rem;
   }
-  .tl-row.pivot .desc { color: var(--ink); }
+  .tl-hint { text-align: center; font-size: 0.8rem; color: var(--mute); margin: 1.1rem 0 0; letter-spacing: 0.03em; }
+  .tl-hint .arr { color: var(--coral); font-weight: 700; }
   .tl-more {
     max-width: 900px; margin: 1.6rem auto 0; padding: 0 1rem;
     font-size: 0.86rem; color: var(--mute); line-height: 1.7;
@@ -538,81 +558,121 @@
 
     <div class="tl">
 
-      <article class="tl-row reveal">
-        <p class="yr">2025 — hoy</p>
-        <div>
-          <div class="org"><h3>ValuSignal</h3><span class="place">Texas, Estados Unidos</span></div>
-          <p class="role">Event Ops Architect &amp; Sponsor Partnerships</p>
-          <p class="desc">Diseño y opero la primera conferencia virtual nacional para los tasadores de Estados Unidos, 80+ conferencistas, los 50 estados. Toda la capa operativa, tecnológica y comercial del evento, incluida la relación con los ponentes. Hoy armo el escenario donde hablan otros.</p>
-          <p class="para">En paralelo: asesora de IA y sistemas de eventos en <b>Demand Frontier</b> (Austin), y estrategia de crecimiento en <b>Hola Amigo</b>.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2025 — hoy</span>
+          <span class="lab">Donde todo lo anterior se junta<span class="org">ValuSignal</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Event Ops Architect &amp; Sponsor Partnerships · Texas, Estados Unidos</p>
+          <p>Diseño y opero la primera conferencia virtual nacional para los tasadores de Estados Unidos: 80+ conferencistas, los 50 estados, dos días. Llevo toda la capa operativa, tecnológica y comercial, incluida la relación con los ponentes y las alianzas con patrocinadores.</p>
+          <p>Es el trabajo donde se juntan las tres cosas que aprendí por separado: producir el evento, sostener la audiencia y cuidar a quien está hablando. En paralelo asesoro en IA y sistemas de eventos a <b>Demand Frontier</b> y en estrategia de crecimiento a <b>Hola Amigo</b>.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que la operación es invisible cuando está bien hecha, y que es justo ahí donde se gana o se pierde un evento.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row reveal">
-        <p class="yr">2025 — 2026</p>
-        <div>
-          <div class="org"><h3>Nómada del Alma</h3><span class="place">Colombia</span></div>
-          <p class="role">Fundadora</p>
-          <p class="desc">Mi primer proyecto propio: enseñar a profesionales a construir carreras remotas con estructura y sistemas. Produje un podcast de mujeres viajeras y llevé un club de lectura de finanzas para mujeres. Fue donde aprendí a sostener una audiencia que me eligió a mí, no a una empresa.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2025 — 2026</span>
+          <span class="lab">Mi primer proyecto propio<span class="org">Nómada del Alma</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Fundadora · Colombia</p>
+          <p>Enseñé a profesionales a construir carreras remotas con estructura y sistemas, no con suerte. Produje un podcast de mujeres viajeras y llevé un club de lectura de finanzas para mujeres.</p>
+          <p>Fue la primera vez que una audiencia me eligió a mí y no a la empresa para la que trabajaba. Todo lo que enseñaba ahí lo había vivido antes.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que una audiencia propia no se compra, se construye una persona a la vez.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row reveal">
-        <p class="yr">2024</p>
-        <div>
-          <div class="org"><h3>Copa Mundial Femenina Sub-20 de la FIFA</h3><span class="place">Cali, Colombia</span></div>
-          <p class="role">Guest Operations</p>
-          <p class="desc">Logística VIP y experiencia de invitados para más de 50 personalidades en uno de los eventos más grandes del mundo, con 98% de satisfacción. La presión más alta bajo la que he trabajado, y la mejor escuela de ejecución en vivo que he tenido.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2024</span>
+          <span class="lab">Mi prueba de fuego<span class="org">Copa Mundial Femenina Sub-20 de la FIFA</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Guest Operations · Cali, Colombia</p>
+          <p>Logística VIP y experiencia de invitados para más de 50 personalidades en uno de los eventos más grandes del mundo, con 98% de satisfacción y sin margen para repetir nada.</p>
+          <p>Un mundial no perdona: o el plan estaba listo, o no había plan.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que bajo presión real no se improvisa, se ejecuta lo que ya habías preparado.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row pivot reveal">
-        <p class="yr">2023 — 2024</p>
-        <div>
-          <p class="flagline">El punto de giro</p>
-          <div class="org"><h3>Año sabático</h3><span class="place">Sudamérica</span></div>
-          <p class="role">Career break, viaje de investigación</p>
-          <p class="desc">Paré. Después de más de una década de operación corporativa me tomé un año para recorrer Sudamérica sin agenda de trabajo, escuchando a comunidades y pueblos originarios, aprendiendo sobre ancestralidad de primera mano y no en un libro. Ahí entendí que la historia de este continente no está guardada en los archivos, está viva en la gente que la sigue cargando. No fue una pausa en mi carrera, fue donde empezó la de verdad.</p>
+      <details class="tl-item pivot reveal">
+        <summary>
+          <span class="yr">2023 — 2024</span>
+          <span class="lab"><span class="flagline">El punto de giro</span>Mi verdadera universidad<span class="org">Año sabático por Sudamérica</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Career break, viaje de investigación · Sudamérica</p>
+          <p>Paré. Después de más de una década de operación corporativa me tomé un año para recorrer Sudamérica sin agenda de trabajo, escuchando a comunidades y pueblos originarios, y aprendiendo sobre ancestralidad de primera mano, no en un libro.</p>
+          <p>Ahí entendí que la historia de este continente no está guardada en un archivo: está viva en la gente que la sigue cargando, en cómo siembran, cómo entierran a sus muertos, cómo nombran las cosas. No fue una pausa en mi carrera, fue donde empezó la de verdad.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que la historia no se estudia solamente, se escucha. Y que quien la carga casi nunca es quien la escribe.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row reveal">
-        <p class="yr">2022 — 2024</p>
-        <div>
-          <div class="org"><h3>Sales Outcomes &amp; Event Outcomes</h3><span class="place">Florida, Estados Unidos</span></div>
-          <p class="role">Webinar Director · Project Manager · CRM</p>
-          <p class="desc">Dirigí webinars de alta conversión de la estrategia a la ejecución, con +35% de engagement y +25% de conversión, y lideré operaciones de CRM en más de 50 proyectos. Aprendí a medir si una audiencia se quedó o se fue, y por qué.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2022 — 2024</span>
+          <span class="lab">Aprender a medir la atención<span class="org">Sales Outcomes &amp; Event Outcomes</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Webinar Director · Project Manager · CRM · Florida, Estados Unidos</p>
+          <p>Dirigí webinars de alta conversión de la estrategia a la ejecución, con +35% de engagement y +25% de conversión, y lideré operaciones de CRM en más de 50 proyectos.</p>
+          <p>Fue mi entrenamiento en el dato incómodo: en qué minuto exacto la gente se va, y qué la hizo irse.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que la atención se mide, y lo que no se mide se pierde sin que te enteres.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row reveal">
-        <p class="yr">2021 — 2022</p>
-        <div>
-          <div class="org"><h3>Publicize</h3><span class="place">Colorado, Estados Unidos</span></div>
-          <p class="role">Manager of Events &amp; Public Relations Manager</p>
-          <p class="desc">Llevé los eventos globales de startups con Stanford, USC, el Tec de Monterrey y EAFIT, y dirigí Connect, el pitch en vivo que salió en Forbes y TechCrunch. +50% de producción de eventos en 8 meses y alianzas con Fortune, Reuters y Fast Company.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2021 — 2022</span>
+          <span class="lab">El salto a lo global<span class="org">Publicize</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Manager of Events &amp; Public Relations Manager · Colorado, Estados Unidos</p>
+          <p>Llevé los eventos globales de startups con Stanford, USC, el Tec de Monterrey y EAFIT, y dirigí Connect, el pitch en vivo que salió en Forbes y TechCrunch.</p>
+          <p>+50% de producción de eventos en 8 meses, +30% de reconocimiento de marca y alianzas con Fortune, Reuters y Fast Company.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que un buen relato abre más puertas que un buen presupuesto.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row reveal">
-        <p class="yr">2020 — 2021</p>
-        <div>
-          <div class="org"><h3>webinar.net</h3><span class="place">California, Estados Unidos</span></div>
-          <p class="role">Client Engagement &amp; Success Project Manager Lead</p>
-          <p class="desc">56+ webinars y 18 proyectos de mejora en un startup que crecía rápido, con un portafolio de socios de $2M. Aquí confirmé algo que uso hoy: un evento virtual se gana o se pierde en la operación, no en el contenido.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2020 — 2021</span>
+          <span class="lab">Mi escuela de lo virtual<span class="org">webinar.net</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Client Engagement &amp; Success Project Manager Lead · California, Estados Unidos</p>
+          <p>56+ webinars y 18 proyectos de mejora en un startup que crecía rápido, con un portafolio de socios de $2M. Pasé de soporte técnico a liderar proyectos en meses.</p>
+          <p>Me tocó la pandemia desde adentro: el mundo entero mudándose a una pantalla al mismo tiempo.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que un evento virtual se gana o se pierde en la operación, no en el contenido.</p>
         </div>
-      </article>
+      </details>
 
-      <article class="tl-row reveal">
-        <p class="yr">2011 — 2019</p>
-        <div>
-          <div class="org"><h3>Cisco y AT&amp;T</h3><span class="place">Colombia</span></div>
-          <p class="role">Project &amp; Events Manager · Senior Technical Support Manager</p>
-          <p class="desc">Ocho años de corporativo global. Dirigí el programa premiado de e-learning de Cisco con un equipo de 280 personas y 0% de rotación durante 24 meses, y en AT&amp;T lideré equipos multiculturales y más de 7 proyectos de implementación global. Fue mi escuela de hablarle a salas grandes y que me entendieran.</p>
+      <details class="tl-item reveal">
+        <summary>
+          <span class="yr">2011 — 2019</span>
+          <span class="lab">Mi escuela corporativa<span class="org">Cisco y AT&amp;T</span></span>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="tl-body">
+          <p class="role">Project &amp; Events Manager · Senior Technical Support Manager · Colombia</p>
+          <p>Ocho años de corporativo global. Dirigí el programa premiado de e-learning de Cisco con un equipo de 280 personas y 0% de rotación durante 24 meses, y en AT&amp;T lideré equipos multiculturales y más de 7 proyectos de implementación global.</p>
+          <p>Aquí aprendí el oficio de pararme frente a gente que no me conocía y lograr que se quedara.</p>
+          <p class="left"><b>Lo que me dejó:</b> Que a una sala de 280 personas no le hablas más fuerte, le hablas mejor.</p>
         </div>
-      </article>
+      </details>
 
     </div>
+
+    <p class="tl-hint reveal"><span class="arr">+</span> Abre cualquiera para ver qué hice ahí</p>
 
     <p class="tl-more reveal">También pasé por <b>Norwegian Cruise Line</b> (operación comercial a bordo), <b>Quantica BPO</b>, <b>Discovery Zone Coaching</b> (dirección de eventos virtuales), el bootcamp de JavaScript de <b>DEV.F</b> y la preincubación de <b>Five One Labs</b>. Cada uno dejó una herramienta que hoy uso arriba del escenario.</p>
 
