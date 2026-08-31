@@ -1,4 +1,9 @@
+# recursos.eunicelopez.com solo sirve las herramientas que se entregan
+# después del opt-in. Quien tiene que salir en Google es eunicelopez.com,
+# que desde el 30-ago-2026 lo sirve Go High Level.
+#
+# Si algún día este host vuelve a ser el sitio público, cambiar por:
+#   User-agent: *
+#   Allow: /
 User-agent: *
-Allow: /
-
-Sitemap: https://eunicelopez.com/sitemap.xml
+Disallow: /

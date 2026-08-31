@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo leer un documento de archivo · Historia Viva</title>
+<meta name="description" content="Descifra partidas de bautismo y registros civiles de la colonia y del siglo XIX: frases anotadas, buscador de 32 abreviaturas y qué hacer cuando la fecha no cuadra.">
+<meta name="author" content="Eunice López">
+<link rel="canonical" href="https://recursos.eunicelopez.com/leer-un-documento/">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#3B2E5A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="Cómo leer un documento de archivo · Historia Viva">
+<meta property="og:description" content="Descifra partidas de bautismo y registros civiles de la colonia y del siglo XIX: frases anotadas, buscador de 32 abreviaturas y qué hacer cuando la fecha no cuadra.">
+<meta property="og:url" content="https://recursos.eunicelopez.com/leer-un-documento/">
+<meta property="og:image" content="https://recursos.eunicelopez.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --coral-soft:#F6A98E;
+  --gold:#F2A900; --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC;
+  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#B7ADC4;
+  --hair:rgba(30,27,36,.10); --hair-dark:rgba(247,243,236,.14);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.shell{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+h1,h2,h3{font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.06}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15}
+h3{font-size:1.18rem}
+p{margin:0 0 1rem}
+a{color:inherit}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:700;color:var(--coral);margin:0}
+.eyebrow.on-dark{color:var(--gold)}
+.serif-em{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0}
+.mark-hl{background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,
+  var(--gold-soft) 94%,transparent 94%);padding:0 .12em;border-radius:2px}
+.coral-word{color:var(--coral)}
+.mute{color:var(--mute)}
+.meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb,var(--marfil) 86%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand .dot{width:34px;height:34px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
+  box-shadow:0 4px 14px -4px rgba(228,87,46,.55)}
+.brand .bt{display:flex;flex-direction:column;line-height:1.03}
+.brand b{font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.brand span{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--coral)}
+.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600}
+.nav-back:hover{color:var(--ink)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;
+  font:inherit;font-weight:700;border-radius:999px;padding:.8rem 1.5rem;
+  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 22px -10px rgba(228,87,46,.8)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair)}
+
+/* tarjetas */
+.card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:1.4rem}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.g2{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* hero */
+.hero{padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2.5rem)}
+.lede{font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--mute);max-width:62ch}
+
+/* captura */
+.captura{background:var(--indigo);color:var(--marfil);border-radius:18px;
+  padding:clamp(1.6rem,4vw,2.6rem);margin:3rem 0}
+.captura h2{color:var(--marfil)}
+.captura p{color:var(--mute-on-dark)}
+.captura form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.captura input{flex:1 1 12rem;min-width:0;border:1px solid var(--hair-dark);
+  background:rgba(255,255,255,.06);color:var(--marfil);border-radius:999px;
+  padding:.8rem 1.1rem;font:inherit}
+.captura input::placeholder{color:var(--mute-on-dark)}
+.captura input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.captura .nota{font-size:.8rem;margin:.8rem 0 0}
+.captura .ok{display:none;background:rgba(242,169,0,.14);border:1px solid var(--gold);
+  border-radius:12px;padding:1rem;margin-top:1rem;color:var(--marfil)}
+
+/* pie */
+footer.pie{border-top:1px solid var(--hair);margin-top:4rem;padding:2rem 0 3rem;
+  color:var(--mute);font-size:.88rem}
+footer.pie a{color:var(--coral);text-decoration:none}
+
+.doc{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:clamp(1.3rem,3.5vw,2.2rem)}
+.doc p.texto{font-family:var(--serif);font-size:clamp(1.02rem,2.3vw,1.15rem);line-height:1.95;
+  hyphens:auto;margin:1rem 0 0}
+.frase{border:0;background:transparent;padding:0;font:inherit;color:var(--ink);cursor:pointer;
+  text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:3px;
+  text-underline-offset:4px}
+.frase:hover,.frase[aria-expanded="true"]{text-decoration-color:var(--coral)}
+.panel{border-left:3px solid var(--gold);background:var(--cream-warm);padding:1.2rem 1.4rem;
+  border-radius:0 12px 12px 0;margin-top:1.4rem}
+.panel h3{font-size:1.5rem;margin-top:.2rem}
+.bloque{margin-top:1.1rem}
+.bloque p{margin:.3rem 0 0;color:var(--mute)}
+.tabla-caja{background:#fff;border:1px solid var(--hair);border-radius:14px;overflow-x:auto;margin-top:1.2rem}
+table{width:100%;min-width:34rem;border-collapse:collapse;text-align:left}
+th{border-bottom:1px solid var(--hair);padding:.8rem 1rem}
+td{border-bottom:1px solid var(--hair);padding:.8rem 1rem;vertical-align:top;font-size:.95rem}
+td.ab{font-family:var(--mono);font-weight:700;color:var(--indigo);white-space:nowrap}
+tr.oculto{display:none}
+.campo{border:1px solid var(--hair);background:#fff;border-radius:10px;padding:.8rem 1rem;
+  font:inherit;font-family:var(--mono);color:var(--ink);width:100%}
+.ramas{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.9rem}
+.rama-btn{display:flex;gap:1rem;align-items:baseline;width:100%;text-align:left;background:#fff;
+  border:1px solid var(--hair);border-radius:12px;padding:1rem 1.2rem;font:inherit;cursor:pointer}
+.rama-btn[aria-expanded="true"]{border-color:var(--coral)}
+.rama-btn .n{font-family:var(--mono);font-size:.85rem;color:var(--gold)}
+.rama-btn .p{font-weight:700;display:block}
+.rama-btn .r{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);display:block;margin-top:.3rem}
+.limites{display:grid;gap:1rem;margin-top:1.4rem}
+@media(min-width:640px){.limites{grid-template-columns:1fr 1fr}}
+.oculto{display:none!important}
+.saltos{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;list-style:none;padding:0}
+</style>
+</head>
+<body>
+<header class="nav"><div class="shell nav-in">
+  <a class="brand" href="https://eunicelopez.com/"><span class="dot"></span><span class="bt">
+    <b>Eunice López</b><span>Historia Viva</span></span></a>
+  <a class="nav-back" href="https://eunicelopez.com/">← volver al sitio</a>
+</div></header>
+
+<main class="shell">
+  <div class="hero" style="max-width:820px">
+    <p class="eyebrow">Herramienta de lectura</p>
+    <h1 style="margin-top:.6rem">Cómo leer un documento de archivo</h1>
+    <p class="lede" style="margin-top:1.1rem">Encontraste la partida. Está en letra antigua, llena de
+      abreviaturas y de fórmulas que no se usan desde hace doscientos años. Aquí la vuelves legible:
+      qué dice cada frase, qué se callaba a propósito y qué hacer cuando las fechas no coinciden.</p>
+    <blockquote class="panel" style="margin-top:1.6rem">
+      <p class="serif-em" style="font-size:1.25rem;color:var(--indigo);margin:0">Un documento no dice
+        la verdad. Dice lo que alguien anotó ese día, y por qué lo anotó así.</p></blockquote>
+    <ul class="saltos">
+      <li><a class="btn btn-primary" href="#documento">Leer el documento anotado</a></li>
+      <li><a class="btn btn-ghost" href="#abreviaturas">Buscar una abreviatura</a></li>
+      <li><a class="btn btn-ghost" href="#fechas">La fecha no cuadra</a></li>
+    </ul>
+  </div>
+
+  <section id="documento" style="border-top:1px solid var(--hair);padding-top:2rem">
+    <p class="eyebrow">Función 1 · El documento anotado</p>
+    <h2 style="margin-top:.5rem">Una partida de bautismo, frase por frase</h2>
+    <p class="lede" style="margin-top:.8rem">Así se veía un asiento parroquial: un párrafo corrido,
+      sin campos ni casillas, escrito por un cura con prisa. Las frases subrayadas en amarillo son
+      las que cambian el sentido de todo lo demás.</p>
+    <div class="doc" style="margin-top:1.6rem">
+      <p class="meta">Ejemplo reconstruido a partir de partidas típicas. No corresponde a ningún
+        documento ni archivo real.</p>
+      <p class="texto"><span>En la iglesia parroquial de este pueblo, a </span><span>veinte y tres de mayo de mil setecientos ochenta y nueve</span><span>, yo, el infrascripto cura teniente, bapticé solemnemente y puse los santos óleos y crisma a una criatura de ocho días, a quien nombré María Gertrudis, </span><button class="frase" type="button" data-nota="hn-abrev" aria-expanded="false">h.n.</button><span> de Juana Petrona, </span><button class="frase" type="button" data-nota="indio-tributario" aria-expanded="false">india tributaria</button><span> de esta doctrina, y </span><button class="frase" type="button" data-nota="padres-no-conocidos" aria-expanded="false">de padres no conocidos</button><span> por parte de padre. Fue su padrino don Josef Antonio Cárdenas, </span><button class="frase" type="button" data-nota="espanol" aria-expanded="false">español</button><span>, vecino de esta villa, a quien advertí el parentesco espiritual y obligación. Item, en el mismo día bapticé a Manuel, </span><button class="frase" type="button" data-nota="exposito" aria-expanded="false">expósito</button><span> dejado en la puerta de esta iglesia, y a Rosa, </span><button class="frase" type="button" data-nota="esclavo-de" aria-expanded="false">esclava de</button><span> doña Micaela Serrano, de </span><button class="frase" type="button" data-nota="calidad" aria-expanded="false">calidad</button><span> parda. Y para que conste lo firmo. Item, se sepultó en este cementerio un </span><button class="frase" type="button" data-nota="parvulo" aria-expanded="false">párvulo</button><span> de la misma casa, </span><button class="frase" type="button" data-nota="dn-abrev" aria-expanded="false">d.n.</button><span>, según razón que dio la madre, </span><button class="frase" type="button" data-nota="yd-abrev" aria-expanded="false">yd.</button><span> de Pedro Lazo. Fr. Ygnacio de la Concepción.</span></p>
+      <p class="meta" style="border-top:1px solid var(--hair);margin-top:1.4rem;padding-top:1rem">
+        Toca cualquier frase subrayada. También funciona con teclado: Tab para recorrer, Enter para abrir.</p>
+    </div>
+    <div id="zona-notas" tabindex="-1" role="region" aria-live="polite"
+      aria-label="Explicación de la frase seleccionada">
+      <div class="panel" id="sin-nota"><p class="mute" style="margin:0">Aún no has elegido ninguna
+        frase. Empieza por <span class="meta" style="text-transform:none">h.n.</span>: es la que más
+        confunde.</p></div><div class="panel oculto" data-panel="hn-abrev"><p class="eyebrow">Frase anotada</p><h3>h.n. / hijo natural</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Abreviatura de «hijo natural»: nacido de padres que, según la Iglesia, podían casarse entre sí pero no lo estaban al momento del nacimiento.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>El cura tenía que clasificar el nacimiento porque de esa clasificación dependían derechos: herencia, acceso a ciertos oficios, ingreso al clero. La fórmula era administrativa, no un comentario moral improvisado.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que no hubo matrimonio registrado antes del bautizo. A veces el matrimonio llegó después y aparece en otro libro, con los hijos «legitimados» en el margen.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice que el padre fuera desconocido ni ausente. «Hijo natural» y «de padres no conocidos» son categorías distintas, y muchos curas las mezclaban.</p></div><div class="bloque"><p class="eyebrow">Donde no hay acuerdo</p><p>Hay desacuerdo sobre cuánto estigma cargaba en la práctica. En algunas parroquias rurales la mayoría de los bautizos son de hijos naturales, lo que sugiere que la norma escrita y la vida cotidiana no coincidían.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="padres-no-conocidos"><p class="eyebrow">Frase anotada</p><h3>de padres no conocidos (p.n.c.)</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Fórmula que declara que la parroquia no consigna filiación. Se abrevia p.n.c.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>Podía ser literal —nadie declaró quiénes eran los padres— o una fórmula de discreción para proteger a una familia, sobre todo cuando el padre era hombre casado, de posición alta, o clérigo.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que en ese momento se decidió no dejar el nombre por escrito. Es una decisión, no un vacío de información.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice que la comunidad ignorara la filiación. Muy a menudo la sabía todo el pueblo. Busca padrinos: la elección del padrino suele apuntar a la familia real.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="exposito"><p class="eyebrow">Frase anotada</p><h3>expósito</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Criatura entregada o dejada al cuidado de la Iglesia o de una casa, normalmente recién nacida.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>Requería su propio término porque implicaba obligaciones: la parroquia debía asignarle crianza y, con frecuencia, un apellido tomado del santo del día, del lugar o del propio cura.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que el apellido probablemente no es un apellido de familia. Si tu árbol se corta en un apellido tipo «De la Cruz», «Expósito», «De los Santos» o el nombre del pueblo, este es el motivo más frecuente.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice orfandad. Muchas madres dejaban a la criatura para reclamarla después, y algunas lo hacían con señales —una cinta, media medalla— para poder identificarla.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="calidad"><p class="eyebrow">Frase anotada</p><h3>calidad</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>La categoría social y de origen que el escribiente asignaba a la persona: español, indio, mestizo, pardo, mulato, negro, castizo, y decenas de variantes locales.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>De la calidad dependían el tributo, el fuero, el matrimonio permitido y el libro parroquial en que se te anotaba. Era una categoría fiscal y legal antes que una descripción física.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Cómo clasificó el cura a esa persona ese día, en ese pueblo.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice ascendencia biológica. La misma persona aparece como parda en un libro y mestiza en otro. Cambiaba con el dinero, el padrino, el oficio y el criterio del escribiente.</p></div><div class="bloque"><p class="eyebrow">Donde no hay acuerdo</p><p>Los historiadores no se ponen de acuerdo sobre cuánta movilidad real permitía la calidad. Unos la leen como jerarquía rígida; otros, como etiqueta negociable. La evidencia parece variar mucho por región.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="espanol"><p class="eyebrow">Frase anotada</p><h3>español</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>En estos libros no significa «nacido en España». Significa clasificado como español: peninsular o criollo, es decir, español nacido en América.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>Definía exención de tributo y acceso a cargos. Era la categoría más disputada porque era la más rentable.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que esa persona no pagaba tributo indígena.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice de dónde venía la familia. Para eso hacen falta otros papeles: expedientes matrimoniales, probanzas, padrones.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="indio-tributario"><p class="eyebrow">Frase anotada</p><h3>indio tributario</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Persona indígena inscrita en el padrón de tributo, con obligación de pago a la Corona.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>Porque era una condición fiscal registrada. Aparece junto al pueblo o doctrina de adscripción, que es el dato geográfico más útil de toda la partida.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que existe muy probablemente otro documento sobre esa persona: los padrones y matrículas de tributarios listan nombre, edad, esposa e hijos.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice lengua, comunidad de origen ni si vivía allí. La adscripción tributaria y la residencia real solían no coincidir.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="esclavo-de"><p class="eyebrow">Frase anotada</p><h3>esclavo de</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Persona esclavizada, registrada con el nombre de quien la mantenía en esclavitud.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>El libro identificaba a la persona por la casa a la que estaba sujeta, porque así se ubicaba legalmente. Por eso el nombre del esclavizador aparece completo y con tratamiento, y el de la persona esclavizada muchas veces solo de pila.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que hay que rastrear a la familia esclavizadora para seguir a la persona: inventarios, testamentos, cartas de compraventa y de libertad son donde reaparecen los nombres.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice origen, procedencia ni parentesco. Rara vez se anota el apellido propio, y no se sabe qué nombre usaba esa persona para sí misma.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="parvulo"><p class="eyebrow">Frase anotada</p><h3>párvulo</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Criatura pequeña, en general menor de siete años; en entierros, quien murió antes del uso de razón.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>El entierro de párvulo tenía otro rito, otro costo y a veces otro libro. La palabra es una categoría litúrgica, no un dato de edad exacta.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que buscar un bautizo pocos años antes en la misma parroquia suele dar resultado.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice la edad. Un «párvulo» puede tener dos días o seis años, y muchas partidas de entierro no anotan nombre de la criatura.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="dn-abrev"><p class="eyebrow">Frase anotada</p><h3>d.n. — de nación / de nombre</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Abreviatura ambigua. Según la región y el escribiente puede leerse «de nación» (procedencia atribuida a personas africanas) o «de nombre».</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>Los curas abreviaban para ganar tiempo y papel, sin normalizar nada entre parroquias.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que conviene leer otras partidas del mismo libro para ver cómo usa ese cura la abreviatura.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No se sabe cuál de las dos lecturas es la correcta sin comparar. Cualquier transcripción que te la resuelva sin dudar está adivinando.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div><div class="panel oculto" data-panel="yd-abrev"><p class="eyebrow">Frase anotada</p><h3>yd. — viuda de</h3><div class="bloque"><p class="eyebrow">Qué significa</p><p>Abreviatura de «viuda de» (también vd., v.ᵈᵃ). La grafía con «y» es común en manos del siglo XVIII.</p></div><div class="bloque"><p class="eyebrow">Por qué se escribía así</p><p>El estado civil determinaba capacidad legal de la mujer para declarar, heredar y administrar. Se anotaba porque tenía efecto jurídico.</p></div><div class="bloque"><p class="eyebrow">Qué te dice de esa persona</p><p>Que existe un entierro del marido antes de esta fecha, y probablemente un matrimonio anterior a ese entierro.</p></div><div class="bloque"><p class="eyebrow">Qué no dice</p><p>No dice cuándo enviudó. Muchas mujeres se declaraban viudas ante un abandono, sin muerte registrada.</p></div><div style="margin-top:1.3rem"><button class="btn btn-ghost cerrar-nota" type="button">Cerrar explicación</button></div></div>
+    </div>
+  </section>
+
+  <section id="abreviaturas" style="border-top:1px solid var(--hair);margin-top:3rem;padding-top:2rem">
+    <p class="eyebrow">Función 2 · Glosario</p>
+    <h2 style="margin-top:.5rem">Buscador de abreviaturas</h2>
+    <p class="lede" style="margin-top:.8rem">Las abreviaturas no estaban normalizadas: cada parroquia
+      y cada mano tenía sus costumbres. Esta lista cubre las más frecuentes; trátala como punto de
+      partida, no como norma.</p>
+    <label for="q-abrev" style="font-weight:700;display:block;margin-top:1.4rem">Escribe la
+      abreviatura tal como la ves</label>
+    <div style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.7rem">
+      <input id="q-abrev" class="campo" type="search" autocomplete="off"
+        placeholder="p.n.c., yd., fol." style="flex:1 1 16rem">
+      <button class="btn btn-ghost" id="limpiar-abrev" type="button">Limpiar</button>
+    </div>
+    <p class="meta" id="conteo-abrev" style="margin-top:.7rem" aria-live="polite"></p>
+    <p class="panel oculto" id="sin-abrev">No está en la lista. Puede ser una abreviatura propia del
+      escribiente: muchos curas inventaban las suyas y solo se descifran comparando otras partidas
+      del mismo libro.</p>
+    <div class="tabla-caja" id="caja-abrev"><table>
+      <thead><tr><th class="eyebrow">Abreviatura</th><th class="eyebrow">Forma completa</th>
+        <th class="eyebrow">Qué significa</th></tr></thead>
+      <tbody><tr data-buscar="hnhijonaturalnacidodepadressolterosquepodiancasarseentresi"><td class="ab">h.n.</td><td>hijo natural</td><td class="mute">Nacido de padres solteros que podían casarse entre sí.</td></tr><tr data-buscar="hlhijolegitimonacidodentrodematrimonioreconocidoporlaiglesia"><td class="ab">h.l.</td><td>hijo legítimo</td><td class="mute">Nacido dentro de matrimonio reconocido por la Iglesia.</td></tr><tr data-buscar="pncdepadresnoconocidoslaparroquianoconsignafiliacionpuedeserliteralounadiscreciondeliberada"><td class="ab">p.n.c.</td><td>de padres no conocidos</td><td class="mute">La parroquia no consigna filiación. Puede ser literal o una discreción deliberada.</td></tr><tr data-buscar="dndenaciondenombreambiguasegunlamanopuedeindicarprocedenciaatribuidaointroducirunnombre"><td class="ab">d.n.</td><td>de nación / de nombre</td><td class="mute">Ambigua. Según la mano puede indicar procedencia atribuida o introducir un nombre.</td></tr><tr data-buscar="ydvdvdaviudadeestadocivilconefectoslegalessobreherenciaycapacidaddedeclarar"><td class="ab">yd. / vd. / v.da</td><td>viuda de</td><td class="mute">Estado civil con efectos legales sobre herencia y capacidad de declarar.</td></tr><tr data-buscar="dddontratamientoderespetosupresenciaoausenciaesundatosocial,nodecorativo"><td class="ab">d. / D.</td><td>don</td><td class="mute">Tratamiento de respeto. Su presencia o ausencia es un dato social, no decorativo.</td></tr><tr data-buscar="dadnadonatratamientofemeninoderespeto"><td class="ab">d.a / Dña.</td><td>doña</td><td class="mute">Tratamiento femenino de respeto.</td></tr><tr data-buscar="ynindindioindiacalidadregistrada,generalmenteligadaalpadrondetributo"><td class="ab">yn. / ind.</td><td>indio / india</td><td class="mute">Calidad registrada, generalmente ligada al padrón de tributo.</td></tr><tr data-buscar="mestmestizomestizacategoriadecalidad,variableentrelibrosyregiones"><td class="ab">mest.</td><td>mestizo / mestiza</td><td class="mute">Categoría de calidad, variable entre libros y regiones.</td></tr><tr data-buscar="espespanolespanolaclasificadocomoespanol,peninsularoamericanonoindicalugardenacimiento"><td class="ab">esp.</td><td>español / española</td><td class="mute">Clasificado como español, peninsular o americano. No indica lugar de nacimiento.</td></tr><tr data-buscar="mulmulatomulatacategoriadecalidadusadaconcriterioslocalesmuydistintos"><td class="ab">mul.</td><td>mulato / mulata</td><td class="mute">Categoría de calidad usada con criterios locales muy distintos.</td></tr><tr data-buscar="pdopardopardacategoriadecalidad;frecuenteenlibrosdecastas"><td class="ab">p.do</td><td>pardo / parda</td><td class="mute">Categoría de calidad; frecuente en libros de castas.</td></tr><tr data-buscar="exptoexpositocriaturaentregadaalaiglesia;elapellidosueleserasignado"><td class="ab">expto.</td><td>expósito</td><td class="mute">Criatura entregada a la Iglesia; el apellido suele ser asignado.</td></tr><tr data-buscar="bbaptbautizobautismoencabezalapartidadebautismo"><td class="ab">b. / bapt.</td><td>bautizó / bautismo</td><td class="mute">Encabeza la partida de bautismo.</td></tr><tr data-buscar="mmatrmatrimoniosecasoenentierrostambienpuedeleerse«murio»elcontextodecide"><td class="ab">m. / matr.</td><td>matrimonio / se casó</td><td class="mute">En entierros también puede leerse «murió». El contexto decide.</td></tr><tr data-buscar="ententierroseenterroencabezalapartidadedefuncion"><td class="ab">ent.</td><td>entierro / se enterró</td><td class="mute">Encabeza la partida de defunción.</td></tr><tr data-buscar="folffoliohojadellibrosecitaconr(recto)ov(vuelto)"><td class="ab">fol. / f.</td><td>folio</td><td class="mute">Hoja del libro. Se cita con r (recto) o v (vuelto).</td></tr><tr data-buscar="vtovueltoreversodelfolioclaveparacitarbienunapartida"><td class="ab">v.to</td><td>vuelto</td><td class="mute">Reverso del folio. Clave para citar bien una partida.</td></tr><tr data-buscar="liblibrovolumendelregistroparroquial"><td class="ab">lib.</td><td>libro</td><td class="mute">Volumen del registro parroquial.</td></tr><tr data-buscar="partpartidaelasientoindividualdentrodellibro"><td class="ab">part.</td><td>partida</td><td class="mute">El asiento individual dentro del libro.</td></tr><tr data-buscar="sssantossacramentosindicaquerecibiolossacramentosantesdemorir"><td class="ab">S.S.</td><td>santos sacramentos</td><td class="mute">Indica que recibió los sacramentos antes de morir.</td></tr><tr data-buscar="sosantosoleosuncion;sumencionsugierequelamuerteseesperaba"><td class="ab">S.O.</td><td>santos óleos</td><td class="mute">Unción; su mención sugiere que la muerte se esperaba.</td></tr><tr data-buscar="vnovecinoresidenteconarraigoreconocidoenlavillaopueblo"><td class="ab">v.no</td><td>vecino</td><td class="mute">Residente con arraigo reconocido en la villa o pueblo.</td></tr><tr data-buscar="natnaturaldelugardeorigendeclarado,distintodelavecindad"><td class="ab">nat.</td><td>natural de</td><td class="mute">Lugar de origen declarado, distinto de la vecindad.</td></tr><tr data-buscar="diftodifdifuntoyahabiamuertoalmomentodelasiento"><td class="ab">difto. / dif.</td><td>difunto</td><td class="mute">Ya había muerto al momento del asiento.</td></tr><tr data-buscar="tributtributarioinscritoenelpadrondetributo"><td class="ab">tribut.</td><td>tributario</td><td class="mute">Inscrito en el padrón de tributo.</td></tr><tr data-buscar="leglegajoatadodedocumentosdentrodeunasecciondelarchivo"><td class="ab">leg.</td><td>legajo</td><td class="mute">Atado de documentos dentro de una sección del archivo.</td></tr><tr data-buscar="capcapellancapilladependedelcontexto:eloficiooellugar"><td class="ab">cap.</td><td>capellán / capilla</td><td class="mute">Depende del contexto: el oficio o el lugar.</td></tr><tr data-buscar="frfrayreligiosodeordenutilpararastrearquienescribiaellibro"><td class="ab">Fr.</td><td>fray</td><td class="mute">Religioso de orden. Útil para rastrear quién escribía el libro.</td></tr><tr data-buscar="qepdqueenpazdescanseformuladevocional,sinvalorinformativo"><td class="ab">q.e.p.d.</td><td>que en paz descanse</td><td class="mute">Fórmula devocional, sin valor informativo.</td></tr><tr data-buscar="ibibidenelmismolugarremitealasientoofolioanterior"><td class="ab">ib. / ibid.</td><td>en el mismo lugar</td><td class="mute">Remite al asiento o folio anterior.</td></tr><tr data-buscar="sfsinfechaelasientonotraefecha,oseperdiopordanodelpapel"><td class="ab">s.f.</td><td>sin fecha</td><td class="mute">El asiento no trae fecha, o se perdió por daño del papel.</td></tr></tbody></table></div>
+  </section>
+
+  <section id="fechas" style="border-top:1px solid var(--hair);margin-top:3rem;padding-top:2rem">
+    <p class="eyebrow">Función 3 · Diagnóstico</p>
+    <h2 style="margin-top:.5rem">La fecha no cuadra</h2>
+    <p class="lede" style="margin-top:.8rem">Es la frustración más común y casi nunca es un error
+      tuyo. Hay cuatro causas frecuentes, y se distinguen entre sí. Elige lo que te está pasando:
+      cada rama termina en un paso concreto.</p>
+    <ul class="ramas"><li><button class="rama-btn" type="button" data-rama="calendario" aria-expanded="false"><span class="n">01</span><span><span class="p">La fecha existe, pero el año o el día no encaja con otras fuentes</span><span class="r">Cambió el calendario</span></span></button><div class="panel oculto" data-rama-panel="calendario"><div class="bloque"><p class="eyebrow">Qué está ocurriendo</p><p>En territorios católicos el paso del calendario juliano al gregoriano se hizo en octubre de 1582: al 4 de octubre siguió el 15. En América la adopción no fue simultánea, y hubo parroquias que siguieron usando cómputos viejos durante años. A esto se suma que muchas partidas fechan por fiesta litúrgica —«el día de San Juan»— y no por número.</p></div><div class="bloque"><p class="eyebrow">Lo que no se sabe</p><p>No se sabe con precisión cuándo aplicó el cambio cada parroquia. Los estudios regionales difieren y para muchos pueblos simplemente no hay dato.</p></div><div style="border-top:1px solid var(--hair);margin-top:1.2rem;padding-top:1rem"><p class="eyebrow">Tu siguiente paso</p><p style="font-weight:700;margin:.4rem 0 0">Anota la fecha tal como está escrita, entre comillas, y al lado tu interpretación. Nunca conviertas la fecha en tu árbol sin conservar el original.</p></div></div></li><li><button class="rama-btn" type="button" data-rama="edad" aria-expanded="false"><span class="n">02</span><span><span class="p">La edad en el entierro no cuadra con el bautizo que encontraste</span><span class="r">La edad era estimada</span></span></button><div class="panel oculto" data-rama-panel="edad"><div class="bloque"><p class="eyebrow">Qué está ocurriendo</p><p>Las edades en entierros y padrones casi siempre las declaraba un tercero de memoria, y se redondeaban a cifras cómodas: 30, 40, 50. Un margen de cinco a diez años es normal, no es un error tuyo.</p></div><div class="bloque"><p class="eyebrow">Lo que no se sabe</p><p>No hay forma de saber quién dio el dato ni con qué certeza. La edad es la información menos fiable de toda la partida.</p></div><div style="border-top:1px solid var(--hair);margin-top:1.2rem;padding-top:1rem"><p class="eyebrow">Tu siguiente paso</p><p style="font-weight:700;margin:.4rem 0 0">Deja de usar la edad para descartar candidatos. Filtra por nombre de los padres, padrinos y parroquia; la edad úsala solo como pista débil.</p></div></div></li><li><button class="rama-btn" type="button" data-rama="bautizo-tardio" aria-expanded="false"><span class="n">03</span><span><span class="p">El bautizo aparece años después de la fecha de nacimiento que tenías</span><span class="r">El bautizo ocurrió mucho después</span></span></button><div class="panel oculto" data-rama-panel="bautizo-tardio"><div class="bloque"><p class="eyebrow">Qué está ocurriendo</p><p>Lo habitual era bautizar en días, pero en zonas rurales sin cura residente se bautizaba cuando pasaba el visitador, a veces a varios hermanos el mismo día. También existía el bautizo de socorro en casa, asentado después en el libro.</p></div><div class="bloque"><p class="eyebrow">Lo que no se sabe</p><p>La partida rara vez distingue entre fecha de nacimiento y fecha de asiento. En la mayoría de los casos no se sabe cuál de las dos estás leyendo.</p></div><div style="border-top:1px solid var(--hair);margin-top:1.2rem;padding-top:1rem"><p class="eyebrow">Tu siguiente paso</p><p style="font-weight:700;margin:.4rem 0 0">Busca en el mismo folio y en los folios vecinos: si ves varios bautizos de la misma familia en una fecha, es una visita pastoral y la fecha no es la del nacimiento.</p></div></div></li><li><button class="rama-btn" type="button" data-rama="homonimo" aria-expanded="false"><span class="n">04</span><span><span class="p">Todo encaja salvo un detalle, y hay dos registros posibles</span><span class="r">Es otra persona con el mismo nombre</span></span></button><div class="panel oculto" data-rama-panel="homonimo"><div class="bloque"><p class="eyebrow">Qué está ocurriendo</p><p>Los nombres se repetían por sistema: se reusaba el del abuelo, el del santo del día, el de un hijo que había muerto. En una parroquia puede haber cuatro María Josefa López vivas a la vez, y primos con nombre idéntico.</p></div><div class="bloque"><p class="eyebrow">Lo que no se sabe</p><p>A veces no se puede resolver. Hay casos en que la documentación no alcanza para separar dos personas, y lo honesto es dejarlo abierto.</p></div><div style="border-top:1px solid var(--hair);margin-top:1.2rem;padding-top:1rem"><p class="eyebrow">Tu siguiente paso</p><p style="font-weight:700;margin:.4rem 0 0">Haz una tabla con los dos candidatos y compara padres, padrinos, calidad y vecindad. Si no logras separarlos, escribe en tu árbol «dos candidatos, sin resolver» y sigue por otra rama.</p></div></div></li></ul>
+  </section>
+
+  <section style="border-top:1px solid var(--hair);margin-top:3rem;padding-top:2rem">
+    <p class="eyebrow">Antes de cerrar</p>
+    <h2 style="margin-top:.5rem">Lo que esta herramienta no puede hacer</h2>
+    <div class="limites">
+      <div class="card"><h3>No transcribe tu documento</h3><p class="mute" style="margin:.6rem 0 0">
+        La paleografía se resuelve comparando letras dentro del mismo libro. Copia primero las
+        palabras que sí entiendes y usa esa mano como referencia.</p></div>
+      <div class="card"><h3>No resuelve todos los casos</h3><p class="mute" style="margin:.6rem 0 0">
+        A veces la documentación no alcanza. Cuando no se sabe, lo correcto es escribir «no se sabe»
+        en tu árbol y dejar el rastro de lo que ya revisaste.</p></div>
+      <div class="card"><h3>No sustituye el archivo</h3><p class="mute" style="margin:.6rem 0 0">
+        Las fórmulas cambian por región y por siglo. Lo que vale en una parroquia andina de 1780
+        puede no valer en un registro civil de 1870.</p></div>
+      <div class="card"><h3>No es un documento real</h3><p class="mute" style="margin:.6rem 0 0">
+        El ejemplo de esta página es una reconstrucción compuesta a partir de partidas típicas. No se
+        atribuye a ningún archivo ni a ninguna familia.</p></div>
+    </div>
+  </section>
+</main>
+
+<section class="shell"><div class="captura narrow">
+  <p class="eyebrow on-dark">Historia Viva</p>
+  <h2>¿Vas a pedir el documento al archivo?</h2>
+  <p>Te mando el modelo de carta para solicitar una partida y la guía de entrevista para grabar a la persona más vieja de tu familia antes de escribir a ningún archivo.</p>
+  <form data-iman="leer-un-documento" novalidate>
+    
+    <input type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+    <input type="email" name="email" placeholder="Tu correo" autocomplete="email" required>
+    <button class="btn btn-primary" type="submit">Quiero recibirlo</button>
+  </form>
+  <p class="nota">Sin spam. Te escribo cuando tengo algo que de verdad sirve.</p>
+  <div class="ok" role="status"></div>
+</div></section>
+
+<footer class="pie"><div class="shell">
+  <p><b>Otras herramientas:</b> <a href="/guia-de-entrevista/">Guía de entrevista familiar</a> · <a href="/mapa-de-archivos/">Mapa de archivos</a> · <a href="/espiral/">La Espiral</a> · <a href="/nombradas/">Las nombradas</a> · <a href="/palabras/">Palabras heredadas</a> · <a href="/generaciones/">Calculadora de generaciones</a> · <a href="/arbol/">Tu árbol</a></p>
+  <p class="mute">© Eunice López · Historia Viva · <a href="https://eunicelopez.com/">eunicelopez.com</a></p>
+</div></footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+
+  // 1. documento anotado
+  var paneles = document.querySelectorAll('[data-panel]');
+  var sinNota = $('sin-nota');
+  function cerrarNotas() {
+    paneles.forEach(function (p) { p.classList.add('oculto'); });
+    document.querySelectorAll('.frase').forEach(function (f) { f.setAttribute('aria-expanded', 'false'); });
+    sinNota.classList.remove('oculto');
+  }
+  document.querySelectorAll('.frase').forEach(function (f) {
+    f.addEventListener('click', function () {
+      var abierto = f.getAttribute('aria-expanded') === 'true';
+      cerrarNotas();
+      if (abierto) return;
+      f.setAttribute('aria-expanded', 'true');
+      sinNota.classList.add('oculto');
+      var p = document.querySelector('[data-panel="' + f.dataset.nota + '"]');
+      if (p) { p.classList.remove('oculto'); $('zona-notas').focus(); }
+    });
+  });
+  document.querySelectorAll('.cerrar-nota').forEach(function (b) {
+    b.addEventListener('click', cerrarNotas);
+  });
+
+  // 2. buscador de abreviaturas
+  var filas = [].slice.call(document.querySelectorAll('#caja-abrev tbody tr'));
+  function norm(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[.\s/]/g, '');
+  }
+  function filtrar() {
+    var q = norm($('q-abrev').value);
+    var n = 0;
+    filas.forEach(function (tr) {
+      var ok = !q || tr.dataset.buscar.indexOf(q) > -1;
+      tr.classList.toggle('oculto', !ok);
+      if (ok) n++;
+    });
+    $('conteo-abrev').textContent = n + ' de ' + filas.length + ' entradas';
+    $('sin-abrev').classList.toggle('oculto', n > 0);
+    $('caja-abrev').classList.toggle('oculto', n === 0);
+  }
+  $('q-abrev').addEventListener('input', filtrar);
+  $('limpiar-abrev').addEventListener('click', function () { $('q-abrev').value = ''; filtrar(); });
+  filtrar();
+
+  // 3. diagnóstico de fechas
+  document.querySelectorAll('[data-rama]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var abierto = b.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('[data-rama]').forEach(function (o) { o.setAttribute('aria-expanded', 'false'); });
+      document.querySelectorAll('[data-rama-panel]').forEach(function (p) { p.classList.add('oculto'); });
+      if (abierto) return;
+      b.setAttribute('aria-expanded', 'true');
+      var p = document.querySelector('[data-rama-panel="' + b.dataset.rama + '"]');
+      if (p) p.classList.remove('oculto');
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var WEBHOOK = '';
+  var CONTACTO = 'eunice.historiaviva@gmail.com';
+  document.querySelectorAll('form[data-iman]').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = f.nombre.value.trim(), email = f.email.value.trim();
+      if (!nombre || !email || email.indexOf('@') < 1) {
+        f.querySelector('input:invalid, input[value=""]').focus();
+        return;
+      }
+      var ok = f.parentElement.querySelector('.ok');
+      var boton = f.querySelector('button');
+      boton.disabled = true; boton.textContent = 'Enviando…';
+      var datos = {
+        firstName: nombre, email: email,
+        tags: ['lm-' + f.dataset.iman],
+        source: 'eunicelopez.com/' + f.dataset.iman
+      };
+      // campos propios del imán (la palabra sugerida, por ejemplo)
+      Array.prototype.forEach.call(f.elements, function (el) {
+        if (el.name && el.name !== 'nombre' && el.name !== 'email' && el.value.trim()) {
+          datos[el.name] = el.value.trim();
+        }
+      });
+      function listo(mensaje) {
+        f.style.display = 'none';
+        ok.textContent = mensaje; ok.style.display = 'block';
+      }
+      if (!WEBHOOK) {
+        // Sin webhook configurado todavía: no perdemos el lead, abre el correo.
+        window.location.href = 'mailto:' + CONTACTO
+          + '?subject=' + encodeURIComponent('Quiero: ' + f.dataset.iman)
+          + '&body=' + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + email);
+        boton.disabled = false; boton.textContent = 'Quiero recibirlo';
+        return;
+      }
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      }).then(function () {
+        listo('Listo, ' + nombre + '. Revisa tu correo en un momento.');
+      }).catch(function () {
+        listo('Algo falló al enviar. Escríbeme a ' + CONTACTO + ' y te lo mando.');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

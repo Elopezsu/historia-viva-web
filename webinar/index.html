@@ -189,13 +189,20 @@
   .field { display: block; margin-bottom: 0.7rem; }
   .field span { display: block; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-bottom: 0.3rem; }
   .form-card.on-dark .field span { color: var(--mute-on-dark); }
-  .field input {
+  .field input, .field select {
     width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.95rem;
     border: 1.5px solid var(--hair); border-radius: 12px; background: var(--marfil-2); color: var(--ink);
   }
-  .form-card.on-dark .field input { background: rgba(255,255,255,0.08); border-color: var(--hair-dark); color: var(--marfil); }
+  .field select { appearance: none; -webkit-appearance: none; cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, var(--mute) 50%), linear-gradient(135deg, var(--mute) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(50% + 2px), calc(100% - 14px) calc(50% + 2px);
+    background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 2.4rem; }
+  .form-card.on-dark .field input, .form-card.on-dark .field select { background-color: rgba(255,255,255,0.08); border-color: var(--hair-dark); color: var(--marfil); }
   .form-card.on-dark .field input::placeholder { color: var(--mute-on-dark); }
-  .field input:focus { border-color: var(--coral); background: #fff; }
+  .field input:focus, .field select:focus { border-color: var(--coral); background-color: #fff; }
+  .form-card.on-dark .field select option { color: var(--ink); }
+  .field .hint { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0;
+    text-transform: none; color: var(--mute); margin: 0.28rem 0 0; }
   .btn {
     display: block; width: 100%; font: inherit; font-weight: 800; font-size: 1.02rem;
     letter-spacing: 0.01em; padding: 0.95rem 1.2rem; border: 0; border-radius: 999px;
@@ -407,13 +414,25 @@
 
     <div class="form-card" id="inscribirme">
       <p class="ftitle">Te envío la clase ahora mismo.</p>
-      <p class="fsub">Déjame tu nombre y tu correo, y te llega el enlace al instante.</p>
+      <p class="fsub">Cuatro datos, treinta segundos, y te llega el enlace al instante.</p>
       <form class="reg-form" novalidate>
         <label class="field"><span>Nombre</span>
           <input type="text" name="nombre" autocomplete="given-name" placeholder="Cómo te llamo" required>
         </label>
         <label class="field"><span>Correo</span>
           <input type="email" name="email" autocomplete="email" placeholder="tu@correo.com" required>
+        </label>
+        <label class="field"><span>WhatsApp <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></span>
+          <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+57 300 000 0000">
+          <span class="hint">Si me lo dejas, te mando el enlace también por ahí. No te escribo por nada más.</span>
+        </label>
+        <label class="field"><span>¿Qué te trae?</span>
+          <select name="intencion" required>
+            <option value="" disabled selected>Elige una</option>
+            <option value="continente">Quiero entender mejor la historia del continente</option>
+            <option value="familia">Estoy buscando la historia de mi propia familia</option>
+            <option value="evento">Busco a alguien que hable en un evento</option>
+          </select>
         </label>
         <button class="btn" type="submit">Quiero ver la clase</button>
         <p class="fmsg" role="status" aria-live="polite"></p>
@@ -668,13 +687,25 @@
       <p>Sin fecha, sin cupos, sin contador regresivo. Cuando quieras, pero mejor ahora, porque después no vuelves.</p>
       <div class="form-card on-dark">
         <p class="ftitle">Te envío la clase ahora mismo.</p>
-        <p class="fsub">Nombre, correo, y listo.</p>
+        <p class="fsub">Cuatro datos, treinta segundos, y listo.</p>
         <form class="reg-form" novalidate>
           <label class="field"><span>Nombre</span>
             <input type="text" name="nombre" autocomplete="given-name" placeholder="Cómo te llamo" required>
           </label>
           <label class="field"><span>Correo</span>
             <input type="email" name="email" autocomplete="email" placeholder="tu@correo.com" required>
+          </label>
+          <label class="field"><span>WhatsApp <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></span>
+            <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+57 300 000 0000">
+            <span class="hint">Si me lo dejas, te mando el enlace también por ahí. No te escribo por nada más.</span>
+          </label>
+          <label class="field"><span>¿Qué te trae?</span>
+            <select name="intencion" required>
+              <option value="" disabled selected>Elige una</option>
+              <option value="continente">Quiero entender mejor la historia del continente</option>
+              <option value="familia">Estoy buscando la historia de mi propia familia</option>
+              <option value="evento">Busco a alguien que hable en un evento</option>
+            </select>
           </label>
           <button class="btn" type="submit">Quiero ver la clase</button>
           <p class="fmsg" role="status" aria-live="polite"></p>
@@ -709,11 +740,21 @@
 /* =======================================================================
    CONFIGURACIÓN — lo único que tienes que tocar
    -----------------------------------------------------------------------
-   FORM_ACTION: la URL a donde se envían los registros.
-   Pega aquí el endpoint de tu formulario (Tally, Formspark, MailerLite,
-   ConvertKit, Make webhook, lo que uses) y la página queda funcionando.
-   Mientras esté vacío, el formulario avisa que no está conectado
-   en vez de fingir que funcionó.
+   FORM_ACTION: la URL a donde se envían los registros. Esta página manda un
+   POST con JSON, así que lo que encaja directo es un webhook.
+
+   En Go High Level, tres pasos y dos minutos:
+     1. Automation → Workflows → New Workflow → trigger «Inbound Webhook».
+     2. Copia la URL que te da y pégala abajo, entre las comillas.
+     3. En el mismo workflow: Create/Update Contact mapeando nombre, email y
+        whatsapp; etiqueta hv-clase; y el correo con el enlace de la clase.
+
+   El JSON que llega trae: nombre, email, whatsapp, intencion, origen.
+
+   MIENTRAS ESTÉ VACÍO NO SE CAPTURA NADA: el formulario abre el cliente de
+   correo del visitante con un mailto prellenado y le pide que le dé enviar.
+   En móvil y en webmail eso se pierde casi siempre. Es un parche, no una
+   captura.
 
    REDIRECT_URL: (opcional) página de gracias con el video.
    Si la dejas vacía, se muestra el mensaje de éxito aquí mismo.
@@ -737,10 +778,17 @@ var REDIRECT_URL = "";
       e.preventDefault();
       var nombre = form.nombre.value.trim();
       var email  = form.email.value.trim();
+      var whatsapp = form.whatsapp ? form.whatsapp.value.trim() : "";
+      var intencion = form.intencion ? form.intencion.value : "";
 
       if (!nombre) { say("Me falta tu nombre.", "err"); form.nombre.focus(); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         say("Ese correo no se ve bien, revísalo.", "err"); form.email.focus(); return;
+      }
+      if (!intencion) { say("Dime qué te trae, es una sola opción.", "err"); form.intencion.focus(); return; }
+      if (whatsapp && whatsapp.replace(/\D/g, "").length < 8) {
+        say("Ese número se ve corto. Déjalo completo o bórralo, es opcional.", "err");
+        form.whatsapp.focus(); return;
       }
 
       /* Plan B mientras FORM_ACTION esté vacío: en vez de perder el registro,
@@ -748,7 +796,10 @@ var REDIRECT_URL = "";
       if (!FORM_ACTION) {
         console.warn("[Historia Viva] FORM_ACTION está vacío. Pega tu endpoint al final del archivo para capturar automáticamente.");
         var asunto = encodeURIComponent("Quiero la clase gratuita");
-        var cuerpo = encodeURIComponent("Hola Eunice,\n\nQuiero ver la clase.\n\nNombre: " + nombre + "\nCorreo: " + email + "\n");
+        var cuerpo = encodeURIComponent("Hola Eunice,\n\nQuiero ver la clase.\n\nNombre: " + nombre +
+                     "\nCorreo: " + email +
+                     "\nWhatsApp: " + (whatsapp || "no lo dejó") +
+                     "\nQué le trae: " + intencion + "\n");
         window.location.href = "mailto:eunice.historiaviva@gmail.com?subject=" + asunto + "&body=" + cuerpo;
         say("Se abrió tu correo con el mensaje listo, sólo dale enviar y te paso el enlace. Si no se abrió, escríbeme a eunice.historiaviva@gmail.com.", "ok");
         return;
@@ -761,7 +812,8 @@ var REDIRECT_URL = "";
       fetch(FORM_ACTION, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ nombre: nombre, email: email, origen: "webinar-historia-viva" })
+        body: JSON.stringify({ nombre: nombre, email: email, whatsapp: whatsapp,
+                               intencion: intencion, origen: "webinar-historia-viva" })
       })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);

@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de entrevista familiar · Historia Viva</title>
+<meta name="description" content="Veinticinco preguntas, en el orden en que hay que hacerlas, para sentarte con la persona más vieja de tu familia antes de que sea tarde. Una a la vez, con la razón de cada una.">
+<meta name="author" content="Eunice López">
+<link rel="canonical" href="https://recursos.eunicelopez.com/guia-de-entrevista/">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#3B2E5A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="Guía de entrevista familiar · Historia Viva">
+<meta property="og:description" content="Veinticinco preguntas, en el orden en que hay que hacerlas, para sentarte con la persona más vieja de tu familia antes de que sea tarde. Una a la vez, con la razón de cada una.">
+<meta property="og:url" content="https://recursos.eunicelopez.com/guia-de-entrevista/">
+<meta property="og:image" content="https://recursos.eunicelopez.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --coral-soft:#F6A98E;
+  --gold:#F2A900; --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC;
+  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#B7ADC4;
+  --hair:rgba(30,27,36,.10); --hair-dark:rgba(247,243,236,.14);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.shell{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+h1,h2,h3{font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.06}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15}
+h3{font-size:1.18rem}
+p{margin:0 0 1rem}
+a{color:inherit}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:700;color:var(--coral);margin:0}
+.eyebrow.on-dark{color:var(--gold)}
+.serif-em{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0}
+.mark-hl{background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,
+  var(--gold-soft) 94%,transparent 94%);padding:0 .12em;border-radius:2px}
+.coral-word{color:var(--coral)}
+.mute{color:var(--mute)}
+.meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb,var(--marfil) 86%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand .dot{width:34px;height:34px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
+  box-shadow:0 4px 14px -4px rgba(228,87,46,.55)}
+.brand .bt{display:flex;flex-direction:column;line-height:1.03}
+.brand b{font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.brand span{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--coral)}
+.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600}
+.nav-back:hover{color:var(--ink)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;
+  font:inherit;font-weight:700;border-radius:999px;padding:.8rem 1.5rem;
+  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 22px -10px rgba(228,87,46,.8)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair)}
+
+/* tarjetas */
+.card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:1.4rem}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.g2{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* hero */
+.hero{padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2.5rem)}
+.lede{font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--mute);max-width:62ch}
+
+/* captura */
+.captura{background:var(--indigo);color:var(--marfil);border-radius:18px;
+  padding:clamp(1.6rem,4vw,2.6rem);margin:3rem 0}
+.captura h2{color:var(--marfil)}
+.captura p{color:var(--mute-on-dark)}
+.captura form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.captura input{flex:1 1 12rem;min-width:0;border:1px solid var(--hair-dark);
+  background:rgba(255,255,255,.06);color:var(--marfil);border-radius:999px;
+  padding:.8rem 1.1rem;font:inherit}
+.captura input::placeholder{color:var(--mute-on-dark)}
+.captura input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.captura .nota{font-size:.8rem;margin:.8rem 0 0}
+.captura .ok{display:none;background:rgba(242,169,0,.14);border:1px solid var(--gold);
+  border-radius:12px;padding:1rem;margin-top:1rem;color:var(--marfil)}
+
+/* pie */
+footer.pie{border-top:1px solid var(--hair);margin-top:4rem;padding:2rem 0 3rem;
+  color:var(--mute);font-size:.88rem}
+footer.pie a{color:var(--coral);text-decoration:none}
+
+.paso{display:none}.paso.activo{display:block}
+.campo{width:100%;border:1px solid var(--hair);background:#fff;border-radius:10px;
+  padding:.85rem 1rem;font:inherit;color:var(--ink)}
+.campo:focus{outline:2px solid var(--coral);outline-offset:1px}
+textarea.campo{resize:vertical;min-height:7rem;font-family:var(--serif);font-size:1.05rem;line-height:1.7}
+.puerta{background:#fff;border:1px solid var(--hair);border-radius:16px;
+  padding:clamp(1.4rem,4vw,2.4rem);max-width:34rem;margin-top:2rem}
+.puerta .fila{display:grid;gap:.9rem;margin-top:1.4rem}
+.privacidad{border-left:3px solid var(--gold);background:var(--cream-warm);
+  padding:.9rem 1.1rem;border-radius:0 10px 10px 0;font-size:.92rem;color:var(--mute);margin-top:1.3rem}
+.avance{display:flex;gap:3px;margin:2rem 0 1.4rem}
+.avance i{height:4px;flex:1;background:var(--hair);border-radius:2px}
+.avance i.on{background:var(--coral)}
+.avance i.hecha{background:var(--indigo)}
+.bloque-nom{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);font-weight:700}
+.pregunta{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;letter-spacing:-.025em;
+  line-height:1.2;margin:.8rem 0 0;text-wrap:balance}
+.pista{border-left:3px solid var(--gold);background:var(--cream-warm);padding:.8rem 1rem;
+  border-radius:0 8px 8px 0;font-size:.92rem;color:var(--mute);margin-top:1rem}
+.nav-p{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.6rem}
+.nav-p .cuenta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--mute);
+  margin-left:auto}
+.aviso-silencios{background:var(--indigo);color:var(--marfil);border-radius:16px;
+  padding:clamp(1.4rem,4vw,2.2rem);max-width:36rem;margin-top:2rem}
+.aviso-silencios h2{color:var(--marfil)}
+.aviso-silencios p{color:var(--mute-on-dark)}
+.registro{margin-top:2rem}
+.reg-bloque{border-top:1px solid var(--hair);padding-top:1.4rem;margin-top:1.4rem}
+.reg-p{margin-top:1.1rem}
+.reg-p .q{font-weight:700;font-size:.98rem}
+.reg-p .r{font-family:var(--serif);font-size:1.05rem;line-height:1.7;color:var(--mute);
+  white-space:pre-wrap;margin:.3rem 0 0;border-left:2px solid var(--hair);padding-left:.9rem}
+.reg-p .r.sin{font-style:italic;opacity:.6}
+@media print{
+  header.nav,footer.pie,.no-print,.puerta,.avance,.nav-p{display:none!important}
+  body{background:#fff}
+  .reg-p .r{border-color:#ccc}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="shell nav-in">
+  <a class="brand" href="https://eunicelopez.com/"><span class="dot"></span><span class="bt">
+    <b>Eunice López</b><span>Historia Viva</span></span></a>
+  <a class="nav-back" href="https://eunicelopez.com/">← volver al sitio</a>
+</div></header>
+
+<main class="shell">
+  <!-- puerta: lo único que pide correo, porque es lo que promete la guía -->
+  <section class="paso activo" data-paso="puerta">
+    <div class="hero" style="max-width:780px;padding-bottom:0">
+      <p class="eyebrow">Historia Viva · guía</p>
+      <h1 style="margin-top:.6rem">Antes de que sea tarde</h1>
+      <p class="lede" style="margin-top:1.1rem">Veinticinco preguntas, en el orden en que conviene
+        hacerlas, para sentarte con la persona más vieja de tu familia y que no se quede en «todo era
+        mejor antes». Te aparecen de una en una, con la razón de por qué funciona cada una.</p>
+      <p class="lede" style="margin-top:.9rem">La urgencia no es retórica: la gente mayor se muere y
+        se lleva los nombres.</p>
+    </div>
+    <div class="puerta">
+      <p class="eyebrow">Empezar</p>
+      <div class="fila">
+        <div><label for="g-nombre" style="font-weight:700">Tu nombre</label>
+          <input id="g-nombre" class="campo" autocomplete="given-name" style="margin-top:.4rem"></div>
+        <div><label for="g-correo" style="font-weight:700">Tu correo</label>
+          <input id="g-correo" class="campo" type="email" autocomplete="email" style="margin-top:.4rem"></div>
+      </div>
+      <p class="mute" style="font-size:.9rem;margin-top:1rem">Te mando la guía en PDF y una historia
+        cada martes. Si no te sirve, te sales en un clic.</p>
+      <p class="error mute" id="g-error" style="color:var(--coral);font-size:.9rem;display:none"></p>
+      <div style="margin-top:1.2rem"><button class="btn btn-primary" id="g-empezar">Empezar la guía</button></div>
+      <p class="privacidad"><b>Tus respuestas no salen de aquí.</b> Lo único que viaja es tu nombre y
+        tu correo. Lo que escribas de tu familia se guarda solo en este navegador, y por eso al final
+        está el botón de imprimir.</p>
+    </div>
+  </section>
+
+  <!-- aviso antes del bloque de los silencios -->
+  <section class="paso" data-paso="aviso">
+    <div class="aviso-silencios">
+      <p class="eyebrow on-dark">Antes de seguir</p>
+      <h2 style="margin-top:.6rem">Los silencios</h2>
+      <p style="margin-top:.9rem">Estas cinco pueden abrir algo. Si la conversación se pone pesada, para y vuelve otro día. No estás haciendo un trámite.</p>
+      <div style="margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.7rem">
+        <button class="btn btn-primary" id="a-seguir">Seguir</button>
+        <button class="btn btn-ghost" id="a-saltar" style="color:var(--marfil);border-color:var(--hair-dark)">
+          Saltar este bloque</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- las preguntas, una a la vez -->
+  <section class="paso" data-paso="pregunta" style="max-width:720px">
+    <div class="avance" id="avance" aria-hidden="true"></div>
+    <p class="bloque-nom" id="p-bloque"></p>
+    <h2 class="pregunta" id="p-texto"></h2>
+    <p class="pista" id="p-pista"></p>
+    <label for="p-resp" class="eyebrow" style="display:block;margin-top:1.4rem">Lo que te contó</label>
+    <textarea id="p-resp" class="campo" style="margin-top:.5rem"
+      placeholder="Escribe aquí, o graba el audio y anota solo lo clave."></textarea>
+    <div class="nav-p">
+      <button class="btn btn-ghost" id="p-atras">Atrás</button>
+      <button class="btn btn-primary" id="p-siguiente">Siguiente</button>
+      <span class="cuenta" id="p-cuenta"></span>
+    </div>
+    <p class="mute" style="font-size:.88rem;margin-top:1.2rem">Se guarda solo mientras escribes. Puedes
+      cerrar y volver.</p>
+  </section>
+
+  <!-- registro final, imprimible -->
+  <section class="paso" data-paso="registro">
+    <div class="hero" style="max-width:780px;padding-bottom:0">
+      <p class="eyebrow">Historia Viva · registro</p>
+      <h1 style="margin-top:.6rem">Lo que te contó</h1>
+      <p class="lede no-print" style="margin-top:1rem">Imprímelo o guárdalo en PDF. Si limpias el
+        navegador se borra, así que no lo dejes solo aquí.</p>
+      <div class="nav-p no-print" style="margin-top:1.2rem">
+        <button class="btn btn-primary" id="r-imprimir">Imprimir o guardar en PDF</button>
+        <button class="btn btn-ghost" id="r-volver">Volver a las preguntas</button>
+      </div>
+    </div>
+    <div class="registro" id="registro"></div>
+    <div class="no-print" style="border-top:1px solid var(--hair);margin-top:2.5rem;padding-top:1.6rem">
+      <p class="eyebrow">El siguiente paso</p>
+      <p class="mute" style="margin-top:.6rem;max-width:62ch">Con esos nombres y ese pueblo ya puedes
+        buscar en los archivos. Empieza por el
+        <a href="/mapa-de-archivos/">Mapa de archivos</a> de tu país, y pasa lo que te contó a
+        <a href="/arbol/">Tu árbol</a>, que guarda qué decidió cada quien y qué le costó.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="pie"><div class="shell">
+  <p><b>Otras herramientas:</b> <a href="/mapa-de-archivos/">Mapa de archivos</a> · <a href="/espiral/">La Espiral</a> · <a href="/nombradas/">Las nombradas</a> · <a href="/palabras/">Palabras heredadas</a> · <a href="/generaciones/">Calculadora de generaciones</a> · <a href="/leer-un-documento/">Cómo leer un documento</a> · <a href="/arbol/">Tu árbol</a></p>
+  <p class="mute">© Eunice López · Historia Viva · <a href="https://eunicelopez.com/">eunicelopez.com</a></p>
+</div></footer>
+
+<script>
+(function () {
+  var D = {"AVISO_SILENCIOS": "Estas cinco pueden abrir algo. Si la conversación se pone pesada, para y vuelve otro día. No estás haciendo un trámite.", "GRUPOS": ["Los nombres", "El trabajo", "El viaje", "Los silencios", "Ella"], "PREGUNTAS": [{"id": "n1", "grupo": "Los nombres", "texto": "¿Cómo se llamaba tu mamá, con los dos apellidos?", "pista": "Los dos apellidos son la llave de cualquier búsqueda posterior en registros."}, {"id": "n2", "grupo": "Los nombres", "texto": "¿De dónde era ella exactamente? ¿El pueblo, no el departamento?", "pista": "El pueblo define qué parroquia o notaría guarda los papeles."}, {"id": "n3", "grupo": "Los nombres", "texto": "¿En qué año nació, más o menos?", "pista": "Un año aproximado ya reduce la búsqueda a un rango manejable."}, {"id": "n4", "grupo": "Los nombres", "texto": "¿Cómo se llamaban sus papás?", "pista": "Con una generación más atrás pasas de una historia a un árbol."}, {"id": "n5", "grupo": "Los nombres", "texto": "¿Quién en la familia sabe más de esto que tú?", "pista": "Casi siempre hay alguien que guarda los papeles. Conviene saber quién."}, {"id": "t1", "grupo": "El trabajo", "texto": "¿En qué trabajaba tu papá cuando tú eras chiquita?", "pista": "Se contesta rápido y abre la puerta a la vida diaria de la casa."}, {"id": "t2", "grupo": "El trabajo", "texto": "¿A qué hora salía de la casa y a qué hora volvía?", "pista": "Los horarios traen detalles que las preguntas generales no sacan."}, {"id": "t3", "grupo": "El trabajo", "texto": "¿Cuál fue el primer trabajo tuyo y cuánto te pagaban?", "pista": "La cifra exacta ancla el recuerdo en un año y en una economía."}, {"id": "t4", "grupo": "El trabajo", "texto": "¿Qué se hacía en la casa cuando el dinero no alcanzaba?", "pista": "Muestra las estrategias reales de la familia, no la versión oficial."}, {"id": "t5", "grupo": "El trabajo", "texto": "¿Quién en la familia manejaba la plata y cómo la guardaba?", "pista": "Revela quién tenía poder de decisión, algo que rara vez se dice directo."}, {"id": "v1", "grupo": "El viaje", "texto": "¿Quién fue el primero de la familia que se fue del pueblo?", "pista": "Toda familia tiene un punto de quiebre migratorio. Ese es el inicio."}, {"id": "v2", "grupo": "El viaje", "texto": "¿Por qué se fue? ¿Qué contaban en la casa sobre eso?", "pista": "La razón que se cuenta y la razón real a veces no coinciden. Anota las dos."}, {"id": "v3", "grupo": "El viaje", "texto": "¿Cómo llegaron a la ciudad? ¿En qué se vinieron y con quién?", "pista": "El medio de transporte fecha el viaje mejor que cualquier recuerdo de año."}, {"id": "v4", "grupo": "El viaje", "texto": "¿Cuál fue la primera casa aquí? Descríbemela por dentro.", "pista": "Describir un espacio saca memoria que una pregunta abstracta no toca."}, {"id": "v5", "grupo": "El viaje", "texto": "¿Qué se trajeron del pueblo que todavía exista?", "pista": "Un objeto concreto suele venir con una historia completa pegada."}, {"id": "s1", "grupo": "Los silencios", "texto": "¿De qué no se hablaba en la casa?", "pista": "Nombrar el tema prohibido ya es más de lo que suele contarse."}, {"id": "s2", "grupo": "Los silencios", "texto": "¿Hubo alguien de quien se dejó de hablar? ¿Qué pasó?", "pista": "Las personas borradas del relato familiar casi siempre explican algo."}, {"id": "s3", "grupo": "Los silencios", "texto": "¿Qué es lo más difícil que te tocó vivir en esos años?", "pista": "Pregunta abierta y sin juicio. Deja el silencio, no lo llenes."}, {"id": "s4", "grupo": "Los silencios", "texto": "¿Hay algo que hoy contarías distinto de como se contó entonces?", "pista": "Da permiso de corregir la versión oficial sin acusar a nadie."}, {"id": "s5", "grupo": "Los silencios", "texto": "¿Qué te hubiera gustado preguntarle a tu mamá y ya no pudiste?", "pista": "Suele ser la pregunta que ella misma quiere que tú le hagas."}, {"id": "e1", "grupo": "Ella", "texto": "¿Cómo era tu día cuando tenías la edad que yo tengo ahora?", "pista": "Comparar edades la pone a hablar de sí misma, no de los demás."}, {"id": "e2", "grupo": "Ella", "texto": "¿De qué te sentiste orgullosa y nadie se dio cuenta?", "pista": "Rescata logros que quedaron fuera del relato familiar."}, {"id": "e3", "grupo": "Ella", "texto": "¿Qué decisión tuya cambió el rumbo de esta familia?", "pista": "La sitúa como alguien que decidió, no como alguien a quien le pasaron cosas."}, {"id": "e4", "grupo": "Ella", "texto": "¿Qué canción, olor o comida te devuelve a esa época?", "pista": "Los sentidos abren recuerdos que la cronología no alcanza."}, {"id": "e5", "grupo": "Ella", "texto": "¿Qué quieres que se sepa de ti cuando ya no estés?", "pista": "Cierra la conversación con algo que ella controla del todo."}]};
+  var WEBHOOK = '';
+  var CONTACTO = 'eunice.historiaviva@gmail.com';
+  var CLAVE = 'historia-viva:entrevista';
+  var $ = function (id) { return document.getElementById(id); };
+  var P = D.PREGUNTAS;
+  var PRIMERA_SILENCIO = P.findIndex(function (p) { return p.grupo === 'Los silencios'; });
+
+  var estado = { nombre:'', correo:'', respuestas:{}, indice:0, avisoVisto:false, registrado:false };
+  try {
+    var g = JSON.parse(localStorage.getItem(CLAVE) || 'null');
+    if (g) estado = Object.assign(estado, g, { respuestas: g.respuestas || {} });
+  } catch (e) {}
+  function guardar() {
+    try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {}
+  }
+
+  function ir(nombre) {
+    document.querySelectorAll('.paso').forEach(function (s) {
+      s.classList.toggle('activo', s.dataset.paso === nombre);
+    });
+    window.scrollTo({ top: 0 });
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c];
+    });
+  }
+
+  function pintarAvance() {
+    $('avance').innerHTML = P.map(function (p, i) {
+      var c = i === estado.indice ? 'on' : (estado.respuestas[p.id] ? 'hecha' : '');
+      return '<i class="' + c + '"></i>';
+    }).join('');
+  }
+
+  function pintarPregunta() {
+    var p = P[estado.indice];
+    if (!p) { pintarRegistro(); ir('registro'); return; }
+    $('p-bloque').textContent = p.grupo;
+    $('p-texto').textContent = p.texto;
+    $('p-pista').textContent = p.pista;
+    $('p-resp').value = estado.respuestas[p.id] || '';
+    $('p-cuenta').textContent = (estado.indice + 1) + ' de ' + P.length;
+    $('p-atras').disabled = estado.indice === 0;
+    $('p-siguiente').textContent = estado.indice === P.length - 1 ? 'Terminar' : 'Siguiente';
+    pintarAvance();
+    ir('pregunta');
+  }
+
+  function pintarRegistro() {
+    var html = '', grupoActual = null;
+    D.GRUPOS.forEach(function (g) {
+      var delGrupo = P.filter(function (p) { return p.grupo === g; });
+      var algo = delGrupo.some(function (p) { return (estado.respuestas[p.id] || '').trim(); });
+      if (!algo) return;
+      html += '<div class="reg-bloque"><p class="eyebrow">' + esc(g) + '</p>';
+      delGrupo.forEach(function (p) {
+        var r = (estado.respuestas[p.id] || '').trim();
+        if (!r) return;
+        html += '<div class="reg-p"><p class="q">' + esc(p.texto) + '</p>'
+             +  '<p class="r">' + esc(r) + '</p></div>';
+      });
+      html += '</div>';
+    });
+    if (!html) {
+      html = '<p class="mute" style="margin-top:1.5rem">Todavía no has anotado nada. '
+           + 'Vuelve a las preguntas cuando estés con ella.</p>';
+    }
+    $('registro').innerHTML = html;
+  }
+
+  // guardado mientras escribe
+  $('p-resp').addEventListener('input', function () {
+    var p = P[estado.indice];
+    if (!p) return;
+    estado.respuestas[p.id] = $('p-resp').value;
+    guardar();
+  });
+
+  function avanzar(delta) {
+    var siguiente = estado.indice + delta;
+    // el aviso aparece una sola vez, justo antes del bloque de los silencios
+    if (delta > 0 && !estado.avisoVisto && siguiente === PRIMERA_SILENCIO) {
+      estado.avisoVisto = true; estado.indice = siguiente; guardar(); ir('aviso'); return;
+    }
+    if (siguiente < 0) return;
+    estado.indice = siguiente; guardar();
+    if (siguiente >= P.length) { pintarRegistro(); ir('registro'); return; }
+    pintarPregunta();
+  }
+  $('p-siguiente').addEventListener('click', function () { avanzar(1); });
+  $('p-atras').addEventListener('click', function () { avanzar(-1); });
+  $('a-seguir').addEventListener('click', function () { pintarPregunta(); });
+  $('a-saltar').addEventListener('click', function () {
+    var fin = P.findIndex(function (p) { return p.grupo === 'Ella'; });
+    estado.indice = fin < 0 ? P.length : fin; guardar(); pintarPregunta();
+  });
+  $('r-imprimir').addEventListener('click', function () { window.print(); });
+  $('r-volver').addEventListener('click', function () {
+    estado.indice = 0; guardar(); pintarPregunta();
+  });
+
+  // la puerta: nombre y correo -> GHL, y solo eso
+  $('g-empezar').addEventListener('click', function () {
+    var nombre = $('g-nombre').value.trim(), correo = $('g-correo').value.trim();
+    if (!nombre || correo.indexOf('@') < 1) {
+      $('g-error').textContent = 'Necesito tu nombre y un correo válido para mandarte la guía.';
+      $('g-error').style.display = 'block';
+      (!nombre ? $('g-nombre') : $('g-correo')).focus();
+      return;
+    }
+    $('g-error').style.display = 'none';
+    estado.nombre = nombre; estado.correo = correo; estado.registrado = true;
+    estado.indice = 0; guardar();
+    var boton = $('g-empezar');
+    boton.disabled = true; boton.textContent = 'Un segundo…';
+    function seguir() { boton.disabled = false; boton.textContent = 'Empezar la guía'; pintarPregunta(); }
+    if (!WEBHOOK) {
+      // Sin webhook todavía: se abre el correo para que el registro no se pierda.
+      window.open('mailto:' + CONTACTO
+        + '?subject=' + encodeURIComponent('Quiero la guía de entrevista')
+        + '&body=' + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + correo), '_blank');
+      seguir(); return;
+    }
+    fetch(WEBHOOK, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName: nombre, email: correo,
+        tags: ['lm-guia-de-entrevista'], source: 'eunicelopez.com/guia-de-entrevista' })
+    }).then(seguir, seguir);
+  });
+
+  // si ya se registró antes, entra directo por donde iba
+  if (estado.registrado) {
+    var hechas = Object.keys(estado.respuestas).filter(function (k) {
+      return (estado.respuestas[k] || '').trim();
+    }).length;
+    if (hechas >= P.length) { pintarRegistro(); ir('registro'); }
+    else pintarPregunta();
+  }
+})();
+</script>
+
+<script>
+(function () {
+  var WEBHOOK = '';
+  var CONTACTO = 'eunice.historiaviva@gmail.com';
+  document.querySelectorAll('form[data-iman]').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = f.nombre.value.trim(), email = f.email.value.trim();
+      if (!nombre || !email || email.indexOf('@') < 1) {
+        f.querySelector('input:invalid, input[value=""]').focus();
+        return;
+      }
+      var ok = f.parentElement.querySelector('.ok');
+      var boton = f.querySelector('button');
+      boton.disabled = true; boton.textContent = 'Enviando…';
+      var datos = {
+        firstName: nombre, email: email,
+        tags: ['lm-' + f.dataset.iman],
+        source: 'eunicelopez.com/' + f.dataset.iman
+      };
+      // campos propios del imán (la palabra sugerida, por ejemplo)
+      Array.prototype.forEach.call(f.elements, function (el) {
+        if (el.name && el.name !== 'nombre' && el.name !== 'email' && el.value.trim()) {
+          datos[el.name] = el.value.trim();
+        }
+      });
+      function listo(mensaje) {
+        f.style.display = 'none';
+        ok.textContent = mensaje; ok.style.display = 'block';
+      }
+      if (!WEBHOOK) {
+        // Sin webhook configurado todavía: no perdemos el lead, abre el correo.
+        window.location.href = 'mailto:' + CONTACTO
+          + '?subject=' + encodeURIComponent('Quiero: ' + f.dataset.iman)
+          + '&body=' + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + email);
+        boton.disabled = false; boton.textContent = 'Quiero recibirlo';
+        return;
+      }
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      }).then(function () {
+        listo('Listo, ' + nombre + '. Revisa tu correo en un momento.');
+      }).catch(function () {
+        listo('Algo falló al enviar. Escríbeme a ' + CONTACTO + ' y te lo mando.');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
