@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palabras heredadas · Historia Viva</title>
+<meta name="description" content="Diccionario buscable de 40 palabras del español cotidiano que vienen del quechua, náhuatl, taíno, árabe y lenguas africanas, con etiqueta de certeza en cada entrada.">
+<meta name="author" content="Eunice López">
+<link rel="canonical" href="https://recursos.eunicelopez.com/palabras/">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#3B2E5A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="Palabras heredadas · Historia Viva">
+<meta property="og:description" content="Diccionario buscable de 40 palabras del español cotidiano que vienen del quechua, náhuatl, taíno, árabe y lenguas africanas, con etiqueta de certeza en cada entrada.">
+<meta property="og:url" content="https://recursos.eunicelopez.com/palabras/">
+<meta property="og:image" content="https://recursos.eunicelopez.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --coral-soft:#F6A98E;
+  --gold:#F2A900; --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC;
+  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#B7ADC4;
+  --hair:rgba(30,27,36,.10); --hair-dark:rgba(247,243,236,.14);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.shell{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+h1,h2,h3{font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.06}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15}
+h3{font-size:1.18rem}
+p{margin:0 0 1rem}
+a{color:inherit}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:700;color:var(--coral);margin:0}
+.eyebrow.on-dark{color:var(--gold)}
+.serif-em{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0}
+.mark-hl{background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,
+  var(--gold-soft) 94%,transparent 94%);padding:0 .12em;border-radius:2px}
+.coral-word{color:var(--coral)}
+.mute{color:var(--mute)}
+.meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb,var(--marfil) 86%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand .dot{width:34px;height:34px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
+  box-shadow:0 4px 14px -4px rgba(228,87,46,.55)}
+.brand .bt{display:flex;flex-direction:column;line-height:1.03}
+.brand b{font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.brand span{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--coral)}
+.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600}
+.nav-back:hover{color:var(--ink)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;
+  font:inherit;font-weight:700;border-radius:999px;padding:.8rem 1.5rem;
+  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 22px -10px rgba(228,87,46,.8)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair)}
+
+/* tarjetas */
+.card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:1.4rem}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.g2{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* hero */
+.hero{padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2.5rem)}
+.lede{font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--mute);max-width:62ch}
+
+/* captura */
+.captura{background:var(--indigo);color:var(--marfil);border-radius:18px;
+  padding:clamp(1.6rem,4vw,2.6rem);margin:3rem 0}
+.captura h2{color:var(--marfil)}
+.captura p{color:var(--mute-on-dark)}
+.captura form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.captura input{flex:1 1 12rem;min-width:0;border:1px solid var(--hair-dark);
+  background:rgba(255,255,255,.06);color:var(--marfil);border-radius:999px;
+  padding:.8rem 1.1rem;font:inherit}
+.captura input::placeholder{color:var(--mute-on-dark)}
+.captura input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.captura .nota{font-size:.8rem;margin:.8rem 0 0}
+.captura .ok{display:none;background:rgba(242,169,0,.14);border:1px solid var(--gold);
+  border-radius:12px;padding:1rem;margin-top:1rem;color:var(--marfil)}
+
+/* pie */
+footer.pie{border-top:1px solid var(--hair);margin-top:4rem;padding:2rem 0 3rem;
+  color:var(--mute);font-size:.88rem}
+footer.pie a{color:var(--coral);text-decoration:none}
+
+.buscador{width:100%;border:1px solid var(--hair);background:#fff;border-radius:14px;
+  padding:1rem 1.2rem;font:inherit;font-size:clamp(1.3rem,3.4vw,1.9rem);font-weight:800;
+  color:var(--ink);letter-spacing:-.02em}
+.buscador:focus{outline:2px solid var(--coral);outline-offset:1px}
+.buscador::placeholder{color:var(--mute);font-weight:400;letter-spacing:0}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem;padding:0;list-style:none}
+.chip{border:1px solid var(--hair);background:transparent;color:var(--ink);border-radius:999px;
+  padding:.45rem .95rem;font:inherit;font-weight:700;cursor:pointer;font-size:.9rem;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--marfil)}
+.p-lista{display:grid;gap:1.2rem;margin-top:2rem}
+.p-card{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:clamp(1.3rem,3vw,2rem)}
+.p-card h3{font-size:clamp(1.9rem,5vw,2.6rem);margin-top:.4rem;line-height:1.05}
+.orig{font-family:var(--mono);font-size:.95rem;color:var(--ink)}
+.ejemplo{font-family:var(--serif);font-style:italic;font-size:1.08rem;margin:1rem 0 0}
+.disputa{border-left:3px solid var(--coral);background:var(--cream-warm);padding:.9rem 1.1rem;
+  border-radius:0 10px 10px 0;margin-top:1.2rem;font-size:.95rem;color:var(--mute)}
+.pie-card{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem;border-top:1px solid var(--hair);
+  margin-top:1.3rem;padding-top:1rem}
+.certeza{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;border:1px solid;padding:.28rem .6rem;display:inline-flex;align-items:center;gap:.5rem}
+.certeza .pt{width:7px;height:7px;background:currentColor;display:inline-block}
+.oculto{display:none!important}
+.leyenda{display:grid;gap:.9rem;margin-top:1.4rem}
+@media(min-width:700px){.leyenda{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="shell nav-in">
+  <a class="brand" href="https://eunicelopez.com/"><span class="dot"></span><span class="bt">
+    <b>Eunice López</b><span>Historia Viva</span></span></a>
+  <a class="nav-back" href="https://eunicelopez.com/">← volver al sitio</a>
+</div></header>
+
+<main class="shell">
+  <div class="hero">
+    <p class="eyebrow">Historia Viva · diccionario</p>
+    <h1 style="margin-top:.6rem">Palabras heredadas</h1>
+    <p class="lede" style="margin-top:1.1rem">Hablas quechua, quichua, náhuatl, taíno, árabe y lenguas
+      de África occidental todos los días sin saberlo. Acá están esas palabras y el camino que
+      hicieron hasta tu cocina.</p>
+  </div>
+
+  <section style="border-top:1px solid var(--hair);padding-top:1.8rem">
+    <label class="eyebrow" for="q">Busca una palabra</label>
+    <input id="q" class="buscador" type="search" autocomplete="off" style="margin-top:.8rem"
+      placeholder="chocolate, ojalá, chévere…">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:1rem">
+      <button class="btn btn-primary" id="azar">Sorpréndeme</button>
+      <span class="meta" id="conteo"></span>
+    </div>
+    <div id="filtros" style="margin-top:1.5rem">
+      <p class="eyebrow">Navega por lengua de origen</p>
+      <ul class="chips">
+        <li><button class="chip" data-origen="" aria-pressed="true">Todas</button></li><li><button class="chip" data-origen="Quechua" aria-pressed="false">Quechua</button></li><li><button class="chip" data-origen="Quichua" aria-pressed="false">Quichua</button></li><li><button class="chip" data-origen="Náhuatl" aria-pressed="false">Náhuatl</button></li><li><button class="chip" data-origen="Taíno" aria-pressed="false">Taíno</button></li><li><button class="chip" data-origen="Árabe" aria-pressed="false">Árabe</button></li><li><button class="chip" data-origen="Lenguas africanas" aria-pressed="false">Lenguas africanas</button></li><li><button class="chip" data-origen="Guaraní" aria-pressed="false">Guaraní</button></li><li><button class="chip" data-origen="Maya" aria-pressed="false">Maya</button></li></ul>
+    </div>
+  </section>
+
+  <div class="p-lista" id="lista"><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="aceite arabe az-zayt el jugo de la aceituna el latin tenia oleum, y sin embargo el espanol dice aceite: la palabra arabe se impuso sobre la latina en la peninsula porque el comercio y la produccion del aceite pasaron por manos andalusies durante siglos. el portugues azeite conserva la misma raiz.">
+  <p class="eyebrow">Árabe</p>
+  <h3>aceite</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">az-zayt</span>
+    — el jugo de la aceituna</p>
+  <p class="mute" style="margin-top:1rem">El latín tenía oleum, y sin embargo el español dice aceite: la palabra árabe se impuso sobre la latina en la península porque el comercio y la producción del aceite pasaron por manos andalusíes durante siglos. El portugués azeite conserva la misma raíz.</p>
+  <p class="ejemplo">«Puso un chorrito de aceite en la sartén.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente; Corominas.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="aguacate nahuatl ahuacatl testiculo (por la forma del fruto colgando del arbol) la palabra viajo tal cual del nahuatl al espanol novohispano y de ahi al ingles como avocado, donde se cruzo con advocate. en sudamerica se impuso en cambio el quechua palta. el sentido anatomico esta documentado en fuentes coloniales, no es una invencion moderna.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>aguacate</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">ahuacatl</span>
+    — testículo (por la forma del fruto colgando del árbol)</p>
+  <p class="mute" style="margin-top:1rem">La palabra viajó tal cual del náhuatl al español novohispano y de ahí al inglés como avocado, donde se cruzó con advocate. En Sudamérica se impuso en cambio el quechua palta. El sentido anatómico está documentado en fuentes coloniales, no es una invención moderna.</p>
+  <p class="ejemplo">«Sin aguacate no hay desayuno que valga.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Molina, Vocabulario en lengua castellana y mexicana; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="aji taino axi pimiento picante los cronistas la registraron en la espanola antes de que los espanoles conocieran el nahuatl chilli. por eso sudamerica y el caribe dicen aji y mexico dice chile: no es una diferencia de sabor sino de que lengua toco primero cada ruta colonial.">
+  <p class="eyebrow">Taíno</p>
+  <h3>ají</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">axí</span>
+    — pimiento picante</p>
+  <p class="mute" style="margin-top:1rem">Los cronistas la registraron en La Española antes de que los españoles conocieran el náhuatl chilli. Por eso Sudamérica y el Caribe dicen ají y México dice chile: no es una diferencia de sabor sino de qué lengua tocó primero cada ruta colonial.</p>
+  <p class="ejemplo">«El ají de la casa pica más de lo que parece.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Oviedo; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="alcalde arabe al-qadi el juez el cargo que hoy manda en un municipio latinoamericano se llama con el nombre arabe del juez. llego a america con la organizacion municipal castellana y se quedo en el vocabulario politico de casi todos los paises.">
+  <p class="eyebrow">Árabe</p>
+  <h3>alcalde</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">al-qāḍī</span>
+    — el juez</p>
+  <p class="mute" style="margin-top:1rem">El cargo que hoy manda en un municipio latinoamericano se llama con el nombre árabe del juez. Llegó a América con la organización municipal castellana y se quedó en el vocabulario político de casi todos los países.</p>
+  <p class="ejemplo">«El alcalde presentó el presupuesto del año.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente, Diccionario de arabismos; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="alcohol arabe al-kuhl el polvo finisimo de antimonio para los ojos empezo nombrando el kohl, el cosmetico en polvo. de ahi paso a significar cualquier sustancia obtenida por sublimacion o destilacion, y finalmente el espiritu del vino. la palabra recorrio toda la alquimia andalusi antes de llegar a la barra.">
+  <p class="eyebrow">Árabe</p>
+  <h3>alcohol</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">al-kuḥl</span>
+    — el polvo finísimo de antimonio para los ojos</p>
+  <p class="mute" style="margin-top:1rem">Empezó nombrando el kohl, el cosmético en polvo. De ahí pasó a significar cualquier sustancia obtenida por sublimación o destilación, y finalmente el espíritu del vino. La palabra recorrió toda la alquimia andalusí antes de llegar a la barra.</p>
+  <p class="ejemplo">«Pidió una cerveza sin alcohol.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente, Diccionario de arabismos; OED.</span></div>
+</article><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="almohada arabe al-mujadda aquello donde se apoya la mejilla de al-jadd, &#x27;la mejilla&#x27;. la palabra entro con el mueble y el habito domestico andalusi y desplazo a los terminos romances. es un buen recordatorio de que el arabismo espanol no esta solo en la ciencia y la arquitectura: esta en la cama.">
+  <p class="eyebrow">Árabe</p>
+  <h3>almohada</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">al-mujadda</span>
+    — aquello donde se apoya la mejilla</p>
+  <p class="mute" style="margin-top:1rem">De al-jadd, &#x27;la mejilla&#x27;. La palabra entró con el mueble y el hábito doméstico andalusí y desplazó a los términos romances. Es un buen recordatorio de que el arabismo español no está solo en la ciencia y la arquitectura: está en la cama.</p>
+  <p class="ejemplo">«Cambiá la funda de la almohada antes de que lleguen.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Guaraní"
+  data-buscar="anana guarani nana fruta que perfuma el guarani nana nombraba la pina por su olor. la palabra se impuso en casi todas las lenguas del mundo —ananas en frances, aleman, italiano y ruso— mientras el espanol de gran parte de america y espana se quedo con &#x27;pina&#x27;, por el parecido con el fruto del pino.">
+  <p class="eyebrow">Guaraní</p>
+  <h3>ananá</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">naná</span>
+    — fruta que perfuma</p>
+  <p class="mute" style="margin-top:1rem">El guaraní naná nombraba la piña por su olor. La palabra se impuso en casi todas las lenguas del mundo —ananas en francés, alemán, italiano y ruso— mientras el español de gran parte de América y España se quedó con &#x27;piña&#x27;, por el parecido con el fruto del pino.</p>
+  <p class="ejemplo">«Cortó el ananá en rodajas para el postre.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Montoya; Corominas.</span></div>
+</article><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="azucar arabe as-sukkar el azucar (con el articulo al- pegado) el cultivo de la cana llego a la peninsula con los arabes, y con el la palabra, que a su vez venia del persa y del sanscrito sarkara. el &#x27;a-&#x27; inicial no es parte de la raiz: es el articulo arabe al- fundido con el sustantivo, como en aceite, almohada o alcalde.">
+  <p class="eyebrow">Árabe</p>
+  <h3>azúcar</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">as-sukkar</span>
+    — el azúcar (con el artículo al- pegado)</p>
+  <p class="mute" style="margin-top:1rem">El cultivo de la caña llegó a la península con los árabes, y con él la palabra, que a su vez venía del persa y del sánscrito śarkarā. El &#x27;a-&#x27; inicial no es parte de la raíz: es el artículo árabe al- fundido con el sustantivo, como en aceite, almohada o alcalde.</p>
+  <p class="ejemplo">«Le echó dos cucharadas de azúcar al café.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente, Diccionario de arabismos; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Lenguas africanas"
+  data-buscar="banana lenguas africanas banaana (wolof / mandinga) dedo la palabra llego al portugues desde lenguas de africa occidental a traves del comercio atlantico, y del portugues al espanol y al ingles. en buena parte de america gano en cambio &#x27;platano&#x27;, de origen griego via latin. el fruto es asiatico; el nombre que usamos, africano.">
+  <p class="eyebrow">Lenguas africanas</p>
+  <h3>banana</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">banaana (wolof / mandinga)</span>
+    — dedo</p>
+  <p class="mute" style="margin-top:1rem">La palabra llegó al portugués desde lenguas de África occidental a través del comercio atlántico, y del portugués al español y al inglés. En buena parte de América ganó en cambio &#x27;plátano&#x27;, de origen griego vía latín. El fruto es asiático; el nombre que usamos, africano.</p>
+  <p class="ejemplo">«Se llevó una banana para el camino.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">Corominas; OED.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="barbacoa taino barbakoa armazon de palos sobre el fuego los tainos llamaban asi al entramado de varas usado para asar y para secar carne. el espanol lo adopto y el ingles lo tomo como barbecue. en mexico la palabra derivo hacia la carne cocida bajo tierra, un metodo distinto del que nombraba originalmente.">
+  <p class="eyebrow">Taíno</p>
+  <h3>barbacoa</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">barbakoa</span>
+    — armazón de palos sobre el fuego</p>
+  <p class="mute" style="margin-top:1rem">Los taínos llamaban así al entramado de varas usado para asar y para secar carne. El español lo adoptó y el inglés lo tomó como barbecue. En México la palabra derivó hacia la carne cocida bajo tierra, un método distinto del que nombraba originalmente.</p>
+  <p class="ejemplo">«El domingo hicimos barbacoa en el patio.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Oviedo; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="cacao nahuatl cacahuatl grano de cacao el nahuatl cacahuatl probablemente tomo la palabra de una lengua mixe-zoque mas antigua, quiza del olmeca, lo que la convierte en una de las palabras mas viejas que decimos a diario. de ahi tambien viene &#x27;cacahuate&#x27;, literalmente &#x27;cacao de tierra&#x27;.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>cacao</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">cacahuatl</span>
+    — grano de cacao</p>
+  <p class="mute" style="margin-top:1rem">El náhuatl cacahuatl probablemente tomó la palabra de una lengua mixe-zoque más antigua, quizá del olmeca, lo que la convierte en una de las palabras más viejas que decimos a diario. De ahí también viene &#x27;cacahuate&#x27;, literalmente &#x27;cacao de tierra&#x27;.</p>
+  <p class="ejemplo">«El cacao de esa región es más amargo.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Campbell &amp; Kaufman, sobre préstamos mixe-zoques; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="cancha quechua kancha recinto cercado, patio en quechua kancha era un espacio delimitado: un corral, un patio, un recinto. el espanol americano lo especializo en el terreno de juego, y hoy se usa desde mexico hasta argentina para hablar de futbol. el uso figurado —&#x27;darle cancha a alguien&#x27;— conserva la idea del espacio que se abre.">
+  <p class="eyebrow">Quechua</p>
+  <h3>cancha</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">kancha</span>
+    — recinto cercado, patio</p>
+  <p class="mute" style="margin-top:1rem">En quechua kancha era un espacio delimitado: un corral, un patio, un recinto. El español americano lo especializó en el terreno de juego, y hoy se usa desde México hasta Argentina para hablar de fútbol. El uso figurado —&#x27;darle cancha a alguien&#x27;— conserva la idea del espacio que se abre.</p>
+  <p class="ejemplo">«Nos vemos a las seis en la cancha del barrio.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">DLE; Cerrón-Palomino, Lingüística quechua.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="canoa taino kanoa embarcacion de un solo tronco es la primera palabra indigena americana recogida en un diccionario del espanol: nebrija la incluyo en 1493. del espanol paso al ingles canoe y al frances canot. su entrada temprana la convirtio en la puerta de todas las que vinieron despues.">
+  <p class="eyebrow">Taíno</p>
+  <h3>canoa</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">kanoa</span>
+    — embarcación de un solo tronco</p>
+  <p class="mute" style="margin-top:1rem">Es la primera palabra indígena americana recogida en un diccionario del español: Nebrija la incluyó en 1493. Del español pasó al inglés canoe y al francés canot. Su entrada temprana la convirtió en la puerta de todas las que vinieron después.</p>
+  <p class="ejemplo">«Cruzamos el río en canoa antes del amanecer.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Nebrija, 1493; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="carpa quechua karpa toldo, enramada el quechua karpa nombraba un techo provisional de ramas o tela. en el espanol sudamericano paso a ser la tienda de campana y la carpa de circo. coexiste en el diccionario con otra &#x27;carpa&#x27; de origen totalmente distinto —el pez—, que viene del latin tardio.">
+  <p class="eyebrow">Quechua</p>
+  <h3>carpa</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">karpa</span>
+    — toldo, enramada</p>
+  <p class="mute" style="margin-top:1rem">El quechua karpa nombraba un techo provisional de ramas o tela. En el español sudamericano pasó a ser la tienda de campaña y la carpa de circo. Coexiste en el diccionario con otra &#x27;carpa&#x27; de origen totalmente distinto —el pez—, que viene del latín tardío.</p>
+  <p class="ejemplo">«Armamos la carpa antes de que empezara a llover.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">DLE; Corominas, Diccionario crítico etimológico.</span></div>
+</article><article class="p-card p-item" data-origen="Maya"
+  data-buscar="cenote maya dzonot / ts&#x27;ono&#x27;ot pozo, caverna con agua el yucateco dzonot nombraba los pozos naturales de la peninsula, centrales en la vida y el ritual mayas. el espanol los castellanizo como cenotes y la palabra se volvio internacional con el turismo, sin perder su lengua de origen.">
+  <p class="eyebrow">Maya</p>
+  <h3>cenote</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">dzonot / ts&#x27;ono&#x27;ot</span>
+    — pozo, caverna con agua</p>
+  <p class="mute" style="margin-top:1rem">El yucateco dzonot nombraba los pozos naturales de la península, centrales en la vida y el ritual mayas. El español los castellanizó como cenotes y la palabra se volvió internacional con el turismo, sin perder su lengua de origen.</p>
+  <p class="ejemplo">«Nos bañamos en un cenote a media hora del pueblo.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Diccionario maya Cordemex; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="chacra quechua chakra sembrado, parcela de cultivo la chakra andina es la parcela trabajada por una familia. la palabra se instalo en el espanol de peru, bolivia, ecuador, argentina y uruguay para hablar de la finca pequena. no tiene ninguna relacion con los chakras del sanscrito: es una coincidencia sonora.">
+  <p class="eyebrow">Quechua</p>
+  <h3>chacra</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">chakra</span>
+    — sembrado, parcela de cultivo</p>
+  <p class="mute" style="margin-top:1rem">La chakra andina es la parcela trabajada por una familia. La palabra se instaló en el español de Perú, Bolivia, Ecuador, Argentina y Uruguay para hablar de la finca pequeña. No tiene ninguna relación con los chakras del sánscrito: es una coincidencia sonora.</p>
+  <p class="ejemplo">«Mi abuela todavía baja a la chacra cada mañana.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">González Holguín; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quichua"
+  data-buscar="chapa quichua chapana vigilar, espiar en ecuador &#x27;chapa&#x27; es el policia, y el verbo quichua chapana significa vigilar. convive con otra &#x27;chapa&#x27; del espanol general —la lamina de metal— de origen romance distinto, asi que la misma forma cubre dos historias que nunca se cruzaron.">
+  <p class="eyebrow">Quichua</p>
+  <h3>chapa</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">chapana</span>
+    — vigilar, espiar</p>
+  <p class="mute" style="margin-top:1rem">En Ecuador &#x27;chapa&#x27; es el policía, y el verbo quichua chapana significa vigilar. Convive con otra &#x27;chapa&#x27; del español general —la lámina de metal— de origen romance distinto, así que la misma forma cubre dos historias que nunca se cruzaron.</p>
+  <p class="ejemplo">«Bajá la voz que ahí viene el chapa.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">Diccionario de ecuatorianismos; Toscano Mateus, El español en el Ecuador.</span></div>
+</article><article class="p-card p-item" data-origen="Lenguas africanas"
+  data-buscar="chevere lenguas africanas atribucion discutida (¿efik chebere?) elegante, valiente, que se luce se popularizo desde el caribe hispanohablante y hoy se dice en venezuela, colombia, cuba, peru y ecuador. la explicacion mas repetida la hace venir del efik chebere, ligado a las sociedades abakua de cuba, pero la evidencia documental es escasa y la palabra pudo formarse dentro del espanol caribeno.">
+  <p class="eyebrow">Lenguas africanas</p>
+  <h3>chévere</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">atribución discutida (¿efik chébere?)</span>
+    — elegante, valiente, que se luce</p>
+  <p class="mute" style="margin-top:1rem">Se popularizó desde el Caribe hispanohablante y hoy se dice en Venezuela, Colombia, Cuba, Perú y Ecuador. La explicación más repetida la hace venir del efik chébere, ligado a las sociedades abakuá de Cuba, pero la evidencia documental es escasa y la palabra pudo formarse dentro del español caribeño.</p>
+  <p class="ejemplo">«Quedó muy chévere el arreglo que le hiciste.»</p>
+  <p class="disputa">Qué se discute: si la raíz es efik/abakuá o una creación del español caribeño. Ortiz y Megenney defienden el origen africano; el DLE registra la palabra como &#x27;de origen incierto&#x27;. No hay atestiguación temprana que resuelva la disputa.</p>
+  <div class="pie-card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span>
+    <span class="meta">Ortiz, Glosario de afronegrismos; Megenney, El africano en el español caribeño; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="chicle nahuatl tzictli cosa pegajosa, resina que se masca el tzictli era la resina del chicozapote que los nahuas y los mayas masticaban mucho antes de la llegada de los europeos. en el siglo xix la industria estadounidense la convirtio en goma de mascar, y la palabra volvio a america latina convertida en marca.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>chicle</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">tzictli</span>
+    — cosa pegajosa, resina que se masca</p>
+  <p class="mute" style="margin-top:1rem">El tzictli era la resina del chicozapote que los nahuas y los mayas masticaban mucho antes de la llegada de los europeos. En el siglo XIX la industria estadounidense la convirtió en goma de mascar, y la palabra volvió a América Latina convertida en marca.</p>
+  <p class="ejemplo">«¿Tenés un chicle de menta?»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Molina, Vocabulario; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="chile nahuatl chilli aji el nahuatl chilli nombra el fruto picante y no tiene nada que ver con el pais chile, cuyo nombre viene con toda probabilidad del quechua o del aimara. en sudamerica se usa en cambio el taino &#x27;aji&#x27; para la misma planta.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>chile</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">chilli</span>
+    — ají</p>
+  <p class="mute" style="margin-top:1rem">El náhuatl chilli nombra el fruto picante y no tiene nada que ver con el país Chile, cuyo nombre viene con toda probabilidad del quechua o del aimara. En Sudamérica se usa en cambio el taíno &#x27;ají&#x27; para la misma planta.</p>
+  <p class="ejemplo">«Le puso chile a todo, hasta a la fruta.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Molina; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="chocolate nahuatl xocolatl / chocolatl agua agria o agua batida (lectura discutida) la bebida de cacao llego al espanol desde el centro de mexico en el siglo xvi, y de ahi al resto del mundo. lo que no esta resuelto es la palabra: la forma xocolatl no aparece documentada en los textos nahuas coloniales tempranos, donde el termino usual es cacahuatl. varias hipotesis proponen un cruce con el maya chokol (&#x27;caliente&#x27;) o una reconstruccion hecha por hablantes de espanol.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>chocolate</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">xocolātl / chocolātl</span>
+    — agua agria o agua batida (lectura discutida)</p>
+  <p class="mute" style="margin-top:1rem">La bebida de cacao llegó al español desde el centro de México en el siglo XVI, y de ahí al resto del mundo. Lo que no está resuelto es la palabra: la forma xocolātl no aparece documentada en los textos nahuas coloniales tempranos, donde el término usual es cacahuatl. Varias hipótesis proponen un cruce con el maya chokol (&#x27;caliente&#x27;) o una reconstrucción hecha por hablantes de español.</p>
+  <p class="ejemplo">«Le puso canela al chocolate para que no supiera tan amargo.»</p>
+  <p class="disputa">Qué se discute: el origen es mesoamericano sin duda, pero la etimología exacta no. Karttunen y Dakin sostienen que xocolātl es una forma tardía o híbrida; Coe y Coe defienden un cruce con maya chokol. Nadie tiene documentación temprana que lo cierre.</p>
+  <div class="pie-card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span>
+    <span class="meta">Karttunen, Analytical Dictionary of Nahuatl; Coe &amp; Coe, The True History of Chocolate; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Maya"
+  data-buscar="cigarro maya sicar / sic fumar, tabaco se suele derivar del maya sicar, &#x27;fumar hojas de tabaco enrolladas&#x27;. tambien se ha propuesto que venga del espanol &#x27;cigarra&#x27;, por la forma del rollo. ninguna de las dos versiones tiene documentacion temprana firme, y el diccionario academico se queda en la duda.">
+  <p class="eyebrow">Maya</p>
+  <h3>cigarro</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">sicar / sic</span>
+    — fumar, tabaco</p>
+  <p class="mute" style="margin-top:1rem">Se suele derivar del maya sicar, &#x27;fumar hojas de tabaco enrolladas&#x27;. También se ha propuesto que venga del español &#x27;cigarra&#x27;, por la forma del rollo. Ninguna de las dos versiones tiene documentación temprana firme, y el diccionario académico se queda en la duda.</p>
+  <p class="ejemplo">«Salió a la vereda a fumarse un cigarro.»</p>
+  <p class="disputa">Qué se discute: maya sicar frente a un origen romance en &#x27;cigarra&#x27;. Corominas se inclina por la vía romance; varios americanistas defienden el maya. El DLE lo da como de origen incierto.</p>
+  <div class="pie-card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span>
+    <span class="meta">Corominas; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="condor quechua kuntur condor, ave de los altos el kuntur andino era ave sagrada y mensajera entre mundos en la cosmovision inca. la palabra entro al espanol en el siglo xvi y de ahi a las demas lenguas europeas practicamente sin cambios, solo con la tilde que le puso la ortografia castellana.">
+  <p class="eyebrow">Quechua</p>
+  <h3>condor</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">kuntur</span>
+    — cóndor, ave de los altos</p>
+  <p class="mute" style="margin-top:1rem">El kuntur andino era ave sagrada y mensajera entre mundos en la cosmovisión inca. La palabra entró al español en el siglo XVI y de ahí a las demás lenguas europeas prácticamente sin cambios, solo con la tilde que le puso la ortografía castellana.</p>
+  <p class="ejemplo">«Vimos un cóndor planeando sobre el valle.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">González Holguín; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="coyote nahuatl coyotl el animal que aulla del nahuatl al espanol novohispano y de ahi al ingles del suroeste estadounidense. en el espanol mexicano la palabra desarrollo ademas sentidos figurados —el intermediario, el que cruza gente por la frontera— que despues regresaron al ingles.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>coyote</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">coyotl</span>
+    — el animal que aúlla</p>
+  <p class="mute" style="margin-top:1rem">Del náhuatl al español novohispano y de ahí al inglés del suroeste estadounidense. En el español mexicano la palabra desarrolló además sentidos figurados —el intermediario, el que cruza gente por la frontera— que después regresaron al inglés.</p>
+  <p class="ejemplo">«Se oían coyotes del otro lado del cerro.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Molina; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="fulano arabe fulan tal, cierta persona sin nombrar cuando decimos &#x27;fulano de tal&#x27; estamos usando el comodin arabe para la persona anonima. del mismo campo vienen mengano (man kan, &#x27;quien sea&#x27;) y zutano, aunque este ultimo tiene una etimologia menos clara y probablemente romance.">
+  <p class="eyebrow">Árabe</p>
+  <h3>fulano</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">fulān</span>
+    — tal, cierta persona sin nombrar</p>
+  <p class="mute" style="margin-top:1rem">Cuando decimos &#x27;fulano de tal&#x27; estamos usando el comodín árabe para la persona anónima. Del mismo campo vienen mengano (man kān, &#x27;quien sea&#x27;) y zutano, aunque este último tiene una etimología menos clara y probablemente romance.</p>
+  <p class="ejemplo">«Vino un fulano preguntando por vos.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente, Diccionario de arabismos; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="guagua quechua wawa bebe, criatura en los andes wawa es la criatura pequena, y asi se sigue usando en ecuador, peru, bolivia y chile. la &#x27;guagua&#x27; cubana y canaria que significa autobus es una palabra distinta y sin relacion: se le atribuye un origen en el ingles wagon o en la idea de viajar de gorra, y ninguna de las dos versiones esta probada.">
+  <p class="eyebrow">Quechua</p>
+  <h3>guagua</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">wawa</span>
+    — bebé, criatura</p>
+  <p class="mute" style="margin-top:1rem">En los Andes wawa es la criatura pequeña, y así se sigue usando en Ecuador, Perú, Bolivia y Chile. La &#x27;guagua&#x27; cubana y canaria que significa autobús es una palabra distinta y sin relación: se le atribuye un origen en el inglés wagon o en la idea de viajar de gorra, y ninguna de las dos versiones está probada.</p>
+  <p class="ejemplo">«La guagua se durmió en el camino de vuelta.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Cerrón-Palomino, Lingüística quechua; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quichua"
+  data-buscar="guambra quichua wamra muchacho, joven palabra viva del espanol andino ecuatoriano y del sur de colombia, donde nombra al chico o la chica. es un buen ejemplo de prestamo que no salio nunca de su region: no viajo al espanol general, y por eso conserva el sabor local.">
+  <p class="eyebrow">Quichua</p>
+  <h3>guambra</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">wamra</span>
+    — muchacho, joven</p>
+  <p class="mute" style="margin-top:1rem">Palabra viva del español andino ecuatoriano y del sur de Colombia, donde nombra al chico o la chica. Es un buen ejemplo de préstamo que no salió nunca de su región: no viajó al español general, y por eso conserva el sabor local.</p>
+  <p class="ejemplo">«Ese guambra ya está más alto que la mamá.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Diccionario de ecuatorianismos; Cerrón-Palomino.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="hamaca taino hamaka red para dormir una de las primeras palabras americanas que entro al espanol, documentada ya en los diarios del primer viaje colombino. de ahi salto a casi todas las lenguas europeas. lo que cambio no fue la palabra sino el objeto: de red de fibra a mueble de jardin.">
+  <p class="eyebrow">Taíno</p>
+  <h3>hamaca</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">hamaka</span>
+    — red para dormir</p>
+  <p class="mute" style="margin-top:1rem">Una de las primeras palabras americanas que entró al español, documentada ya en los diarios del primer viaje colombino. De ahí saltó a casi todas las lenguas europeas. Lo que cambió no fue la palabra sino el objeto: de red de fibra a mueble de jardín.</p>
+  <p class="ejemplo">«Se pasó la tarde leyendo en la hamaca.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Las Casas, Historia de las Indias; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="huracan taino hurakan tormenta, viento fuerte los cronistas de indias registraron la palabra en el caribe en el siglo xvi y de ahi paso al ingles hurricane y al frances ouragan. suele repetirse que viene del dios maya huracan del popol vuh; la relacion entre ambos nombres es objeto de discusion y no esta demostrada en un sentido ni en el otro.">
+  <p class="eyebrow">Taíno</p>
+  <h3>huracán</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">hurakán</span>
+    — tormenta, viento fuerte</p>
+  <p class="mute" style="margin-top:1rem">Los cronistas de Indias registraron la palabra en el Caribe en el siglo XVI y de ahí pasó al inglés hurricane y al francés ouragan. Suele repetirse que viene del dios maya Huracán del Popol Vuh; la relación entre ambos nombres es objeto de discusión y no está demostrada en un sentido ni en el otro.</p>
+  <p class="ejemplo">«El huracán dejó la costa sin luz durante días.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">Oviedo, Historia general y natural de las Indias; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Guaraní"
+  data-buscar="jaguar guarani yaguar / jaguarete fiera, el que devora del guarani paso al portugues, del portugues al espanol y al ingles. en guarani yaguar era el nombre generico de la fiera, y jaguarete &#x27;la fiera verdadera&#x27;. en buena parte de america se prefirio el termino nahuatl-caribe &#x27;tigre&#x27; para el mismo animal.">
+  <p class="eyebrow">Guaraní</p>
+  <h3>jaguar</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">yaguar / jaguareté</span>
+    — fiera, el que devora</p>
+  <p class="mute" style="margin-top:1rem">Del guaraní pasó al portugués, del portugués al español y al inglés. En guaraní yaguar era el nombre genérico de la fiera, y jaguareté &#x27;la fiera verdadera&#x27;. En buena parte de América se prefirió el término náhuatl-caribe &#x27;tigre&#x27; para el mismo animal.</p>
+  <p class="ejemplo">«Dicen que todavía hay jaguar en esa selva.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Montoya, Tesoro de la lengua guaraní; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="maiz taino mahis lo que sustenta la vida el nombre del grano viajo desde las antillas con los primeros cronistas, aunque la planta venia de mesoamerica, donde se llamaba centli o tlaolli en nahuatl. es un caso claro de como el caribe funciono de filtro linguistico para todo lo que europa aprendio de america.">
+  <p class="eyebrow">Taíno</p>
+  <h3>maíz</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">mahís</span>
+    — lo que sustenta la vida</p>
+  <p class="mute" style="margin-top:1rem">El nombre del grano viajó desde las Antillas con los primeros cronistas, aunque la planta venía de Mesoamérica, donde se llamaba centli o tlaolli en náhuatl. Es un caso claro de cómo el Caribe funcionó de filtro lingüístico para todo lo que Europa aprendió de América.</p>
+  <p class="ejemplo">«El maíz de este año salió más dulce.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Las Casas; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Lenguas africanas"
+  data-buscar="mambo lenguas africanas mambu (kikongo) conversacion con los dioses, asunto en kikongo mambu es &#x27;los asuntos&#x27; o &#x27;las palabras&#x27;, y en el contexto ritual afrocubano nombraba el canto que abre la comunicacion con las deidades. del ritual paso al son y de ahi, en los anos cuarenta, al genero que perez prado llevo al mundo.">
+  <p class="eyebrow">Lenguas africanas</p>
+  <h3>mambo</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">mambu (kikongo)</span>
+    — conversación con los dioses, asunto</p>
+  <p class="mute" style="margin-top:1rem">En kikongo mambu es &#x27;los asuntos&#x27; o &#x27;las palabras&#x27;, y en el contexto ritual afrocubano nombraba el canto que abre la comunicación con las deidades. Del ritual pasó al son y de ahí, en los años cuarenta, al género que Pérez Prado llevó al mundo.</p>
+  <p class="ejemplo">«Cuando suena ese mambo no queda nadie sentado.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">Ortiz, Glosario de afronegrismos; Laman, Dictionnaire kikongo-français.</span></div>
+</article><article class="p-card p-item" data-origen="Lenguas africanas"
+  data-buscar="marimba lenguas africanas malimba (bantu) muchas teclas o laminas sonoras el nombre y el instrumento llegaron con personas esclavizadas desde africa central; en lenguas bantues rima con -imba, la familia de nombres de instrumentos de laminas. en guatemala y en el pacifico colombiano la marimba se volvio instrumento nacional sin dejar de llevar su nombre africano.">
+  <p class="eyebrow">Lenguas africanas</p>
+  <h3>marimba</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">malimba (bantú)</span>
+    — muchas teclas o láminas sonoras</p>
+  <p class="mute" style="margin-top:1rem">El nombre y el instrumento llegaron con personas esclavizadas desde África central; en lenguas bantúes rima con -imba, la familia de nombres de instrumentos de láminas. En Guatemala y en el Pacífico colombiano la marimba se volvió instrumento nacional sin dejar de llevar su nombre africano.</p>
+  <p class="ejemplo">«En la fiesta del pueblo tocaron marimba hasta la madrugada.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">Ortiz, Los instrumentos de la música afrocubana; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Lenguas africanas"
+  data-buscar="mondongo lenguas africanas posible bantu no se sabe con certeza el plato de tripas se come con ese nombre en medio continente. se le atribuye origen africano, pero la evidencia es floja y hay propuestas europeas igual de plausibles.">
+  <p class="eyebrow">Lenguas africanas</p>
+  <h3>mondongo</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">posible bantú</span>
+    — no se sabe con certeza</p>
+  <p class="mute" style="margin-top:1rem">El plato de tripas se come con ese nombre en medio continente. Se le atribuye origen africano, pero la evidencia es floja y hay propuestas europeas igual de plausibles.</p>
+  <p class="ejemplo">«El domingo hubo mondongo en casa de mi tía.»</p>
+  <p class="disputa">Qué se discute: si es africanismo. Ortiz y Megenney proponen una base bantú, quizá ligada al etnónimo mondongo del Congo; Corominas la deriva del español antiguo «mondejo» o del italiano. No hay documentación que decida.</p>
+  <div class="pie-card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span>
+    <span class="meta">Megenney, El español afrocaribeño; Corominas, Diccionario crítico etimológico.</span></div>
+</article><article class="p-card p-item" data-origen="Quichua"
+  data-buscar="nano quichua nana hermana (dicho por una mujer) en quichua el parentesco cambia segun quien habla: nana es la hermana de una mujer. el espanol ecuatoriano y del norte del peru lo tomo y le quito esa distincion: hoy nano o nana es hermano, hermana o amigo muy cercano.">
+  <p class="eyebrow">Quichua</p>
+  <h3>ñaño</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">ñaña</span>
+    — hermana (dicho por una mujer)</p>
+  <p class="mute" style="margin-top:1rem">En quichua el parentesco cambia según quién habla: ñaña es la hermana de una mujer. El español ecuatoriano y del norte del Perú lo tomó y le quitó esa distinción: hoy ñaño o ñaña es hermano, hermana o amigo muy cercano.</p>
+  <p class="ejemplo">«Vino mi ñaña desde Cuenca.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span>
+    <span class="meta">Diccionario de americanismos (ASALE); Toscano Mateus, El español en el Ecuador.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="napa quechua yapa anadidura, lo que se agrega la yapa quechua es lo que el vendedor pone de mas al cerrar el trato. paso al espanol americano como napa o yapa y viajo hasta el ingles de luisiana como lagniappe, via el espanol del caribe. sobrevive sobre todo en el habla de mercado.">
+  <p class="eyebrow">Quechua</p>
+  <h3>ñapa</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">yapa</span>
+    — añadidura, lo que se agrega</p>
+  <p class="mute" style="margin-top:1rem">La yapa quechua es lo que el vendedor pone de más al cerrar el trato. Pasó al español americano como ñapa o yapa y viajó hasta el inglés de Luisiana como lagniappe, vía el español del Caribe. Sobrevive sobre todo en el habla de mercado.</p>
+  <p class="ejemplo">«Me dio dos mandarinas de ñapa.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">DLE; Corominas.</span></div>
+</article><article class="p-card p-item" data-origen="Quichua"
+  data-buscar="neque quichua neq&#x27;e / niqui fuerza, energia se usa en ecuador, colombia y centroamerica para hablar de empuje: &#x27;tener neque&#x27;. la atribucion al quichua ecuatoriano es la mas comun, pero tambien se ha propuesto una raiz africana llegada por el caribe, y las dos rutas son plausibles.">
+  <p class="eyebrow">Quichua</p>
+  <h3>ñeque</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">ñeq&#x27;e / ñiqui</span>
+    — fuerza, energía</p>
+  <p class="mute" style="margin-top:1rem">Se usa en Ecuador, Colombia y Centroamérica para hablar de empuje: &#x27;tener ñeque&#x27;. La atribución al quichua ecuatoriano es la más común, pero también se ha propuesto una raíz africana llegada por el Caribe, y las dos rutas son plausibles.</p>
+  <p class="ejemplo">«Esa mujer tiene un ñeque que no se le acaba.»</p>
+  <p class="disputa">Qué se discute: origen quichua frente a origen afrocaribeño. Los diccionarios de ecuatorianismos lo dan como quichua; Megenney y otros estudiosos del afrohispanismo señalan paralelos en lenguas de África occidental. No hay consenso.</p>
+  <div class="pie-card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span>
+    <span class="meta">Diccionario de ecuatorianismos; Megenney; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Árabe"
+  data-buscar="ojala arabe law saʾ allah si dios quisiera ocho siglos de al-andalus dejaron esta formula de deseo incrustada en el espanol cotidiano. quien la dice esta invocando a ala sin saberlo. es probablemente la huella arabe mas viva del idioma, porque no nombra una cosa sino una manera de esperar.">
+  <p class="eyebrow">Árabe</p>
+  <h3>ojalá</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">law šāʾ Allāh</span>
+    — si Dios quisiera</p>
+  <p class="mute" style="margin-top:1rem">Ocho siglos de al-Ándalus dejaron esta fórmula de deseo incrustada en el español cotidiano. Quien la dice está invocando a Alá sin saberlo. Es probablemente la huella árabe más viva del idioma, porque no nombra una cosa sino una manera de esperar.</p>
+  <p class="ejemplo">«Ojalá llegue a tiempo el paquete.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Corriente, Diccionario de arabismos; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Quechua"
+  data-buscar="papa quechua papa tuberculo del quechua andino al espanol, sin escalas ni deformaciones. en espana se impuso &#x27;patata&#x27;, un cruce con el taino batata, pero en casi toda america la palabra siguio siendo papa. es una de las herencias quechuas mas extendidas del idioma.">
+  <p class="eyebrow">Quechua</p>
+  <h3>papa</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">papa</span>
+    — tubérculo</p>
+  <p class="mute" style="margin-top:1rem">Del quechua andino al español, sin escalas ni deformaciones. En España se impuso &#x27;patata&#x27;, un cruce con el taíno batata, pero en casi toda América la palabra siguió siendo papa. Es una de las herencias quechuas más extendidas del idioma.</p>
+  <p class="ejemplo">«Pelá las papas mientras yo prendo el fuego.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">González Holguín, Vocabulario de la lengua qquichua; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Lenguas africanas"
+  data-buscar="quilombo lenguas africanas kilombo (kimbundu) campamento, asentamiento en brasil el quilombo era la comunidad fundada por personas que escaparon de la esclavitud; palmares llego a tener miles de habitantes. en el rio de la plata la palabra derivo a &#x27;desorden&#x27; o &#x27;lio&#x27;, un desplazamiento que dice bastante sobre quien conto la historia.">
+  <p class="eyebrow">Lenguas africanas</p>
+  <h3>quilombo</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">kilombo (kimbundu)</span>
+    — campamento, asentamiento</p>
+  <p class="mute" style="margin-top:1rem">En Brasil el quilombo era la comunidad fundada por personas que escaparon de la esclavitud; Palmares llegó a tener miles de habitantes. En el Río de la Plata la palabra derivó a &#x27;desorden&#x27; o &#x27;lío&#x27;, un desplazamiento que dice bastante sobre quién contó la historia.</p>
+  <p class="ejemplo">«Se armó un quilombo bárbaro en la reunión.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Ortiz, Glosario de afronegrismos; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Guaraní"
+  data-buscar="tapioca guarani tipiog sedimento que se exprime de la yuca la palabra nombra el proceso, no la planta: es el almidon que queda al prensar la mandioca. del guarani y el tupi paso al portugues de brasil y de ahi al mundo entero como nombre de un ingrediente de reposteria.">
+  <p class="eyebrow">Guaraní</p>
+  <h3>tapioca</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">tipiog</span>
+    — sedimento que se exprime de la yuca</p>
+  <p class="mute" style="margin-top:1rem">La palabra nombra el proceso, no la planta: es el almidón que queda al prensar la mandioca. Del guaraní y el tupí pasó al portugués de Brasil y de ahí al mundo entero como nombre de un ingrediente de repostería.</p>
+  <p class="ejemplo">«Compró harina de tapioca para probar la receta.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">Montoya; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Taíno"
+  data-buscar="tiburon taino tiburon (forma arahuaca discutida) pez grande de mar la palabra aparece en textos espanoles del siglo xvi aplicada a los escualos del caribe, y no tiene raiz latina. la atribucion al taino o a otra lengua arahuaca es la explicacion mas aceptada, pero la forma original no esta documentada con seguridad y hay quien propuso un origen portugues o guarani.">
+  <p class="eyebrow">Taíno</p>
+  <h3>tiburón</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">tiburón (forma arahuaca discutida)</span>
+    — pez grande de mar</p>
+  <p class="mute" style="margin-top:1rem">La palabra aparece en textos españoles del siglo XVI aplicada a los escualos del Caribe, y no tiene raíz latina. La atribución al taíno o a otra lengua arahuaca es la explicación más aceptada, pero la forma original no está documentada con seguridad y hay quien propuso un origen portugués o guaraní.</p>
+  <p class="ejemplo">«Vieron un tiburón cerca de la orilla y salieron todos del agua.»</p>
+  <p class="disputa">Qué se discute: la lengua exacta. Corominas la da como probablemente taína o caribe; otros autores han propuesto el tupí-guaraní o una formación romance. Falta un registro temprano en lengua indígena que lo confirme.</p>
+  <div class="pie-card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span>
+    <span class="meta">Corominas, Diccionario crítico etimológico; DLE.</span></div>
+</article><article class="p-card p-item" data-origen="Náhuatl"
+  data-buscar="tomate nahuatl tomatl fruto hinchado, cosa redonda con agua adentro los espanoles encontraron el tomatl en los mercados del centro de mexico y se llevaron la palabra junto con la planta. del espanol paso al italiano, al frances y al ingles. en nahuatl el termino abarcaba varios frutos parecidos; el tomate rojo se llamaba xitomatl, y de ahi el &#x27;jitomate&#x27; mexicano.">
+  <p class="eyebrow">Náhuatl</p>
+  <h3>tomate</h3>
+  <p class="mute" style="margin-top:.7rem"><span class="orig">tomatl</span>
+    — fruto hinchado, cosa redonda con agua adentro</p>
+  <p class="mute" style="margin-top:1rem">Los españoles encontraron el tomatl en los mercados del centro de México y se llevaron la palabra junto con la planta. Del español pasó al italiano, al francés y al inglés. En náhuatl el término abarcaba varios frutos parecidos; el tomate rojo se llamaba xitomatl, y de ahí el &#x27;jitomate&#x27; mexicano.</p>
+  <p class="ejemplo">«Bajá al mercado y traé tomate para la salsa.»</p>
+  
+  <div class="pie-card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span>
+    <span class="meta">DLE; Karttunen, Analytical Dictionary of Nahuatl.</span></div>
+</article></div>
+  <p class="disputa oculto" id="vacio">No encontré esa palabra todavía. Escríbela abajo en el buzón
+    y la investigo.</p>
+
+  <section style="border-top:1px solid var(--hair);margin-top:3.5rem;padding-top:2rem">
+    <h2>Sobre la etiqueta de certeza</h2>
+    <p class="mute" style="margin-top:.8rem;max-width:62ch">La etimología no es una ciencia cerrada.
+      Cada tarjeta dice cuánta confianza merece su historia, y cuando algo está realmente disputado,
+      quién sostiene qué.</p>
+    <div class="leyenda">
+      <div class="card"><span class="certeza" style="color:var(--indigo);border-color:var(--indigo)"><span class="pt"></span>sólido</span><p class="mute" style="margin:.9rem 0 0;font-size:.92rem">
+        Bien establecido, sin discusión entre lingüistas.</p></div>
+      <div class="card"><span class="certeza" style="color:var(--gold);border-color:var(--gold)"><span class="pt"></span>probable</span><p class="mute" style="margin:.9rem 0 0;font-size:.92rem">
+        Ampliamente aceptado, con algo de debate abierto.</p></div>
+      <div class="card"><span class="certeza" style="color:var(--coral);border-color:var(--coral)"><span class="pt"></span>en debate</span><p class="mute" style="margin:.9rem 0 0;font-size:.92rem">
+        Realmente disputado. La tarjeta explica por qué.</p></div>
+    </div>
+  </section>
+</main>
+
+<section class="shell"><div class="captura narrow">
+  <p class="eyebrow on-dark">Historia Viva</p>
+  <h2>¿Qué palabra se dice en tu casa y en otras no?</h2>
+  <p>Déjame la palabra, de qué país es y tu correo. Si la investigo y la agrego al diccionario, te aviso.</p>
+  <form data-iman="palabras" novalidate>
+    <input type="text" name="palabra" placeholder="La palabra y el país. Ej.: «guaro», Colombia" style="flex:1 1 100%">
+    <input type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+    <input type="email" name="email" placeholder="Tu correo" autocomplete="email" required>
+    <button class="btn btn-primary" type="submit">Enviar la palabra</button>
+  </form>
+  <p class="nota">Sin spam. Te escribo cuando tengo algo que de verdad sirve.</p>
+  <div class="ok" role="status"></div>
+</div></section>
+
+<footer class="pie"><div class="shell">
+  <p><b>Otras herramientas:</b> <a href="/guia-de-entrevista/">Guía de entrevista familiar</a> · <a href="/mapa-de-archivos/">Mapa de archivos</a> · <a href="/espiral/">La Espiral</a> · <a href="/nombradas/">Las nombradas</a> · <a href="/generaciones/">Calculadora de generaciones</a> · <a href="/leer-un-documento/">Cómo leer un documento</a> · <a href="/arbol/">Tu árbol</a></p>
+  <p class="mute">© Eunice López · Historia Viva · <a href="https://eunicelopez.com/">eunicelopez.com</a></p>
+</div></footer>
+
+<script>
+(function () {
+  var items = [].slice.call(document.querySelectorAll('.p-item'));
+  var conteo = document.getElementById('conteo');
+  var vacio = document.getElementById('vacio');
+  var filtros = document.getElementById('filtros');
+  var estado = { origen: '', q: '' };
+
+  function normalizar(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+  }
+  function pintar() {
+    var n = 0;
+    items.forEach(function (el) {
+      var ok = true;
+      // la búsqueda manda: si hay texto, el filtro por lengua no se aplica
+      if (estado.q) { ok = el.dataset.buscar.indexOf(estado.q) > -1; }
+      else if (estado.origen) { ok = el.dataset.origen === estado.origen; }
+      el.classList.toggle('oculto', !ok);
+      if (ok) n++;
+    });
+    conteo.textContent = n + ' de ' + items.length + ' palabras';
+    vacio.classList.toggle('oculto', n > 0);
+    filtros.classList.toggle('oculto', !!estado.q);
+  }
+  document.getElementById('q').addEventListener('input', function (e) {
+    estado.q = normalizar(e.target.value); pintar();
+  });
+  document.querySelectorAll('[data-origen]').forEach(function (b) {
+    if (b.tagName !== 'BUTTON') return;
+    b.addEventListener('click', function () {
+      estado.origen = (estado.origen === b.dataset.origen) ? '' : b.dataset.origen;
+      document.querySelectorAll('[data-origen]').forEach(function (o) {
+        if (o.tagName === 'BUTTON') o.setAttribute('aria-pressed', String(o.dataset.origen === estado.origen));
+      });
+      pintar();
+    });
+  });
+  document.getElementById('azar').addEventListener('click', function () {
+    var visibles = items.filter(function (el) { return !el.classList.contains('oculto'); });
+    if (!visibles.length) return;
+    var el = visibles[Math.floor(Math.random() * visibles.length)];
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.animate([{ boxShadow: '0 0 0 3px var(--gold)' }, { boxShadow: '0 0 0 0 transparent' }],
+      { duration: 1400 });
+  });
+  pintar();
+})();
+</script>
+
+<script>
+(function () {
+  var WEBHOOK = '';
+  var CONTACTO = 'eunice.historiaviva@gmail.com';
+  document.querySelectorAll('form[data-iman]').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = f.nombre.value.trim(), email = f.email.value.trim();
+      if (!nombre || !email || email.indexOf('@') < 1) {
+        f.querySelector('input:invalid, input[value=""]').focus();
+        return;
+      }
+      var ok = f.parentElement.querySelector('.ok');
+      var boton = f.querySelector('button');
+      boton.disabled = true; boton.textContent = 'Enviando…';
+      var datos = {
+        firstName: nombre, email: email,
+        tags: ['lm-' + f.dataset.iman],
+        source: 'eunicelopez.com/' + f.dataset.iman
+      };
+      // campos propios del imán (la palabra sugerida, por ejemplo)
+      Array.prototype.forEach.call(f.elements, function (el) {
+        if (el.name && el.name !== 'nombre' && el.name !== 'email' && el.value.trim()) {
+          datos[el.name] = el.value.trim();
+        }
+      });
+      function listo(mensaje) {
+        f.style.display = 'none';
+        ok.textContent = mensaje; ok.style.display = 'block';
+      }
+      if (!WEBHOOK) {
+        // Sin webhook configurado todavía: no perdemos el lead, abre el correo.
+        window.location.href = 'mailto:' + CONTACTO
+          + '?subject=' + encodeURIComponent('Quiero: ' + f.dataset.iman)
+          + '&body=' + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + email);
+        boton.disabled = false; boton.textContent = 'Quiero recibirlo';
+        return;
+      }
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      }).then(function () {
+        listo('Listo, ' + nombre + '. Revisa tu correo en un momento.');
+      }).catch(function () {
+        listo('Algo falló al enviar. Escríbeme a ' + CONTACTO + ' y te lo mando.');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
