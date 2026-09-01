@@ -4,111 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consultorías de IA · Eunice López, Historia Viva</title>
-<meta name="description" content="Sesiones grabadas de las consultorías. Cada una es un problema real de un negocio real y lo que hicimos con inteligencia artificial para resolverlo.">
-<link rel="canonical" href="https://recursos.eunicelopez.com/consultorias-ai/">
-<meta name="theme-color" content="#3B2E5A">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_ES">
-<meta property="og:site_name" content="Eunice López · Historia Viva">
-<meta property="og:title" content="Consultorías de IA">
-<meta property="og:description" content="Sesiones grabadas de las consultorías. Cada una es un problema real de un negocio real y lo que hicimos con inteligencia artificial para resolverlo.">
-<meta property="og:url" content="https://recursos.eunicelopez.com/consultorias-ai/">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Las consultorías dejaron de tener página propia el 1-sep-2026: son una
+     sección dentro de /testimonios-completos. Esta ruta alcanzó a publicarse, así
+     que se queda redirigiendo al ancla. -->
+<link rel="canonical" href="https://recursos.eunicelopez.com/testimonios-completos/">
+<meta http-equiv="refresh" content="0; url=/testimonios-completos/#consultorias">
+<meta name="robots" content="noindex">
 <style>
-  :root{
-    --indigo:#3B2E5A; --indigo-hondo:#2A2040; --coral:#E4572E;
-    --mostaza:#E9BE5B; --oro:#F2A900; --marfil:#F7F3EC;
-    --serif:"Iowan Old Style",Palatino,Georgia,serif;
-    --sans:"Avenir Next","Helvetica Neue",sans-serif;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--indigo-hondo);color:var(--marfil);
-       font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
-  a{color:var(--mostaza)}
-  .envoltura{max-width:1180px;margin:0 auto;padding:0 24px}
-
-  header{padding:76px 0 8px;text-align:center;
-         background:radial-gradient(90% 120% at 50% 0%,#453667,var(--indigo-hondo) 72%)}
-  .marca{display:inline-flex;align-items:center;gap:12px;margin-bottom:34px}
-  .marca svg{width:46px;height:46px}
-  .marca span{font-family:var(--serif);font-size:20px;letter-spacing:.16em;
-              text-transform:uppercase;color:var(--mostaza)}
-  h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,58px);
-     line-height:1.1;letter-spacing:-.015em;margin:0 auto;max-width:16ch}
-  .entrada{max-width:62ch;margin:26px auto 0;font-size:clamp(16px,2vw,18.5px);
-           color:#CFC6DC}
-  .barra{width:76px;height:4px;border-radius:2px;background:var(--coral);
-         margin:44px auto 0}
-
-  .rejilla{display:grid;gap:52px 34px;padding:64px 0 40px;
-           grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
-  figure{margin:0}
-  .marco{position:relative;border-radius:14px;overflow:hidden;background:var(--indigo);
-         box-shadow:0 18px 44px rgba(0,0,0,.42);aspect-ratio:16/9}
-  .marco.vertical{aspect-ratio:4/5}
-  .marco video{width:100%;height:100%;display:block;object-fit:cover;background:var(--indigo)}
-  figcaption{padding:20px 4px 0}
-  .titulo{font-family:var(--serif);font-size:22px;line-height:1.3;margin:0;
-          color:var(--marfil);text-wrap:pretty}
-  .quien{margin:12px 0 0;font-size:13px;letter-spacing:.09em;text-transform:uppercase;
-         color:var(--mostaza)}
-  .resumen{margin:12px 0 0;font-size:15.5px;color:#CFC6DC;max-width:52ch}
-
-  .pronto{margin:70px 0 0;padding:52px 44px;border-radius:14px;
-          background:var(--indigo);box-shadow:0 18px 44px rgba(0,0,0,.42);
-          max-width:760px}
-  .pronto .etiqueta{margin:0;font-size:12.5px;letter-spacing:.22em;
-                    text-transform:uppercase;color:var(--coral)}
-  .pronto h2{font-family:var(--serif);font-weight:400;margin:16px 0 0;
-             font-size:clamp(25px,3.4vw,34px);line-height:1.18;max-width:18ch}
-  .pronto p{margin:18px 0 0;font-size:16.5px;color:#CFC6DC;max-width:54ch}
-  @media (max-width:560px){.pronto{padding:38px 26px}}
-
-  .nota{border-top:1px solid rgba(247,243,236,.14);margin-top:24px;
-        padding:34px 0 76px;font-size:14.5px;color:#A99DBC;max-width:70ch}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;
+       background:#2A2040;color:#F7F3EC;text-align:center;padding:24px;
+       font-family:"Avenir Next","Helvetica Neue",sans-serif;line-height:1.6}
+  a{color:#E9BE5B}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="envoltura">
-    <div class="marca"><svg viewBox="-16 -16 272 272" aria-hidden="true" style="--line:#F7F3EC;--c-accent:#F2A900;--c-coral:#E4572E"><g>
-    <g fill="none" stroke="var(--c-accent)" stroke-width="9" stroke-linecap="round">
-      <path d="M186 56 L201 40"/><path d="M54 56 L39 40"/>
-      <path d="M212 122 L233 122"/><path d="M28 122 L7 122"/>
-      <path d="M192 190 L208 204"/><path d="M48 190 L32 204"/>
-      <path d="M120 212 L120 234"/>
-    </g>
-    <path d="M120 54
-             C 164 54 196 84 196 122
-             C 196 160 166 190 124 190
-             C 86 190 58 164 58 128
-             C 58 96 82 74 112 74
-             C 140 74 160 94 160 120
-             C 160 142 144 158 124 158
-             C 107 158 94 145 94 128
-             C 94 114 104 104 117 104"
-          fill="none" stroke="var(--line)" stroke-width="13" stroke-linecap="round"/>
-    <circle cx="124" cy="128" r="9" fill="var(--c-coral)"/>
-    <path d="M120 54 C116 34 124 18 134 4" fill="none" stroke="var(--line)" stroke-width="9" stroke-linecap="round"/>
-    <path d="M118 44 C90 44 74 24 92 12 C116 8 124 30 118 44 Z"
-          fill="var(--c-coral)" stroke="var(--line)" stroke-width="8" stroke-linejoin="round"/>
-  </g></svg><span>Historia Viva</span></div>
-    <h1>Consultorías de IA</h1>
-    <p class="entrada">Sesiones grabadas de las consultorías. Cada una es un problema real de un negocio real y lo que hicimos con inteligencia artificial para resolverlo.</p>
-    <div class="barra"></div>
-  </div>
-</header>
-
-<main class="envoltura">
-    <div class="pronto">
-      <p class="etiqueta">Muy pronto</p>
-      <h2>Las primeras sesiones se están grabando</h2>
-      <p>Cada consultoría es un problema real de un negocio real y lo que hicimos con inteligencia artificial para resolverlo. Aquí van a quedar todas, completas y sin cortes.</p>
-    </div>
-</main>
-
+  <p>Las consultorías de IA están en
+     <a href="/testimonios-completos/#consultorias">recursos.eunicelopez.com/testimonios-completos</a>.</p>
 </body>
 </html>
