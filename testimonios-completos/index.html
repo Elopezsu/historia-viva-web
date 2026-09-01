@@ -83,6 +83,26 @@
   .destacada .quien{margin-top:24px;font-size:16px}
   @media (max-width:560px){.destacada{padding:28px 24px 26px}}
 
+  /* «Muy pronto»: el bloque de consultorias mientras no haya videos. Con el
+     primero desaparece y en su lugar sale la rejilla. */
+  .pronto{margin:34px 0 0;padding:44px 40px;border-radius:14px;
+          background:var(--indigo);box-shadow:0 18px 44px rgba(0,0,0,.42);
+          max-width:760px}
+  .pronto .etiqueta{margin:0;font-size:12.5px;letter-spacing:.22em;
+                    text-transform:uppercase;color:var(--coral)}
+  .pronto h3{font-family:var(--serif);font-weight:400;margin:14px 0 0;
+             font-size:clamp(23px,3vw,30px);line-height:1.2;max-width:18ch}
+  .pronto p{margin:16px 0 0;font-size:16px;color:#CFC6DC;max-width:54ch}
+  @media (max-width:560px){.pronto{padding:34px 24px}}
+
+  .sesiones{display:grid;gap:44px 30px;margin-top:34px;
+            grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+  .sesiones figure{margin:0}
+  .sesiones .marco{aspect-ratio:16/9;margin-bottom:18px}
+  .sesiones .marco.vertical{aspect-ratio:4/5}
+  .sesiones .titulo{font-family:var(--serif);font-size:21px;line-height:1.3;margin:0}
+  .sesiones .resumen{margin:12px 0 0;font-size:15.5px;color:#CFC6DC;max-width:52ch}
+
   /* el riel */
   .riel-caja{position:relative;margin-top:34px}
   .riel{display:flex;align-items:flex-start;gap:20px;overflow-x:auto;
@@ -142,12 +162,14 @@
   .pista{margin:14px 12px 0;font-size:13px;color:#8F84A4}
   @media (min-width:761px){.pista{display:none}}
 
-  .fuentes{margin:22px 0 0;font-size:14px;color:#A99DBC}
+  .fuentes{margin:22px 0 0;padding-bottom:84px;font-size:14px;color:#A99DBC}
   .fuentes a{text-decoration:none;border-bottom:1px solid rgba(233,190,91,.4)}
   .fuentes a:hover{border-bottom-color:var(--mostaza)}
 
+  /* El aire de abajo lo pone .fuentes, que es el ultimo elemento: aqui dejaba
+     un hueco de 84 px entre las dos notas. */
   .nota{border-top:1px solid rgba(247,243,236,.14);margin-top:56px;
-        padding:34px 0 84px;font-size:14.5px;color:#A99DBC;max-width:72ch}
+        padding:34px 0 0;font-size:14.5px;color:#A99DBC;max-width:72ch}
   .nota p + p{margin-top:14px}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -196,6 +218,7 @@
       <a href="#corporativo"><b>33</b> Corporativo</a>
       <a href="#nomada"><b>26</b> Carrera y nomadismo</a>
       <a href="#contratos"><b>4</b> Contratos</a>
+      <a href="#consultorias">Consultorías de IA</a>
     </nav>
     <div class="barra"></div>
   </div>
@@ -720,6 +743,17 @@
       <div class="progreso"><span id="prog-contratos"></span></div>
       <p class="pista">Desliza para ver las 4.</p>
     </div>
+    </div>
+  </section>
+  <section class="bloque" id="consultorias">
+    <div class="envoltura">
+      <p class="sobretitulo">Lo que viene</p>
+      <h2>Consultorías de IA</h2>
+      <div class="pronto">
+        <p class="etiqueta">Muy pronto</p>
+        <h3>Las primeras sesiones se están grabando</h3>
+        <p>Cada consultoría es un problema real de un negocio real y lo que hicimos con inteligencia artificial para resolverlo. Aquí van a quedar todas, completas y sin cortes.</p>
+      </div>
     </div>
   </section>
   <div class="envoltura">
