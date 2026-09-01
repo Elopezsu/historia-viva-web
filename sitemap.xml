@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Apuntaba a eunicelopez.com, que desde el 30-ago-2026 lo sirve Go High Level
+     y hoy devuelve 404 en todas sus rutas. Le estaba diciendo a Google que las
+     paginas vivian ahi. El host real de estas paginas es recursos.eunicelopez.com,
+     el mismo que usan deploy.sh y los generadores. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://eunicelopez.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://eunicelopez.com/webinar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <url><loc>https://recursos.eunicelopez.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/testimonios-completos/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/testimonios/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/webinar/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/nombradas/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/arbol/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/espiral/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/generaciones/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/guia-de-entrevista/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/leer-un-documento/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/mapa-de-archivos/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://recursos.eunicelopez.com/palabras/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>
