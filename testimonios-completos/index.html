@@ -235,20 +235,29 @@
       <h2>Lo primero que dicen de lo que estoy haciendo ahora</h2>
       <p class="bajada">Todo lo demás en esta página es de mis proyectos anteriores. Esto es del que estoy construyendo, y es lo más reciente que hay.</p>
     </div>
-    <div class="envoltura">
-    <div class="destacadas">
-      <div class="destacada">
+    <div class="envoltura ancha">
+    <div class="riel-caja">
+      <button class="flecha izq" type="button" data-riel="ahora" data-dir="-1"
+              aria-label="Ver los anteriores">&#8249;</button>
+      <div class="riel" id="riel-ahora" tabindex="0" role="group"
+           aria-label="Deslizable, 2 testimonios">
+      <article class="tarjeta texto">
         <p class="estrellas" aria-label="Cinco estrellas">★★★★★</p>
         <blockquote class="cita">Eunice es una mujer con mucha energía y con un carisma que te envuelve, tiene mucho conocimiento sobre el feminismo y de verdad es un ejemplo de una mujer empoderada, cuando habla, no quisieras que ella pare</blockquote>
         <p class="quien">María Isabel</p>
         <p class="donde">Opinión en Google · septiembre de 2026</p>
-            </div>
-      <div class="destacada">
+      </article>
+      <article class="tarjeta texto">
         <p class="estrellas" aria-label="Cinco estrellas">★★★★★</p>
         <blockquote class="cita">Excelente contenido, Eunice es una mujer muy profesional, la recomiendo totalmente.</blockquote>
         <p class="quien">Claudia Gil</p>
         <p class="donde">Opinión en Google · septiembre de 2026</p>
-            </div>
+      </article>
+      </div>
+      <button class="flecha der" type="button" data-riel="ahora" data-dir="1"
+              aria-label="Ver los siguientes">&#8250;</button>
+      <div class="progreso"><span id="prog-ahora"></span></div>
+      <p class="pista">Desliza para ver las 2.</p>
     </div>
     </div>
   </section>
