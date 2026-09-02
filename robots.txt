@@ -1,9 +1,8 @@
-# eunicelopez.com solo sirve las herramientas que se entregan
-# después del opt-in. Quien tiene que salir en Google es eunicelopez.com,
-# que desde el 30-ago-2026 lo sirve Go High Level.
-#
-# Si algún día este host vuelve a ser el sitio público, cambiar por:
-#   User-agent: *
-#   Allow: /
+# eunicelopez.com lo sirve GitHub Pages desde el 1-sep-2026.
+# El Disallow anterior venía de cuando el plan era que GHL sirviera el dominio
+# y este repo solo alojara los recursos de post opt-in. Ese plan cambió y el
+# Disallow se quedó, dejando el sitio entero fuera de Google.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://eunicelopez.com/sitemap.xml
