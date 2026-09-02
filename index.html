@@ -105,7 +105,8 @@
     backdrop-filter: blur(12px); border-bottom: 1px solid var(--hair);
   }
   .nav-in { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 0; gap: 1rem; }
-  .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+  .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none;
+           color: var(--ink); flex: none; white-space: nowrap; }
   .brand .dot {
     width: 34px; height: 34px; border-radius: 50%; flex: none;
     background: radial-gradient(circle at 32% 30%, var(--gold) 0%, var(--coral) 62%, var(--indigo) 130%);
@@ -114,15 +115,23 @@
   .brand .bt { display: flex; flex-direction: column; line-height: 1.03; }
   .brand b { font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; }
   .brand span { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--coral); }
-  .nav-links { display: flex; gap: 1.5rem; }
-  .nav-links a { text-decoration: none; color: var(--mute); font-size: 0.9rem; font-weight: 600; }
+  .nav-links { display: flex; flex-wrap: nowrap; gap: clamp(0.6rem, 1.5vw, 1.5rem); }
+  .nav-links a {
+    text-decoration: none; color: var(--mute); font-weight: 600;
+    font-size: clamp(0.76rem, 0.95vw, 0.9rem); white-space: nowrap;
+  }
   .nav-links a:hover { color: var(--ink); }
   .nav-cta {
     text-decoration: none; background: var(--ink); color: var(--marfil);
-    padding: 0.55rem 1.15rem; border-radius: 999px; font-size: 0.86rem; font-weight: 700;
-    transition: background 0.15s ease;
+    padding: 0.55rem clamp(0.8rem, 1.5vw, 1.15rem); border-radius: 999px;
+    font-size: clamp(0.76rem, 0.9vw, 0.86rem); font-weight: 700; white-space: nowrap;
+    flex: none; transition: background 0.15s ease;
   }
   .nav-cta:hover { background: var(--coral); }
+  @media (max-width: 1000px) {
+    .nav-in { flex-wrap: wrap; }
+    .nav-links { order: 3; width: 100%; justify-content: center; padding-top: 0.55rem; }
+  }
   @media (max-width: 780px) { .nav-links { display: none; } }
   a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
 
