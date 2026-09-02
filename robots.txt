@@ -1,4 +1,4 @@
-# recursos.eunicelopez.com solo sirve las herramientas que se entregan
+# eunicelopez.com solo sirve las herramientas que se entregan
 # después del opt-in. Quien tiene que salir en Google es eunicelopez.com,
 # que desde el 30-ago-2026 lo sirve Go High Level.
 #
