@@ -33,7 +33,9 @@
 
   header{padding:76px 0 8px;text-align:center;
          background:radial-gradient(90% 120% at 50% 0%,#453667,var(--indigo-hondo) 72%)}
-  .marca{display:inline-flex;align-items:center;gap:12px;margin-bottom:34px}
+  .marca{display:inline-flex;align-items:center;gap:12px;margin-bottom:34px;
+         text-decoration:none;color:inherit}
+  .marca:hover span{color:var(--c-accent)}
   .marca svg{width:46px;height:46px}
   .marca span{font-family:var(--serif);font-size:20px;letter-spacing:.16em;
               text-transform:uppercase;color:var(--mostaza)}
@@ -185,7 +187,7 @@
 
 <header>
   <div class="envoltura">
-    <div class="marca"><svg viewBox="-16 -16 272 272" aria-hidden="true" style="--line:#F7F3EC;--c-accent:#F2A900;--c-coral:#E4572E"><g>
+    <a class="marca" href="https://eunicelopez.com/"><svg viewBox="-16 -16 272 272" aria-hidden="true" style="--line:#F7F3EC;--c-accent:#F2A900;--c-coral:#E4572E"><g>
     <g fill="none" stroke="var(--c-accent)" stroke-width="9" stroke-linecap="round">
       <path d="M186 56 L201 40"/><path d="M54 56 L39 40"/>
       <path d="M212 122 L233 122"/><path d="M28 122 L7 122"/>
@@ -206,7 +208,7 @@
     <path d="M120 54 C116 34 124 18 134 4" fill="none" stroke="var(--line)" stroke-width="9" stroke-linecap="round"/>
     <path d="M118 44 C90 44 74 24 92 12 C116 8 124 30 118 44 Z"
           fill="var(--c-coral)" stroke="var(--line)" stroke-width="8" stroke-linejoin="round"/>
-  </g></svg><span>Historia Viva</span></div>
+  </g></svg><span>Historia Viva</span></a>
     <h1>Lo que dicen de trabajar conmigo</h1>
     <p class="entrada">He acompañado a más de 100 personas en mis programas. 79 de ellas se sentaron a escribir o a grabar qué les pasó, y aquí están todas, sin editar una palabra. Las agrupé por lo que hicimos juntas, porque no pesa lo mismo un jefe que un cliente que una mujer que se fue a viajar sola.</p>
     <div class="cifras">
