@@ -9,8 +9,11 @@
 
   DOS COSAS PENDIENTES, y las dos bloquean:
 
-  1. FORM_ACTION sigue vacío más abajo. Sin eso no se captura ni un correo,
-     y este formulario es el único punto de captura de la marca.
+  1. RESUELTO el 6-sep-2026: el formulario es ahora el iframe de
+     GoHighLevel «Clase Gratuita» (1FKOnMHx0nTHzuP9iqE2). Ya captura.
+     Falta arrastrarle el campo «HV Que te trae» en el constructor de
+     GHL: sin él, los bloques 00:50 y 19:30 del guion prometen una
+     pregunta que el formulario no hace.
 
   2. El guion está diseñado como PUERTA ABIERTA: la clase se ve sin dar el
      correo, y el correo se pide dentro del video, en el minuto 19:30, a
@@ -395,6 +398,11 @@
   .foot-in a:hover { color: var(--coral); }
   .foot-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
   .legal { font-size: 0.76rem; color: var(--mute); margin: 1.5rem 0 0; max-width: 70ch; line-height: 1.5; }
+
+/* --- formulario de GoHighLevel embebido --- */
+.ghl-embed{margin-top:6px}
+.ghl-embed iframe{min-height:520px}
+.ghl-embed .fnote{margin-top:10px}
 </style>
 </head>
 <body>
@@ -432,29 +440,23 @@
     <div class="form-card" id="inscribirme">
       <p class="ftitle">Te envío la clase ahora mismo.</p>
       <p class="fsub">Cuatro datos, treinta segundos, y te llega el enlace al instante.</p>
-      <form class="reg-form" novalidate>
-        <label class="field"><span>Nombre</span>
-          <input type="text" name="nombre" autocomplete="given-name" placeholder="Cómo te llamo" required>
-        </label>
-        <label class="field"><span>Correo</span>
-          <input type="email" name="email" autocomplete="email" placeholder="tu@correo.com" required>
-        </label>
-        <label class="field"><span>WhatsApp <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></span>
-          <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+57 300 000 0000">
-          <span class="hint">Si me lo dejas, te mando el enlace también por ahí. No te escribo por nada más.</span>
-        </label>
-        <label class="field"><span>¿Qué te trae?</span>
-          <select name="intencion" required>
-            <option value="" disabled selected>Elige una</option>
-            <option value="continente">Quiero entender la historia de las mujeres que vinieron antes</option>
-            <option value="familia">Estoy buscando la historia de mi propia familia</option>
-            <option value="evento">Busco a alguien que hable en un evento</option>
-          </select>
-        </label>
-        <button class="btn" type="submit">Quiero ver la clase</button>
-        <p class="fmsg" role="status" aria-live="polite"></p>
-        <p class="fnote">Gratis, sin fecha límite. Te escribo cuando tengo algo que contar, y te puedes salir con un clic.</p>
-      </form>
+      <div class="ghl-embed">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/1FKOnMHx0nTHzuP9iqE2"
+            id="inline-1FKOnMHx0nTHzuP9iqE2"
+            data-layout='{"id":"INLINE"}'
+            data-trigger-type="alwaysShow"
+            data-activation-type="alwaysActivated"
+            data-deactivation-type="neverDeactivate"
+            data-form-name="Clase Gratuita"
+            data-height="560"
+            data-layout-iframe-id="inline-1FKOnMHx0nTHzuP9iqE2"
+            data-form-id="1FKOnMHx0nTHzuP9iqE2"
+            title="Clase Gratuita"
+            style="width:100%;height:560px;border:none;border-radius:14px;background:transparent;display:block">
+          </iframe>
+          <p class="fnote">Gratis, sin fecha límite. Te escribo cuando tengo algo que contar, y te puedes salir con un clic.</p>
+        </div>
     </div>
   </div>
 </section>
@@ -498,7 +500,7 @@
         <p class="num">02</p>
         <p class="lie">&ldquo;Nos independizamos.&rdquo;</p>
         <h3>De quién nos independizamos, y quién quedó mandando el día siguiente.</h3>
-        <p>Las banderas cambiaron, los himnos se escribieron, y buena parte de la estructura se quedó intacta. Vamos a ver quién estaba en la mesa cuando se firmó, quién no fue invitado, y por qué esa lista de invitados todavía se nota hoy.</p>
+        <p><strong>Esta es la que te demuestro entera</strong>, y lo hago con un caso: <strong>1781</strong>. Casi treinta años antes de la fecha que tu país celebra, hubo tres levantamientos en tres puntos del continente en un mismo año, y en dos de los tres quien daba órdenes era una mujer. Vas a saber su nombre, qué hizo, qué le costó, y por qué no lo sabías.</p>
       </article>
 
       <article class="mod">
@@ -511,8 +513,8 @@
       <article class="mod extra">
         <p class="num">+</p>
         <p class="lie">Lo que no está en el libro de texto</p>
-        <h3>Las mujeres que quedaron fuera del relato oficial.</h3>
-        <p>En cada una de las tres hay nombres de mujeres que sostuvieron, financiaron, pelearon o escribieron, y que salieron del cuadro cuando se pintó el cuadro. Las vamos a nombrar. Es lo que más se queda pegado.</p>
+        <h3>Las otras dos las vas a poder desarmar tú sola.</h3>
+        <p>No te las paso por encima en veintidós minutos: te doy el método con el que se desarman, y lo uso en vivo delante de ti. Una historia completa convence; tres a la carrera no. Y la que sí demuestro la sostiene una mujer que salió del cuadro cuando se pintó el cuadro — que es de lo que trata todo esto.</p>
       </article>
 
     </div>
@@ -534,8 +536,8 @@
       </div>
       <div>
         <p class="ic">&mdash;</p>
-        <h3>Tres preguntas para detectar al vencedor.</h3>
-        <p>El filtro que uso cuando leo cualquier fuente: quién escribe, quién paga, y quién no aparece. Sirve para la historia y sirve para el noticiero de esta noche.</p>
+        <h3>Las Tres Preguntas.</h3>
+        <p>El filtro que uso cuando leo cualquier fuente, siempre las mismas y siempre en este orden: <strong>quién lo escribió</strong>, <strong>a quién le convenía</strong>, y <strong>quién no aparece</strong>. Caben en una tarjeta. Sirven para la historia y sirven para el noticiero de esta noche.</p>
       </div>
       <div>
         <p class="ic">&mdash;</p>
@@ -681,7 +683,7 @@
       </details>
       <details>
         <summary>¿De qué país hablas?</summary>
-        <p>De todos, porque el mecanismo es el mismo de México a la Patagonia. Los ejemplos vienen de Colombia, Venezuela, Perú, Bolivia, Brasil y el Caribe, y en cada uno digo por qué elegí ese y no otro.</p>
+        <p>De todos, porque el mecanismo es el mismo de México a la Patagonia. El caso que demuestro es de los Andes, y después lo cruzo con México, Venezuela, Colombia, Bolivia, Argentina y Centroamérica: cambian los nombres, cambia el año, pero no cambia quién escribe ni quién falta en la foto. Y si naciste fuera, o te fuiste, o te trajeron, esto te toca doble.</p>
       </details>
       <details>
         <summary>¿Esto es una clase de política?</summary>
@@ -706,29 +708,23 @@
       <div class="form-card on-dark">
         <p class="ftitle">Te envío la clase ahora mismo.</p>
         <p class="fsub">Cuatro datos, treinta segundos, y listo.</p>
-        <form class="reg-form" novalidate>
-          <label class="field"><span>Nombre</span>
-            <input type="text" name="nombre" autocomplete="given-name" placeholder="Cómo te llamo" required>
-          </label>
-          <label class="field"><span>Correo</span>
-            <input type="email" name="email" autocomplete="email" placeholder="tu@correo.com" required>
-          </label>
-          <label class="field"><span>WhatsApp <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></span>
-            <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+57 300 000 0000">
-            <span class="hint">Si me lo dejas, te mando el enlace también por ahí. No te escribo por nada más.</span>
-          </label>
-          <label class="field"><span>¿Qué te trae?</span>
-            <select name="intencion" required>
-              <option value="" disabled selected>Elige una</option>
-              <option value="continente">Quiero entender la historia de las mujeres que vinieron antes</option>
-              <option value="familia">Estoy buscando la historia de mi propia familia</option>
-              <option value="evento">Busco a alguien que hable en un evento</option>
-            </select>
-          </label>
-          <button class="btn" type="submit">Quiero ver la clase</button>
-          <p class="fmsg" role="status" aria-live="polite"></p>
-          <p class="fnote">Gratis. Te puedes salir con un clic cuando quieras.</p>
-        </form>
+        <div class="ghl-embed">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/1FKOnMHx0nTHzuP9iqE2"
+            id="inline-1FKOnMHx0nTHzuP9iqE2-2"
+            data-layout='{"id":"INLINE"}'
+            data-trigger-type="alwaysShow"
+            data-activation-type="alwaysActivated"
+            data-deactivation-type="neverDeactivate"
+            data-form-name="Clase Gratuita"
+            data-height="560"
+            data-layout-iframe-id="inline-1FKOnMHx0nTHzuP9iqE2-2"
+            data-form-id="1FKOnMHx0nTHzuP9iqE2"
+            title="Clase Gratuita"
+            style="width:100%;height:560px;border:none;border-radius:14px;background:transparent;display:block">
+          </iframe>
+          <p class="fnote">Gratis, sin fecha límite. Te escribo cuando tengo algo que contar, y te puedes salir con un clic.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -756,100 +752,32 @@
 
 <script>
 /* =======================================================================
-   CONFIGURACIÓN — lo único que tienes que tocar
+   EL FORMULARIO — dónde vive ahora
    -----------------------------------------------------------------------
-   FORM_ACTION: la URL a donde se envían los registros. Esta página manda un
-   POST con JSON, así que lo que encaja directo es un webhook.
+   Ya no hay formulario propio. Lo sirve GoHighLevel en un iframe:
 
-   En Go High Level, tres pasos y dos minutos:
-     1. Automation → Workflows → New Workflow → trigger «Inbound Webhook».
-     2. Copia la URL que te da y pégala abajo, entre las comillas.
-     3. En el mismo workflow: Create/Update Contact mapeando nombre, email y
-        whatsapp; etiqueta hv-clase; y el correo con el enlace de la clase.
+     Formulario   «Clase Gratuita»
+     Id            1FKOnMHx0nTHzuP9iqE2
+     Subcuenta     Historia Viva · KChOT4PW4HG7XF6t2WKM
 
-   El JSON que llega trae: nombre, email, whatsapp, intencion, origen.
+   GHL crea el contacto directamente, así que no hay endpoint que configurar
+   ni JSON que enviar desde aquí. Si el formulario deja de aparecer, revisa
+   que link.msgsndr.com/js/form_embed.js siga cargando al final del body.
 
-   MIENTRAS ESTÉ VACÍO NO SE CAPTURA NADA: el formulario abre el cliente de
-   correo del visitante con un mailto prellenado y le pide que le dé enviar.
-   En móvil y en webmail eso se pierde casi siempre. Es un parche, no una
-   captura.
-
-   REDIRECT_URL: (opcional) página de gracias con el video.
-   Si la dejas vacía, se muestra el mensaje de éxito aquí mismo.
-   ======================================================================= */
-var FORM_ACTION  = "";
-var REDIRECT_URL = "";
-
-(function () {
-  var forms = document.querySelectorAll(".reg-form");
-
-  Array.prototype.forEach.call(forms, function (form) {
-    var msg = form.querySelector(".fmsg");
-    var btn = form.querySelector(".btn");
-
-    function say(text, kind) {
-      msg.textContent = text;
-      msg.className = "fmsg " + kind;
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var nombre = form.nombre.value.trim();
-      var email  = form.email.value.trim();
-      var whatsapp = form.whatsapp ? form.whatsapp.value.trim() : "";
-      var intencion = form.intencion ? form.intencion.value : "";
-
-      if (!nombre) { say("Me falta tu nombre.", "err"); form.nombre.focus(); return; }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        say("Ese correo no se ve bien, revísalo.", "err"); form.email.focus(); return;
-      }
-      if (!intencion) { say("Dime qué te trae, es una sola opción.", "err"); form.intencion.focus(); return; }
-      if (whatsapp && whatsapp.replace(/\D/g, "").length < 8) {
-        say("Ese número se ve corto. Déjalo completo o bórralo, es opcional.", "err");
-        form.whatsapp.focus(); return;
-      }
-
-      /* Plan B mientras FORM_ACTION esté vacío: en vez de perder el registro,
-         se lo pasamos por correo. Así la página puede estar viva sin endpoint. */
-      if (!FORM_ACTION) {
-        console.warn("[Historia Viva] FORM_ACTION está vacío. Pega tu endpoint al final del archivo para capturar automáticamente.");
-        var asunto = encodeURIComponent("Quiero la clase gratuita");
-        var cuerpo = encodeURIComponent("Hola Eunice,\n\nQuiero ver la clase.\n\nNombre: " + nombre +
-                     "\nCorreo: " + email +
-                     "\nWhatsApp: " + (whatsapp || "no lo dejó") +
-                     "\nQué le trae: " + intencion + "\n");
-        window.location.href = "mailto:eunice.historiaviva@gmail.com?subject=" + asunto + "&body=" + cuerpo;
-        say("Se abrió tu correo con el mensaje listo, sólo dale enviar y te paso el enlace. Si no se abrió, escríbeme a eunice.historiaviva@gmail.com.", "ok");
-        return;
-      }
-
-      btn.disabled = true;
-      var original = btn.textContent;
-      btn.textContent = "Enviando…";
-
-      fetch(FORM_ACTION, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ nombre: nombre, email: email, whatsapp: whatsapp,
-                               intencion: intencion, origen: "webinar-historia-viva" })
-      })
-      .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        if (REDIRECT_URL) { window.location.href = REDIRECT_URL; return; }
-        form.reset();
-        say("Listo, " + nombre + ". Revisa tu correo, el enlace va en camino.", "ok");
-      })
-      .catch(function () {
-        say("Algo falló al enviar. Inténtalo otra vez, o escríbeme a eunice.historiaviva@gmail.com.", "err");
-      })
-      .then(function () {
-        btn.disabled = false;
-        btn.textContent = original;
-      });
-    });
-  });
-})();
+   PENDIENTE, y no es cosmético: el formulario de GHL tiene nombre, correo,
+   teléfono y aceptación de términos, pero NO tiene «¿qué te trae?».
+   El campo existe en el CRM (contact.hv_que_te_trae, con las opciones ya
+   alineadas con el guion), solo falta arrastrarlo dentro del constructor
+   del formulario. Sin él, los bloques 00:50 y 19:30 del guion prometen una
+   pregunta que nadie hizo.
+*/
+/* El formulario lo sirve GoHighLevel en un iframe («Clase Gratuita»,
+   1FKOnMHx0nTHzuP9iqE2, subcuenta KChOT4PW4HG7XF6t2WKM). No hay que
+   capturar nada desde aquí: GHL crea el contacto directamente.
+   El JS de validación anterior se retiró el 6-sep-2026 junto con el
+   formulario propio, para que no queden dos verdades en la página. */
 </script>
 
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
