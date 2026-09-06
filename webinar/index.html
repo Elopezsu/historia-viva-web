@@ -3,8 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  OJO, 6-sep-2026 · Esta página está alineada con el guion «La clase de 1781»
+  (https://claude.ai/code/artifact/0dbd0286-9696-4125-9c2d-4b51c40c3704).
+
+  DOS COSAS PENDIENTES, y las dos bloquean:
+
+  1. FORM_ACTION sigue vacío más abajo. Sin eso no se captura ni un correo,
+     y este formulario es el único punto de captura de la marca.
+
+  2. El guion está diseñado como PUERTA ABIERTA: la clase se ve sin dar el
+     correo, y el correo se pide dentro del video, en el minuto 19:30, a
+     cambio de la hoja de las Tres Preguntas. Esta página todavía es un muro
+     de registro. Cuando el video esté grabado hay que darle la vuelta:
+     el reproductor arriba, el formulario debajo como segunda puerta.
+     Mientras el video no exista, el muro se queda porque no hay nada
+     que reproducir.
+-->
 <title>Clase gratuita · La historia de América Latina que te enseñaron mal · Eunice López</title>
-<meta name="description" content="Clase gratuita de 60 minutos con Eunice López. Las tres mentiras que todavía repetimos sobre América Latina, de dónde salieron y quién las escribió. Acceso inmediato.">
+<meta name="description" content="Clase gratuita de 22 minutos con Eunice López. Las tres mentiras que todavía repetimos sobre América Latina, de dónde salieron y quién las escribió. Acceso inmediato.">
 <meta name="author" content="Eunice López">
 <link rel="canonical" href="https://eunicelopez.com/webinar/">
 <meta name="theme-color" content="#3B2E5A">
@@ -14,13 +31,13 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Eunice López · Historia Viva">
 <meta property="og:title" content="La historia de América Latina que te enseñaron mal">
-<meta property="og:description" content="Clase gratuita de 60 minutos. Las tres mentiras que todavía repetimos sobre nuestro continente, de dónde salieron y quién las escribió.">
+<meta property="og:description" content="Clase gratuita de 22 minutos. Las tres mentiras que todavía repetimos sobre nuestro continente, de dónde salieron y quién las escribió.">
 <meta property="og:url" content="https://eunicelopez.com/webinar/">
 <meta property="og:image" content="https://eunicelopez.com/webinar/og-webinar.jpg">
 <meta property="og:image:alt" content="La historia de América Latina que te enseñaron mal, clase gratuita con Eunice López">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="La historia de América Latina que te enseñaron mal">
-<meta name="twitter:description" content="Clase gratuita de 60 minutos con Eunice López, historiadora de América Latina.">
+<meta name="twitter:description" content="Clase gratuita de 22 minutos con Eunice López, historiadora de América Latina.">
 <meta name="twitter:image" content="https://eunicelopez.com/webinar/og-webinar.jpg">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -31,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "Event",
   "name": "La historia de América Latina que te enseñaron mal",
-  "description": "Clase gratuita en línea de 60 minutos sobre las tres mentiras fundacionales del relato oficial de América Latina.",
+  "description": "Clase gratuita en línea de 22 minutos sobre las tres mentiras fundacionales del relato oficial de América Latina.",
   "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
   "inLanguage": "es",
@@ -399,13 +416,13 @@
   <div class="shell">
     <ul class="badges">
       <li class="hot">Clase gratuita</li>
-      <li>60 minutos</li>
+      <li>22 minutos</li>
       <li>En español</li>
       <li>Acceso inmediato</li>
     </ul>
     <h1>La historia de América Latina que te <span class="coral-word">enseñaron mal</span>.</h1>
     <p class="q">¿Y si casi todo lo que crees saber de tu propio continente te lo contó el que ganó?</p>
-    <p class="lede">En una hora te muestro <strong>las tres mentiras</strong> que todavía repetimos sobre América Latina, de dónde salieron, quién las escribió, y qué cambia cuando las sueltas. Sin fechas para memorizar, sin tono de salón de clase.</p>
+    <p class="lede">En veintidós minutos te nombro <strong>las tres mentiras</strong> que todavía repetimos sobre América Latina y te demuestro una entera, de dónde salió, quién la escribió, y qué cambia cuando las sueltas. Sin fechas para memorizar, sin tono de salón de clase.</p>
 
     <p class="byline">
       <span class="face" role="img" aria-label="Eunice López"></span>
@@ -429,7 +446,7 @@
         <label class="field"><span>¿Qué te trae?</span>
           <select name="intencion" required>
             <option value="" disabled selected>Elige una</option>
-            <option value="continente">Quiero entender mejor la historia del continente</option>
+            <option value="continente">Quiero entender la historia de las mujeres que vinieron antes</option>
             <option value="familia">Estoy buscando la historia de mi propia familia</option>
             <option value="evento">Busco a alguien que hable en un evento</option>
           </select>
@@ -466,7 +483,7 @@
     <div class="sec-head">
       <p class="eyebrow">Lo que vas a ver</p>
       <h2>Tres mentiras, y quién ganó contándolas.</h2>
-      <p>No son opiniones. Son tres frases que casi todos aprendimos en el colegio y que el archivo no sostiene.</p>
+      <p>No son opiniones. Son tres frases que casi todos aprendimos en el colegio y que el archivo no sostiene. <strong>Te las nombro las tres y te demuestro la segunda entera</strong>, con nombres y fechas. Las otras dos las vas a poder desarmar tú sola con lo que te doy en el minuto doce: en veintidós minutos, una historia completa convence y tres a la carrera no.</p>
     </div>
     <div class="mods">
 
@@ -539,7 +556,7 @@
       <div>
         <p class="eyebrow">Quién te va a hablar</p>
         <h2>Soy Eunice López, y me dedico por completo a la historia de América Latina.</h2>
-        <p>Soy <strong>colombo-venezolana y ciudadana del mundo</strong>. Migré sola a los diecinueve años y pasé quince años montando eventos globales para que otros hablaran en el escenario, en Cisco, en AT&amp;T, en el Mundial Femenino de la FIFA.</p>
+        <p>Soy <strong>colombo-venezolana y ciudadana del mundo</strong>. Migré sola a los diecinueve años y pasé más de dieciséis años en corporativo, liderando proyectos y montando eventos globales para que otros hablaran en el escenario, en Cisco, en AT&amp;T, en el Mundial Femenino de la FIFA.</p>
         <p>En medio de eso me tomé un año recorriendo Sudamérica, escuchando a comunidades y a pueblos originarios contar su propia versión, no la versión del libro. Ahí entendí dos cosas: que la historia de este continente está viva, y que casi nadie la está contando de manera que se sienta.</p>
         <p><strong>Hoy eso es lo único que hago.</strong> Investigo, viajo al lugar donde pasó, y lo cuento en cuatro idiomas para que no se olvide.</p>
         <ul class="stats">
@@ -547,7 +564,7 @@
           <li><b>+15</b><span>años produciendo eventos globales</span></li>
           <li><b>4</b><span>idiomas en los que cuento esto</span></li>
         </ul>
-        <p class="q" style="text-align:left; margin-left:0; max-width:34ch;">Quince años montando escenarios para que otros hablaran. Hoy la que habla soy yo.</p>
+        <p class="q" style="text-align:left; margin-left:0; max-width:34ch;">Más de dieciséis años montando escenarios para que otros hablaran. Hoy la que habla soy yo.</p>
       </div>
     </div>
   </div>
@@ -556,7 +573,7 @@
 <!-- ============ MARCAS ============ -->
 <section class="brands">
   <div class="shell">
-    <p>Quince años de trayectoria detrás de</p>
+    <p>Dieciséis años de trayectoria detrás de</p>
     <ul>
       <li>Cisco</li>
       <li>AT&amp;T</li>
@@ -574,7 +591,7 @@
     <div class="sec-head">
       <p class="eyebrow">Lo que dicen</p>
       <h2>Gente que ya me escuchó contar algo.</h2>
-      <p>Reseñas reales de personas que trabajaron conmigo o viajaron conmigo.</p>
+      <p>Reseñas reales de personas que trabajaron conmigo o viajaron conmigo. Aquí hay seis; <a href="/testimonios-completos/">las ochenta y dos están completas y sin editar</a>, agrupadas por lo que hicimos juntas.</p>
     </div>
     <div class="q-track">
 
@@ -625,11 +642,12 @@
     <div class="honest">
       <p class="eyebrow">Te lo digo antes, no después</p>
       <h2>En los últimos minutos te voy a hablar de la comunidad.</h2>
-      <p>Prefiero decírtelo aquí para que no te tome por sorpresa. Al final de la clase te voy a contar de <strong>la comunidad de Historia Viva</strong>, que es donde esto continúa cada mes.</p>
+      <p>Prefiero decírtelo aquí para que no te tome por sorpresa. Al final de la clase te voy a contar de <strong>las tres clases del mes</strong>, que es donde esto continúa. No es «una comunidad»: son tres clases en vivo, todos los meses, y las tres van sobre <strong>la misma mujer</strong>.</p>
       <ul>
-        <li>Una sesión en vivo al mes, con un tema y una pregunta.</li>
-        <li>El archivo de todo lo anterior, para verlo cuando puedas.</li>
-        <li>Un grupo donde se conversa de verdad, no un canal de anuncios.</li>
+        <li><strong>En la primera la buscamos.</strong> Elegimos a una y la buscamos juntas, en pantalla compartida, en archivos de verdad. A veces aparece y a veces no, y las dos cosas enseñan.</li>
+        <li><strong>En la segunda ahondamos.</strong> Abrimos sus papeles y los traducimos entre todas: las letras raras, las abreviaturas, y esas palabras que parecen inofensivas y no lo son.</li>
+        <li><strong>Y en la tercera bajamos a tierra.</strong> Qué de lo que le pasó a ella se repite en tu familia, y qué vas a hacer distinto. Sales con pasos concretos.</li>
+        <li>Si un mes no puedes venir, <strong>te queda la grabación</strong>.</li>
       </ul>
       <p><strong>Si no te interesa, no pasa nada.</strong> La clase completa es tuya igual, y no hay nada que se te vaya a esconder detrás de un pago a mitad de camino.</p>
       <p class="kicker">Lo que vale, vale antes de que yo te pida algo.</p>
@@ -651,11 +669,11 @@
       </details>
       <details>
         <summary>¿Cuánto dura?</summary>
-        <p>Una hora, y está pensada para verse de corrido. Si la partes en dos, córtala después de la segunda mentira, ahí hay un cierre natural.</p>
+        <p>Veintidós minutos, y está pensada para verse de corrido. Es corta a propósito: prefiero demostrarte una cosa bien a pasarte tres por encima. Si la partes, córtala en el minuto doce, cuando hay un cierre natural.</p>
       </details>
       <details>
         <summary>¿Es en vivo o grabada?</summary>
-        <p>Está grabada y disponible desde que te inscribes. La puedes ver a la hora que quieras, pausar, y volver. Lo en vivo pasa después, dentro de la comunidad.</p>
+        <p>Está grabada y disponible desde que te inscribes. La puedes ver a la hora que quieras, pausar, y volver. Lo en vivo pasa después, en las tres clases del mes.</p>
       </details>
       <details>
         <summary>¿Necesito saber de historia?</summary>
@@ -682,9 +700,9 @@
   <div class="shell">
     <div class="book">
       <div class="face" role="img" aria-label="Eunice López"></div>
-      <p class="eyebrow">Última llamada, y no hay reloj</p>
-      <h2>Una hora, y no vuelves a contar tu historia igual.</h2>
-      <p>Sin fecha, sin cupos, sin contador regresivo. Cuando quieras, pero mejor ahora, porque después no vuelves.</p>
+      <p class="eyebrow">Última llamada</p>
+      <h2>Veintidós minutos, y no vuelves a contar tu historia igual.</h2>
+      <p>La clase no tiene fecha ni contador: la ves cuando quieras. Lo que sí tiene fecha es el <strong>cupo fundador</strong> de las tres clases del mes, que se cierra el <strong>29 de octubre</strong> o cuando lleguemos a cien personas, y no se vuelve a abrir. De eso te hablo al final, no ahora.</p>
       <div class="form-card on-dark">
         <p class="ftitle">Te envío la clase ahora mismo.</p>
         <p class="fsub">Cuatro datos, treinta segundos, y listo.</p>
@@ -702,7 +720,7 @@
           <label class="field"><span>¿Qué te trae?</span>
             <select name="intencion" required>
               <option value="" disabled selected>Elige una</option>
-              <option value="continente">Quiero entender mejor la historia del continente</option>
+              <option value="continente">Quiero entender la historia de las mujeres que vinieron antes</option>
               <option value="familia">Estoy buscando la historia de mi propia familia</option>
               <option value="evento">Busco a alguien que hable en un evento</option>
             </select>
