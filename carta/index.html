@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La carta semanal de Historia Viva · Eunice López</title>
+<meta name="description" content="Las noticias de la semana leídas con historia y la historia de una mujer que cambió algo. Cada semana, en tu correo. Gratis.">
+<meta name="author" content="Eunice López">
+<link rel="canonical" href="https://eunicelopez.com/carta/">
+<meta name="theme-color" content="#F7F3EC">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="La carta semanal de Historia Viva">
+<meta property="og:description" content="Las noticias de la semana leídas con historia y la historia de una mujer que cambió algo. Cada semana, en tu correo.">
+<meta property="og:url" content="https://eunicelopez.com/carta/">
+<meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La carta semanal de Historia Viva">
+<meta name="twitter:description" content="Las noticias de la semana leídas con historia y la historia de una mujer que cambió algo. Cada semana, en tu correo.">
+<meta name="twitter:image" content="https://eunicelopez.com/og-image.jpg">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/og-image.jpg">
+<style>html,body{margin:0;padding:0;background:#F7F3EC}</style>
+</head>
+<body>
+<!-- ============================================================
+     Historia Viva · Landing de suscripción a la carta semanal
+     Puente desde el artículo de "El Diario de una Nómada" (LinkedIn) al CRM.
+     Pegar tal cual en un elemento Custom JS/HTML de GHL.
+     Formulario embebido: "Subscribirse al Newsletter" (KVb5CMeyLGmCqV6dRpvm)
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;700&display=swap');
+
+.hvn { --indigo:#3B2E5A; --coral:#E4572E; --gold:#F2A900; --gold-soft:#FBE5B8;
+       --ink:#1E1B24; --marfil:#F7F3EC; --papel:#FDF6EC; --mute:#6E6478;
+       --hair:rgba(30,27,36,.10);
+       --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       --serif:'Playfair Display','Iowan Old Style',Palatino,Georgia,serif;
+       background:var(--marfil); color:var(--ink); font-family:var(--sans);
+       line-height:1.6; -webkit-font-smoothing:antialiased; position:relative;
+       overflow:hidden; padding:clamp(2.4rem,7vw,4.5rem) clamp(1.1rem,5vw,2rem) clamp(2.4rem,6vw,3.5rem); }
+.hvn *{box-sizing:border-box;}
+
+/* arcos cálidos desde el borde inferior */
+.hvn .arcos{position:absolute;left:50%;bottom:-58%;width:min(1100px,150%);aspect-ratio:1;
+  transform:translateX(-50%);border-radius:50%;pointer-events:none;opacity:.5;
+  background:
+    radial-gradient(circle,transparent 61%,rgba(242,169,0,.18) 61.2%,rgba(242,169,0,.18) 63%,transparent 63.2%),
+    radial-gradient(circle,transparent 71%,rgba(228,87,46,.16) 71.2%,rgba(228,87,46,.16) 73%,transparent 73.2%),
+    radial-gradient(circle,transparent 81%,rgba(59,46,90,.14) 81.2%,rgba(59,46,90,.14) 83%,transparent 83.2%);}
+.hvn .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;text-align:center;}
+
+/* marca */
+.hvn .marca{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:clamp(1.6rem,4vw,2.2rem);}
+.hvn .marca .dot{width:30px;height:30px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
+  box-shadow:0 4px 14px -4px rgba(228,87,46,.55);}
+.hvn .marca b{font-weight:700;font-size:.95rem;letter-spacing:-.01em;}
+.hvn .marca i{font-family:var(--serif);font-style:italic;font-size:.82rem;color:var(--coral);}
+
+/* retrato */
+.hvn .retrato{width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 1.3rem;
+  border:5px solid var(--papel);box-shadow:0 10px 30px -12px rgba(30,27,36,.35);}
+
+.hvn .eyebrow{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+  color:var(--coral);margin:0 0 .9rem;}
+.hvn h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6.4vw,3.1rem);
+  line-height:1.08;letter-spacing:-.015em;margin:0 0 1rem;text-wrap:balance;}
+.hvn h1 em{font-style:italic;color:var(--coral);}
+.hvn .deck{font-size:clamp(1rem,2.4vw,1.12rem);color:var(--mute);margin:0 auto;max-width:30em;text-wrap:pretty;}
+.hvn .deck b{color:var(--ink);font-weight:500;
+  background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,var(--gold-soft) 94%,transparent 94%);
+  padding:0 .12em;border-radius:2px;}
+
+/* nota de puente */
+.hvn .nota{margin:clamp(1.8rem,4vw,2.4rem) auto 0;max-width:32em;text-align:left;
+  background:var(--papel);border:1px solid var(--hair);border-left:4px solid var(--coral);
+  border-radius:0 12px 12px 0;padding:1.05rem 1.2rem;font-size:.95rem;color:var(--mute);}
+.hvn .nota strong{display:block;color:var(--ink);font-family:var(--serif);font-style:italic;
+  font-weight:500;font-size:1.02rem;margin-bottom:.3rem;}
+
+/* lista */
+.hvn ul{list-style:none;margin:clamp(2rem,5vw,2.6rem) auto 0;padding:0;max-width:31em;text-align:left;
+  display:grid;gap:.95rem;}
+.hvn li{display:flex;gap:.75rem;align-items:flex-start;font-size:1rem;}
+.hvn li svg{flex:none;width:17px;height:17px;margin-top:.3rem;}
+.hvn li b{font-weight:600;}
+
+/* tarjeta del formulario */
+.hvn .card{margin:clamp(2rem,5vw,2.8rem) auto 0;max-width:520px;background:var(--papel);
+  border:1px solid var(--hair);border-radius:18px;padding:clamp(1.4rem,4vw,2rem);
+  box-shadow:0 24px 50px -30px rgba(30,27,36,.45);}
+.hvn .card h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.3rem,4vw,1.6rem);
+  margin:0 0 .35rem;letter-spacing:-.01em;}
+.hvn .card p{margin:0 0 1.1rem;color:var(--mute);font-size:.94rem;}
+.hvn .card iframe{width:100%;min-height:260px;border:none;display:block;background:transparent;}
+
+.hvn .fine{margin:1.1rem auto 0;font-size:.8rem;color:var(--mute);max-width:34em;}
+
+/* firma */
+.hvn .firma{margin-top:clamp(2.2rem,5vw,3rem);padding-top:1.2rem;border-top:1px solid var(--hair);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:520px;
+  margin-left:auto;margin-right:auto;}
+.hvn .firma span{font-family:var(--serif);font-style:italic;color:var(--indigo);font-size:.95rem;}
+.hvn .firma a{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  color:var(--mute);text-decoration:none;}
+@media (max-width:420px){ .hvn .firma{flex-direction:column;gap:.5rem;} }
+</style>
+
+<div class="hvn">
+  <div class="arcos" aria-hidden="true"></div>
+
+  <div class="wrap">
+
+    <div class="marca">
+      <span class="dot" aria-hidden="true"></span>
+      <span style="display:flex;flex-direction:column;line-height:1.05;text-align:left">
+        <b>Eunice López</b><i>Historia Viva</i>
+      </span>
+    </div>
+
+    <img class="retrato" src="/img/eunice-avatar.jpg" alt="Eunice López">
+
+    <p class="eyebrow">Carta semanal · gratis</p>
+
+    <h1>La carta semanal de <em>Historia Viva</em></h1>
+
+    <p class="deck">
+      Las noticias de la semana leídas con historia. Y
+      <b>una mujer que cambió algo</b>. Cada semana, en tu correo.
+    </p>
+
+    <div class="nota">
+      <strong>Si llegaste desde El Diario de una Nómada…</strong>
+      Sí, llevo un año sin escribirte. Estuve en los eventos virtuales
+      —y construyendo esto en silencio. Se llama Historia Viva.
+    </div>
+
+    <ul>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.1 6.4L20.5 10l-6.4 2.1L12 18.5l-2.1-6.4L3.5 10l6.4-1.6L12 2z" fill="#F2A900"/></svg>
+        <span><b>Las noticias de la semana</b>: qué ya pasó antes y cómo terminó.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.1 6.4L20.5 10l-6.4 2.1L12 18.5l-2.1-6.4L3.5 10l6.4-1.6L12 2z" fill="#E4572E"/></svg>
+        <span><b>Una mujer increíble del mundo</b>: qué hizo y qué le costó.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.1 6.4L20.5 10l-6.4 2.1L12 18.5l-2.1-6.4L3.5 10l6.4-1.6L12 2z" fill="#3B2E5A"/></svg>
+        <span><b>Lo que viene en Historia Viva</b>, antes que nadie.</span>
+      </li>
+    </ul>
+
+    <div class="card">
+      <h2>Suscríbete gratis</h2>
+      <p>Tu nombre y tu correo. La primera carta llega el viernes.</p>
+
+      <!-- Formulario GHL: "Subscribirse al Newsletter" -->
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/KVb5CMeyLGmCqV6dRpvm"
+        id="inline-KVb5CMeyLGmCqV6dRpvm"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-activation-type="alwaysActivated"
+        data-deactivation-type="neverDeactivate"
+        data-form-name="Subscribirse al Newsletter"
+        data-form-id="KVb5CMeyLGmCqV6dRpvm"
+        data-layout-iframe-id="inline-KVb5CMeyLGmCqV6dRpvm"
+        data-height="260"
+        title="Subscribirse al Newsletter"
+        scrolling="no"></iframe>
+      <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    </div>
+
+    <p class="fine">Sin spam. Te das de baja en un clic.</p>
+
+    <div class="firma">
+      <span>Eunice</span>
+      <a href="https://eunicelopez.com" target="_blank" rel="noopener">eunicelopez.com</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
