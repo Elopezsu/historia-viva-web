@@ -201,6 +201,13 @@ footer{border-top:1px solid var(--line);padding-block:26px 46px;font-family:var(
   var LEAD_TAG = "lm-contact";
 
   var f=document.getElementById('f'), out=document.getElementById('out'), btn=document.getElementById('send');
+  if(!GHL_WEBHOOK || GHL_WEBHOOK.indexOf('PEGA')===0){
+    f.hidden = true;
+    var n=document.createElement('p'); n.className='alt';
+    n.textContent='The contact form is being switched on. In the meantime, message me on LinkedIn.';
+    f.parentNode.insertBefore(n, f);
+    return;
+  }
   function show(t, err){ out.hidden=false; out.textContent=t; out.classList.toggle('err', !!err); }
   f.addEventListener('submit', function(e){
     e.preventDefault();
