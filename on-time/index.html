@@ -148,7 +148,7 @@ html,body{margin:0;padding:0;background:#F1F4F3}
     </div>
     <div class="gate">
       <h3>Get the full breakdown</h3>
-      <p>The written version of this — every answer, what it means, and the specific next actions in the order they should happen — lands in your inbox in about a minute.</p>
+      <p id="ev-gate-p">The written version of this — every answer, what it means, and the specific next actions in the order they should happen — lands in your inbox in about a minute.</p>
       <form id="ev-form" novalidate>
         <label><span class="l">Your name</span><input id="ev-name" type="text" autocomplete="name" required></label>
         <label><span class="l">Email</span><input id="ev-email" type="email" autocomplete="email" required></label>
@@ -158,9 +158,8 @@ html,body{margin:0;padding:0;background:#F1F4F3}
         <div class="msg" id="ev-msg" hidden></div>
       </form>
       <div class="prev" id="ev-prev" hidden>
-        <div class="pl">Vista previa &middot; falta pegar la URL del webhook</div>
-        <p>El formulario de arriba funciona en cuanto pongas <code>GHL_WEBHOOK</code> en el bloque. Esto es lo que le va a mandar a GoHighLevel con estas respuestas:</p>
-        <dl id="ev-prev-dl"></dl>
+        <div class="pl">Email delivery is being switched on</div>
+        <p>Your result above is complete — take a screenshot of it. The written breakdown goes out by email, and that part goes live in the next few days.</p>
       </div>
     </div>
     <div class="foot">
@@ -257,17 +256,10 @@ html,body{margin:0;padding:0;background:#F1F4F3}
 
     var ready = GHL_WEBHOOK && GHL_WEBHOOK.indexOf('PEGA') !== 0;
     if(!ready){
-      var dl = el('ev-prev-dl'); dl.textContent = '';
-      [['tag', LEAD_TAG],
-       [F.band, payload.band],
-       [F.score, payload.score + '/' + payload.max],
-       [F.answers, payload.answers],
-       [F.flags, payload.flags || '—']].forEach(function(pair){
-        var dt = document.createElement('dt'); dt.textContent = pair[0];
-        var dd = document.createElement('dd'); dd.textContent = pair[1];
-        dl.appendChild(dt); dl.appendChild(dd);
-      });
+      el('ev-form').hidden = true;
+      el('ev-gate-p').textContent = 'The written version of this — every answer, what it means, and the next actions in order — goes out by email.';
       el('ev-prev').hidden = false;
+      if(window.console) console.log('[assessment] GHL_WEBHOOK sin configurar. Payload listo:', {tag: LEAD_TAG, band: payload.band, score: payload.score + '/' + payload.max, answers: payload.answers, flags: payload.flags});
     }
 
     var form = el('ev-form'), btn = el('ev-send'), msg = el('ev-msg');
