@@ -83,6 +83,7 @@ h2{font-size:clamp(23px,3.6vw,29px);font-weight:600}
 .guide p{font-size:15.5px;color:var(--ink-2)}
 .guide .go{font-family:var(--mono);font-size:12px;color:var(--teal-2);font-weight:600;margin-top:4px}
 
+.formwrap iframe{max-width:100%}
 .formwrap{margin-top:26px;border:2px solid var(--ink);background:var(--surface);padding:26px}
 .formwrap h2{font-size:23px}
 .formwrap .hint{font-size:16px;color:var(--ink-2);margin-top:10px;max-width:52ch}
@@ -166,24 +167,17 @@ footer{border-top:1px solid var(--line);padding-block:26px 46px;font-family:var(
   <div class="formwrap">
     <h2>Planning a virtual event?</h2>
     <p class="hint">Tell me what you have. I'll reply within two business days and tell you honestly whether you need me — including when the answer is no.</p>
-    <form id="f" novalidate>
-      <label><span class="l">Your name</span><input id="name" name="name" type="text" autocomplete="name" required></label>
-      <label><span class="l">Organization</span><input id="org" name="org" type="text" autocomplete="organization"></label>
-      <label><span class="l">Email</span><input id="email" name="email" type="email" autocomplete="email" required></label>
-      <label><span class="l">When is the event?</span>
-        <select id="when" name="when">
-          <option value="">Select one</option>
-          <option>Not scheduled yet</option>
-          <option>More than 9 months out</option>
-          <option>5 to 9 months out</option>
-          <option>Under 5 months out</option>
-          <option>We run one already and it underperforms</option>
-        </select>
-      </label>
-      <label><span class="l">What are you planning?</span><textarea id="what" name="what" placeholder="Audience, past events, who's running it today."></textarea></label>
-      <button class="send" id="send" type="submit">Send</button>
-      <div id="out" hidden class="msg"></div>
-    </form>
+    <iframe
+        src="https://api.leadconnectorhq.com/widget/form/69hZhbFUFUIe97HtgySh"
+        id="inline-69hZhbFUFUIe97HtgySh"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-activation-type="alwaysActivated"
+        data-deactivation-type="neverDeactivate"
+        data-form-name="Services"
+        data-form-id="69hZhbFUFUIe97HtgySh"
+        title="Contact form"
+        style="width:100%;height:520px;border:none;display:block;margin-top:20px"></iframe>
     <p class="alt">Prefer to message me directly? Find me on LinkedIn.</p>
   </div>
 </div></section>
@@ -194,51 +188,6 @@ footer{border-top:1px solid var(--line);padding-block:26px 46px;font-family:var(
 </div></footer>
 
 
-<script>
-(function(){
-  /* Pega aqui la misma URL de Inbound Webhook que usan los assessments. */
-  var GHL_WEBHOOK = "PEGA_AQUI_LA_URL_DEL_WEBHOOK";
-  var LEAD_TAG = "lm-contact";
-
-  var f=document.getElementById('f'), out=document.getElementById('out'), btn=document.getElementById('send');
-  if(!GHL_WEBHOOK || GHL_WEBHOOK.indexOf('PEGA')===0){
-    f.hidden = true;
-    var n=document.createElement('p'); n.className='alt';
-    n.textContent='The contact form is being switched on. In the meantime, message me on LinkedIn.';
-    f.parentNode.insertBefore(n, f);
-    return;
-  }
-  function show(t, err){ out.hidden=false; out.textContent=t; out.classList.toggle('err', !!err); }
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    var name=document.getElementById('name').value.trim();
-    var email=document.getElementById('email').value.trim();
-    if(!name || email.indexOf('@')<1){ show('Please add your name and a valid email so I can reply.', true); return; }
-    btn.disabled=true; btn.textContent='Sending\u2026';
-    var first=name.split(' ')[0];
-    var data={
-      first_name:first, last_name:name.split(' ').slice(1).join(' '), name:name, email:email,
-      organization:document.getElementById('org').value.trim(),
-      when:document.getElementById('when').value,
-      need:document.getElementById('what').value.trim(),
-      tag:LEAD_TAG, source:LEAD_TAG,
-      page:location.href, submitted_at:new Date().toISOString()
-    };
-    var done=function(){
-      f.querySelectorAll('input,select,textarea').forEach(function(el){ el.value=''; });
-      btn.textContent='Sent';
-      show('Got it, '+first+'. I\u2019ll reply within two business days.');
-    };
-    try{
-      fetch(GHL_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(data)})
-        .then(done,function(){ btn.disabled=false; btn.textContent='Send';
-          show('That didn\u2019t go through. Message me on LinkedIn instead and I\u2019ll pick it up there.', true); });
-    }catch(err){
-      btn.disabled=false; btn.textContent='Send';
-      show('That didn\u2019t go through. Message me on LinkedIn instead and I\u2019ll pick it up there.', true);
-    }
-  });
-})();
-</script>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
