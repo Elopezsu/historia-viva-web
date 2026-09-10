@@ -7,7 +7,7 @@
 <meta name="description" content="I produce national virtual conferences end to end — and the eleven months around them. Two organizations a year.">
 <meta name="author" content="Eunice López">
 <link rel="canonical" href="https://eunicelopez.com/events/">
-<meta name="theme-color" content="#0D3941">
+<meta name="theme-color" content="#F2EEE7">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -20,35 +20,23 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap">
 <style>html,body{margin:0;padding:0}
 :root{
-  --ground:#F1F4F3; --surface:#FFFFFF; --surface-2:#E9EEED;
-  --ink:#0F1A1C; --ink-2:#3C4C4F; --muted:#66787B;
-  --deep:#0D3941; --deep-ink:#F2F7F7; --deep-soft:#7FC4CE;
-  --teal-2:#125A66; --amber:#B86A16; --amber-b:#D9822B;
-  --line:#D6DEDC; --line-2:#C2CDCB; --good:#2F6B4F;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --body:"Source Serif 4",Georgia,serif;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#0A1113; --surface:#101A1D; --surface-2:#162428;
-  --ink:#E9EFEE; --ink-2:#B7C6C6; --muted:#829699;
-  --deep:#06292F; --deep-ink:#EAF3F3; --deep-soft:#7FC4CE;
-  --teal-2:#5FA7B3; --amber:#E5A867; --amber-b:#E5A867;
-  --line:#1F2E32; --line-2:#2C3F44; --good:#7BC49B;
-}}
-:root[data-theme="dark"]{
-  --ground:#0A1113; --surface:#101A1D; --surface-2:#162428;
-  --ink:#E9EFEE; --ink-2:#B7C6C6; --muted:#829699;
-  --deep:#06292F; --deep-ink:#EAF3F3; --deep-soft:#7FC4CE;
-  --teal-2:#5FA7B3; --amber:#E5A867; --amber-b:#E5A867;
-  --line:#1F2E32; --line-2:#2C3F44; --good:#7BC49B;
+  --ground:#F2EEE7; --surface:#F7F3EA; --surface-2:#EDE7DE;
+  --ink:#1E1B24; --ink-2:#6B6674; --muted:#8B8593;
+  --deep:#3E2C63; --deep-ink:#F7F3EA; --deep-soft:#E9B949;
+  --teal-2:#E8502A; --amber:#E9B949; --amber-b:#E8502A;
+  --line:#E2DCD3; --line-2:#D4CCC1; --good:#3E2C63;
+  --mono:'Inter',-apple-system,sans-serif;
+  --disp:'Playfair Display',Georgia,serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',sans-serif;
 }
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0;padding:0}
-h1,h2,h3{font-family:var(--disp);letter-spacing:-.022em;text-wrap:balance;margin:0}
+h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.012em;text-wrap:balance;margin:0}
+em{font-style:italic;color:var(--teal-2)}
+mark{background:var(--amber);color:var(--ink);padding:.02em .16em .10em}
 p{margin:0}
 a{color:var(--teal-2)}
 .pad{padding-inline:22px}
@@ -56,21 +44,21 @@ a{color:var(--teal-2)}
 
 .hero{background:var(--deep);color:var(--deep-ink);padding-block:56px 46px;
       border-bottom:6px solid var(--amber-b)}
-.hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--deep-soft);font-weight:600}
-.hero h1{font-size:clamp(33px,6.6vw,52px);line-height:1.05;font-weight:700;margin-top:16px;color:var(--deep-ink)}
+.hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--deep-soft);font-weight:700}
+.hero h1{font-size:clamp(34px,6.8vw,54px);line-height:1.1;font-weight:400;margin-top:16px;color:var(--deep-ink)}
 .hero .sub{font-size:19px;line-height:1.5;margin-top:18px;max-width:52ch;color:#CBE0E2}
 .stats{display:flex;flex-wrap:wrap;gap:22px 40px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
-.stats div .v{font-family:var(--disp);font-size:30px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--deep-ink)}
+.stats div .v{font-family:var(--disp);font-size:34px;font-weight:400;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--deep-ink)}
 .stats div .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--deep-soft);font-weight:600;margin-top:5px}
 .stats .src{font-family:var(--mono);font-size:11px;color:#8FB0B4;width:100%;margin-top:4px}
 
 section{padding-block:46px}
-h2{font-size:clamp(23px,3.6vw,29px);font-weight:600}
+h2{font-size:clamp(25px,3.8vw,32px);font-weight:400}
 .lede{font-size:18px;color:var(--ink-2);margin-top:14px;max-width:58ch}
 .rows{margin-top:26px;border-top:1px solid var(--line)}
 .row{padding:18px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:26px 1fr;gap:16px;align-items:start}
 .row .i{font-family:var(--mono);font-size:12px;color:var(--amber);font-weight:600;padding-top:4px}
-.row h3{font-size:17.5px;font-weight:600}
+.row h3{font-size:19px;font-weight:400}
 .row p{font-size:16px;color:var(--ink-2);margin-top:6px}
 
 .guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:16px;margin-top:24px}
@@ -79,13 +67,13 @@ h2{font-size:clamp(23px,3.6vw,29px);font-weight:600}
 .guide:hover{border-color:var(--teal-2)}
 .guide:focus-visible{outline:2px solid var(--amber-b);outline-offset:2px}
 .guide .tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-2);font-weight:600}
-.guide h3{font-size:19px;font-weight:600}
+.guide h3{font-size:21px;font-weight:400}
 .guide p{font-size:15.5px;color:var(--ink-2)}
 .guide .go{font-family:var(--mono);font-size:12px;color:var(--teal-2);font-weight:600;margin-top:4px}
 
 .formwrap iframe{max-width:100%}
 .formwrap{margin-top:26px;border:2px solid var(--ink);background:var(--surface);padding:26px}
-.formwrap h2{font-size:23px}
+.formwrap h2{font-size:25px}
 .formwrap .hint{font-size:16px;color:var(--ink-2);margin-top:10px;max-width:52ch}
 form{display:flex;flex-direction:column;gap:15px;margin-top:22px}
 label{display:flex;flex-direction:column;gap:6px}
@@ -94,7 +82,7 @@ input,select,textarea{font-family:var(--body);font-size:16px;color:var(--ink);ba
        border:1px solid var(--line-2);padding:11px 13px;width:100%;border-radius:0}
 textarea{min-height:92px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--amber-b);outline-offset:1px;border-color:var(--teal-2)}
-button.send{font-family:var(--disp);font-size:16px;font-weight:600;background:var(--ink);color:var(--ground);
+button.send{font-family:var(--body);font-size:16px;font-weight:700;background:var(--ink);color:var(--ground);
        border:0;padding:14px 22px;cursor:pointer;align-self:flex-start}
 button.send:hover{background:var(--teal-2)}
 button.send:focus-visible{outline:2px solid var(--amber-b);outline-offset:2px}
@@ -112,7 +100,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 46px;font-family:var(
 <div class="hero pad">
   <div class="inner">
     <div class="eyebrow">Eunice López &middot; Virtual event producer</div>
-    <h1>Your event is two days.<br>Your audience is twelve months.</h1>
+    <h1>Your event is two days.<br>Your audience is <em>twelve months</em>.</h1>
     <p class="sub">I produce national virtual conferences end to end — and the eleven months around them. Two organizations a year.</p>
     <div class="stats">
       <div><div class="v">81</div><div class="k">Speakers</div></div>
@@ -182,9 +170,9 @@ footer{border-top:1px solid var(--line);padding-block:26px 46px;font-family:var(
   </div>
 </div></section>
 
-<footer class="pad"><div class="inner" style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap">
-  <span>Eunice López &middot; Virtual conference production</span>
-  <span>Booking two 2027 programs</span>
+<footer class="pad"><div class="inner" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+  <span style="display:flex;align-items:center;gap:13px"><img src="/img/marca/espiral.png" alt="" style="height:40px"><img src="/img/marca/wordmark.png" alt="Eunice López" style="height:23px"></span>
+  <span style="font-size:10.5px;font-weight:700;letter-spacing:.3em;color:var(--ink-2)">EUNICELOPEZ.COM</span>
 </div></footer>
 
 
