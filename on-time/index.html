@@ -149,14 +149,9 @@ html,body{margin:0;padding:0;background:#F1F4F3}
     <div class="gate">
       <h3>Get the full breakdown</h3>
       <p id="ev-gate-p">The written version of this — every answer, what it means, and the specific next actions in the order they should happen — lands in your inbox in about a minute.</p>
-      <form id="ev-form" novalidate>
-        <label><span class="l">Your name</span><input id="ev-name" type="text" autocomplete="name" required></label>
-        <label><span class="l">Email</span><input id="ev-email" type="email" autocomplete="email" required></label>
-        <label><span class="l">Organization</span><input id="ev-org" type="text" autocomplete="organization"></label>
-        <label><span class="l">What do you need help with?</span><textarea id="ev-need" placeholder="Optional. The more specific, the more useful my reply."></textarea></label>
-        <button class="send" id="ev-send" type="submit">Send me the breakdown</button>
-        <div class="msg" id="ev-msg" hidden></div>
-      </form>
+      <iframe id="ev-form" title="Send me the breakdown" scrolling="no"
+        data-layout='{"id":"INLINE"}' data-trigger-type="alwaysShow"
+        data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate"></iframe>
       <div class="prev" id="ev-prev" hidden>
         <div class="pl">Email delivery is being switched on</div>
         <p>Your result above is complete — take a screenshot of it. The written breakdown goes out by email, and that part goes live in the next few days.</p>
@@ -173,9 +168,10 @@ html,body{margin:0;padding:0;background:#F1F4F3}
 <script>
 (function(){
   /* ================== CONFIGURACION ==================
-     Pega aqui la URL del Inbound Webhook del workflow de GoHighLevel.
-     Se saca en Automation -> Workflows -> el workflow -> trigger Inbound Webhook. */
-  var GHL_WEBHOOK = "PEGA_AQUI_LA_URL_DEL_WEBHOOK";
+     Formulario de GoHighLevel que recoge los resultados. Para que la banda, la
+     puntuacion y las respuestas lleguen de verdad, ese formulario tiene que
+     llevar los cuatro campos ev_* como campos ocultos. */
+  var GHL_FORM_ID = "8wJEzZqiWdpdDwbdYZyR";
   var LEAD_TAG = "lm-on-time";
   /* Claves de los campos personalizados de GHL que rellena este bloque.
      Tienen que existir en la subcuenta antes de publicar. */
@@ -254,55 +250,28 @@ html,body{margin:0;padding:0;background:#F1F4F3}
       flags: weak.map(function(x){ return x+1; }).join(',')
     };
 
-    var ready = GHL_WEBHOOK && GHL_WEBHOOK.indexOf('PEGA') !== 0;
-    if(!ready){
+    var ready = GHL_FORM_ID && GHL_FORM_ID.indexOf('PEGA') !== 0;
+    if(ready){
+      var src = 'https://api.leadconnectorhq.com/widget/form/' + GHL_FORM_ID
+        + '?source='    + encodeURIComponent(LEAD_TAG)
+        + '&' + F.band  + '=' + encodeURIComponent(payload.band)
+        + '&' + F.score + '=' + encodeURIComponent(payload.score + '/' + payload.max)
+        + '&' + F.answers + '=' + encodeURIComponent(payload.answers)
+        + '&' + F.flags + '=' + encodeURIComponent(payload.flags);
+      var fr = el('ev-form');
+      fr.src = src;
+      fr.id = 'inline-' + GHL_FORM_ID;
+      fr.setAttribute('data-form-id', GHL_FORM_ID);
+      fr.style.cssText = 'width:100%;height:470px;border:0;display:block;margin-top:20px';
+    } else {
       el('ev-form').hidden = true;
       el('ev-gate-p').textContent = 'The written version of this — every answer, what it means, and the next actions in order — goes out by email.';
       el('ev-prev').hidden = false;
-      if(window.console) console.log('[assessment] GHL_WEBHOOK sin configurar. Payload listo:', {tag: LEAD_TAG, band: payload.band, score: payload.score + '/' + payload.max, answers: payload.answers, flags: payload.flags});
     }
-
-    var form = el('ev-form'), btn = el('ev-send'), msg = el('ev-msg');
-    function say(t, bad){ msg.hidden = false; msg.textContent = t; msg.classList.toggle('err', !!bad); }
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var name = el('ev-name').value.trim(), email = el('ev-email').value.trim();
-      if(!name || email.indexOf('@') < 1){ say('Add your name and a valid email so I can send it.', true); return; }
-      btn.disabled = true; btn.textContent = 'Sending…';
-      var first = name.split(' ')[0], last = name.split(' ').slice(1).join(' ');
-      var data = {
-        first_name: first, last_name: last, name: name, email: email,
-        organization: el('ev-org').value.trim(),
-        need: el('ev-need').value.trim(),
-        tag: LEAD_TAG, source: LEAD_TAG, assessment: LEAD_TAG,
-        band: payload.band, score: payload.score + '/' + payload.max,
-        answers: payload.answers, flags: payload.flags,
-        page: location.href, submitted_at: new Date().toISOString()
-      };
-      var done = function(){
-        form.querySelectorAll('input,textarea').forEach(function(x){ x.value = ''; });
-        btn.textContent = 'Sent';
-        say('Got it, ' + first + '. The breakdown is on its way — check your inbox in a minute.');
-      };
-      try{
-        fetch(GHL_WEBHOOK, {
-          method: 'POST', mode: 'no-cors',
-          headers: {'Content-Type': 'text/plain;charset=UTF-8'},
-          body: JSON.stringify(data)
-        }).then(done, function(){
-          btn.disabled = false; btn.textContent = 'Send me the breakdown';
-          say('That didn’t go through. Email me and I’ll send it by hand.', true);
-        });
-      }catch(err){
-        btn.disabled = false; btn.textContent = 'Send me the breakdown';
-        say('That didn’t go through. Email me and I’ll send it by hand.', true);
-      }
-    });
-
-    try{ el('ev-band').scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){}
   }
 })();
 </script>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
 </body>
 </html>
