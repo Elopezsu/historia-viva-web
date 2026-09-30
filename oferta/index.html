@@ -12,132 +12,217 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
 <meta property="og:title" content="Cada mes, una mujer del pasado y una enseñanza para tu vida hoy">
 <meta property="og:description" content="Tres clases en vivo al mes. No necesitas saber de historia.">
-<meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
+<meta property="og:image" content="https://eunicelopez.com/oferta/img/eunice-saco.jpg">
 <style>
 :root{
-  --indigo:#3E2C63; --indigo-deep:#2B1F47; --coral:#E8502A; --gold:#E9B949;
+  --indigo:#3E2C63; --indigo-deep:#2B1F47; --indigo-ink:#211836; --coral:#E8502A; --gold:#E9B949;
   --gold-soft:#F6E3B4; --ink:#1E1B24; --marfil:#F2EEE7; --papel:#F7F3EA;
-  --mute:#6B6674; --hair:rgba(30,27,36,.11);
+  --mute:#6B6674; --hair:rgba(30,27,36,.11); --hair-d:rgba(255,255,255,.14);
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --serif:"Playfair Display",Georgia,serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
   line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+img{max-width:100%;display:block}
 a{color:inherit}
+.in{max-width:1080px;margin:0 auto;padding:0 16px}
+@media(min-width:760px){.in{padding:0 32px}}
 
-/* cabecera */
-.top{padding:2.2rem 0 0;text-align:center}
-.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--coral);margin:0}
-h1{font-family:var(--serif);font-weight:400;color:var(--ink);
-  font-size:clamp(1.75rem,6vw,2.7rem);line-height:1.12;margin:.7rem auto .7rem;max-width:20ch}
+/* tipos */
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 h1 em,h2 em{font-style:italic;color:var(--coral)}
+.oscuro h1 em,.oscuro h2 em{color:var(--gold)}
 mark{background:var(--gold);color:var(--ink);padding:0 .15em}
-.sub{color:var(--mute);font-size:clamp(1rem,3.4vw,1.2rem);margin:0 auto 1.6rem;max-width:34ch}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 .7rem}
+.oscuro .eyebrow{color:var(--gold)}
+h2{font-size:clamp(1.6rem,4.6vw,2.4rem);line-height:1.15;margin-bottom:1rem}
+p{margin:0 0 1rem;font-size:1.05rem}
+.lead{color:var(--mute);font-size:1.1rem;max-width:56ch}
+.oscuro .lead{color:rgba(255,255,255,.75)}
 
-/* video */
-.video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
-  background:var(--indigo-deep);box-shadow:0 18px 40px -18px rgba(42,32,64,.55)}
+/* bandas */
+.banda{padding:4.5rem 0}
+@media(min-width:760px){.banda{padding:6rem 0}}
+.oscuro{background:var(--indigo-deep);color:#fff}
+.papel{background:var(--papel)}
+
+/* barra superior */
+.barra{position:sticky;top:0;z-index:20;background:rgba(33,24,54,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--hair-d)}
+.barra .in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:60px}
+.marca-top{font-family:var(--mono);letter-spacing:.28em;font-size:.72rem;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:.6rem}
+.marca-top i{width:10px;height:10px;background:var(--gold);transform:rotate(45deg);display:inline-block}
+.btn-top{background:var(--gold);color:var(--ink);text-decoration:none;font-weight:700;font-size:.85rem;
+  padding:.55rem 1rem;border-radius:8px;white-space:nowrap}
+
+/* botón */
+.cta{display:block;width:100%;max-width:440px;margin:2rem auto 0;text-align:center;
+  background:var(--coral);color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;
+  padding:1.05rem 1.2rem;border-radius:12px;box-shadow:0 12px 28px -12px rgba(232,80,42,.85);
+  transition:transform .12s ease}
+.cta:hover{transform:translateY(-1px)}
+.cta:focus-visible,.btn-top:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.cta small{display:block;font-weight:500;font-size:.82rem;opacity:.9;margin-top:.15rem}
+
+/* portada */
+.portada{background:radial-gradient(120% 80% at 50% 0%,var(--indigo) 0%,var(--indigo-deep) 55%,var(--indigo-ink) 100%);
+  color:#fff;text-align:center;padding:3.2rem 0 4rem}
+.portada h1{font-size:clamp(2rem,6.4vw,3.4rem);line-height:1.08;max-width:18ch;margin:0 auto .9rem}
+.portada .lead{margin:0 auto 2rem;text-align:center}
+.video{position:relative;aspect-ratio:16/9;max-width:860px;margin:0 auto;border-radius:16px;overflow:hidden;
+  background:#140f22;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);border:1px solid var(--hair-d)}
 .video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video .hueco{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
   justify-content:center;gap:.8rem;color:#fff;text-align:center;padding:1rem;
-  border:2px dashed rgba(255,255,255,.35);border-radius:14px}
-.video .play{width:68px;height:68px;border-radius:50%;background:var(--coral);
-  display:flex;align-items:center;justify-content:center}
-.video .play::after{content:"";border-left:20px solid #fff;border-top:12px solid transparent;
-  border-bottom:12px solid transparent;margin-left:5px}
+  background:linear-gradient(0deg,rgba(20,15,34,.72),rgba(20,15,34,.72)),url(img/eunice-saco.jpg) center 14%/cover}
+.video .play{width:72px;height:72px;border-radius:50%;background:var(--coral);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(232,80,42,.25)}
+.video .play::after{content:"";border-left:22px solid #fff;border-top:13px solid transparent;
+  border-bottom:13px solid transparent;margin-left:6px}
 .video .hueco b{font-size:1rem}
-.video .hueco span{font-size:.82rem;opacity:.75}
-.sonido{text-align:center;color:var(--mute);font-size:.85rem;margin:.7rem 0 0}
+.video .hueco span{font-size:.82rem;opacity:.8}
+.sonido{color:rgba(255,255,255,.6);font-size:.85rem;margin:.9rem 0 0}
 
-/* botón */
-.cta{display:block;width:100%;max-width:440px;margin:1.6rem auto 0;text-align:center;
-  background:var(--coral);color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;
-  padding:1.05rem 1.2rem;border-radius:12px;box-shadow:0 10px 24px -12px rgba(228,87,46,.8);
-  transition:transform .12s ease}
-.cta:hover{transform:translateY(-1px)}
-.cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.cta small{display:block;font-weight:500;font-size:.82rem;opacity:.9;margin-top:.15rem}
+/* franja de prueba */
+.franja{background:var(--indigo-ink);color:#fff;border-top:1px solid var(--hair-d);border-bottom:1px solid var(--hair-d)}
+.franja .in{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding-top:1.6rem;padding-bottom:1.6rem;text-align:center}
+.franja b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,5vw,2.3rem);color:var(--gold);line-height:1}
+.franja span{font-size:.8rem;color:rgba(255,255,255,.7)}
+.franja a{grid-column:1/-1;font-size:.82rem;color:rgba(255,255,255,.75)}
 
-/* secciones */
-section{padding:3rem 0 0}
-h2{font-family:var(--serif);font-weight:400;color:var(--ink);font-size:clamp(1.4rem,4.6vw,1.9rem);
-  line-height:1.2;margin:0 0 1rem}
-.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--coral);margin:0 0 .4rem}
-p{margin:0 0 1rem;font-size:1.05rem}
+/* te identificas */
+.dolores{margin-top:2rem;border-top:1px solid var(--hair)}
+.dolor{display:grid;grid-template-columns:1fr;gap:.2rem;padding:1.05rem 0 1.05rem 1rem;
+  border-bottom:1px solid var(--hair);border-left:3px solid var(--coral)}
+@media(min-width:760px){.dolor{grid-template-columns:1.3fr 1fr;align-items:baseline;gap:2rem;padding-left:1.4rem}}
+.dolor strong{font-weight:600;font-size:1.06rem}
+.dolor em{font-family:var(--serif);color:var(--mute)}
 
-.clases{display:grid;gap:12px;margin:1.2rem 0 0}
-.clase{background:var(--papel);border:1px solid var(--hair);border-radius:12px;padding:1rem 1.1rem;
-  display:flex;gap:.9rem;align-items:flex-start}
-.clase .n{font-family:var(--serif);font-size:1.6rem;line-height:1;color:var(--coral);flex:none;width:1.4rem}
-.clase h3{margin:0 0 .2rem;font-size:1.05rem}
-.clase p{margin:0;color:var(--mute);font-size:.97rem}
+/* la realidad */
+.realidad{text-align:center}
+.realidad blockquote{font-family:var(--serif);font-size:clamp(1.5rem,4.6vw,2.4rem);line-height:1.25;
+  margin:1rem auto 1.4rem;max-width:24ch}
+.realidad blockquote::before{content:"“";display:block;font-size:4.5rem;line-height:.6;color:var(--coral);margin-bottom:.6rem}
+.realidad cite{font-style:normal;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;color:var(--gold)}
 
-.dos{display:grid;gap:12px;grid-template-columns:1fr}
-@media(min-width:620px){.dos{grid-template-columns:1fr 1fr}}
-.col{border-radius:12px;padding:1.1rem 1.2rem}
+/* dos columnas con retrato */
+.dosc{display:grid;gap:2.2rem;align-items:center}
+@media(min-width:860px){.dosc{grid-template-columns:.9fr 1.1fr;gap:4rem}.dosc.alrev>:first-child{order:2}}
+.retrato{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--papel)}
+.retrato img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.retrato .sello{position:absolute;left:14px;bottom:14px;background:var(--ink);color:#fff;font-family:var(--mono);
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .7rem;border-radius:6px}
+.datos{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.6rem}
+@media(min-width:560px){.datos{grid-template-columns:1fr 1fr}}
+.datos li{padding:.7rem .9rem;background:var(--papel);border-radius:10px;border:1px solid var(--hair);font-size:.95rem}
+.datos b{color:var(--coral);font-family:var(--serif);font-size:1.25rem;font-weight:700;margin-right:.35rem}
+
+/* método */
+.clases{display:grid;gap:12px;margin:1.4rem 0 0}
+.clase{background:rgba(255,255,255,.06);border:1px solid var(--hair-d);border-radius:14px;padding:1.1rem 1.2rem;
+  display:flex;gap:1rem;align-items:flex-start}
+.clase .n{font-family:var(--serif);font-size:2rem;line-height:1;color:var(--gold);flex:none;width:1.6rem}
+.clase h3{margin:0 0 .25rem;font-size:1.2rem}
+.clase p{margin:0;color:rgba(255,255,255,.72);font-size:.98rem}
+.oscuro .retrato{background:var(--indigo)}
+
+/* lo que te llevas */
+.llevas{display:grid;gap:1px;background:var(--hair);margin-top:2rem;border:1px solid var(--hair);border-radius:16px;overflow:hidden}
+@media(min-width:760px){.llevas{grid-template-columns:1fr 1fr}}
+.llevas div{background:var(--marfil);padding:1.4rem 1.3rem}
+.llevas .n{font-family:var(--mono);font-size:.78rem;color:var(--coral);letter-spacing:.12em}
+.llevas h3{font-size:1.3rem;margin:.3rem 0 .35rem}
+.llevas p{margin:0;color:var(--mute);font-size:.98rem}
+
+/* opiniones */
+.opiniones{display:grid;gap:14px;margin-top:2rem}
+@media(min-width:760px){.opiniones{grid-template-columns:repeat(3,1fr)}.opiniones .larga{grid-column:span 2}}
+.op{background:rgba(255,255,255,.06);border:1px solid var(--hair-d);border-radius:16px;padding:1.3rem 1.3rem 1.2rem;
+  display:flex;flex-direction:column;gap:.9rem}
+.op .quien{display:flex;align-items:center;gap:.75rem}
+.op .ini{width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.9rem;color:var(--ink);background:var(--gold)}
+.op:nth-child(2n) .ini{background:var(--coral);color:#fff}
+.op .nom{font-weight:600;line-height:1.2}
+.op .donde{font-size:.78rem;color:rgba(255,255,255,.6)}
+.op .estrellas{color:var(--gold);letter-spacing:.12em;font-size:.9rem}
+.op blockquote{margin:0;font-size:.98rem;line-height:1.6;color:rgba(255,255,255,.9)}
+.todas{display:inline-block;margin-top:1.6rem;font-size:.92rem;color:var(--gold)}
+
+/* para quién */
+.dos{display:grid;gap:14px;grid-template-columns:1fr;margin-top:1.6rem}
+@media(min-width:680px){.dos{grid-template-columns:1fr 1fr}}
+.col{border-radius:14px;padding:1.3rem 1.3rem}
 .col.si{background:var(--papel);border:1px solid var(--hair)}
 .col.no{background:transparent;border:1px dashed rgba(30,27,36,.25)}
-.col h3{margin:0 0 .6rem;font-size:1rem}
+.col h3{margin:0 0 .7rem;font-size:1.2rem}
 .col ul{margin:0;padding-left:1.1rem}
-.col li{margin:0 0 .4rem}
+.col li{margin:0 0 .45rem}
 
-.precio{background:var(--indigo);color:#fff;border-radius:16px;padding:1.6rem 1.3rem;text-align:center}
+/* precio */
+.precio{background:var(--indigo);color:#fff;border-radius:20px;padding:2rem 1.4rem;text-align:center;max-width:560px;margin:0 auto;
+  box-shadow:0 30px 60px -30px rgba(43,31,71,.8)}
 .precio .eyebrow{color:var(--gold)}
-.precio .cifra{font-family:var(--serif);font-weight:400;font-size:3rem;line-height:1;margin:.3rem 0 .2rem}
+.precio .cifra{font-family:var(--serif);font-weight:400;font-size:3.4rem;line-height:1;margin:.3rem 0 .2rem}
 .precio .cifra small{font-size:1rem;font-family:var(--sans);opacity:.8}
-.precio ul{list-style:none;padding:0;margin:1.2rem auto 0;max-width:30ch;text-align:left}
-.precio li{padding:.35rem 0 .35rem 1.6rem;position:relative;border-top:1px solid rgba(255,255,255,.12)}
+.precio ul{list-style:none;padding:0;margin:1.4rem auto 0;max-width:32ch;text-align:left}
+.precio li{padding:.45rem 0 .45rem 1.7rem;position:relative;border-top:1px solid rgba(255,255,255,.12)}
 .precio li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
-.precio .ancla{font-size:.9rem;opacity:.8;margin:1rem 0 0}
+.precio .ancla{font-size:.9rem;opacity:.8;margin:1.2rem 0 0}
 .precio .cta{margin-top:1.4rem}
-
-.cupo{margin-top:1.2rem;background:var(--gold-soft);border-radius:12px;padding:1rem 1.2rem;
+.cupo{margin:1.2rem auto 0;max-width:560px;background:var(--gold-soft);border-radius:12px;padding:1rem 1.2rem;
   text-align:center;font-size:.98rem}
 .cupo b{color:var(--indigo-deep)}
 #faltan{font-family:var(--mono);font-weight:600}
 
-details{border-top:1px solid var(--hair);padding:.9rem 0}
+/* preguntas */
+.faq{max-width:760px;margin:1.6rem auto 0}
+details{border-top:1px solid var(--hair);padding:1rem 0}
 details:last-of-type{border-bottom:1px solid var(--hair)}
-summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--coral);font-weight:700}
+summary::after{content:"+";color:var(--coral);font-weight:700;font-size:1.2rem;line-height:1}
 details[open] summary::after{content:"–"}
 details p{margin:.6rem 0 0;color:var(--mute)}
 
-.yo{display:flex;gap:1rem;align-items:flex-start}
-.yo .foto{width:72px;height:72px;border-radius:50%;flex:none;
-  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%)}
+/* cierre */
+.cierre h2{font-size:clamp(1.8rem,5vw,2.7rem)}
+.cierre .cta{margin-left:0}
+@media(max-width:859px){.cierre{text-align:center}.cierre .cta{margin-left:auto}.cierre .lead{margin-left:auto;margin-right:auto}}
+.firma{font-family:var(--serif);font-size:1.3rem;margin-top:1.4rem}
 
-.final{text-align:center;padding:3.2rem 0 1rem}
-.final p{font-family:var(--serif);font-size:1.4rem;color:var(--ink);max-width:26ch;margin:0 auto}
-
-.marca{letter-spacing:.3em;text-decoration:none;font-weight:600;color:var(--ink)}
-footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
-  color:var(--mute);font-size:.82rem;text-align:center}
+footer{background:var(--indigo-ink);color:rgba(255,255,255,.6);font-size:.82rem;text-align:center;padding:1.6rem 0 6rem}
+footer a{letter-spacing:.3em;text-decoration:none;font-weight:600;color:#fff}
 
 /* botón fijo en móvil */
 .fijo{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(247,243,236,.94);backdrop-filter:blur(8px);border-top:1px solid var(--hair);
-  transform:translateY(110%);transition:transform .25s ease;z-index:10}
+  background:rgba(247,243,236,.95);backdrop-filter:blur(8px);border-top:1px solid var(--hair);
+  transform:translateY(110%);transition:transform .25s ease;z-index:30}
 .fijo.ver{transform:none}
 .fijo .cta{margin:0 auto;padding:.85rem 1rem;font-size:1rem}
 @media(min-width:760px){.fijo{display:none}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<main class="wrap">
+<div class="barra">
+  <div class="in">
+    <a href="/" class="marca-top"><i aria-hidden="true"></i>HISTORIA VIVA</a>
+    <a class="btn-top" data-cta href="#">Quiero entrar</a>
+  </div>
+</div>
 
-  <header class="top">
-    <p class="kicker">Historia Viva · con Eunice López</p>
+<header class="portada oscuro">
+  <div class="in">
+    <p class="eyebrow">Conferencista · 18 países · 4 idiomas</p>
     <h1>Cada mes, una mujer del pasado y una <em>enseñanza</em> para tu vida hoy.</h1>
-    <p class="sub">Tres clases en vivo al mes. No necesitas saber de historia.</p>
+    <p class="lead">Tres clases en vivo al mes, conmigo. No necesitas saber de historia.</p>
 
     <!-- ============================================================
          EL VIDEO VA AQUÍ
@@ -150,26 +235,132 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
       <div class="hueco">
         <div class="play" aria-hidden="true"></div>
         <b>Aquí va el video</b>
-        <span>VSL de 5 minutos · 16:9</span>
+        <span>VSL de 12 minutos · 16:9</span>
       </div>
     </div>
-    <p class="sonido">Dura unos 5 minutos. Mejor con sonido.</p>
+    <p class="sonido">Dura unos 12 minutos. Mejor con sonido.</p>
 
     <a class="cta" data-cta href="#">Quiero entrar<small>90 USD al mes · cupo fundador abierto</small></a>
-  </header>
+  </div>
+</header>
 
-  <section>
-    <p class="eyebrow">Cómo funciona</p>
-    <h2>Una mujer al mes, en <em>tres clases</em> en vivo.</h2>
-    <p>Elegimos a una mujer del pasado y la conocemos a fondo. No fechas para un examen: lo que vivió, lo que decidió y lo que eso nos dice hoy.</p>
-    <div class="clases">
-      <div class="clase"><span class="n">1</span><div><h3>Quién fue</h3><p>Su historia completa, con fuentes. La que no salía en el libro de la escuela.</p></div></div>
-      <div class="clase"><span class="n">2</span><div><h3>Qué decidió</h3><p>Lo que eligió, en qué momento y lo que le costó.</p></div></div>
-      <div class="clase"><span class="n">3</span><div><h3>Qué nos enseña hoy</h3><p>Lo llevamos a tu vida: qué harías tú en su lugar y qué te llevas para tus decisiones.</p></div></div>
+<div class="franja">
+  <div class="in">
+    <div><b>+100</b><span>personas en mis programas</span></div>
+    <div><b>5,0</b><span>en las tres plataformas</span></div>
+    <div><b>81</b><span>lo escribieron o lo grabaron</span></div>
+    <a href="/testimonios-completos/">Leer todas las opiniones →</a>
+  </div>
+</div>
+
+<section class="banda">
+  <div class="in">
+    <p class="eyebrow">¿Te identificas?</p>
+    <h2>¿A ti también te <em>pasa</em>?</h2>
+    <div class="dolores">
+      <div class="dolor"><strong>Ves algo clarísimo y no dices nada</strong><em>«No me toca a mí.»</em></div>
+      <div class="dolor"><strong>Te sabes los próceres, pero no tres mujeres de tu país</strong><em>«¿Quién?»</em></div>
+      <div class="dolor"><strong>La historia en la escuela te aburría</strong><em>Fechas y un examen.</em></div>
+      <div class="dolor"><strong>Tomas decisiones sola y sientes que nadie pasó por ahí</strong><em>«¿Y ahora qué hago?»</em></div>
+      <div class="dolor"><strong>Te toca empezar de nuevo, otra vez</strong><em>Desde cero.</em></div>
+      <div class="dolor"><strong>Te fuiste de tu país y te contaron la versión corta dos veces</strong><em>El continente en un párrafo.</em></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
+<section class="banda oscuro realidad">
+  <div class="in">
+    <p class="eyebrow">Lo que yo veo</p>
+    <blockquote>La historia no es el pasado. Es el <mark>manual</mark> de las decisiones que tomamos hoy.</blockquote>
+    <cite>EUNICE LÓPEZ · HISTORIA VIVA</cite>
+  </div>
+</section>
+
+<section class="banda">
+  <div class="in dosc">
+    <div class="retrato"><img src="img/eunice-de-pie.jpg" alt="Eunice López, con saco rojo, sonriendo" loading="lazy" width="734" height="1100"><span class="sello">Eunice López</span></div>
+    <div>
+      <p class="eyebrow">Quién da las clases</p>
+      <h2>De liderar proyectos en empresas a contar la historia que <em>no nos contaron</em>.</h2>
+      <p>Soy Eunice López. Cuento las historias de las mujeres que no salen en los libros.</p>
+      <p>Pasé más de dieciséis años en empresas, liderando proyectos y armando eventos. Durante un año dejé para después lo que sentía que era lo mío. Lo que aprendí de ese año es sencillo: hay que ser fiel a lo que una siente.</p>
+      <p>Pero créeme por lo que ves en el video, no por mi currículum.</p>
+      <ul class="datos">
+        <li><b>18</b>países recorridos</li>
+        <li><b>+16</b>años en empresas</li>
+        <li><b>4</b>idiomas</li>
+        <li><b>+100</b>personas en mis programas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="banda oscuro">
+  <div class="in dosc alrev">
+    <div class="retrato"><img src="img/eunice-tableta.jpg" alt="Eunice López preparando una clase en su tableta" loading="lazy" width="734" height="1100"></div>
+    <div>
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>Una mujer al mes, en <em>tres clases</em> en vivo.</h2>
+      <p class="lead">Elegimos a una mujer del pasado y la conocemos a fondo. No fechas para un examen: lo que vivió, lo que decidió y lo que eso nos dice hoy.</p>
+      <div class="clases">
+        <div class="clase"><span class="n">1</span><div><h3>Quién fue</h3><p>Su historia completa, con fuentes. La que no salía en el libro de la escuela.</p></div></div>
+        <div class="clase"><span class="n">2</span><div><h3>Qué decidió</h3><p>Lo que eligió, en qué momento y lo que le costó.</p></div></div>
+        <div class="clase"><span class="n">3</span><div><h3>Qué nos enseña hoy</h3><p>Lo llevamos a tu vida: qué harías tú en su lugar y qué te llevas para tus decisiones.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banda">
+  <div class="in">
+    <p class="eyebrow">Lo que te llevas cada mes</p>
+    <h2>Una mujer nueva, y algo <em>tuyo</em> para decidir mejor.</h2>
+    <div class="llevas">
+      <div><span class="n">01</span><h3>Conoces a una mujer de verdad</h3><p>Con nombre, fecha y fuentes. No una frase suelta de internet.</p></div>
+      <div><span class="n">02</span><h3>Entiendes por qué no te la contaron</h3><p>Quién escribió la historia y por qué ella no entraba en la foto.</p></div>
+      <div><span class="n">03</span><h3>La llevas a tu vida</h3><p>Qué harías tú en su lugar, y qué te llevas para tus propias decisiones.</p></div>
+      <div><span class="n">04</span><h3>No te pierdes nada</h3><p>Las clases quedan grabadas. Si un mes no puedes venir, la ves después.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="banda oscuro">
+  <div class="in">
+    <p class="eyebrow">Opiniones reales</p>
+    <h2>Lo que dicen quienes ya <em>escucharon</em> mis historias.</h2>
+    <div class="opiniones">
+      <article class="op larga">
+        <div class="quien"><span class="ini" aria-hidden="true">CM</span><div><div class="nom">Camila Mahecha</div><div class="donde">Opinión en Google · septiembre de 2026</div></div></div>
+        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>«Su forma de hablar transmite una seguridad y una confianza que atrapan desde el primer momento: se nota que domina lo que enseña, pero sobre todo se nota el amor con el que lo hace. […] Salir de escucharla es salir con más ganas de aprender y de conocer más sobre nuestras raíces.»</blockquote>
+      </article>
+      <article class="op">
+        <div class="quien"><span class="ini" aria-hidden="true">MI</span><div><div class="nom">María Isabel</div><div class="donde">Opinión en Google · septiembre de 2026</div></div></div>
+        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>«Eunice es una mujer con mucha energía y con un carisma que te envuelve […] cuando habla, no quisieras que ella pare.»</blockquote>
+      </article>
+      <article class="op">
+        <div class="quien"><span class="ini" aria-hidden="true">MM</span><div><div class="nom">Mariana Mestra</div><div class="donde">Opinión en Google · septiembre de 2026</div></div></div>
+        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>«No se siente como una clase donde solo escuchas una historia “simple”, sino como una forma interesante de conocer personajes, fechas y puntos de vista que no conocíamos.»</blockquote>
+      </article>
+      <article class="op">
+        <div class="quien"><span class="ini" aria-hidden="true">GM</span><div><div class="nom">Gueyner Jhoan Mestra Flórez</div><div class="donde">Opinión en Google · septiembre de 2026</div></div></div>
+        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>«Más que contar el pasado, logras conectarnos con nuestras raíces y despertar la curiosidad por conocer de dónde venimos.»</blockquote>
+      </article>
+      <article class="op">
+        <div class="quien"><span class="ini" aria-hidden="true">CG</span><div><div class="nom">Claudia Gil</div><div class="donde">Opinión en Google · septiembre de 2026</div></div></div>
+        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>«Excelente contenido, Eunice es una mujer muy profesional, la recomiendo totalmente.»</blockquote>
+      </article>
+    </div>
+    <a class="todas" href="/testimonios-completos/">Leer todas las opiniones →</a>
+  </div>
+</section>
+
+<section class="banda">
+  <div class="in">
     <p class="eyebrow">Para quién es</p>
     <h2>Pensado para quien se <em>aburría</em> en la escuela.</h2>
     <div class="dos">
@@ -189,9 +380,11 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
         </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="precio">
+<section class="banda papel" id="precio">
+  <div class="in">
     <div class="precio">
       <p class="eyebrow">La comunidad</p>
       <div class="cifra">90 USD <small>al mes</small></div>
@@ -207,42 +400,42 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
     <div class="cupo">
       <b>Cupo fundador abierto.</b> Se cierra el 29 de octubre o al llegar a cien personas, y no se vuelve a abrir.<span id="faltan"></span>
     </div>
-  </section>
-
-  <section>
-    <p class="eyebrow">Preguntas</p>
-    <h2>Lo que te puedes estar <em>preguntando</em>.</h2>
-    <details><summary>No sé nada de historia. ¿Me voy a perder?</summary>
-      <p>No. Está pensado justo para quien se aburría en la escuela. No hay examen y aquí nadie queda mal.</p></details>
-    <details><summary>¿Y si no tengo tiempo?</summary>
-      <p>Son tres clases al mes. Y si no llegas a una, queda grabada para que la veas cuando puedas.</p></details>
-    <details><summary>¿Dónde son las clases?</summary>
-      <p>En vivo por Zoom. Te llega el enlace antes de cada clase.</p></details>
-    <details><summary>¿Por qué mujeres del pasado?</summary>
-      <p>Porque lo que vivieron se parece mucho a lo que vivimos hoy: decidir, empezar de nuevo, hablar cuando nadie quiere oír. Y casi nunca nos las contaron.</p></details>
-    <details><summary>¿Tengo otra duda?</summary>
-      <p>Escríbeme por Instagram a <a href="https://www.instagram.com/eunice.historiaviva" target="_blank" rel="noopener">@eunice.historiaviva</a> y te contesto.</p></details>
-  </section>
-
-  <section>
-    <p class="eyebrow">Quién da las clases</p>
-    <div class="yo">
-      <div class="foto" aria-hidden="true"></div>
-      <div>
-        <h2 style="margin-bottom:.5rem">Soy <em>Eunice López</em>.</h2>
-        <p>Cuento la historia de las mujeres que no salen en los libros. He recorrido dieciocho países y pasé más de dieciséis años en empresas, liderando proyectos y armando eventos.</p>
-        <p>Pero créeme por lo que ves en el video, no por mi currículum.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="final">
-    <p>La historia no es el pasado. Es el <mark>manual</mark> de las decisiones que tomamos hoy.</p>
-    <a class="cta" data-cta href="#">Quiero entrar<small>90 USD al mes</small></a>
   </div>
+</section>
 
-  <footer><a href="/" class="marca">EUNICELOPEZ.COM</a></footer>
-</main>
+<section class="banda">
+  <div class="in">
+    <p class="eyebrow" style="text-align:center">Preguntas</p>
+    <h2 style="text-align:center">Lo que te puedes estar <em>preguntando</em>.</h2>
+    <div class="faq">
+      <details><summary>No sé nada de historia. ¿Me voy a perder?</summary>
+        <p>No. Está pensado justo para quien se aburría en la escuela. No hay examen y aquí nadie queda mal.</p></details>
+      <details><summary>¿Y si no tengo tiempo?</summary>
+        <p>Son tres clases al mes. Y si no llegas a una, queda grabada para que la veas cuando puedas.</p></details>
+      <details><summary>¿Dónde son las clases?</summary>
+        <p>En vivo por Zoom. Te llega el enlace antes de cada clase.</p></details>
+      <details><summary>¿Por qué mujeres del pasado?</summary>
+        <p>Porque lo que vivieron se parece mucho a lo que vivimos hoy: decidir, empezar de nuevo, hablar cuando nadie quiere oír. Y casi nunca nos las contaron.</p></details>
+      <details><summary>¿Tengo otra duda?</summary>
+        <p>Escríbeme por Instagram a <a href="https://www.instagram.com/eunice.historiaviva" target="_blank" rel="noopener">@eunice.historiaviva</a> y te contesto.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="banda oscuro cierre">
+  <div class="in dosc">
+    <div class="retrato"><img src="img/eunice-saco.jpg" alt="Eunice López sonriendo a cámara" loading="lazy" width="734" height="1100"></div>
+    <div>
+      <p class="eyebrow">El mes que viene</p>
+      <h2>Ya vas a estar conociendo a otra mujer que te va a <em>acompañar</em> mucho tiempo.</h2>
+      <p class="lead">Tres clases en vivo al mes, conmigo, por 90 USD al mes. El cupo fundador se cierra el 29 de octubre.</p>
+      <a class="cta" data-cta href="#">Quiero entrar<small>90 USD al mes</small></a>
+      <p class="firma">Te espero adentro. — Eunice</p>
+    </div>
+  </div>
+</section>
+
+<footer><a href="/">EUNICELOPEZ.COM</a></footer>
 
 <div class="fijo" id="fijo"><a class="cta" data-cta href="#">Quiero entrar · 90 USD/mes</a></div>
 
