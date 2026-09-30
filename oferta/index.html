@@ -7,16 +7,19 @@
 <title>Una mujer al mes · Historia Viva</title>
 <meta name="description" content="Tres clases en vivo al mes sobre una mujer del pasado y lo que nos enseña hoy. Con Eunice López.">
 <link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
 <meta property="og:title" content="Cada mes, una mujer del pasado y una enseñanza para tu vida hoy">
 <meta property="og:description" content="Tres clases en vivo al mes. No necesitas saber de historia.">
 <meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
 <style>
 :root{
-  --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --gold:#F2A900;
-  --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC; --papel:#FFFCF6;
-  --mute:#6E6478; --hair:rgba(30,27,36,.11);
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --indigo:#3E2C63; --indigo-deep:#2B1F47; --coral:#E8502A; --gold:#E9B949;
+  --gold-soft:#F6E3B4; --ink:#1E1B24; --marfil:#F2EEE7; --papel:#F7F3EA;
+  --mute:#6B6674; --hair:rgba(30,27,36,.11);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box}
@@ -29,8 +32,10 @@ a{color:inherit}
 .top{padding:2.2rem 0 0;text-align:center}
 .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--coral);margin:0}
-h1{font-family:var(--serif);font-weight:600;color:var(--indigo);
+h1{font-family:var(--serif);font-weight:400;color:var(--ink);
   font-size:clamp(1.75rem,6vw,2.7rem);line-height:1.12;margin:.7rem auto .7rem;max-width:20ch}
+h1 em,h2 em{font-style:italic;color:var(--coral)}
+mark{background:var(--gold);color:var(--ink);padding:0 .15em}
 .sub{color:var(--mute);font-size:clamp(1rem,3.4vw,1.2rem);margin:0 auto 1.6rem;max-width:34ch}
 
 /* video */
@@ -59,7 +64,7 @@ h1{font-family:var(--serif);font-weight:600;color:var(--indigo);
 
 /* secciones */
 section{padding:3rem 0 0}
-h2{font-family:var(--serif);color:var(--indigo);font-size:clamp(1.4rem,4.6vw,1.9rem);
+h2{font-family:var(--serif);font-weight:400;color:var(--ink);font-size:clamp(1.4rem,4.6vw,1.9rem);
   line-height:1.2;margin:0 0 1rem}
 .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--coral);margin:0 0 .4rem}
@@ -83,7 +88,7 @@ p{margin:0 0 1rem;font-size:1.05rem}
 
 .precio{background:var(--indigo);color:#fff;border-radius:16px;padding:1.6rem 1.3rem;text-align:center}
 .precio .eyebrow{color:var(--gold)}
-.precio .cifra{font-family:var(--serif);font-size:3rem;line-height:1;margin:.3rem 0 .2rem}
+.precio .cifra{font-family:var(--serif);font-weight:400;font-size:3rem;line-height:1;margin:.3rem 0 .2rem}
 .precio .cifra small{font-size:1rem;font-family:var(--sans);opacity:.8}
 .precio ul{list-style:none;padding:0;margin:1.2rem auto 0;max-width:30ch;text-align:left}
 .precio li{padding:.35rem 0 .35rem 1.6rem;position:relative;border-top:1px solid rgba(255,255,255,.12)}
@@ -109,8 +114,9 @@ details p{margin:.6rem 0 0;color:var(--mute)}
   background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%)}
 
 .final{text-align:center;padding:3.2rem 0 1rem}
-.final p{font-family:var(--serif);font-size:1.3rem;color:var(--indigo);max-width:26ch;margin:0 auto}
+.final p{font-family:var(--serif);font-size:1.4rem;color:var(--ink);max-width:26ch;margin:0 auto}
 
+.marca{letter-spacing:.3em;text-decoration:none;font-weight:600;color:var(--ink)}
 footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
   color:var(--mute);font-size:.82rem;text-align:center}
 
@@ -130,7 +136,7 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
 
   <header class="top">
     <p class="kicker">Historia Viva · con Eunice López</p>
-    <h1>Cada mes, una mujer del pasado y una enseñanza para tu vida hoy.</h1>
+    <h1>Cada mes, una mujer del pasado y una <em>enseñanza</em> para tu vida hoy.</h1>
     <p class="sub">Tres clases en vivo al mes. No necesitas saber de historia.</p>
 
     <!-- ============================================================
@@ -154,7 +160,7 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
 
   <section>
     <p class="eyebrow">Cómo funciona</p>
-    <h2>Una mujer al mes, en tres clases en vivo.</h2>
+    <h2>Una mujer al mes, en <em>tres clases</em> en vivo.</h2>
     <p>Elegimos a una mujer del pasado y la conocemos a fondo. No fechas para un examen: lo que vivió, lo que decidió y lo que eso nos dice hoy.</p>
     <div class="clases">
       <div class="clase"><span class="n">1</span><div><h3>Quién fue</h3><p>Su historia completa, con fuentes. La que no salía en el libro de la escuela.</p></div></div>
@@ -165,7 +171,7 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
 
   <section>
     <p class="eyebrow">Para quién es</p>
-    <h2>Pensado para quien se aburría en la escuela.</h2>
+    <h2>Pensado para quien se <em>aburría</em> en la escuela.</h2>
     <div class="dos">
       <div class="col si">
         <h3>Es para ti si…</h3>
@@ -205,7 +211,7 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
 
   <section>
     <p class="eyebrow">Preguntas</p>
-    <h2>Lo que te puedes estar preguntando.</h2>
+    <h2>Lo que te puedes estar <em>preguntando</em>.</h2>
     <details><summary>No sé nada de historia. ¿Me voy a perder?</summary>
       <p>No. Está pensado justo para quien se aburría en la escuela. No hay examen y aquí nadie queda mal.</p></details>
     <details><summary>¿Y si no tengo tiempo?</summary>
@@ -223,7 +229,7 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
     <div class="yo">
       <div class="foto" aria-hidden="true"></div>
       <div>
-        <h2 style="margin-bottom:.5rem">Soy Eunice López.</h2>
+        <h2 style="margin-bottom:.5rem">Soy <em>Eunice López</em>.</h2>
         <p>Cuento la historia de las mujeres que no salen en los libros. He recorrido dieciocho países y pasé más de dieciséis años en empresas, liderando proyectos y armando eventos.</p>
         <p>Pero créeme por lo que ves en el video, no por mi currículum.</p>
       </div>
@@ -231,11 +237,11 @@ footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
   </section>
 
   <div class="final">
-    <p>La historia no es el pasado. Es el manual de las decisiones que tomamos hoy.</p>
+    <p>La historia no es el pasado. Es el <mark>manual</mark> de las decisiones que tomamos hoy.</p>
     <a class="cta" data-cta href="#">Quiero entrar<small>90 USD al mes</small></a>
   </div>
 
-  <footer>Historia Viva · Eunice López · <a href="/">eunicelopez.com</a></footer>
+  <footer><a href="/" class="marca">EUNICELOPEZ.COM</a></footer>
 </main>
 
 <div class="fijo" id="fijo"><a class="cta" data-cta href="#">Quiero entrar · 90 USD/mes</a></div>
