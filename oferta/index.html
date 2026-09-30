@@ -1,83 +1,270 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>La oferta · Eunice López</title>
+<title>Una mujer al mes · Historia Viva</title>
+<meta name="description" content="Tres clases en vivo al mes sobre una mujer del pasado y lo que nos enseña hoy. Con Eunice López.">
 <link rel="icon" href="/favicon.svg">
+<meta property="og:title" content="Cada mes, una mujer del pasado y una enseñanza para tu vida hoy">
+<meta property="og:description" content="Tres clases en vivo al mes. No necesitas saber de historia.">
+<meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
 <style>
-:root{--indigo:#3B2E5A;--coral:#E4572E;--ink:#1E1B24;--marfil:#F7F3EC;--mute:#6E6478;--hair:rgba(30,27,36,.11);
---sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
-body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
-main{max-width:680px;margin:0 auto;padding:3rem 16px 5rem}
-.kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin:0}
-h1{font-family:var(--serif);font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.15;margin:.5rem 0 .6rem;color:var(--indigo)}
-.sub{color:var(--mute);font-size:1.1rem;margin:0 0 2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--ink)}
-h2{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin:2.2rem 0 .6rem;display:flex;gap:.7rem}
-h2 span{font-family:var(--mono);color:var(--mute);letter-spacing:0}
-p{font-size:1.15rem;margin:0 0 .9rem}
-.nota{font-size:.9rem;color:var(--mute);font-style:italic}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--hair);color:var(--mute);font-size:.85rem}
-</style></head><body><main>
-<p class="kicker">Guion del video · 5 minutos</p>
-<h1>Cada mes, una mujer del pasado y una enseñanza para tu vida hoy.</h1>
-<p class="sub">Tres clases en vivo al mes. No necesitas saber de historia.</p>
-<h2><span>00:00</span>El gancho</h2>
-<p>¿No te parece raro que te sepas los nombres de los próceres de la escuela, y no puedas decir el nombre de tres mujeres que hicieron algo en tu país?</p>
-<p>No es tu culpa. Nadie te las contó.</p>
-<p>Y lo que vivieron ellas se parece mucho a lo que vivimos hoy: decidir solas, empezar de nuevo, hablar cuando nadie quiere oírnos.</p>
-<p>En los próximos minutos te cuento una. Y al final te invito a algo. Te lo digo desde ya.</p>
+:root{
+  --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --gold:#F2A900;
+  --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC; --papel:#FFFCF6;
+  --mute:#6E6478; --hair:rgba(30,27,36,.11);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+a{color:inherit}
 
-<h2><span>00:32</span>Quién soy</h2>
-<p>Soy Eunice López. Cuento la historia de las mujeres que no salen en los libros.</p>
-<p>He recorrido dieciocho países y pasé más de dieciséis años en empresas. Pero créeme por lo que viene ahora, no por mi currículum.</p>
+/* cabecera */
+.top{padding:2.2rem 0 0;text-align:center}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin:0}
+h1{font-family:var(--serif);font-weight:600;color:var(--indigo);
+  font-size:clamp(1.75rem,6vw,2.7rem);line-height:1.12;margin:.7rem auto .7rem;max-width:20ch}
+.sub{color:var(--mute);font-size:clamp(1rem,3.4vw,1.2rem);margin:0 auto 1.6rem;max-width:34ch}
 
-<h2><span>00:47</span>Los dos caminos</h2>
-<p>Hay dos formas de acercarte a la historia.</p>
-<p>La lenta: fechas, nombres, un examen, y a la semana ya no te acuerdas de nada. Así nos la enseñaron, y por eso aburría.</p>
-<p>La otra: conocer a una sola mujer, a fondo, y preguntarte qué harías tú en su lugar. Esa se te queda para siempre.</p>
+/* video */
+.video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+  background:var(--indigo-deep);box-shadow:0 18px 40px -18px rgba(42,32,64,.55)}
+.video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .hueco{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:.8rem;color:#fff;text-align:center;padding:1rem;
+  border:2px dashed rgba(255,255,255,.35);border-radius:14px}
+.video .play{width:68px;height:68px;border-radius:50%;background:var(--coral);
+  display:flex;align-items:center;justify-content:center}
+.video .play::after{content:"";border-left:20px solid #fff;border-top:12px solid transparent;
+  border-bottom:12px solid transparent;margin-left:5px}
+.video .hueco b{font-size:1rem}
+.video .hueco span{font-size:.82rem;opacity:.75}
+.sonido{text-align:center;color:var(--mute);font-size:.85rem;margin:.7rem 0 0}
 
-<h2><span>01:09</span>El método</h2>
-<p>Yo lo hago en tres pasos, siempre los mismos.</p>
-<p>Uno: quién fue. Dos: qué decidió, y qué le costó. Tres: qué nos enseña hoy.</p>
-<p>Te lo muestro con una.</p>
+/* botón */
+.cta{display:block;width:100%;max-width:440px;margin:1.6rem auto 0;text-align:center;
+  background:var(--coral);color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;
+  padding:1.05rem 1.2rem;border-radius:12px;box-shadow:0 10px 24px -12px rgba(228,87,46,.8);
+  transition:transform .12s ease}
+.cta:hover{transform:translateY(-1px)}
+.cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.cta small{display:block;font-weight:500;font-size:.82rem;opacity:.9;margin-top:.15rem}
 
-<h2><span>01:20</span>Paso uno · Quién fue</h2>
-<p>Se llama Micaela Bastidas. En 1780, en el Cusco, su esposo se levanta contra el imperio español. Lo conocemos como Túpac Amaru II.</p>
-<p>Casi siempre la ponen a ella como «la que lo acompañaba». Pero ella manejaba la comida y las armas. Manejaba los mensajes. Reclutaba gente.</p>
+/* secciones */
+section{padding:3rem 0 0}
+h2{font-family:var(--serif);color:var(--indigo);font-size:clamp(1.4rem,4.6vw,1.9rem);
+  line-height:1.2;margin:0 0 1rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 .4rem}
+p{margin:0 0 1rem;font-size:1.05rem}
 
-<h2><span>01:39</span>Paso dos · Qué decidió</h2>
-<p>Y hizo algo más. Le escribía cartas para apurarlo, porque él iba demasiado lento hacia el Cusco. Hoy los historiadores le dan la razón a ella.</p>
-<p>Lo que le costó fue todo. El 18 de mayo de 1781, en la Plaza de Armas del Cusco, la ejecutaron antes que a él, y delante de él.</p>
+.clases{display:grid;gap:12px;margin:1.2rem 0 0}
+.clase{background:var(--papel);border:1px solid var(--hair);border-radius:12px;padding:1rem 1.1rem;
+  display:flex;gap:.9rem;align-items:flex-start}
+.clase .n{font-family:var(--serif);font-size:1.6rem;line-height:1;color:var(--coral);flex:none;width:1.4rem}
+.clase h3{margin:0 0 .2rem;font-size:1.05rem}
+.clase p{margin:0;color:var(--mute);font-size:.97rem}
 
-<h2><span>02:01</span>Paso tres · Qué nos enseña hoy</h2>
-<p>Micaela vio antes que nadie que esperar era perder. Y lo dijo por escrito, aunque el que mandaba era él.</p>
-<p>A muchas nos pasa lo contrario: vemos algo clarísimo y nos callamos, porque sentimos que no nos toca decidir a nosotras.</p>
-<p>Ella no pudo elegir cómo terminaba su historia. Nosotras hoy sí podemos elegir si hablamos.</p>
-<p class="nota">Dos segundos de silencio.</p>
+.dos{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:620px){.dos{grid-template-columns:1fr 1fr}}
+.col{border-radius:12px;padding:1.1rem 1.2rem}
+.col.si{background:var(--papel);border:1px solid var(--hair)}
+.col.no{background:transparent;border:1px dashed rgba(30,27,36,.25)}
+.col h3{margin:0 0 .6rem;font-size:1rem}
+.col ul{margin:0;padding-left:1.1rem}
+.col li{margin:0 0 .4rem}
 
-<h2><span>02:26</span>Por qué no la conocías</h2>
-<p>No sale en tu libro de la escuela porque la historia la escribieron otros. No porque no haya importado.</p>
-<p>Y como ella hay cientos, en todos nuestros países. Cambian los nombres y los años, pero las decisiones se parecen mucho a las nuestras.</p>
+.precio{background:var(--indigo);color:#fff;border-radius:16px;padding:1.6rem 1.3rem;text-align:center}
+.precio .eyebrow{color:var(--gold)}
+.precio .cifra{font-family:var(--serif);font-size:3rem;line-height:1;margin:.3rem 0 .2rem}
+.precio .cifra small{font-size:1rem;font-family:var(--sans);opacity:.8}
+.precio ul{list-style:none;padding:0;margin:1.2rem auto 0;max-width:30ch;text-align:left}
+.precio li{padding:.35rem 0 .35rem 1.6rem;position:relative;border-top:1px solid rgba(255,255,255,.12)}
+.precio li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.precio .ancla{font-size:.9rem;opacity:.8;margin:1rem 0 0}
+.precio .cta{margin-top:1.4rem}
 
-<h2><span>02:43</span>La invitación</h2>
-<p>Te dije al principio que te iba a invitar a algo. Es esto.</p>
-<p>Todos los meses doy tres clases en vivo sobre una sola mujer. En la primera, quién fue. En la segunda, qué decidió y qué le costó. Y en la tercera, qué nos enseña a ti y a mí, hoy.</p>
-<p>Quedan grabadas. Si un mes no puedes venir, la ves después.</p>
-<p>A las empresas les cobro desde 1.500 dólares por una sola conferencia. Aquí son tres clases al mes, conmigo, por 90 dólares al mes.</p>
+.cupo{margin-top:1.2rem;background:var(--gold-soft);border-radius:12px;padding:1rem 1.2rem;
+  text-align:center;font-size:.98rem}
+.cupo b{color:var(--indigo-deep)}
+#faltan{font-family:var(--mono);font-weight:600}
 
-<h2><span>03:18</span>Lo que te puedes estar preguntando</h2>
-<p>«Es que yo no sé de historia.» Mejor. Esto está pensado justo para quien se aburría en la escuela.</p>
-<p>«Es que no tengo tiempo.» Son tres clases al mes. Menos de lo que se nos va en reels en una semana, sin darnos cuenta. Y si no llegas, queda grabada.</p>
-<p>«¿Y si no es para mí?» No es para quien quiere fechas para un examen. Es para quien quiere aprender de las que vinieron antes.</p>
+details{border-top:1px solid var(--hair);padding:.9rem 0}
+details:last-of-type{border-bottom:1px solid var(--hair)}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--coral);font-weight:700}
+details[open] summary::after{content:"–"}
+details p{margin:.6rem 0 0;color:var(--mute)}
 
-<h2><span>03:45</span>El cupo</h2>
-<p>Ahora mismo está abierto el cupo fundador. Se cierra el 29 de octubre, o cuando lleguemos a cien personas. No lo vuelvo a abrir.</p>
+.yo{display:flex;gap:1rem;align-items:flex-start}
+.yo .foto{width:72px;height:72px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%)}
 
-<h2><span>03:54</span>La llamada a la acción</h2>
-<p>Toca el botón que está aquí, debajo del video, y entras hoy. Así, el mes que viene ya conoces a una mujer que te va a acompañar mucho tiempo.</p>
+.final{text-align:center;padding:3.2rem 0 1rem}
+.final p{font-family:var(--serif);font-size:1.3rem;color:var(--indigo);max-width:26ch;margin:0 auto}
 
-<h2><span>04:06</span>Cierre</h2>
-<p>La historia no es el pasado. Es el manual de las decisiones que tomamos hoy.</p>
-<p class="nota">Dos segundos de silencio. Corte.</p>
-<footer>Historia Viva · Eunice López</footer>
-</main></body></html>
+footer{margin-top:2.5rem;padding:1.4rem 0 6rem;border-top:1px solid var(--hair);
+  color:var(--mute);font-size:.82rem;text-align:center}
+
+/* botón fijo en móvil */
+.fijo{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(247,243,236,.94);backdrop-filter:blur(8px);border-top:1px solid var(--hair);
+  transform:translateY(110%);transition:transform .25s ease;z-index:10}
+.fijo.ver{transform:none}
+.fijo .cta{margin:0 auto;padding:.85rem 1rem;font-size:1rem}
+@media(min-width:760px){.fijo{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="top">
+    <p class="kicker">Historia Viva · con Eunice López</p>
+    <h1>Cada mes, una mujer del pasado y una enseñanza para tu vida hoy.</h1>
+    <p class="sub">Tres clases en vivo al mes. No necesitas saber de historia.</p>
+
+    <!-- ============================================================
+         EL VIDEO VA AQUÍ
+         Cuando esté listo, borra el <div class="hueco">…</div> y pega
+         dentro de <div class="video"> el iframe de YouTube o Vimeo, por
+         ejemplo:
+         <iframe src="https://player.vimeo.com/video/ID" allow="autoplay; fullscreen" allowfullscreen></iframe>
+         ============================================================ -->
+    <div class="video" id="video">
+      <div class="hueco">
+        <div class="play" aria-hidden="true"></div>
+        <b>Aquí va el video</b>
+        <span>VSL de 5 minutos · 16:9</span>
+      </div>
+    </div>
+    <p class="sonido">Dura unos 5 minutos. Mejor con sonido.</p>
+
+    <a class="cta" data-cta href="#">Quiero entrar<small>90 USD al mes · cupo fundador abierto</small></a>
+  </header>
+
+  <section>
+    <p class="eyebrow">Cómo funciona</p>
+    <h2>Una mujer al mes, en tres clases en vivo.</h2>
+    <p>Elegimos a una mujer del pasado y la conocemos a fondo. No fechas para un examen: lo que vivió, lo que decidió y lo que eso nos dice hoy.</p>
+    <div class="clases">
+      <div class="clase"><span class="n">1</span><div><h3>Quién fue</h3><p>Su historia completa, con fuentes. La que no salía en el libro de la escuela.</p></div></div>
+      <div class="clase"><span class="n">2</span><div><h3>Qué decidió</h3><p>Lo que eligió, en qué momento y lo que le costó.</p></div></div>
+      <div class="clase"><span class="n">3</span><div><h3>Qué nos enseña hoy</h3><p>Lo llevamos a tu vida: qué harías tú en su lugar y qué te llevas para tus decisiones.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Para quién es</p>
+    <h2>Pensado para quien se aburría en la escuela.</h2>
+    <div class="dos">
+      <div class="col si">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>te gustan las historias de mujeres reales, pero nunca te las contaron</li>
+          <li>quieres aprender de las que vinieron antes</li>
+          <li>estás tomando decisiones y te sirve saber que otras ya pasaron por ahí</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>buscas fechas para un examen</li>
+          <li>quieres una frase bonita para ganar una discusión en una cena</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="precio">
+    <div class="precio">
+      <p class="eyebrow">La comunidad</p>
+      <div class="cifra">90 USD <small>al mes</small></div>
+      <ul>
+        <li>Tres clases en vivo al mes, conmigo</li>
+        <li>Una mujer distinta cada mes</li>
+        <li>Todas las clases quedan grabadas</li>
+        <li>No necesitas saber de historia</li>
+      </ul>
+      <p class="ancla">A las empresas les cobro desde 1.500 USD por una sola conferencia.</p>
+      <a class="cta" data-cta href="#">Quiero entrar</a>
+    </div>
+    <div class="cupo">
+      <b>Cupo fundador abierto.</b> Se cierra el 29 de octubre o al llegar a cien personas, y no se vuelve a abrir.<span id="faltan"></span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Preguntas</p>
+    <h2>Lo que te puedes estar preguntando.</h2>
+    <details><summary>No sé nada de historia. ¿Me voy a perder?</summary>
+      <p>No. Está pensado justo para quien se aburría en la escuela. No hay examen y aquí nadie queda mal.</p></details>
+    <details><summary>¿Y si no tengo tiempo?</summary>
+      <p>Son tres clases al mes. Y si no llegas a una, queda grabada para que la veas cuando puedas.</p></details>
+    <details><summary>¿Dónde son las clases?</summary>
+      <p>En vivo por Zoom. Te llega el enlace antes de cada clase.</p></details>
+    <details><summary>¿Por qué mujeres del pasado?</summary>
+      <p>Porque lo que vivieron se parece mucho a lo que vivimos hoy: decidir, empezar de nuevo, hablar cuando nadie quiere oír. Y casi nunca nos las contaron.</p></details>
+    <details><summary>¿Tengo otra duda?</summary>
+      <p>Escríbeme por Instagram a <a href="https://www.instagram.com/eunice.historiaviva" target="_blank" rel="noopener">@eunice.historiaviva</a> y te contesto.</p></details>
+  </section>
+
+  <section>
+    <p class="eyebrow">Quién da las clases</p>
+    <div class="yo">
+      <div class="foto" aria-hidden="true"></div>
+      <div>
+        <h2 style="margin-bottom:.5rem">Soy Eunice López.</h2>
+        <p>Cuento la historia de las mujeres que no salen en los libros. He recorrido dieciocho países y pasé más de dieciséis años en empresas, liderando proyectos y armando eventos.</p>
+        <p>Pero créeme por lo que ves en el video, no por mi currículum.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="final">
+    <p>La historia no es el pasado. Es el manual de las decisiones que tomamos hoy.</p>
+    <a class="cta" data-cta href="#">Quiero entrar<small>90 USD al mes</small></a>
+  </div>
+
+  <footer>Historia Viva · Eunice López · <a href="/">eunicelopez.com</a></footer>
+</main>
+
+<div class="fijo" id="fijo"><a class="cta" data-cta href="#">Quiero entrar · 90 USD/mes</a></div>
+
+<script>
+// ENLACE DEL BOTÓN: cuando exista la página de pago de GHL, ponla aquí.
+// Mientras esté vacío, el botón abre un mensaje directo en Instagram.
+var ENLACE_PAGO = "";
+var ENLACE_RESPALDO = "https://ig.me/m/eunice.historiaviva";
+var CIERRE_CUPO = new Date("2026-10-29T23:59:00-05:00");
+
+document.querySelectorAll("[data-cta]").forEach(function(a){
+  a.href = ENLACE_PAGO || ENLACE_RESPALDO;
+  if (!ENLACE_PAGO) { a.target = "_blank"; a.rel = "noopener"; }
+});
+
+(function(){
+  var el = document.getElementById("faltan");
+  var dias = Math.ceil((CIERRE_CUPO - new Date()) / 86400000);
+  if (dias > 1) el.textContent = " Quedan " + dias + " días.";
+  else if (dias === 1) el.textContent = " Queda un día.";
+  else { el.parentNode.innerHTML = "<b>El cupo fundador ya cerró.</b>"; }
+})();
+
+(function(){
+  var fijo = document.getElementById("fijo"), video = document.getElementById("video");
+  function mirar(){ fijo.classList.toggle("ver", video.getBoundingClientRect().bottom < 0); }
+  addEventListener("scroll", mirar, {passive:true}); mirar();
+})();
+</script>
+</body>
+</html>
