@@ -53,15 +53,24 @@
         <section class="tarjeta" aria-labelledby="t-canal">
           <h2 id="t-canal"><span class="paso">2</span> Canal y pieza</h2>
 
-          <div class="dos">
-            <div class="campo">
-              <label for="plataforma">Plataforma</label>
-              <select id="plataforma" name="plataforma"></select>
+          <div class="campo">
+            <span class="etiqueta" id="ubic-etiqueta">Dónde lo vas a usar <span class="obligatorio">elige una o varias</span></span>
+            <button type="button" class="multi-boton" id="ubic-boton" aria-expanded="false" aria-controls="ubic-panel" aria-labelledby="ubic-etiqueta ubic-boton-texto" aria-describedby="ubic-error">
+              <span id="ubic-boton-texto">Elegir plataformas y ubicaciones</span><span class="flecha" aria-hidden="true">▾</span>
+            </button>
+            <div class="multi-panel" id="ubic-panel" hidden>
+              <div class="campo campo--buscar">
+                <label for="ubic-buscar">Buscar ubicación</label>
+                <input id="ubic-buscar" type="search" spellcheck="false" placeholder="story, bio, anuncio, grupo…" autocomplete="off">
+              </div>
+              <div id="ubic-grupos"></div>
+              <div class="multi-pie">
+                <button type="button" class="boton boton--texto" id="ubic-limpiar">Quitar todas</button>
+                <button type="button" class="boton boton--principal boton--chico" id="ubic-listo">Listo</button>
+              </div>
             </div>
-            <div class="campo">
-              <label for="ubicacion">Ubicación</label>
-              <select id="ubicacion" name="ubicacion"></select>
-            </div>
+            <p class="error" id="ubic-error" hidden></p>
+            <ul class="chips" id="ubic-chips" aria-label="Ubicaciones elegidas"></ul>
           </div>
 
           <div class="condiciones" id="condiciones" aria-live="polite"></div>
@@ -96,33 +105,8 @@
         <section class="tarjeta" aria-labelledby="t-parametros">
           <h2 id="t-parametros"><span class="paso">3</span> Parámetros</h2>
 
-          <div class="dos">
-            <div class="campo">
-              <label for="source">Fuente · utm_source <span class="obligatorio">obligatorio</span></label>
-              <div class="con-boton">
-                <input id="source" name="source" type="text" data-utm spellcheck="false" readonly required aria-describedby="source-ayuda source-error">
-                <button type="button" class="boton boton--secundario boton--chico" id="editar-source" aria-controls="source">Editar</button>
-              </div>
-              <p class="ayuda" id="source-ayuda">Identifica la plataforma o el remitente.</p>
-              <p class="error" id="source-error" hidden></p>
-            </div>
-            <div class="campo">
-              <label for="medium">Medio · utm_medium <span class="obligatorio">obligatorio</span></label>
-              <div class="con-boton">
-                <input id="medium" name="medium" type="text" data-utm spellcheck="false" readonly required aria-describedby="medium-ayuda medium-error">
-                <button type="button" class="boton boton--secundario boton--chico" id="editar-medium" aria-controls="medium">Editar</button>
-              </div>
-              <p class="ayuda" id="medium-ayuda">El tipo de tráfico.</p>
-              <p class="error" id="medium-error" hidden></p>
-            </div>
-          </div>
-
-          <div class="campo">
-            <label for="content">Contenido · utm_content</label>
-            <input id="content" name="content" type="text" data-utm spellcheck="false" aria-describedby="content-ayuda content-error">
-            <p class="ayuda" id="content-ayuda">Se arma con la ubicación y la pieza. Puedes editarlo; si lo dejas vacío, se quita del enlace.</p>
-            <p class="error" id="content-error" hidden></p>
-          </div>
+          <p class="ayuda">Fuente y medio salen de cada ubicación; el contenido se arma con la ubicación y la pieza. Todo se puede editar. Si dejas vacío un contenido, se quita de ese enlace.</p>
+          <div id="filas" class="filas"></div>
 
           <details class="avanzado" id="avanzado">
             <summary>Opciones avanzadas</summary>
@@ -138,12 +122,12 @@
 
           <div class="casilla casilla--aviso" id="confirmar-campo" hidden>
             <input id="confirmar" type="checkbox">
-            <label for="confirmar">Revisé la condición de esta ubicación y está disponible en mi cuenta.</label>
+            <label for="confirmar">Revisé las condiciones de las ubicaciones marcadas como «Condicionado» o «Ruta indirecta» y están disponibles en mi cuenta.</label>
           </div>
 
           <div class="resumen-errores" id="errores" role="alert" tabindex="-1" hidden></div>
 
-          <button type="submit" class="boton boton--principal boton--ancho" id="generar">Generar enlace</button>
+          <button type="submit" class="boton boton--principal boton--ancho" id="generar">Generar enlaces</button>
         </section>
       </form>
 
@@ -158,12 +142,14 @@
         </section>
 
         <section class="tarjeta tarjeta--resultado" aria-labelledby="t-resultado">
-          <h2 id="t-resultado">Enlace</h2>
-          <label for="resultado" class="solo-lectores">Enlace generado</label>
-          <textarea id="resultado" rows="4" readonly spellcheck="false" placeholder="Completa el formulario y pulsa «Generar enlace»."></textarea>
+          <h2 id="t-resultado">Enlaces</h2>
+          <p class="vacio" id="resultados-vacio">Completa el formulario y pulsa «Generar enlaces».</p>
+          <ol class="resultados" id="resultados"></ol>
+          <label for="resultado" class="solo-lectores">Todos los enlaces, uno por línea</label>
+          <textarea id="resultado" rows="4" readonly spellcheck="false" hidden></textarea>
           <div class="acciones">
-            <button type="button" class="boton boton--principal" id="copiar" disabled>Copiar</button>
-            <button type="button" class="boton boton--secundario" id="guardar" disabled>Guardar</button>
+            <button type="button" class="boton boton--principal" id="copiar" disabled>Copiar todos</button>
+            <button type="button" class="boton boton--secundario" id="guardar" disabled>Guardar todos</button>
           </div>
           <p class="estado" id="estado" role="status" aria-live="polite"></p>
           <ul class="avisos" id="avisos"></ul>
@@ -194,7 +180,7 @@
       <details class="avanzado" id="plantilla-detalles">
         <summary>Añadir una plantilla</summary>
         <form id="plantilla-form" novalidate>
-          <button type="button" class="boton boton--texto" id="tpl-desde-actual">Partir de la ubicación seleccionada</button>
+          <button type="button" class="boton boton--texto" id="tpl-desde-actual">Partir de la primera ubicación elegida</button>
           <div class="dos">
             <div class="campo">
               <label for="tpl-grupo">Plataforma</label>

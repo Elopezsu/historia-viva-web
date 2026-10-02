@@ -106,6 +106,17 @@
     return [contentBase(preset), normalizeUtm(piece), normalizeUtm(ctaSuffix)].filter(Boolean).join('_');
   }
 
+  // Bio y perfil son enlaces compartidos: conservan su número, no el de la pieza.
+  function keepsOwnNumber(preset) {
+    return usesSharedLink(preset) || preset.placement === 'bio' || preset.placement === 'perfil';
+  }
+
+  function contentFor(preset, piece, ctaSuffix) {
+    return keepsOwnNumber(preset)
+      ? composeContent(preset, defaultPiece(preset), '')
+      : composeContent(preset, piece, ctaSuffix);
+  }
+
   function buildCatalog(base, custom) {
     const groups = base.groups.map(function (g) { return Object.assign({}, g, { presets: g.presets.slice() }); });
     (custom || []).forEach(function (p) {
@@ -161,7 +172,7 @@
     UTM_KEYS: UTM_KEYS, normalizeUtm: normalizeUtm, personalDataIn: personalDataIn, parseDestination: parseDestination,
     buildUrl: buildUrl, isChatHost: isChatHost, contentBase: contentBase, defaultPiece: defaultPiece,
     usesSharedLink: usesSharedLink, composeContent: composeContent, buildCatalog: buildCatalog,
-    contextNotes: contextNotes, toCsv: toCsv
+    contextNotes: contextNotes, toCsv: toCsv, keepsOwnNumber: keepsOwnNumber, contentFor: contentFor
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = logic;
   global.EnlaceUTM = logic;
@@ -217,19 +228,15 @@
   let customPresets = store.get(KEYS.plantillas, []);
   let groups = buildCatalog(BASE, customPresets);
   let history = store.get(KEYS.historial, []);
-  let result = null; // { url, data } del último enlace generado y vigente
+  let selected = [];   // ids de las ubicaciones elegidas, en el orden del catálogo
+  let rows = {};       // id → { source, medium, content, editable }
+  let results = null;  // enlaces generados y vigentes
 
-  const FIELD_IDS = { utm_source: 'source', utm_medium: 'medium', utm_campaign: 'campana', utm_content: 'content', utm_term: 'term' };
-
-  function currentGroup() { return groups.find(function (g) { return g.name === $('plataforma').value; }) || groups[0]; }
-  function currentPreset() {
-    const g = currentGroup();
-    return g.presets.find(function (p) { return p.id === $('ubicacion').value; }) || g.presets[0];
-  }
   function findPreset(id) {
     for (const g of groups) { const p = g.presets.find(function (x) { return x.id === id; }); if (p) return { group: g, preset: p }; }
     return null;
   }
+  function presetLabel(f) { return f.group.name + ' · ' + f.preset.label; }
   function ctaById(id) { return BASE.ctas.find(function (c) { return c.id === id; }); }
   function ctaId() {
     const v = $('cta').value;
@@ -241,104 +248,228 @@
     if (v === 'otro') return $('cta-otro').value.trim() ? 'Otro CTA: ' + $('cta-otro').value.trim() : 'Otro CTA';
     return ctaById(v).label;
   }
+  function slug(id) { return id.replace(/[^a-zA-Z0-9_-]/g, '_'); }
 
-  function fillGroups(selectName) {
-    const sel = $('plataforma');
-    sel.textContent = '';
-    groups.forEach(function (g) {
-      sel.appendChild(el('option', { value: g.name, text: g.name + ' (' + g.presets.length + ')' }));
+  /* --- Selector múltiple --- */
+
+  function catalogOrder(ids) {
+    const order = [];
+    groups.forEach(function (g) { g.presets.forEach(function (p) { if (ids.indexOf(p.id) !== -1) order.push(p.id); }); });
+    return order;
+  }
+
+  function setSelection(ids) {
+    const next = catalogOrder(ids);
+    next.forEach(function (id) {
+      if (!rows[id]) {
+        const p = findPreset(id).preset;
+        rows[id] = { source: p.utm_source, medium: p.utm_medium, content: '', editable: p.placement === 'personalizado' || !!p.custom };
+      }
     });
-    sel.value = selectName && groups.some(function (g) { return g.name === selectName; }) ? selectName : groups[0].name;
-
-    const tpl = $('tpl-grupo');
-    const prev = tpl.value;
-    tpl.textContent = '';
-    groups.forEach(function (g) { tpl.appendChild(el('option', { value: g.name, text: g.name })); });
-    tpl.appendChild(el('option', { value: '__nuevo', text: '＋ Nuevo canal…' }));
-    if (prev) tpl.value = prev;
-    if (!tpl.value) tpl.value = groups[0].name;
-  }
-
-  function fillPresets(selectId) {
-    const g = currentGroup();
-    const sel = $('ubicacion');
-    sel.textContent = '';
-    g.presets.forEach(function (p) {
-      sel.appendChild(el('option', { value: p.id, text: p.label + (p.custom ? ' · propia' : '') + ' — ' + p.access }));
-    });
-    sel.value = selectId && g.presets.some(function (p) { return p.id === selectId; }) ? selectId : g.presets[0].id;
-  }
-
-  function setLocked(field, locked) {
-    const input = $(field);
-    const button = $('editar-' + field);
-    input.readOnly = locked;
-    button.textContent = locked ? 'Editar' : 'Usar plantilla';
-    button.setAttribute('aria-label', locked ? 'Editar ' + (field === 'source' ? 'la fuente' : 'el medio') : 'Volver al valor de la plantilla');
-  }
-
-  // Cambio de plantilla: fuente, medio, pieza y contenido vuelven a los valores de la ubicación.
-  function applyPreset() {
-    const p = currentPreset();
-    $('source').value = p.utm_source;
-    $('medium').value = p.utm_medium;
-    const editable = p.placement === 'personalizado' || p.custom;
-    setLocked('source', !editable);
-    setLocked('medium', !editable);
-    $('pieza').value = defaultPiece(p);
+    Object.keys(rows).forEach(function (id) { if (next.indexOf(id) === -1) delete rows[id]; });
+    selected = next;
+    recomputeContents();
     $('confirmar').checked = false;
-    updatePieceLabel(p);
-    recomputeContent();
+    syncSelectionUI();
+    renderRows();
     renderConditions();
+    refresh();
   }
 
-  function updatePieceLabel(p) {
-    const shared = usesSharedLink(p);
-    $('pieza-label').textContent = shared ? 'Pieza · número del enlace compartido' : 'Pieza';
-    $('pieza-ayuda').textContent = shared
-      ? 'Esta ruta reutiliza ' + contentBase(p) + '_' + defaultPiece(p) + '. Cambia el número solo si tienes varios enlaces de bio o perfil.'
-      : 'Número o nombre corto de la pieza: 01, 02, lanzamiento…';
+  function toggle(id, on) {
+    const ids = selected.filter(function (x) { return x !== id; });
+    if (on) ids.push(id);
+    setSelection(ids);
   }
 
-  function recomputeContent() {
+  function renderPicker() {
+    const box = $('ubic-grupos');
+    const q = normalizeUtm($('ubic-buscar').value).replace(/_/g, ' ');
+    box.textContent = '';
+    let shown = 0;
+    groups.forEach(function (g, gi) {
+      const matches = g.presets.filter(function (p) {
+        if (!q) return true;
+        const hay = normalizeUtm(g.name + ' ' + p.label + ' ' + p.placement).replace(/_/g, ' ');
+        return q.split(' ').every(function (w) { return hay.indexOf(w) !== -1; });
+      });
+      if (!matches.length) return;
+      shown += matches.length;
+      const chosen = g.presets.filter(function (p) { return selected.indexOf(p.id) !== -1; }).length;
+      const details = el('details', { class: 'grupo-ubic', 'data-grupo': g.name });
+      if (q || chosen) details.open = true;
+      details.appendChild(el('summary', {}, el('span', { text: g.name }),
+        el('span', { class: 'cuenta', text: chosen ? chosen + ' de ' + g.presets.length : String(g.presets.length) })));
+      const list = el('ul');
+      if (!q) {
+        const allId = 'todas-' + gi;
+        const all = el('input', { type: 'checkbox', id: allId });
+        all.checked = chosen === g.presets.length;
+        all.indeterminate = chosen > 0 && chosen < g.presets.length;
+        all.addEventListener('change', function () {
+          const others = selected.filter(function (id) { return !g.presets.some(function (p) { return p.id === id; }); });
+          setSelection(all.checked ? others.concat(g.presets.map(function (p) { return p.id; })) : others);
+          focusAfterRender(allId);
+        });
+        list.appendChild(el('li', { class: 'opcion opcion--todas' }, all, el('label', { for: allId, text: 'Todas las de ' + g.name })));
+      }
+      matches.forEach(function (p) {
+        const id = 'op-' + slug(p.id);
+        const check = el('input', { type: 'checkbox', id: id, value: p.id });
+        check.checked = selected.indexOf(p.id) !== -1;
+        check.addEventListener('change', function () { toggle(p.id, check.checked); focusAfterRender(id); });
+        const label = el('label', { for: id }, p.label + (p.custom ? ' · propia' : ''));
+        label.appendChild(badge(p.access, false));
+        list.appendChild(el('li', { class: 'opcion' }, check, label));
+      });
+      details.appendChild(list);
+      box.appendChild(details);
+    });
+    if (!shown) box.appendChild(el('p', { class: 'sin-resultados', text: 'Ninguna ubicación coincide con la búsqueda.' }));
+  }
+
+  // Al volver a pintar el panel se pierde el foco: lo devolvemos a la misma casilla.
+  function focusAfterRender(id) {
+    const node = $(id);
+    if (node) node.focus();
+  }
+
+  function syncSelectionUI() {
+    const n = selected.length;
+    $('ubic-boton-texto').textContent = n === 0 ? 'Elegir plataformas y ubicaciones'
+      : n === 1 ? presetLabel(findPreset(selected[0]))
+      : n + ' ubicaciones elegidas';
+    if (n) { $('ubic-boton').removeAttribute('aria-invalid'); $('ubic-error').hidden = true; }
+    if (!$('ubic-panel').hidden) {
+      const scroll = $('ubic-grupos').scrollTop;
+      renderPicker();
+      $('ubic-grupos').scrollTop = scroll;
+    }
+    const chips = $('ubic-chips');
+    chips.textContent = '';
+    selected.forEach(function (id) {
+      const f = findPreset(id);
+      const remove = el('button', { type: 'button', 'aria-label': 'Quitar ' + presetLabel(f), text: '×' });
+      remove.addEventListener('click', function () {
+        const i = selected.indexOf(id);
+        toggle(id, false);
+        const left = $('ubic-chips').querySelectorAll('button');
+        (left[Math.min(i, left.length - 1)] || $('ubic-boton')).focus();
+      });
+      chips.appendChild(el('li', {}, el('span', { text: presetLabel(f) }), remove));
+    });
+  }
+
+  function openPicker(open) {
+    $('ubic-panel').hidden = !open;
+    $('ubic-boton').setAttribute('aria-expanded', String(open));
+    if (open) { renderPicker(); $('ubic-buscar').focus(); }
+  }
+
+  /* --- Filas de parámetros, una por ubicación --- */
+
+  function recomputeContents() {
     const suffix = $('cta-sufijo').checked ? ctaId() : '';
-    $('content').value = composeContent(currentPreset(), $('pieza').value, suffix);
+    selected.forEach(function (id) { rows[id].content = contentFor(findPreset(id).preset, $('pieza').value, suffix); });
+  }
+
+  function renderRows() {
+    const box = $('filas');
+    box.textContent = '';
+    if (!selected.length) {
+      box.appendChild(el('p', { class: 'vacio', text: 'Elige al menos una ubicación en el paso 2.' }));
+      return;
+    }
+    selected.forEach(function (id) {
+      const f = findPreset(id);
+      const r = rows[id];
+      const s = slug(id);
+      const input = function (key, label, required) {
+        const inputId = key + '-' + s;
+        const node = el('input', { id: inputId, type: 'text', spellcheck: 'false', 'data-utm': '', 'data-fila': id, 'data-clave': key, 'aria-describedby': inputId + '-error' });
+        node.value = r[key];
+        if (key !== 'content' && !r.editable) node.readOnly = true;
+        node.addEventListener('input', function () { r[key] = node.value; if (key === 'medium') renderConditions(); refresh(); });
+        node.addEventListener('blur', function () {
+          if (personalDataIn(node.value)) return;
+          const v = normalizeUtm(node.value);
+          if (v !== node.value) { node.value = v; r[key] = v; renderPreview(); }
+        });
+        return el('div', { class: 'campo' },
+          el('label', { for: inputId }, label, required ? el('span', { class: 'obligatorio', text: 'obligatorio' }) : null),
+          node,
+          el('p', { class: 'error', id: inputId + '-error', hidden: '' }));
+      };
+      const edit = el('button', { type: 'button', class: 'boton boton--secundario boton--chico', text: r.editable ? 'Usar plantilla' : 'Editar fuente y medio' });
+      edit.addEventListener('click', function () {
+        if (r.editable) { r.source = f.preset.utm_source; r.medium = f.preset.utm_medium; }
+        r.editable = !r.editable;
+        renderRows();
+        renderConditions();
+        refresh();
+        const target = $((r.editable ? 'source-' : 'edit-') + s);
+        if (target) target.focus();
+      });
+      edit.id = 'edit-' + s;
+      box.appendChild(el('fieldset', { class: 'fila' },
+        el('legend', { text: presetLabel(f) }),
+        el('div', { class: 'tres' }, input('source', 'utm_source', true), input('medium', 'utm_medium', true), input('content', 'utm_content', false)),
+        el('div', { class: 'fila-acciones' }, edit)));
+    });
   }
 
   function renderConditions() {
-    const p = currentPreset();
-    const g = currentGroup();
     const box = $('condiciones');
     box.textContent = '';
-    const title = el('p', { class: 'condiciones-titulo' });
-    title.appendChild(badge(p.access, p.custom));
-    title.appendChild(el('strong', { text: p.label }));
-    box.appendChild(title);
-    if (p.detail) box.appendChild(el('p', { text: p.detail }));
-    if (g.note) box.appendChild(el('p', { class: 'grupo-nota', text: g.name + ': ' + g.note }));
-    contextNotes(p, normalizeUtm($('medium').value), $('cta').value).forEach(function (n) {
-      box.appendChild(el('p', { class: 'alerta', text: n }));
+    box.hidden = !selected.length;
+    if (!selected.length) { $('confirmar-campo').hidden = true; return; }
+    const list = el('ul');
+    const notes = [];
+    const groupNotes = [];
+    selected.forEach(function (id) {
+      const f = findPreset(id);
+      const p = f.preset;
+      const title = el('p', { class: 'condiciones-titulo' });
+      title.appendChild(badge(p.access, p.custom));
+      title.appendChild(el('strong', { text: presetLabel(f) }));
+      list.appendChild(el('li', {}, title, p.detail ? el('p', { text: p.detail }) : null));
+      if (f.group.note && groupNotes.indexOf(f.group) === -1) groupNotes.push(f.group);
+      contextNotes(p, normalizeUtm(rows[id].medium), $('cta').value).forEach(function (n) {
+        const text = usesSharedLink(p) ? presetLabel(f) + ': ' + n : n;
+        if (notes.indexOf(text) === -1) notes.push(text);
+      });
     });
-    $('confirmar-campo').hidden = p.access === 'Enlace web';
-  }
-
-  function utmValues() {
-    const out = {};
-    UTM_KEYS.forEach(function (k) { out[k] = normalizeUtm($(FIELD_IDS[k]).value); });
-    return out;
+    if (selected.length > 4) {
+      const count = function (a) { return selected.filter(function (id) { return findPreset(id).preset.access === a; }).length; };
+      const parts = [['Enlace web', 'con enlace web'], ['Condicionado', 'condicionadas'], ['Ruta indirecta', 'de ruta indirecta']]
+        .map(function (a) { const n = count(a[0]); return n ? n + ' ' + a[1] : ''; }).filter(Boolean);
+      box.appendChild(el('details', {}, el('summary', { text: 'Condiciones de las ' + selected.length + ' ubicaciones: ' + parts.join(', ') }), list));
+    } else {
+      box.appendChild(list);
+    }
+    groupNotes.forEach(function (g) { box.appendChild(el('p', { class: 'grupo-nota', text: g.name + ': ' + g.note })); });
+    notes.forEach(function (n) { box.appendChild(el('p', { class: 'alerta', text: n })); });
+    $('confirmar-campo').hidden = selected.every(function (id) { return findPreset(id).preset.access === 'Enlace web'; });
   }
 
   function renderPreview() {
-    const values = utmValues();
     const body = $('vista-previa');
     body.textContent = '';
-    UTM_KEYS.forEach(function (k) {
-      const required = k === 'utm_source' || k === 'utm_medium' || k === 'utm_campaign';
-      let cell;
-      if (values[k]) cell = el('td', {}, el('code', { text: values[k] }));
-      else if (required) cell = el('td', { class: 'falta', text: 'Falta (obligatorio)' });
-      else cell = el('td', { class: 'vacio-valor', text: 'Vacío: no se añade' });
-      body.appendChild(el('tr', {}, el('th', { scope: 'row' }, el('code', { text: k })), cell));
+    const camp = normalizeUtm($('campana').value);
+    const term = normalizeUtm($('term').value);
+    const row = function (k, v, cls) { body.appendChild(el('tr', cls ? { class: cls } : {}, el('th', { scope: 'row' }, el('code', { text: k })), v)); };
+    row('utm_campaign', camp ? el('td', {}, el('code', { text: camp })) : el('td', { class: 'falta', text: 'Falta (obligatorio)' }));
+    row('utm_term', term ? el('td', {}, el('code', { text: term })) : el('td', { class: 'vacio-valor', text: 'Vacío: no se añade' }));
+    if (!selected.length) {
+      body.appendChild(el('tr', {}, el('th', { scope: 'row', text: 'Ubicaciones' }), el('td', { class: 'falta', text: 'Elige al menos una' })));
+    }
+    selected.forEach(function (id) {
+      const f = findPreset(id);
+      const r = rows[id];
+      const vals = [normalizeUtm(r.source) || '—', normalizeUtm(r.medium) || '—', normalizeUtm(r.content) || '(sin content)'];
+      body.appendChild(el('tr', {},
+        el('th', { scope: 'row', text: f.preset.label }),
+        el('td', {}, el('code', { text: vals.join(' · ') }))));
     });
     body.appendChild(el('tr', { class: 'meta' },
       el('th', { scope: 'row', text: 'Acción del CTA' }),
@@ -351,11 +482,15 @@
   }
 
   function invalidate() {
-    if (!result) return;
-    result = null;
+    if (!results) return;
+    results = null;
     $('copiar').disabled = true;
     $('guardar').disabled = true;
-    setStatus($('estado'), 'Cambiaste datos: vuelve a generar el enlace.', null);
+    $('resultados').textContent = '';
+    $('resultados-vacio').hidden = false;
+    $('resultados-vacio').textContent = 'Cambiaste datos: vuelve a generar los enlaces.';
+    $('avisos').textContent = '';
+    setStatus($('estado'), '', null);
   }
 
   function refresh() {
@@ -366,12 +501,14 @@
   function showFieldError(id, message) {
     const input = $(id);
     const msg = $(id + '-error');
+    if (!input) return;
     if (message) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
     if (msg) { msg.textContent = message || ''; msg.hidden = !message; }
   }
 
   function clearErrors() {
-    ['url', 'campana', 'source', 'medium', 'content', 'term', 'pieza', 'cta-otro'].forEach(function (id) { showFieldError(id, ''); });
+    document.querySelectorAll('#formulario [aria-invalid]').forEach(function (n) { n.removeAttribute('aria-invalid'); });
+    document.querySelectorAll('#formulario .error').forEach(function (n) { n.hidden = true; n.textContent = ''; });
     $('errores').hidden = true;
     $('errores').textContent = '';
   }
@@ -398,27 +535,56 @@
     const dest = parseDestination($('url').value);
     if (dest.error) add('url', dest.error);
 
-    const labels = { campana: 'la campaña', source: 'la fuente', medium: 'el medio', content: 'el contenido', term: 'la palabra clave', pieza: 'la pieza', 'cta-otro': 'el identificador del CTA' };
-    Object.keys(labels).forEach(function (id) {
+    const kindIn = function (id, what) {
       const kind = personalDataIn($(id).value);
-      if (kind) add(id, 'Quita ' + kind + ' de ' + labels[id] + ': las UTMs no llevan datos personales.');
-    });
+      if (kind) add(id, 'Quita ' + kind + ' de ' + what + ': las UTMs no llevan datos personales.');
+      return !!kind;
+    };
+    if (!kindIn('campana', 'la campaña') && !normalizeUtm($('campana').value)) add('campana', 'Escribe el nombre de la campaña.');
+    kindIn('term', 'la palabra clave');
+    kindIn('pieza', 'la pieza');
+    kindIn('cta-otro', 'el identificador del CTA');
 
-    if (!normalizeUtm($('campana').value) && !$('campana').hasAttribute('aria-invalid')) add('campana', 'Escribe el nombre de la campaña.');
-    if (!normalizeUtm($('source').value) && !$('source').hasAttribute('aria-invalid')) add('source', 'La fuente (utm_source) es obligatoria.');
-    if (!normalizeUtm($('medium').value) && !$('medium').hasAttribute('aria-invalid')) add('medium', 'El medio (utm_medium) es obligatorio.');
-
-    const src = normalizeUtm($('source').value);
-    if (src && BASE.ctas.some(function (c) { return c.id === src && c.id !== 'whatsapp'; })) {
-      add('source', '«' + src + '» es una acción del CTA, no una fuente. Usa la plataforma.');
+    if (!selected.length) {
+      errors.push({ id: 'ubic-boton', message: 'Elige al menos una ubicación.' });
+      $('ubic-boton').setAttribute('aria-invalid', 'true');
+      $('ubic-error').textContent = 'Elige al menos una ubicación.';
+      $('ubic-error').hidden = false;
     }
+    selected.forEach(function (id) {
+      const s = slug(id);
+      const label = findPreset(id).preset.label;
+      const r = rows[id];
+      [['source', 'la fuente'], ['medium', 'el medio'], ['content', 'el contenido']].forEach(function (pair) {
+        const kind = personalDataIn(r[pair[0]]);
+        if (kind) add(pair[0] + '-' + s, label + ': quita ' + kind + ' de ' + pair[1] + '.');
+        else if (pair[0] !== 'content' && !normalizeUtm(r[pair[0]])) add(pair[0] + '-' + s, label + ': ' + pair[1] + ' es obligatorio.');
+      });
+      const src = normalizeUtm(r.source);
+      if (src && BASE.ctas.some(function (c) { return c.id === src && c.id !== 'whatsapp'; })) {
+        add('source-' + s, label + ': «' + src + '» es una acción del CTA, no una fuente. Usa la plataforma.');
+      }
+    });
     if ($('cta').value === 'otro' && $('cta-sufijo').checked && !normalizeUtm($('cta-otro').value)) {
       add('cta-otro', 'Escribe el identificador del CTA o desmarca «Añadir el CTA».');
     }
     if (!$('confirmar-campo').hidden && !$('confirmar').checked) {
-      errors.push({ id: 'confirmar', message: 'Confirma que revisaste la condición de esta ubicación.' });
+      errors.push({ id: 'confirmar', message: 'Confirma que revisaste las condiciones de las ubicaciones elegidas.' });
     }
     return errors;
+  }
+
+  function normalizeAllUtmFields() {
+    ['campana', 'pieza', 'term', 'cta-otro'].forEach(function (id) {
+      const input = $(id);
+      if (!personalDataIn(input.value)) input.value = normalizeUtm(input.value);
+    });
+    selected.forEach(function (id) {
+      ['source', 'medium', 'content'].forEach(function (k) {
+        if (!personalDataIn(rows[id][k])) rows[id][k] = normalizeUtm(rows[id][k]);
+      });
+    });
+    renderRows();
   }
 
   function generate(ev) {
@@ -426,45 +592,67 @@
     normalizeAllUtmFields();
     const errors = validate();
     if (errors.length) {
-      result = null;
-      $('copiar').disabled = true;
-      $('guardar').disabled = true;
+      invalidate();
       showErrorSummary($('errores'), errors);
       return;
     }
-    const utms = utmValues();
-    const built = buildUrl($('url').value, utms);
-    if (built.error) { showErrorSummary($('errores'), [{ id: 'url', message: built.error }]); return; }
+    const camp = normalizeUtm($('campana').value);
+    const term = normalizeUtm($('term').value);
+    const built = selected.map(function (id) {
+      const f = findPreset(id);
+      const r = rows[id];
+      const utms = { utm_source: r.source, utm_medium: r.medium, utm_campaign: camp, utm_content: r.content, utm_term: term };
+      const b = buildUrl($('url').value, utms);
+      return {
+        b: b, f: f,
+        data: {
+          destino: $('url').value.trim(), utm_source: utms.utm_source, utm_medium: utms.utm_medium,
+          utm_campaign: camp, utm_content: utms.utm_content, utm_term: term,
+          plataforma: f.group.name, ubicacion: f.preset.label, presetId: id, pieza: normalizeUtm($('pieza').value),
+          cta: ctaLabel(), ctaValue: $('cta').value, ctaOtro: $('cta-otro').value.trim(),
+          ctaSufijo: $('cta-sufijo').checked, acceso: f.preset.access
+        }
+      };
+    });
+    results = built.map(function (x) { return { url: x.b.url, label: presetLabel(x.f), data: x.data }; });
 
-    const g = currentGroup();
-    const p = currentPreset();
-    result = {
-      url: built.url,
-      data: {
-        destino: $('url').value.trim(), utm_source: utms.utm_source, utm_medium: utms.utm_medium,
-        utm_campaign: utms.utm_campaign, utm_content: utms.utm_content, utm_term: utms.utm_term,
-        plataforma: g.name, ubicacion: p.label, presetId: p.id, pieza: normalizeUtm($('pieza').value),
-        cta: ctaLabel(), ctaValue: $('cta').value, ctaOtro: $('cta-otro').value.trim(),
-        ctaSufijo: $('cta-sufijo').checked, acceso: p.access
-      }
-    };
-    $('resultado').value = built.url;
+    const list = $('resultados');
+    list.textContent = '';
+    results.forEach(function (r, i) {
+      const ta = el('textarea', { readonly: '', rows: '2', spellcheck: 'false', 'aria-label': 'Enlace para ' + r.label });
+      ta.value = r.url;
+      const status = el('p', { class: 'estado', role: 'status' });
+      const copy = el('button', { type: 'button', class: 'boton boton--principal boton--chico', text: 'Copiar', 'aria-label': 'Copiar el enlace de ' + r.label });
+      copy.addEventListener('click', async function () {
+        if (await copyText(r.url, ta)) setStatus(status, 'Copiado.', 'ok');
+        else { selectForManualCopy(ta); setStatus(status, 'No se pudo copiar. El enlace está seleccionado: pulsa Ctrl+C (Cmd+C en Mac).', 'error'); }
+      });
+      const rot = el('p', { class: 'rotulo' });
+      rot.appendChild(el('span', { text: (i + 1) + '. ' + r.label }));
+      rot.appendChild(badge(r.data.acceso, false));
+      list.appendChild(el('li', {}, rot, ta, el('div', { class: 'acciones' }, copy), status));
+    });
+    $('resultado').value = results.map(function (r) { return r.label + ': ' + r.url; }).join('\n');
+    $('resultados-vacio').hidden = true;
     $('copiar').disabled = false;
     $('guardar').disabled = false;
-    setStatus($('estado'), 'Enlace generado.', null);
+    $('copiar').textContent = results.length === 1 ? 'Copiar' : 'Copiar todos';
+    $('guardar').textContent = results.length === 1 ? 'Guardar' : 'Guardar todos';
+    setStatus($('estado'), results.length === 1 ? 'Enlace generado.' : results.length + ' enlaces generados.', null);
 
     const avisos = $('avisos');
     avisos.textContent = '';
-    if (built.replaced.length) avisos.appendChild(el('li', { text: 'Se sustituyeron las UTMs que ya traía la URL: ' + built.replaced.join(', ') + '.' }));
-    if (built.autotags.length) avisos.appendChild(el('li', { text: 'Se conservó el autoetiquetado publicitario (' + built.autotags.join(', ') + '). No lo borres.' }));
-    if (isChatHost(built.hostname)) avisos.appendChild(el('li', { text: 'Este destino abre un chat o una acción nativa: no garantiza que la UTM llegue a tu CRM. Etiqueta, mejor, la URL web que recibe la visita.' }));
-    if (usesSharedLink(p)) avisos.appendChild(el('li', { text: 'Es el enlace compartido de la bio o del perfil: no distingue la pieza previa.' }));
-  }
-
-  function normalizeAllUtmFields() {
-    document.querySelectorAll('#formulario [data-utm]').forEach(function (input) {
-      if (!personalDataIn(input.value)) input.value = normalizeUtm(input.value);
-    });
+    const first = built[0].b;
+    if (first.replaced.length) avisos.appendChild(el('li', { text: 'Se sustituyeron las UTMs que ya traía la URL: ' + first.replaced.join(', ') + '.' }));
+    if (first.autotags.length) avisos.appendChild(el('li', { text: 'Se conservó el autoetiquetado publicitario (' + first.autotags.join(', ') + '). No lo borres.' }));
+    if (isChatHost(first.hostname)) avisos.appendChild(el('li', { text: 'Este destino abre un chat o una acción nativa: no garantiza que la UTM llegue a tu CRM. Etiqueta, mejor, la URL web que recibe la visita.' }));
+    const shared = built.filter(function (x) { return usesSharedLink(x.f.preset); }).map(function (x) { return x.f.preset.label; });
+    if (shared.length) avisos.appendChild(el('li', { text: 'Usan el enlace compartido de la bio o del perfil y no distinguen la pieza previa: ' + shared.join('; ') + '.' }));
+    const dupes = {};
+    results.forEach(function (r) { dupes[r.url] = (dupes[r.url] || 0) + 1; });
+    if (Object.keys(dupes).some(function (u) { return dupes[u] > 1; })) {
+      avisos.appendChild(el('li', { text: 'Algunas ubicaciones dan el mismo enlace (por ejemplo, rutas que reutilizan la bio). En la analítica no se podrán separar.' }));
+    }
   }
 
   async function copyText(text, textarea) {
@@ -472,42 +660,51 @@
       if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(text); return true; }
     } catch (e) { /* se intenta el método clásico */ }
     try {
+      const wasHidden = textarea.hidden;
+      textarea.hidden = false;
       textarea.focus();
       textarea.select();
-      if (document.execCommand && document.execCommand('copy')) return true;
+      const ok = document.execCommand && document.execCommand('copy');
+      textarea.hidden = wasHidden;
+      if (ok) return true;
     } catch (e) { /* sin portapapeles */ }
     return false;
   }
 
   function selectForManualCopy(textarea) {
+    textarea.hidden = false;
     textarea.focus();
     textarea.select();
     textarea.setSelectionRange(0, textarea.value.length);
   }
 
   async function onCopy() {
-    if (!result) return;
-    const ok = await copyText(result.url, $('resultado'));
+    if (!results) return;
+    const text = $('resultado').value;
+    const ok = await copyText(results.length === 1 ? results[0].url : text, $('resultado'));
     if (ok) {
-      setStatus($('estado'), 'Copiado al portapapeles.', 'ok');
+      setStatus($('estado'), results.length === 1 ? 'Copiado al portapapeles.' : 'Copiados los ' + results.length + ' enlaces, uno por línea.', 'ok');
     } else {
       selectForManualCopy($('resultado'));
-      setStatus($('estado'), 'No se pudo copiar automáticamente. El enlace está seleccionado: pulsa Ctrl+C (Cmd+C en Mac).', 'error');
+      setStatus($('estado'), 'No se pudo copiar automáticamente. Los enlaces están seleccionados: pulsa Ctrl+C (Cmd+C en Mac).', 'error');
     }
   }
 
   function onSave() {
-    if (!result) return;
+    if (!results) return;
     const negocio = $('negocio').value.trim();
     if (!negocio) {
-      setStatus($('estado'), 'Escribe el nombre del negocio para guardar el enlace.', 'error');
+      setStatus($('estado'), 'Escribe el nombre del negocio para guardar los enlaces.', 'error');
       $('negocio').setAttribute('aria-invalid', 'true');
       $('negocio').focus();
       return;
     }
     $('negocio').removeAttribute('aria-invalid');
-    const entry = Object.assign({ id: 'h' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), fecha: new Date().toISOString(), negocio: negocio, enlace: result.url }, result.data);
-    const next = [entry].concat(history);
+    const fecha = new Date().toISOString();
+    const entries = results.map(function (r) {
+      return Object.assign({ id: 'h' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), fecha: fecha, negocio: negocio, enlace: r.url }, r.data);
+    });
+    const next = entries.concat(history);
     if (!store.set(KEYS.historial, next)) {
       setStatus($('estado'), 'No se pudo guardar: este navegador no permite almacenamiento local.', 'error');
       return;
@@ -515,7 +712,7 @@
     history = next;
     store.set(KEYS.negocio, negocio);
     renderHistory();
-    setStatus($('estado'), 'Guardado en el historial de este navegador.', 'ok');
+    setStatus($('estado'), entries.length === 1 ? 'Guardado en el historial de este navegador.' : 'Guardados ' + entries.length + ' enlaces en el historial de este navegador.', 'ok');
   }
 
   function formatDate(iso) {
@@ -542,9 +739,10 @@
       const reuse = el('button', { type: 'button', class: 'boton boton--secundario boton--chico', text: 'Reutilizar' });
       const remove = el('button', { type: 'button', class: 'boton boton--secundario boton--chico', text: 'Eliminar' });
       const code = el('code', { text: h.enlace });
-      copy.setAttribute('aria-label', 'Copiar el enlace de ' + h.negocio + ', ' + h.utm_campaign);
-      reuse.setAttribute('aria-label', 'Cargar en el formulario el enlace de ' + h.negocio + ', ' + h.utm_campaign);
-      remove.setAttribute('aria-label', 'Eliminar del historial el enlace de ' + h.negocio + ', ' + h.utm_campaign);
+      const who = h.negocio + ', ' + h.utm_campaign + ', ' + (h.ubicacion || '');
+      copy.setAttribute('aria-label', 'Copiar el enlace de ' + who);
+      reuse.setAttribute('aria-label', 'Cargar en el formulario el enlace de ' + who);
+      remove.setAttribute('aria-label', 'Eliminar del historial el enlace de ' + who);
 
       copy.addEventListener('click', async function () {
         const ta = el('textarea', { class: 'solo-lectores', readonly: '' });
@@ -583,28 +781,27 @@
     $('negocio').value = h.negocio || '';
     $('url').value = h.destino || '';
     $('campana').value = h.utm_campaign || '';
-    const found = findPreset(h.presetId);
-    if (found) {
-      $('plataforma').value = found.group.name;
-      fillPresets(found.preset.id);
-      applyPreset();
-    }
     $('cta').value = h.ctaValue || '';
     $('cta-otro').value = h.ctaOtro || '';
     syncCta();
     $('cta-sufijo').checked = !!h.ctaSufijo && !$('cta-sufijo').disabled;
     $('pieza').value = h.pieza || '';
-    ['source', 'medium'].forEach(function (f) {
-      const v = h['utm_' + f] || '';
-      if ($(f).value !== v) { $(f).value = v; setLocked(f, false); }
-    });
-    $('content').value = h.utm_content || '';
     $('term').value = h.utm_term || '';
     if (h.utm_term) $('avanzado').open = true;
-    renderConditions();
+    setSelection(findPreset(h.presetId) ? [h.presetId] : []);
+    if (selected.length) {
+      const r = rows[h.presetId];
+      const p = findPreset(h.presetId).preset;
+      r.source = h.utm_source || '';
+      r.medium = h.utm_medium || '';
+      r.content = h.utm_content || '';
+      r.editable = r.source !== p.utm_source || r.medium !== p.utm_medium || r.editable;
+      renderRows();
+      renderConditions();
+    }
     clearErrors();
     refresh();
-    setStatus($('estado'), 'Cargado desde el historial. Cambia lo que necesites y genera de nuevo.', null);
+    setStatus($('estado'), 'Cargado desde el historial. Añade más ubicaciones o cambia lo que necesites y genera de nuevo.', null);
     $('formulario').scrollIntoView({ behavior: 'smooth', block: 'start' });
     $('url').focus({ preventScroll: true });
   }
@@ -637,6 +834,15 @@
 
   /* ---------- Plantillas propias ---------- */
 
+  function fillTemplateGroups() {
+    const tpl = $('tpl-grupo');
+    const prev = tpl.value;
+    tpl.textContent = '';
+    groups.forEach(function (g) { tpl.appendChild(el('option', { value: g.name, text: g.name })); });
+    tpl.appendChild(el('option', { value: '__nuevo', text: '＋ Nuevo canal…' }));
+    tpl.value = prev && (prev === '__nuevo' || groups.some(function (g) { return g.name === prev; })) ? prev : groups[0].name;
+  }
+
   function renderTemplates() {
     const list = $('plantillas');
     list.textContent = '';
@@ -654,28 +860,29 @@
     });
   }
 
-  function rebuildCatalog(selectGroup, selectPreset) {
-    const keepGroup = selectGroup || $('plataforma').value;
-    const keepPreset = selectPreset || $('ubicacion').value;
+  function rebuildCatalog(addId) {
     groups = buildCatalog(BASE, customPresets);
-    fillGroups(keepGroup);
-    fillPresets(keepPreset);
-    applyPreset();
+    fillTemplateGroups();
     renderTemplates();
-    refresh();
+    setSelection(selected.filter(function (id) { return findPreset(id); }).concat(addId ? [addId] : []));
   }
 
   function templateFromCurrent() {
-    const g = currentGroup();
-    const p = currentPreset();
-    $('tpl-grupo').value = g.name;
+    if (!selected.length) {
+      showErrorSummary($('tpl-errores'), [{ id: 'ubic-boton', message: 'Elige primero una ubicación en el paso 2.' }]);
+      return;
+    }
+    const f = findPreset(selected[0]);
+    const r = rows[selected[0]];
+    $('tpl-grupo').value = f.group.name;
     $('tpl-nuevo-campo').hidden = true;
-    $('tpl-nombre').value = p.label + ' (variante)';
-    $('tpl-ubicacion').value = contentBase(p);
-    $('tpl-source').value = normalizeUtm($('source').value) || p.utm_source;
-    $('tpl-medium').value = normalizeUtm($('medium').value) || p.utm_medium;
-    $('tpl-acceso').value = p.access;
-    $('tpl-detalle').value = p.detail || '';
+    $('tpl-nombre').value = f.preset.label + ' (variante)';
+    $('tpl-ubicacion').value = contentBase(f.preset);
+    $('tpl-source').value = normalizeUtm(r.source) || f.preset.utm_source;
+    $('tpl-medium').value = normalizeUtm(r.medium) || f.preset.utm_medium;
+    $('tpl-acceso').value = f.preset.access;
+    $('tpl-detalle').value = f.preset.detail || '';
+    $('tpl-errores').hidden = true;
     $('tpl-nombre').focus();
   }
 
@@ -709,9 +916,9 @@
     customPresets = next;
     $('plantilla-form').reset();
     $('tpl-nuevo-campo').hidden = true;
-    rebuildCatalog(group, preset.id);
-    setStatus($('estado'), 'Plantilla «' + label + '» guardada y seleccionada.', 'ok');
-    $('plataforma').focus();
+    rebuildCatalog(preset.id);
+    setStatus($('estado'), 'Plantilla «' + label + '» guardada y añadida a las ubicaciones elegidas.', 'ok');
+    $('ubic-boton').focus();
   }
 
   /* ---------- Arranque ---------- */
@@ -728,41 +935,45 @@
       $('fuentes').appendChild(el('li', {}, el('a', { href: s.url, target: '_blank', rel: 'noopener noreferrer', text: s.title })));
     });
 
-    fillGroups();
-    fillPresets();
-    applyPreset();
+    fillTemplateGroups();
     $('negocio').value = store.get(KEYS.negocio, '') || '';
+    $('pieza').value = '01';
+    setSelection([]);
     renderTemplates();
     renderHistory();
-    renderPreview();
 
     if (!store.ok) {
       $('almacenamiento').textContent = 'Este navegador no permite guardar datos (por ejemplo, en una ventana privada). Puedes generar y copiar enlaces, pero el historial no se conservará al recargar.';
     }
 
-    $('plataforma').addEventListener('change', function () { fillPresets(); applyPreset(); refresh(); });
-    $('ubicacion').addEventListener('change', function () { applyPreset(); refresh(); });
-    $('pieza').addEventListener('input', function () { recomputeContent(); refresh(); });
-    $('cta').addEventListener('change', function () { syncCta(); recomputeContent(); renderConditions(); refresh(); });
-    $('cta-otro').addEventListener('input', function () { recomputeContent(); refresh(); });
-    $('cta-sufijo').addEventListener('change', function () { recomputeContent(); refresh(); });
-    $('medium').addEventListener('input', renderConditions);
-    ['url', 'campana', 'source', 'medium', 'content', 'term', 'confirmar'].forEach(function (id) {
+    $('ubic-boton').addEventListener('click', function () { openPicker($('ubic-panel').hidden); });
+    $('ubic-listo').addEventListener('click', function () { openPicker(false); $('ubic-boton').focus(); });
+    $('ubic-limpiar').addEventListener('click', function () { setSelection([]); $('ubic-buscar').focus(); });
+    $('ubic-buscar').addEventListener('input', renderPicker);
+    $('ubic-panel').addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape') { ev.preventDefault(); openPicker(false); $('ubic-boton').focus(); }
+    });
+    document.addEventListener('click', function (ev) {
+      if ($('ubic-panel').hidden) return;
+      // Una casilla recién repintada ya no está en el documento: ese clic fue dentro del panel.
+      if (!document.contains(ev.target)) return;
+      if (!$('ubic-panel').contains(ev.target) && !$('ubic-boton').contains(ev.target)) openPicker(false);
+    });
+
+    $('pieza').addEventListener('input', function () { recomputeContents(); renderRows(); refresh(); });
+    $('cta').addEventListener('change', function () { syncCta(); recomputeContents(); renderRows(); renderConditions(); refresh(); });
+    $('cta-otro').addEventListener('input', function () { recomputeContents(); renderRows(); refresh(); });
+    $('cta-sufijo').addEventListener('change', function () { recomputeContents(); renderRows(); refresh(); });
+    ['url', 'campana', 'term', 'confirmar'].forEach(function (id) {
       $(id).addEventListener('input', refresh);
       $(id).addEventListener('change', refresh);
     });
-    document.querySelectorAll('#formulario [data-utm]').forEach(function (input) {
-      input.addEventListener('blur', function () {
+    ['campana', 'pieza', 'term', 'cta-otro'].forEach(function (id) {
+      $(id).addEventListener('blur', function () {
+        const input = $(id);
         if (personalDataIn(input.value)) return;
         const n = normalizeUtm(input.value);
-        if (n !== input.value) { input.value = n; renderPreview(); }
-      });
-    });
-
-    ['source', 'medium'].forEach(function (f) {
-      $('editar-' + f).addEventListener('click', function () {
-        if ($(f).readOnly) { setLocked(f, false); $(f).focus(); $(f).select(); }
-        else { $(f).value = currentPreset()['utm_' + f]; setLocked(f, true); renderConditions(); refresh(); }
+        if (n !== input.value) { input.value = n; if (id === 'pieza' || id === 'cta-otro') { recomputeContents(); renderRows(); } renderPreview(); }
       });
     });
 
@@ -777,15 +988,11 @@
     $('ejemplo').addEventListener('click', function () {
       $('url').value = 'https://example.com/webinar?idioma=es#registro';
       $('campana').value = 'webinar_octubre';
-      $('plataforma').value = 'Instagram';
-      fillPresets('instagram_story');
-      applyPreset();
+      $('pieza').value = '01';
       $('cta').value = 'registrarse';
       syncCta();
-      recomputeContent();
-      renderConditions();
+      setSelection(['instagram_story']);
       clearErrors();
-      refresh();
       $('url').focus();
     });
 
