@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enlace UTM</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Genera enlaces etiquetados y reutilizables para las campañas de tu negocio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="saltar" href="#formulario">Saltar al formulario</a>
+
+  <header class="cabecera">
+    <div class="contenedor">
+      <p class="marca">Enlace UTM <span>para negocios</span></p>
+      <h1>Crea enlaces etiquetados para tus campañas</h1>
+      <p class="nota" role="note"><strong>Nota:</strong> La app crea enlaces. Para medir visitas, registros o ventas hay que configurar la analítica y la captura en el formulario o CRM.</p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <div class="rejilla">
+      <form id="formulario" class="columna" novalidate aria-describedby="ayuda-normalizacion">
+        <section class="tarjeta" aria-labelledby="t-destino">
+          <h2 id="t-destino"><span class="paso">1</span> Destino y campaña</h2>
+
+          <div class="campo">
+            <label for="negocio">Nombre del negocio</label>
+            <input id="negocio" name="negocio" type="text" autocomplete="organization" maxlength="80" aria-describedby="negocio-ayuda">
+            <p class="ayuda" id="negocio-ayuda">Se usa solo para el historial. No entra en el enlace.</p>
+          </div>
+
+          <div class="campo">
+            <label for="url">URL de destino <span class="obligatorio">obligatorio</span></label>
+            <input id="url" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://tusitio.com/webinar" required aria-describedby="url-ayuda url-error">
+            <p class="ayuda" id="url-ayuda">Solo http o https. Se conservan los demás parámetros y el fragmento (#registro).</p>
+            <p class="error" id="url-error" hidden></p>
+          </div>
+
+          <div class="campo">
+            <label for="campana">Campaña · utm_campaign <span class="obligatorio">obligatorio</span></label>
+            <input id="campana" name="campana" type="text" data-utm spellcheck="false" placeholder="webinar_octubre" required aria-describedby="campana-error">
+            <p class="error" id="campana-error" hidden></p>
+          </div>
+
+          <button type="button" class="boton boton--texto" id="ejemplo">Cargar el ejemplo de prueba</button>
+        </section>
+
+        <section class="tarjeta" aria-labelledby="t-canal">
+          <h2 id="t-canal"><span class="paso">2</span> Canal y pieza</h2>
+
+          <div class="dos">
+            <div class="campo">
+              <label for="plataforma">Plataforma</label>
+              <select id="plataforma" name="plataforma"></select>
+            </div>
+            <div class="campo">
+              <label for="ubicacion">Ubicación</label>
+              <select id="ubicacion" name="ubicacion"></select>
+            </div>
+          </div>
+
+          <div class="condiciones" id="condiciones" aria-live="polite"></div>
+
+          <div class="dos">
+            <div class="campo">
+              <label for="pieza" id="pieza-label">Pieza</label>
+              <input id="pieza" name="pieza" type="text" data-utm spellcheck="false" aria-describedby="pieza-ayuda pieza-error">
+              <p class="ayuda" id="pieza-ayuda">Número o nombre corto de la pieza: 01, 02, lanzamiento…</p>
+              <p class="error" id="pieza-error" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="cta">Acción del CTA</label>
+              <select id="cta" name="cta" aria-describedby="cta-ayuda"></select>
+              <p class="ayuda" id="cta-ayuda">Metadato: se guarda en el historial, no cambia source, medium ni campaign.</p>
+            </div>
+          </div>
+
+          <div class="campo" id="cta-otro-campo" hidden>
+            <label for="cta-otro">Identificador del CTA</label>
+            <input id="cta-otro" name="cta-otro" type="text" data-utm spellcheck="false" placeholder="ver_temario" aria-describedby="cta-otro-error">
+            <p class="error" id="cta-otro-error" hidden></p>
+          </div>
+
+          <div class="casilla">
+            <input id="cta-sufijo" type="checkbox" disabled aria-describedby="cta-sufijo-ayuda">
+            <label for="cta-sufijo">Añadir el CTA al final de utm_content</label>
+          </div>
+          <p class="ayuda" id="cta-sufijo-ayuda">Solo para comparar botones distintos dentro de la misma pieza. Ejemplo: story_01_registrarse.</p>
+        </section>
+
+        <section class="tarjeta" aria-labelledby="t-parametros">
+          <h2 id="t-parametros"><span class="paso">3</span> Parámetros</h2>
+
+          <div class="dos">
+            <div class="campo">
+              <label for="source">Fuente · utm_source <span class="obligatorio">obligatorio</span></label>
+              <div class="con-boton">
+                <input id="source" name="source" type="text" data-utm spellcheck="false" readonly required aria-describedby="source-ayuda source-error">
+                <button type="button" class="boton boton--secundario boton--chico" id="editar-source" aria-controls="source">Editar</button>
+              </div>
+              <p class="ayuda" id="source-ayuda">Identifica la plataforma o el remitente.</p>
+              <p class="error" id="source-error" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="medium">Medio · utm_medium <span class="obligatorio">obligatorio</span></label>
+              <div class="con-boton">
+                <input id="medium" name="medium" type="text" data-utm spellcheck="false" readonly required aria-describedby="medium-ayuda medium-error">
+                <button type="button" class="boton boton--secundario boton--chico" id="editar-medium" aria-controls="medium">Editar</button>
+              </div>
+              <p class="ayuda" id="medium-ayuda">El tipo de tráfico.</p>
+              <p class="error" id="medium-error" hidden></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="content">Contenido · utm_content</label>
+            <input id="content" name="content" type="text" data-utm spellcheck="false" aria-describedby="content-ayuda content-error">
+            <p class="ayuda" id="content-ayuda">Se arma con la ubicación y la pieza. Puedes editarlo; si lo dejas vacío, se quita del enlace.</p>
+            <p class="error" id="content-error" hidden></p>
+          </div>
+
+          <details class="avanzado" id="avanzado">
+            <summary>Opciones avanzadas</summary>
+            <div class="campo">
+              <label for="term">Palabra clave · utm_term <span class="opcional">opcional</span></label>
+              <input id="term" name="term" type="text" data-utm spellcheck="false" aria-describedby="term-ayuda term-error">
+              <p class="ayuda" id="term-ayuda">Para palabras clave de anuncios de búsqueda. Si lo dejas vacío, se quita del enlace.</p>
+              <p class="error" id="term-error" hidden></p>
+            </div>
+          </details>
+
+          <p class="ayuda" id="ayuda-normalizacion">Los valores UTM se normalizan: minúsculas, sin tildes y con guion bajo entre palabras. No escribas nombres, correos ni teléfonos de personas.</p>
+
+          <div class="casilla casilla--aviso" id="confirmar-campo" hidden>
+            <input id="confirmar" type="checkbox">
+            <label for="confirmar">Revisé la condición de esta ubicación y está disponible en mi cuenta.</label>
+          </div>
+
+          <div class="resumen-errores" id="errores" role="alert" tabindex="-1" hidden></div>
+
+          <button type="submit" class="boton boton--principal boton--ancho" id="generar">Generar enlace</button>
+        </section>
+      </form>
+
+      <div class="columna columna--fija">
+        <section class="tarjeta" aria-labelledby="t-vista">
+          <h2 id="t-vista">Vista previa de parámetros</h2>
+          <table class="tabla-parametros">
+            <caption class="solo-lectores">Valores que se añadirán al enlace</caption>
+            <thead><tr><th scope="col">Parámetro</th><th scope="col">Valor</th></tr></thead>
+            <tbody id="vista-previa"></tbody>
+          </table>
+        </section>
+
+        <section class="tarjeta tarjeta--resultado" aria-labelledby="t-resultado">
+          <h2 id="t-resultado">Enlace</h2>
+          <label for="resultado" class="solo-lectores">Enlace generado</label>
+          <textarea id="resultado" rows="4" readonly spellcheck="false" placeholder="Completa el formulario y pulsa «Generar enlace»."></textarea>
+          <div class="acciones">
+            <button type="button" class="boton boton--principal" id="copiar" disabled>Copiar</button>
+            <button type="button" class="boton boton--secundario" id="guardar" disabled>Guardar</button>
+          </div>
+          <p class="estado" id="estado" role="status" aria-live="polite"></p>
+          <ul class="avisos" id="avisos"></ul>
+        </section>
+      </div>
+    </div>
+
+    <section class="tarjeta" aria-labelledby="t-historial" id="historial-seccion">
+      <div class="titulo-con-acciones">
+        <h2 id="t-historial">Historial</h2>
+        <div class="acciones">
+          <button type="button" class="boton boton--secundario" id="exportar">Exportar CSV</button>
+          <button type="button" class="boton boton--secundario" id="borrar-historial">Borrar historial</button>
+        </div>
+      </div>
+      <p class="ayuda" id="almacenamiento">El historial se guarda solo en este navegador, en este dispositivo. No se envía a ningún servidor: si borras los datos del navegador o abres la app en otro equipo, no estará.</p>
+      <div class="campo campo--filtro">
+        <label for="filtro">Filtrar por negocio, campaña o enlace</label>
+        <input id="filtro" type="search" spellcheck="false">
+      </div>
+      <p class="vacio" id="historial-vacio">Todavía no has guardado enlaces.</p>
+      <ol class="historial" id="historial"></ol>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="t-plantillas">
+      <h2 id="t-plantillas">Variantes y nuevos canales</h2>
+      <p class="ayuda">Crea una variante de una ubicación o un canal que no está en el catálogo. Se guarda en este navegador y aparece en los selectores.</p>
+      <details class="avanzado" id="plantilla-detalles">
+        <summary>Añadir una plantilla</summary>
+        <form id="plantilla-form" novalidate>
+          <button type="button" class="boton boton--texto" id="tpl-desde-actual">Partir de la ubicación seleccionada</button>
+          <div class="dos">
+            <div class="campo">
+              <label for="tpl-grupo">Plataforma</label>
+              <select id="tpl-grupo"></select>
+            </div>
+            <div class="campo" id="tpl-nuevo-campo" hidden>
+              <label for="tpl-nuevo">Nombre del nuevo canal</label>
+              <input id="tpl-nuevo" type="text" maxlength="60" placeholder="Pinterest">
+            </div>
+          </div>
+          <div class="dos">
+            <div class="campo">
+              <label for="tpl-nombre">Nombre de la ubicación</label>
+              <input id="tpl-nombre" type="text" maxlength="80" placeholder="Pin / enlace">
+            </div>
+            <div class="campo">
+              <label for="tpl-ubicacion">Identificador de la ubicación</label>
+              <input id="tpl-ubicacion" type="text" data-utm spellcheck="false" placeholder="pin" aria-describedby="tpl-ubicacion-ayuda">
+              <p class="ayuda" id="tpl-ubicacion-ayuda">Será el inicio de utm_content: pin_01.</p>
+            </div>
+          </div>
+          <div class="dos">
+            <div class="campo">
+              <label for="tpl-source">utm_source</label>
+              <input id="tpl-source" type="text" data-utm spellcheck="false" placeholder="pinterest">
+            </div>
+            <div class="campo">
+              <label for="tpl-medium">utm_medium</label>
+              <input id="tpl-medium" type="text" data-utm spellcheck="false" placeholder="social">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="tpl-acceso">Acceso</label>
+            <select id="tpl-acceso">
+              <option>Enlace web</option>
+              <option>Condicionado</option>
+              <option>Ruta indirecta</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="tpl-detalle">Condición o nota</label>
+            <textarea id="tpl-detalle" rows="2" maxlength="300" placeholder="Dónde se comparte realmente y qué hay que comprobar."></textarea>
+          </div>
+          <div class="resumen-errores" id="tpl-errores" role="alert" tabindex="-1" hidden></div>
+          <button type="submit" class="boton boton--principal">Guardar plantilla</button>
+        </form>
+      </details>
+      <ul class="plantillas" id="plantillas"></ul>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="t-reglas">
+      <h2 id="t-reglas">Antes de publicar el enlace</h2>
+      <ul class="reglas">
+        <li><strong>Las etiquetas son convenciones internas</strong> de tu negocio, no una lista universal de las plataformas. Úsalas igual siempre.</li>
+        <li><strong>Fuente</strong> identifica la plataforma, <strong>medio</strong> el tipo de tráfico y <strong>contenido</strong> la ubicación y la pieza. Comprar, reservar o registrarse son acciones del CTA: nunca van en utm_source.</li>
+        <li><strong>messaging, qr</strong> y otros medios propios pueden necesitar agrupaciones de canal personalizadas en tu analítica.</li>
+        <li><strong>Los enlaces que abren chats, grupos o acciones nativas</strong> no garantizan que la UTM llegue a tu CRM. Etiqueta la URL web que recibe la visita.</li>
+        <li><strong>Me gusta, seguir, guardar o comentar</strong> sin salir a una web se miden como eventos nativos de cada plataforma: no son destinos UTM.</li>
+        <li><strong>Una bio compartida no distingue la pieza previa.</strong> Para saber qué reel o vídeo trajo la visita necesitas una ruta dedicada.</li>
+        <li><strong>No reemplaces el autoetiquetado publicitario</strong> (gclid, fbclid, ttclid, msclkid…). La app los conserva tal cual.</li>
+        <li><strong>No etiquetes los enlaces internos de tu landing</strong>: reiniciarían la atribución de la visita.</li>
+        <li><strong>No incluyas datos personales</strong> en las UTMs: nada de nombres, correos ni teléfonos.</li>
+      </ul>
+      <h3>Fuentes consultadas para el catálogo</h3>
+      <ul class="fuentes" id="fuentes"></ul>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Enlace UTM · versión 1 · catálogo <span id="version-catalogo"></span> · funciona sin servidor.</p>
+    </div>
+  </footer>
+
+  <script src="catalogo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
