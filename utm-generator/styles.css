@@ -190,3 +190,57 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .fuentes { padding-left: 1.2rem; margin: 0; font-size: 0.93rem; }
 
 .pie { padding: 2rem 0; color: var(--texto-suave); font-size: 0.88rem; }
+
+/* Selección múltiple de ubicaciones */
+.etiqueta { display: block; font-weight: 700; margin-bottom: 0.3rem; }
+.multi-boton {
+  width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+  font: inherit; font-size: 16px; color: var(--texto); text-align: left; cursor: pointer;
+  background: #FFFFFF; border: 1.5px solid #8A8F96; border-radius: 8px; padding: 0.6rem 0.7rem;
+}
+.multi-boton[aria-expanded="true"] .flecha { transform: rotate(180deg); }
+.multi-boton[aria-invalid="true"] { border-color: var(--error); border-width: 2px; }
+.multi-panel { border: 1.5px solid var(--borde-fuerte); border-radius: 8px; margin-top: 0.4rem; background: #FFFFFF; padding: 0.75rem; }
+#ubic-grupos { max-height: min(60vh, 520px); overflow-y: auto; margin: 0 -0.25rem; padding: 0 0.25rem; }
+.campo--buscar { margin-bottom: 0.6rem; }
+.campo--buscar label { font-size: 0.9rem; }
+.grupo-ubic { border-top: 1px solid var(--borde); }
+.grupo-ubic summary { cursor: pointer; padding: 0.55rem 0.2rem; font-weight: 700; display: flex; justify-content: space-between; gap: 0.5rem; }
+.grupo-ubic summary .cuenta { font-weight: 400; color: var(--texto-suave); font-size: 0.9rem; }
+.grupo-ubic ul { list-style: none; margin: 0 0 0.5rem; padding: 0 0 0 0.25rem; }
+.opcion { display: flex; align-items: flex-start; gap: 0.55rem; padding: 0.3rem 0; }
+.opcion input { width: 1.2rem; height: 1.2rem; margin: 0.15rem 0 0; flex: none; accent-color: var(--texto); }
+.opcion label { flex: 1; cursor: pointer; }
+.opcion .insignia { margin-left: 0.35rem; font-size: 0.72rem; }
+.opcion--todas label { font-weight: 700; }
+.multi-pie { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; border-top: 1px solid var(--borde); padding-top: 0.6rem; margin-top: 0.4rem; }
+.sin-resultados { color: var(--texto-suave); padding: 0.5rem 0.2rem; margin: 0; }
+
+.chips { list-style: none; margin: 0.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chips li { display: inline-flex; align-items: center; gap: 0.3rem; background: var(--web); border-radius: 999px; padding: 0.2rem 0.3rem 0.2rem 0.7rem; font-size: 0.88rem; max-width: 100%; }
+.chips li span { overflow-wrap: anywhere; }
+.chips button { border: none; background: transparent; font: inherit; font-weight: 700; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; color: var(--texto); flex: none; }
+.chips button:hover { background: rgba(16, 24, 33, 0.12); }
+
+.condiciones ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; }
+.condiciones li p { margin: 0.15rem 0 0; }
+
+/* Una fila de parámetros por ubicación */
+.filas { display: grid; gap: 0.75rem; margin: 0.75rem 0 1rem; }
+.fila { border: 1px solid var(--borde); border-radius: 8px; padding: 0.75rem 0.85rem 0.25rem; margin: 0; min-width: 0; }
+.fila legend { font-weight: 700; font-family: var(--titulos); padding: 0 0.3rem; }
+.fila .tres { display: grid; gap: 0 0.75rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 560px) { .fila .tres { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fila .campo { margin-bottom: 0.6rem; }
+.fila label { font-size: 0.9rem; }
+.fila-acciones { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
+
+/* Resultados */
+.resultados { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.resultados li { border: 1px solid var(--borde); border-radius: 8px; padding: 0.6rem 0.7rem; background: #FBFAF6; min-width: 0; }
+.resultados .rotulo { font-weight: 700; font-size: 0.9rem; margin: 0 0 0.3rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.resultados textarea { min-height: 0; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.85rem; word-break: break-all; background: #FFFFFF; }
+.resultados .acciones { margin-top: 0.4rem; }
+.resultados .estado { min-height: 0; margin: 0.3rem 0 0; font-size: 0.9rem; }
+.condiciones details summary { cursor: pointer; font-weight: 700; padding: 0.2rem 0; }
+.condiciones details[open] summary { margin-bottom: 0.6rem; }
