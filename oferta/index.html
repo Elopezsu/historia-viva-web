@@ -501,8 +501,10 @@ var ENLACE_PAGO = "https://historiaviva.app.clientclub.net/communities/groups/hi
 var ENLACE_RESPALDO = "https://ig.me/m/eunice.historiaviva";
 var CIERRE_CUPO = new Date("2026-10-29T23:59:00-05:00");
 
+// Los UTM con que llegó la visita siguen al portal de GHL, para que la atribución no se pierda en el botón.
+var UTM = location.search.slice(1).split("&").filter(function(p){ return /^utm_/.test(p); }).join("&");
 document.querySelectorAll("[data-cta]").forEach(function(a){
-  a.href = ENLACE_PAGO || ENLACE_RESPALDO;
+  a.href = ENLACE_PAGO ? ENLACE_PAGO + (UTM ? (ENLACE_PAGO.indexOf("?") < 0 ? "?" : "&") + UTM : "") : ENLACE_RESPALDO;
   if (!ENLACE_PAGO) { a.target = "_blank"; a.rel = "noopener"; }
 });
 
