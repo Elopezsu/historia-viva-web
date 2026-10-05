@@ -90,16 +90,23 @@ strong,b{color:var(--crema)}
   background:#0E0918;border:1px solid var(--linea);
   box-shadow:0 40px 90px -30px rgba(0,0,0,.85),0 0 0 8px rgba(233,185,73,.04)}
 .video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video .hueco{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:.8rem;text-align:center;padding:1rem;
-  background:linear-gradient(0deg,rgba(14,9,24,.78),rgba(14,9,24,.55)),url(img/eunice-saco.jpg) center 14%/cover}
-.video .play{width:78px;height:78px;border-radius:50%;background:var(--oro-metal);
-  display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(233,185,73,.16)}
-.video .play::after{content:"";border-left:22px solid #1A1226;border-top:13px solid transparent;
-  border-bottom:13px solid transparent;margin-left:6px}
-.video .hueco b{font-size:1rem;color:var(--crema)}
-.video .hueco span{font-size:.8rem;color:var(--tenue)}
 .sonido{color:var(--tenue);font-size:.82rem;margin:1rem 0 2rem}
+/* reproductor al estilo VSL: sin controles, solo la línea de avance abajo */
+.video video{object-fit:cover;cursor:pointer}
+.video .aviso{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:1rem;
+  background:rgba(14,9,24,.35);border:0;cursor:pointer;font:inherit;color:inherit}
+.video .aviso span{display:flex;flex-direction:column;align-items:center;gap:.7rem;max-width:300px;
+  padding:1.3rem 1.6rem;border-radius:16px;background:var(--oro-metal);color:#1A1226;text-align:center;
+  box-shadow:0 20px 50px -15px rgba(0,0,0,.8);animation:latir 1.8s ease-in-out infinite}
+.video .aviso b{font-size:1.05rem;font-weight:700;line-height:1.3;color:#1A1226}
+.video .aviso small{font-size:.85rem;font-weight:500}
+.video .aviso svg{width:44px;height:44px}
+.video .aviso[hidden]{display:none}
+@media(max-width:600px){.video .aviso span{padding:.8rem 1rem;gap:.35rem}.video .aviso svg{width:30px;height:30px}.video .aviso b{font-size:.92rem}.video .aviso small{font-size:.78rem}}
+@keyframes latir{50%{transform:scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.video .aviso span{animation:none}}
+.video .avance{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(244,239,230,.14);pointer-events:none}
+.video .avance i{display:block;height:100%;width:0;background:var(--oro-metal)}
 
 /* cifras */
 .cifras{border-top:1px solid var(--linea-2);border-bottom:1px solid var(--linea-2);background:var(--noche-2)}
@@ -268,19 +275,16 @@ footer .copy{grid-column:1/-1;border-top:1px solid var(--linea-2);padding-top:1.
     <h1>Cada mes, una mujer del pasado y una <span class="oro">enseñanza</span> para tu vida hoy.</h1>
     <p class="lead">Una clase en vivo cada semana, conmigo. No necesitas saber de historia.</p>
 
-    <!-- ============================================================
-         EL VIDEO VA AQUÍ
-         Cuando esté listo, borra el <div class="hueco">…</div> y pega
-         dentro de <div class="video"> el iframe de YouTube o Vimeo, por
-         ejemplo:
-         <iframe src="https://player.vimeo.com/video/ID" allow="autoplay; fullscreen" allowfullscreen></iframe>
-         ============================================================ -->
     <div class="video" id="video">
-      <div class="hueco">
-        <div class="play" aria-hidden="true"></div>
-        <b>Aquí va el video</b>
-        <span>VSL de 7 minutos · 16:9</span>
-      </div>
+      <video id="vsl" src="video/vsl.mp4" poster="video/vsl-portada.jpg" muted autoplay playsinline preload="auto"></video>
+      <button class="aviso" id="aviso" type="button">
+        <span>
+          <b>Tu video ya empezó</b>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+          <small>Toca para escuchar</small>
+        </span>
+      </button>
+      <div class="avance" aria-hidden="true"><i id="avance"></i></div>
     </div>
     <p class="sonido">Dura menos de 7 minutos. Mejor con sonido.</p>
 
@@ -520,6 +524,34 @@ document.querySelectorAll("[data-cta]").forEach(function(a){
   var fijo = document.getElementById("fijo"), video = document.getElementById("video");
   function mirar(){ fijo.classList.toggle("ver", video.getBoundingClientRect().bottom < 0); }
   addEventListener("scroll", mirar, {passive:true}); mirar();
+})();
+
+// El video arranca en silencio con el aviso encima. Al tocarlo vuelve al inicio con sonido.
+// Después, tocar el video lo pausa o lo sigue. La línea de abajo corre rápido al principio y
+// se frena al final, para que nunca parezca que falta mucho.
+(function(){
+  var v = document.getElementById("vsl"), aviso = document.getElementById("aviso"), barra = document.getElementById("avance");
+  var conSonido = false;
+  aviso.addEventListener("click", function(){
+    if (!conSonido) { conSonido = true; v.currentTime = 0; v.muted = false; v.play(); aviso.hidden = true; }
+    else { v.play(); aviso.hidden = true; }
+  });
+  v.addEventListener("click", function(){
+    if (!conSonido) return aviso.click();
+    if (v.paused) v.play(); else v.pause();
+  });
+  v.addEventListener("pause", function(){
+    if (!conSonido || v.ended) return;
+    aviso.querySelector("b").textContent = "Pausaste el video";
+    aviso.querySelector("small").textContent = "Toca para seguir viendo";
+    aviso.hidden = false;
+  });
+  v.addEventListener("ended", function(){ if (!conSonido) { v.currentTime = 0; v.play(); } });
+  v.addEventListener("timeupdate", function(){
+    if (!conSonido || !v.duration) { barra.style.width = "0"; return; }
+    var x = v.currentTime / v.duration;
+    barra.style.width = (100 * (1 - Math.pow(1 - x, 2.2))) + "%";
+  });
 })();
 
 // Aparecer al bajar. Si el navegador no tiene IntersectionObserver, se muestra todo.
