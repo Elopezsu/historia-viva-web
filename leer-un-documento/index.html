@@ -137,6 +137,28 @@ tr.oculto{display:none}
 @media(min-width:640px){.limites{grid-template-columns:1fr 1fr}}
 .oculto{display:none!important}
 .saltos{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;list-style:none;padding:0}
+
+/* ===== polish: contraste, tamaños y superficies del navegador ===== */
+:root{--coral-ink:#BE441E;--coral-btn:#C9461F}
+::selection{background:var(--gold-soft);color:var(--ink)}
+html{accent-color:var(--coral-btn);caret-color:var(--coral-ink)}
+a{text-underline-offset:.18em}
+p,li,blockquote{text-wrap:pretty}
+:where(a,button,input,textarea,select,summary,[tabindex]):focus-visible{outline:2px solid var(--coral-ink);outline-offset:3px;border-radius:6px}
+.captura :focus-visible,.aviso-silencios :focus-visible{outline-color:var(--gold)}
+.eyebrow{font-size:.78rem;color:var(--coral-ink)}
+.coral-word,.brand span,footer.pie a{color:var(--coral-ink)}
+.meta{font-size:.78rem}
+.btn-primary{background:var(--coral-btn);box-shadow:0 8px 20px -12px rgba(30,27,36,.55)}
+.captura .btn-primary,.aviso-silencios .btn-primary{box-shadow:0 8px 18px -10px rgba(0,0,0,.5)}
+.captura .nota{font-size:.84rem}
+.nav-back{display:inline-flex;align-items:center;min-height:44px}
+.brand{min-height:44px}
+.panel{border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:12px}
+.doc p.meta{text-transform:none;letter-spacing:.02em;font-size:.8rem;line-height:1.55}
+.rama-btn .r{font-size:.76rem;letter-spacing:.12em}
+.rama-btn .n{color:#9A6B00}
+td,th{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>

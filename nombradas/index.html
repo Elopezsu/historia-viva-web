@@ -22,7 +22,7 @@
 :root{
   --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --coral-soft:#F6A98E;
   --gold:#F2A900; --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC;
-  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#B7ADC4;
+  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --coral-ink:#C2441C; --gold-ink:#8A6200; --mute:#6E6478; --mute-on-dark:#B7ADC4;
   --hair:rgba(30,27,36,.10); --hair-dark:rgba(247,243,236,.14);
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
@@ -30,7 +30,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.btn-primary:hover{transform:none}}
 body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
   line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .shell{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
@@ -39,32 +39,40 @@ h1,h2,h3{font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0}
 h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.06}
 h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15}
 h3{font-size:1.18rem}
-p{margin:0 0 1rem}
+p{margin:0 0 1rem;text-wrap:pretty}
+p,li{line-height:1.6}
+h3{line-height:1.2;letter-spacing:-.01em}
+::selection{background:var(--gold-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--coral-ink);outline-offset:3px}
+.captura :focus-visible{outline-color:var(--gold)}
+input,select{accent-color:var(--coral-ink);caret-color:var(--coral-ink)}
+a{text-underline-offset:.18em}
 a{color:inherit}
-.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
-  font-weight:700;color:var(--coral);margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;color:var(--coral-ink);margin:0}
 .eyebrow.on-dark{color:var(--gold)}
 .serif-em{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0}
 .mark-hl{background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,
   var(--gold-soft) 94%,transparent 94%);padding:0 .12em;border-radius:2px}
-.coral-word{color:var(--coral)}
+.coral-word{color:var(--coral-ink)}
 .mute{color:var(--mute)}
-.meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+.meta{font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--mute)}
 
 /* nav */
 header.nav{position:sticky;top:0;z-index:30;
   background:color-mix(in srgb,var(--marfil) 86%,transparent);
   backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;gap:1rem}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:.8rem;padding-bottom:.8rem;gap:1rem}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
 .brand .dot{width:34px;height:34px;border-radius:50%;flex:none;
   background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
   box-shadow:0 4px 14px -4px rgba(228,87,46,.55)}
 .brand .bt{display:flex;flex-direction:column;line-height:1.03}
 .brand b{font-weight:800;font-size:1rem;letter-spacing:-.01em}
-.brand span{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--coral)}
-.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600}
+.brand span{font-family:var(--serif);font-style:italic;font-size:.8125rem;color:var(--coral-ink)}
+.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600;
+  display:inline-flex;align-items:center;min-height:44px}
 .nav-back:hover{color:var(--ink)}
 
 /* botones */
@@ -89,6 +97,7 @@ header.nav{position:sticky;top:0;z-index:30;
 .captura{background:var(--indigo);color:var(--marfil);border-radius:18px;
   padding:clamp(1.6rem,4vw,2.6rem);margin:3rem 0}
 .captura h2{color:var(--marfil)}
+.captura .btn-primary{box-shadow:0 10px 24px -12px rgba(16,10,28,.6)}
 .captura p{color:var(--mute-on-dark)}
 .captura form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
 .captura input{flex:1 1 12rem;min-width:0;border:1px solid var(--hair-dark);
@@ -96,19 +105,21 @@ header.nav{position:sticky;top:0;z-index:30;
   padding:.8rem 1.1rem;font:inherit}
 .captura input::placeholder{color:var(--mute-on-dark)}
 .captura input:focus{outline:2px solid var(--gold);outline-offset:1px}
-.captura .nota{font-size:.8rem;margin:.8rem 0 0}
+.captura .nota{font-size:.8125rem;margin:.8rem 0 0}
 .captura .ok{display:none;background:rgba(242,169,0,.14);border:1px solid var(--gold);
   border-radius:12px;padding:1rem;margin-top:1rem;color:var(--marfil)}
 
 /* pie */
 footer.pie{border-top:1px solid var(--hair);margin-top:4rem;padding:2rem 0 3rem;
   color:var(--mute);font-size:.88rem}
-footer.pie a{color:var(--coral);text-decoration:none}
+footer.pie a{color:var(--coral-ink);text-decoration:none}
+footer.pie a:hover{text-decoration:underline}
 
 .filtros{border-top:1px solid var(--hair);margin-top:2.5rem;padding-top:1.6rem}
 .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;padding:0;list-style:none}
 .chip{border:1px solid var(--hair);background:transparent;color:var(--ink);border-radius:999px;
-  padding:.5rem 1rem;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap;font-size:.92rem}
+  padding:.5rem 1rem;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap;font-size:.92rem;
+  min-height:44px}
 .chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--marfil)}
 .fila{display:grid;gap:1.4rem;margin-top:1.6rem}
 @media(min-width:640px){.fila{grid-template-columns:1fr 1fr}}
@@ -118,14 +129,16 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
 @media(min-width:700px){.tarjetas{grid-template-columns:1fr 1fr}}
 .n-card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:1.3rem;
   display:flex;flex-direction:column;gap:.7rem;height:100%}
-.n-card h3{font-size:1.45rem;line-height:1.15}
-.n-fechas{font-family:var(--mono);font-size:.85rem;color:var(--gold);letter-spacing:.03em}
-.capa{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+.n-card h2{font-size:1.45rem;line-height:1.15;letter-spacing:-.015em}
+.n-fechas{font-family:var(--mono);font-size:.85rem;color:var(--gold-ink);letter-spacing:.03em;
+  font-variant-numeric:tabular-nums}
+.capa{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
   border:1px solid;padding:.12rem .45rem;border-radius:3px}
 .capa.h{color:var(--mute);border-color:var(--hair)}
-.capa.c{color:var(--coral);border-color:var(--coral)}
-.leccion{border-left:3px solid var(--gold);background:var(--cream-warm);padding:.7rem .9rem;
-  border-radius:0 8px 8px 0;font-family:var(--serif);font-style:italic;color:var(--indigo);margin:0}
+.capa.c{color:var(--coral-ink);border-color:var(--coral-ink)}
+.leccion{border:1px solid color-mix(in srgb,var(--gold) 38%,transparent);background:var(--cream-warm);padding:.75rem .95rem;
+  border-radius:8px;font-family:var(--serif);font-style:italic;color:var(--indigo);margin:0}
+.n-card > p.meta,ul.meta{text-transform:none;letter-spacing:.02em}
 .n-card .abrir{margin-top:auto;border-top:1px solid var(--hair);padding-top:.9rem}
 .n-card .abrir button{width:100%;justify-content:center}
 .oculto{display:none!important}
@@ -144,6 +157,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
 @media(min-width:640px){.dos-cajas{grid-template-columns:1fr 1fr}}
 .caja{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:1rem}
 .caja.disputa{background:var(--cream-warm)}
+.caja .eyebrow{text-transform:none;letter-spacing:.04em;font-size:.85rem}
 .caja ul{margin:.6rem 0 0;padding-left:1.1rem;display:grid;gap:.45rem;color:var(--mute)}
 /* poster imprimible */
 #poster{display:none}
@@ -173,8 +187,8 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
     <p class="lede" style="margin-top:1.1rem">Casi todas las listas de mujeres se ordenan por país o
       por época. Eso no le sirve a nadie que esté frente a una decisión. Esta se ordena por la
       decisión que tomaron.</p>
-    <div class="aviso narrow" style="margin:1.5rem 0 0;margin-left:0;border-left:3px solid var(--gold);
-      background:var(--cream-warm);padding:1rem 1.2rem;border-radius:0 10px 10px 0">
+    <div class="aviso narrow" style="margin:1.5rem 0 0;margin-left:0;border:1px solid color-mix(in srgb,var(--gold) 38%,transparent);
+      background:var(--cream-warm);padding:1rem 1.2rem;border-radius:10px">
       <p style="margin:0">Cada entrada trae una sección de lo que sabemos y lo que no. Donde la
         documentación no alcanza, lo decimos.</p></div>
   </div>
@@ -221,7 +235,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Adela Zamudio</h3>
+      <h2>Adela Zamudio</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1854–1928</p>
       <p class="meta" style="margin:.2rem 0 0">Bolivia</p></div>
     <p style="margin:0">Publicó «Nacer hombre» y siguió firmando aunque la Iglesia la atacara.</p>
@@ -236,7 +250,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Alfonsina Storni</h3>
+      <h2>Alfonsina Storni</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1892–1938</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Tuvo un hijo sola a los veinte años y siguió trabajando y publicando con su nombre.</p>
@@ -251,7 +265,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Amanda Labarca</h3>
+      <h2>Amanda Labarca</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1886–1975</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Entró a enseñar en la universidad antes de que las mujeres pudieran votar.</p>
@@ -266,7 +280,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Ana Betancourt</h3>
+      <h2>Ana Betancourt</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1832–1901</p>
       <p class="meta" style="margin:.2rem 0 0">Cuba</p></div>
     <p style="margin:0">Exigió en la Asamblea de Guáimaro que la emancipación incluyera a las mujeres.</p>
@@ -281,7 +295,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Anacaona</h3>
+      <h2>Anacaona</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1474–1504</p>
       <p class="meta" style="margin:.2rem 0 0">La Española (hoy Haití / República Dominicana)</p></div>
     <p style="margin:0">Se negó a entregar a su gente y a aceptar los términos del gobernador español.</p>
@@ -296,7 +310,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Antonia Santos</h3>
+      <h2>Antonia Santos</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1784–1819</p>
       <p class="meta" style="margin:.2rem 0 0">Nueva Granada (Colombia)</p></div>
     <p style="margin:0">Financió y organizó una guerrilla con los recursos de su hacienda familiar.</p>
@@ -311,7 +325,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Azucena Villaflor</h3>
+      <h2>Azucena Villaflor</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1924–1977</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Propuso salir a la Plaza de Mayo en vez de seguir esperando respuesta en las oficinas.</p>
@@ -326,7 +340,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Bartolina Sisa</h3>
+      <h2>Bartolina Sisa</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1750–1782</p>
       <p class="meta" style="margin:.2rem 0 0">Alto Perú (hoy Bolivia)</p></div>
     <p style="margin:0">Comandó campamentos y cercos aymaras cuando su marido no estaba, sin delegar el mando.</p>
@@ -341,7 +355,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Bertha Lutz</h3>
+      <h2>Bertha Lutz</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1894–1976</p>
       <p class="meta" style="margin:.2rem 0 0">Brasil</p></div>
     <p style="margin:0">Insistió en que la Carta de la ONU dijera «hombres y mujeres» y no solo «hombres».</p>
@@ -356,7 +370,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Carmen Lyra</h3>
+      <h2>Carmen Lyra</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1887–1949</p>
       <p class="meta" style="margin:.2rem 0 0">Costa Rica</p></div>
     <p style="margin:0">Cambió el aula por la política y aceptó el exilio antes que retractarse.</p>
@@ -371,7 +385,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Carolina Maria de Jesus</h3>
+      <h2>Carolina Maria de Jesus</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1914–1977</p>
       <p class="meta" style="margin:.2rem 0 0">Brasil</p></div>
     <p style="margin:0">Escribió su diario en cuadernos que recogía de la basura y aceptó publicarlo.</p>
@@ -386,7 +400,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Catalina de Erauso</h3>
+      <h2>Catalina de Erauso</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1592–c. 1650</p>
       <p class="meta" style="margin:.2rem 0 0">España / Perú / Chile</p></div>
     <p style="margin:0">Se escapó del convento a los quince años y vivió el resto de su vida como hombre.</p>
@@ -401,7 +415,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Cecilia Grierson</h3>
+      <h2>Cecilia Grierson</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1859–1934</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Estudió medicina para atender a una amiga enferma y luego formó a otras enfermeras.</p>
@@ -416,7 +430,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Cecilia Túpac Amaru</h3>
+      <h2>Cecilia Túpac Amaru</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1750–1792</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Puso su dinero y su red comercial al servicio de la rebelión sabiendo que lo perdería todo.</p>
@@ -431,7 +445,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Chavela Vargas</h3>
+      <h2>Chavela Vargas</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1919–2012</p>
       <p class="meta" style="margin:.2rem 0 0">Costa Rica / México</p></div>
     <p style="margin:0">Cantó rancheras vestida de hombre y a los ochenta y un años dijo públicamente que era lesbiana.</p>
@@ -446,7 +460,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Clorinda Matto de Turner</h3>
+      <h2>Clorinda Matto de Turner</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1852–1909</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Publicó una novela contra el abuso a los indígenas y no se retractó.</p>
@@ -461,7 +475,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Domitila Barrios de Chungara</h3>
+      <h2>Domitila Barrios de Chungara</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1937–2012</p>
       <p class="meta" style="margin:.2rem 0 0">Bolivia</p></div>
     <p style="margin:0">Inició una huelga de hambre con cuatro mujeres mineras contra una dictadura.</p>
@@ -476,7 +490,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Elena Caffarena</h3>
+      <h2>Elena Caffarena</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1903–2003</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Litigó por el derecho de las mujeres a decidir sobre su matrimonio, su trabajo y su cuerpo, sin cargo público que la respaldara.</p>
@@ -491,7 +505,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Eloísa Díaz</h3>
+      <h2>Eloísa Díaz</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1866–1950</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Entró a Medicina apenas se permitió y se quedó pese al acoso del aula.</p>
@@ -506,7 +520,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Elvia Carrillo Puerto</h3>
+      <h2>Elvia Carrillo Puerto</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1878–1968</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Tomó posesión como diputada aunque sabía que la iban a desconocer.</p>
@@ -521,7 +535,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Eva Duarte de Perón</h3>
+      <h2>Eva Duarte de Perón</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1919–1952</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Renunció a la candidatura a la vicepresidencia en 1951 con la plaza pidiéndole que aceptara.</p>
@@ -536,7 +550,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Frida Kahlo</h3>
+      <h2>Frida Kahlo</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1907–1954</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Pintó su propio cuerpo enfermo en vez de esconderlo, y decidió sobre cada cirugía que le propusieron.</p>
@@ -551,7 +565,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Gabriela Mistral</h3>
+      <h2>Gabriela Mistral</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1889–1957</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Se fue de Chile y vivió como funcionaria y maestra errante en vez de quedarse.</p>
@@ -566,7 +580,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Gertrudis Bocanegra</h3>
+      <h2>Gertrudis Bocanegra</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1765–1817</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Sostuvo la red de correos insurgentes y no dio nombres bajo tortura.</p>
@@ -581,7 +595,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Gertrudis Gómez de Avellaneda</h3>
+      <h2>Gertrudis Gómez de Avellaneda</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1814–1873</p>
       <p class="meta" style="margin:.2rem 0 0">Cuba / España</p></div>
     <p style="margin:0">Se negó al matrimonio arreglado, se fue de Cuba y publicó con su nombre.</p>
@@ -596,7 +610,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Gregoria Apaza</h3>
+      <h2>Gregoria Apaza</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1751–1782</p>
       <p class="meta" style="margin:.2rem 0 0">Alto Perú (hoy Bolivia)</p></div>
     <p style="margin:0">Asumió el mando de tropas en Sorata en lugar de quedarse en la retaguardia.</p>
@@ -611,7 +625,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Hermila Galindo</h3>
+      <h2>Hermila Galindo</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1886–1954</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Pidió el voto y la educación sexual ante el Congreso Constituyente de 1917.</p>
@@ -626,7 +640,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Inés Huaylas Yupanqui (Quispe Sisa)</h3>
+      <h2>Inés Huaylas Yupanqui (Quispe Sisa)</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1516–1559</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Dejó la casa de Francisco Pizarro y se casó por su cuenta para asegurar herencia a sus hijos.</p>
@@ -641,7 +655,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Josefa Camejo</h3>
+      <h2>Josefa Camejo</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1791–1862</p>
       <p class="meta" style="margin:.2rem 0 0">Venezuela</p></div>
     <p style="margin:0">Encabezó la toma de la guarnición de Paraguaná en vez de esperar al ejército.</p>
@@ -656,7 +670,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Josefa Ortiz de Domínguez</h3>
+      <h2>Josefa Ortiz de Domínguez</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1768–1829</p>
       <p class="meta" style="margin:.2rem 0 0">Nueva España (México)</p></div>
     <p style="margin:0">Usó su posición de esposa del corregidor para avisar a los conspiradores.</p>
@@ -671,7 +685,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Juana Azurduy</h3>
+      <h2>Juana Azurduy</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1780–1862</p>
       <p class="meta" style="margin:.2rem 0 0">Alto Perú (Bolivia)</p></div>
     <p style="margin:0">Siguió combatiendo después de perder a su marido y a cuatro de sus hijos.</p>
@@ -686,7 +700,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Juana Manso</h3>
+      <h2>Juana Manso</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1819–1875</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Fundó escuelas mixtas y sostuvo su periódico aunque la insultaran en la calle.</p>
@@ -701,7 +715,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Juana Ramírez «la Avanzadora»</h3>
+      <h2>Juana Ramírez «la Avanzadora»</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1790–1856</p>
       <p class="meta" style="margin:.2rem 0 0">Venezuela</p></div>
     <p style="margin:0">Formó y dirigió una batería de artillería integrada por mujeres.</p>
@@ -716,7 +730,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Juana de Ibarbourou</h3>
+      <h2>Juana de Ibarbourou</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1892–1979</p>
       <p class="meta" style="margin:.2rem 0 0">Uruguay</p></div>
     <p style="margin:0">Escribió sobre deseo femenino en 1919 y no cambió una línea cuando la acusaron de impúdica.</p>
@@ -731,7 +745,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Julieta Lanteri</h3>
+      <h2>Julieta Lanteri</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1873–1932</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Encontró el vacío legal que le permitió votar en 1911, antes que ninguna sudamericana.</p>
@@ -746,7 +760,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Las hermanas Mirabal</h3>
+      <h2>Las hermanas Mirabal</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1924–1960 (Patria, Minerva, María Teresa)</p>
       <p class="meta" style="margin:.2rem 0 0">República Dominicana</p></div>
     <p style="margin:0">Siguieron organizando la resistencia después de la cárcel y de las advertencias.</p>
@@ -761,7 +775,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Leona Vicario</h3>
+      <h2>Leona Vicario</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1789–1842</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Gastó su herencia en financiar la insurgencia y luego exigió que se lo pagaran.</p>
@@ -776,7 +790,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Lydia Cabrera</h3>
+      <h2>Lydia Cabrera</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1899–1991</p>
       <p class="meta" style="margin:.2rem 0 0">Cuba</p></div>
     <p style="margin:0">Registró la religión y la lengua de los afrodescendientes cubanos cuando la academia las despreciaba.</p>
@@ -791,7 +805,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Macacha Güemes</h3>
+      <h2>Macacha Güemes</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1776–1866</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Negoció treguas y acuerdos políticos en Salta cuando ninguna mujer firmaba tratados.</p>
@@ -806,7 +820,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Malintzin (La Malinche)</h3>
+      <h2>Malintzin (La Malinche)</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1500–c. 1529</p>
       <p class="meta" style="margin:.2rem 0 0">Mesoamérica (hoy México)</p></div>
     <p style="margin:0">Usó las tres lenguas que hablaba para colocarse en el centro de la conquista en vez de en sus márgenes.</p>
@@ -821,7 +835,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Manuela Cañizares</h3>
+      <h2>Manuela Cañizares</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1769–1814</p>
       <p class="meta" style="margin:.2rem 0 0">Ecuador</p></div>
     <p style="margin:0">No dejó salir a los conjurados de su casa hasta que firmaran el acta del 10 de agosto.</p>
@@ -836,7 +850,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Manuela Espejo</h3>
+      <h2>Manuela Espejo</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1753–1829</p>
       <p class="meta" style="margin:.2rem 0 0">Ecuador</p></div>
     <p style="margin:0">Escribió en la prensa sobre educación y salud cuando firmar como mujer era impensable.</p>
@@ -851,7 +865,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Manuela Sáenz</h3>
+      <h2>Manuela Sáenz</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1797–1856</p>
       <p class="meta" style="margin:.2rem 0 0">Ecuador / Perú / Colombia</p></div>
     <p style="margin:0">Dejó a su marido inglés y una vida acomodada para meterse en la guerra.</p>
@@ -866,7 +880,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Mariana Grajales</h3>
+      <h2>Mariana Grajales</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1815–1893</p>
       <p class="meta" style="margin:.2rem 0 0">Cuba</p></div>
     <p style="margin:0">Mandó a todos sus hijos a la guerra y se fue con ellos al monte.</p>
@@ -881,7 +895,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>María Elena Moyano</h3>
+      <h2>María Elena Moyano</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1958–1992</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Se negó al paro armado de Sendero Luminoso y lo dijo con nombre propio en público.</p>
@@ -896,7 +910,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>María Félix</h3>
+      <h2>María Félix</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1914–2002</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Rechazó Hollywood y los papeles que la volvían decorado.</p>
@@ -911,7 +925,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>María Luisa Bombal</h3>
+      <h2>María Luisa Bombal</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1910–1980</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Escribió el deseo y el aburrimiento conyugal desde adentro, sin moralizar.</p>
@@ -926,7 +940,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>María Remedios del Valle</h3>
+      <h2>María Remedios del Valle</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1766–1847</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Pidió por escrito, una y otra vez, la pensión militar que le correspondía.</p>
@@ -941,7 +955,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>María de la Cruz</h3>
+      <h2>María de la Cruz</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1912–1995</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Fundó un partido de mujeres en vez de negociar un cupo en los partidos existentes.</p>
@@ -956,7 +970,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Matilde Hidalgo de Prócel</h3>
+      <h2>Matilde Hidalgo de Prócel</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1889–1974</p>
       <p class="meta" style="margin:.2rem 0 0">Ecuador</p></div>
     <p style="margin:0">Se presentó a votar cuando la ley no decía que las mujeres pudieran.</p>
@@ -971,7 +985,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Matilde Montoya</h3>
+      <h2>Matilde Montoya</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1859–1939</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Le escribió al presidente cuando la escuela de medicina le cerró el paso.</p>
@@ -986,7 +1000,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Micaela Bastidas Puyucahua</h3>
+      <h2>Micaela Bastidas Puyucahua</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1744–1781</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Se negó a esperar y presionó a Túpac Amaru para tomar el Cusco antes de que llegaran los refuerzos.</p>
@@ -1001,7 +1015,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Nise da Silveira</h3>
+      <h2>Nise da Silveira</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1905–1999</p>
       <p class="meta" style="margin:.2rem 0 0">Brasil</p></div>
     <p style="margin:0">Se negó a aplicar electroshock y lobotomías a sus pacientes.</p>
@@ -1016,7 +1030,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Paulina Luisi</h3>
+      <h2>Paulina Luisi</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1875–1950</p>
       <p class="meta" style="margin:.2rem 0 0">Uruguay</p></div>
     <p style="margin:0">Habló de sífilis, prostitución y educación sexual en foros donde nadie los mencionaba.</p>
@@ -1031,7 +1045,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Petrona Eyle</h3>
+      <h2>Petrona Eyle</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1866–1945</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Volvió con un título extranjero y peleó por revalidarlo para ejercer.</p>
@@ -1046,7 +1060,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Policarpa Salavarrieta</h3>
+      <h2>Policarpa Salavarrieta</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1795–1817</p>
       <p class="meta" style="margin:.2rem 0 0">Nueva Granada (Colombia)</p></div>
     <p style="margin:0">Se negó a delatar a la red independentista cuando eso le habría salvado la vida.</p>
@@ -1061,7 +1075,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Rigoberta Menchú</h3>
+      <h2>Rigoberta Menchú</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1959–</p>
       <p class="meta" style="margin:.2rem 0 0">Guatemala</p></div>
     <p style="margin:0">Contó lo ocurrido en su comunidad ante organismos internacionales desde el exilio.</p>
@@ -1076,7 +1090,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Rosa de Lima</h3>
+      <h2>Rosa de Lima</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1586–1617</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Rechazó el matrimonio que su familia le arreglaba y decidió sobre su cuerpo hasta el extremo.</p>
@@ -1091,7 +1105,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Simona Josefa Manzaneda</h3>
+      <h2>Simona Josefa Manzaneda</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1770–1822</p>
       <p class="meta" style="margin:.2rem 0 0">Alto Perú (hoy Bolivia)</p></div>
     <p style="margin:0">Siguió pasando información a la insurgencia después de que la advirtieran.</p>
@@ -1106,7 +1120,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Sor Juana Inés de la Cruz</h3>
+      <h2>Sor Juana Inés de la Cruz</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1648–1695</p>
       <p class="meta" style="margin:.2rem 0 0">Nueva España (México)</p></div>
     <p style="margin:0">Entró al convento para poder seguir estudiando en lugar de casarse.</p>
@@ -1121,7 +1135,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Teresa Carreño</h3>
+      <h2>Teresa Carreño</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1853–1917</p>
       <p class="meta" style="margin:.2rem 0 0">Venezuela</p></div>
     <p style="margin:0">Sostuvo su carrera de concertista mientras sus matrimonios se caían.</p>
@@ -1136,7 +1150,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Teresa González de Fanning</h3>
+      <h2>Teresa González de Fanning</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1836–1918</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Fundó una escuela para que las mujeres pudieran ganarse la vida sin casarse.</p>
@@ -1151,7 +1165,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Tereza de Benguela</h3>
+      <h2>Tereza de Benguela</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">c. 1720–1770</p>
       <p class="meta" style="margin:.2rem 0 0">Brasil</p></div>
     <p style="margin:0">Gobernó el quilombo de Quariterê tras la muerte de su compañero, con consejo y no con caudillo.</p>
@@ -1166,7 +1180,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Victoria Ocampo</h3>
+      <h2>Victoria Ocampo</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1890–1979</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Usó su fortuna para fundar una revista en vez de administrar el patrimonio familiar.</p>
@@ -1181,7 +1195,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Violeta Parra</h3>
+      <h2>Violeta Parra</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1917–1967</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Dejó la canción de salón para recorrer el campo grabando a cantoras viejas.</p>
@@ -1196,7 +1210,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa h">Histórica</span></div>
     <div>
-      <h3>Úrsula de Jesús</h3>
+      <h2>Úrsula de Jesús</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1604–1666</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Compró su libertad y siguió viviendo en el convento, ahora como donada y no como esclava.</p>
@@ -1211,7 +1225,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Angela Merkel</h3>
+      <h2>Angela Merkel</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1954–</p>
       <p class="meta" style="margin:.2rem 0 0">Alemania</p></div>
     <p style="margin:0">Abrir las fronteras en 2015 sabiendo el costo político que tenía.</p>
@@ -1226,7 +1240,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Berta Cáceres</h3>
+      <h2>Berta Cáceres</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1971–2016</p>
       <p class="meta" style="margin:.2rem 0 0">Honduras</p></div>
     <p style="margin:0">Se quedó en el país y siguió organizando después de las primeras amenazas.</p>
@@ -1241,7 +1255,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Claudia Sheinbaum</h3>
+      <h2>Claudia Sheinbaum</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1962–</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Dejó la ciencia climática por la administración pública.</p>
@@ -1256,7 +1270,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Cristina Calderón</h3>
+      <h2>Cristina Calderón</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1928–2022</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Decidió grabar y enseñar el yagán en vez de dejarlo morir con ella.</p>
@@ -1271,7 +1285,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Cristina Fernández de Kirchner</h3>
+      <h2>Cristina Fernández de Kirchner</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1953–</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Aceptó ser candidata a vicepresidenta de su propio candidato para no dividir el voto.</p>
@@ -1286,7 +1300,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Diana Trujillo</h3>
+      <h2>Diana Trujillo</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1981–</p>
       <p class="meta" style="margin:.2rem 0 0">Colombia / Estados Unidos</p></div>
     <p style="margin:0">Se fue a los diecisiete años con trescientos dólares y sin hablar inglés.</p>
@@ -1301,7 +1315,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Dilma Rousseff</h3>
+      <h2>Dilma Rousseff</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1947–</p>
       <p class="meta" style="margin:.2rem 0 0">Brasil</p></div>
     <p style="margin:0">No negoció su cargo con el Congreso que la estaba juzgando.</p>
@@ -1316,7 +1330,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Elena Poniatowska</h3>
+      <h2>Elena Poniatowska</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1932–</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Dejó su mundo de origen para escribir escuchando a quienes nadie entrevistaba.</p>
@@ -1331,7 +1345,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Elizabeth Odio Benito</h3>
+      <h2>Elizabeth Odio Benito</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1939–</p>
       <p class="meta" style="margin:.2rem 0 0">Costa Rica</p></div>
     <p style="margin:0">Insistió en tipificar la violación como crimen de guerra en los tribunales internacionales.</p>
@@ -1346,7 +1360,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Francia Márquez</h3>
+      <h2>Francia Márquez</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1981–</p>
       <p class="meta" style="margin:.2rem 0 0">Colombia</p></div>
     <p style="margin:0">Se quedó a organizar en su territorio después de las amenazas y del desplazamiento.</p>
@@ -1361,7 +1375,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Gabriela Cabezón Cámara</h3>
+      <h2>Gabriela Cabezón Cámara</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1968–</p>
       <p class="meta" style="margin:.2rem 0 0">Argentina</p></div>
     <p style="margin:0">Escribió la historia del cautiverio en la pampa desde la voz de una mujer que goza.</p>
@@ -1376,7 +1390,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Ingrid Betancourt</h3>
+      <h2>Ingrid Betancourt</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1961–</p>
       <p class="meta" style="margin:.2rem 0 0">Colombia</p></div>
     <p style="margin:0">Siguió a una zona en conflicto pese a la advertencia oficial de no hacerlo.</p>
@@ -1391,7 +1405,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Lorena Ramírez</h3>
+      <h2>Lorena Ramírez</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1995–</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Corre ultramaratones con huarache y falda rarámuri, sin cambiarse el atuendo.</p>
@@ -1406,7 +1420,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Mariana Costa Checa</h3>
+      <h2>Mariana Costa Checa</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1986–</p>
       <p class="meta" style="margin:.2rem 0 0">Perú</p></div>
     <p style="margin:0">Montó una empresa que enseña a programar a mujeres de bajos ingresos en vez de una ONG.</p>
@@ -1421,7 +1435,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Marta Vieira da Silva</h3>
+      <h2>Marta Vieira da Silva</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1986–</p>
       <p class="meta" style="margin:.2rem 0 0">Brasil</p></div>
     <p style="margin:0">Se fue de casa a los catorce años, sola, para jugar fútbol.</p>
@@ -1436,7 +1450,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Decir que no</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>María Corina Machado</h3>
+      <h2>María Corina Machado</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1967–</p>
       <p class="meta" style="margin:.2rem 0 0">Venezuela</p></div>
     <p style="margin:0">Se quedó en el país inhabilitada y clandestina en vez de dirigir desde el exilio.</p>
@@ -1451,7 +1465,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Michelle Bachelet</h3>
+      <h2>Michelle Bachelet</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1951–</p>
       <p class="meta" style="margin:.2rem 0 0">Chile</p></div>
     <p style="margin:0">Volvió al país que la torturó y aceptó gobernarlo.</p>
@@ -1466,7 +1480,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La plata</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Michelle Obama</h3>
+      <h2>Michelle Obama</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1964–</p>
       <p class="meta" style="margin:.2rem 0 0">Estados Unidos</p></div>
     <p style="margin:0">Dejó una carrera legal bien pagada para trabajar en lo público, y luego no se postuló nunca.</p>
@@ -1481,7 +1495,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">El cuerpo</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Michelle Suárez Bértora</h3>
+      <h2>Michelle Suárez Bértora</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1983–</p>
       <p class="meta" style="margin:.2rem 0 0">Uruguay</p></div>
     <p style="margin:0">Redactó las leyes que la incluían a ella misma en vez de esperar que otros las escribieran.</p>
@@ -1496,7 +1510,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Creer</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Rebeca Lane</h3>
+      <h2>Rebeca Lane</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1984–</p>
       <p class="meta" style="margin:.2rem 0 0">Guatemala</p></div>
     <p style="margin:0">Eligió el rap para hablar del genocidio y de su tía desaparecida.</p>
@@ -1511,7 +1525,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">La familia</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Xiomara Castro</h3>
+      <h2>Xiomara Castro</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1959–</p>
       <p class="meta" style="margin:.2rem 0 0">Honduras</p></div>
     <p style="margin:0">Se puso al frente de la oposición después del golpe que derrocó a su marido.</p>
@@ -1526,7 +1540,7 @@ select,input[type=search]{width:100%;border:1px solid var(--hair);background:#ff
       <span class="eyebrow">Irse</span>
       <span class="capa c">Contemporánea</span></div>
     <div>
-      <h3>Yalitza Aparicio</h3>
+      <h2>Yalitza Aparicio</h2>
       <p class="n-fechas" style="margin:.2rem 0 0">1993–</p>
       <p class="meta" style="margin:.2rem 0 0">México</p></div>
     <p style="margin:0">Aceptó protagonizar una película sin haber actuado nunca y luego no volvió al aula.</p>

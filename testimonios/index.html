@@ -54,11 +54,16 @@
   .cita::before{content:"\201C";color:var(--coral);font-size:34px;line-height:0;
                 vertical-align:-.12em;margin-right:4px}
   .quien{margin:14px 0 0;font-size:15px;font-weight:600;color:var(--mostaza)}
-  .donde{margin:3px 0 0;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;
-         color:#A99DBC}
+  /* Lugar y programa: van en caja normal, no en versales; con 30-50 caracteres
+     la mayuscula sostenida se lee como un bloque. */
+  .donde{margin:3px 0 0;font-size:14px;letter-spacing:.01em;color:#C4B6DB}
 
   .nota{border-top:1px solid rgba(247,243,236,.14);margin-top:24px;
-        padding:34px 0 76px;font-size:14.5px;color:#A99DBC;max-width:70ch}
+        padding:34px 0 76px;font-size:14.5px;color:#C4B6DB;max-width:70ch;text-wrap:pretty}
+  ::selection{background:rgba(233,190,91,.32);color:var(--marfil)}
+  a{text-underline-offset:3px}
+  :focus-visible{outline:2px solid var(--mostaza);outline-offset:3px}
+  video:focus-visible{outline-offset:-2px}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
