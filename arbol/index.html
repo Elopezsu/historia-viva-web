@@ -22,7 +22,8 @@
 :root{
   --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --coral-soft:#F6A98E;
   --gold:#F2A900; --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC;
-  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#B7ADC4;
+  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#CDC2E0;
+  --coral-ink:#BF4420; --gold-ink:#8C6200;
   --hair:rgba(30,27,36,.10); --hair-dark:rgba(247,243,236,.14);
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
@@ -41,37 +42,38 @@ h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15}
 h3{font-size:1.18rem}
 p{margin:0 0 1rem}
 a{color:inherit}
-.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
-  font-weight:700;color:var(--coral);margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:700;color:var(--coral-ink);margin:0}
 .eyebrow.on-dark{color:var(--gold)}
 .serif-em{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0}
 .mark-hl{background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,
   var(--gold-soft) 94%,transparent 94%);padding:0 .12em;border-radius:2px}
 .coral-word{color:var(--coral)}
 .mute{color:var(--mute)}
-.meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+.meta{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--mute)}
 
 /* nav */
 header.nav{position:sticky;top:0;z-index:30;
   background:color-mix(in srgb,var(--marfil) 86%,transparent);
   backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;gap:1rem}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem clamp(1.1rem,4vw,2.5rem);gap:1rem}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
 .brand .dot{width:34px;height:34px;border-radius:50%;flex:none;
   background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
   box-shadow:0 4px 14px -4px rgba(228,87,46,.55)}
 .brand .bt{display:flex;flex-direction:column;line-height:1.03}
 .brand b{font-weight:800;font-size:1rem;letter-spacing:-.01em}
-.brand span{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--coral)}
-.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600}
+.brand span{font-family:var(--serif);font-style:italic;font-size:.8125rem;color:var(--coral-ink)}
+.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600;
+  min-height:44px;display:inline-flex;align-items:center}
 .nav-back:hover{color:var(--ink)}
 
 /* botones */
 .btn{display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;
   font:inherit;font-weight:700;border-radius:999px;padding:.8rem 1.5rem;
   text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
-.btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 22px -10px rgba(228,87,46,.8)}
+.btn-primary{background:var(--coral-ink);color:#fff;box-shadow:0 8px 20px -12px rgba(30,27,36,.45)}
 .btn-primary:hover{transform:translateY(-1px)}
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair)}
 
@@ -88,7 +90,7 @@ header.nav{position:sticky;top:0;z-index:30;
 /* captura */
 .captura{background:var(--indigo);color:var(--marfil);border-radius:18px;
   padding:clamp(1.6rem,4vw,2.6rem);margin:3rem 0}
-.captura h2{color:var(--marfil)}
+.captura h2{color:var(--marfil);margin:.45rem 0 .7rem}
 .captura p{color:var(--mute-on-dark)}
 .captura form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
 .captura input{flex:1 1 12rem;min-width:0;border:1px solid var(--hair-dark);
@@ -96,40 +98,50 @@ header.nav{position:sticky;top:0;z-index:30;
   padding:.8rem 1.1rem;font:inherit}
 .captura input::placeholder{color:var(--mute-on-dark)}
 .captura input:focus{outline:2px solid var(--gold);outline-offset:1px}
-.captura .nota{font-size:.8rem;margin:.8rem 0 0}
+.captura .nota{font-size:.8125rem;margin:.8rem 0 0}
 .captura .ok{display:none;background:rgba(242,169,0,.14);border:1px solid var(--gold);
   border-radius:12px;padding:1rem;margin-top:1rem;color:var(--marfil)}
 
 /* pie */
 footer.pie{border-top:1px solid var(--hair);margin-top:4rem;padding:2rem 0 3rem;
   color:var(--mute);font-size:.88rem}
-footer.pie a{color:var(--coral);text-decoration:none}
+footer.pie a{color:var(--coral-ink);text-decoration:none}
+footer.pie a:hover{text-decoration:underline}
+/* superficies del navegador */
+html{accent-color:var(--coral-ink);caret-color:var(--coral-ink)}
+::selection{background:var(--gold-soft);color:var(--ink)}
+.captura ::selection{background:var(--gold);color:var(--indigo-deep)}
+:focus-visible{outline:2px solid var(--coral-ink);outline-offset:3px}
+.captura :focus-visible{outline-color:var(--gold)}
+a{text-underline-offset:.18em}
+p,li{text-wrap:pretty}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
-.nota-privacidad{border-left:3px solid var(--gold);background:var(--cream-warm);
-  padding:1rem 1.2rem;border-radius:0 10px 10px 0;margin-top:1.4rem;max-width:62ch}
+.nota-privacidad{border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);background:var(--cream-warm);
+  padding:1rem 1.2rem;border-radius:10px;margin-top:1.4rem;max-width:62ch}
 .barra{border-top:2px solid var(--indigo);padding-top:1.2rem;margin-top:2rem;
   display:flex;flex-direction:column;gap:.9rem}
 .barra .acciones{display:flex;flex-wrap:wrap;gap:.7rem}
 .gen{margin-top:1.6rem}
-.gen h2{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
-  color:var(--coral);margin-bottom:.7rem}
+.gen h2{font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+  color:var(--coral-ink);margin-bottom:.7rem}
 .fila-gen{display:grid;gap:.8rem}
 .casilla{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:.9rem;
   text-align:left;font:inherit;cursor:pointer;min-height:6.5rem;display:flex;
   flex-direction:column;gap:.35rem;width:100%}
 .casilla:hover{border-color:var(--coral)}
 .casilla.vacia{border-style:dashed;background:transparent}
-.casilla .et{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+.casilla .et{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--mute)}
 .casilla .nom{font-weight:800;font-size:1.02rem;line-height:1.2}
 .casilla.compacta .nom{font-size:.92rem}
-.casilla .dat{font-family:var(--mono);font-size:.7rem;color:var(--gold)}
+.casilla .dat{font-family:var(--mono);font-size:.75rem;color:var(--gold-ink);font-variant-numeric:tabular-nums}
 .casilla .dec{font-size:.83rem;color:var(--mute);line-height:1.35;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .casilla .add{color:var(--mute);font-size:.9rem}
 details.acc{border:1px solid var(--hair);border-radius:12px;background:#fff;margin-bottom:.9rem}
 details.acc summary{cursor:pointer;padding:.9rem 1rem;font-weight:800;color:var(--indigo);font-size:1.15rem}
-details.acc summary .c{font-family:var(--mono);font-size:.72rem;color:var(--mute);margin-left:.5rem}
+details.acc summary .c{font-family:var(--mono);font-size:.75rem;color:var(--mute);margin-left:.5rem}
 details.acc .cuerpo{border-top:1px solid var(--hair);padding:.9rem;display:grid;gap:.8rem}
 @media(max-width:767px){.escritorio{display:none}}
 @media(min-width:768px){.movil{display:none}}
@@ -239,8 +251,8 @@ details.acc .cuerpo{border-top:1px solid var(--hair);padding:.9rem;display:grid;
   <p>Te mando la guía de entrevista: las preguntas que hacen hablar y el orden en que conviene hacerlas. Es lo que llena las casillas que te faltan.</p>
   <form data-iman="arbol" novalidate>
     
-    <input type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
-    <input type="email" name="email" placeholder="Tu correo" autocomplete="email" required>
+    <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" autocomplete="given-name" required>
+    <input type="email" name="email" placeholder="Tu correo" aria-label="Tu correo" autocomplete="email" required>
     <button class="btn btn-primary" type="submit">Quiero recibirlo</button>
   </form>
   <p class="nota">Sin spam. Te escribo cuando tengo algo que de verdad sirve.</p>

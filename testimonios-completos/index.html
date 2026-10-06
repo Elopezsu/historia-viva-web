@@ -20,6 +20,8 @@
   :root{
     --indigo:#3B2E5A; --indigo-hondo:#2A2040; --coral:#E4572E;
     --mostaza:#E9BE5B; --oro:#F2A900; --marfil:#F7F3EC; --tinta:#1E1B24;
+    /* coral y lila para texto sobre el indigo: el coral puro no llega a 4.5:1 */
+    --coral-texto:#F0805C; --lila:#C4B6DB;
     --serif:"Iowan Old Style",Palatino,Georgia,serif;
     --sans:"Avenir Next","Helvetica Neue",sans-serif;
   }
@@ -35,7 +37,7 @@
          background:radial-gradient(90% 120% at 50% 0%,#453667,var(--indigo-hondo) 72%)}
   .marca{display:inline-flex;align-items:center;gap:12px;margin-bottom:34px;
          text-decoration:none;color:inherit}
-  .marca:hover span{color:var(--c-accent)}
+  .marca:hover span{color:var(--marfil)}
   .marca svg{width:46px;height:46px}
   .marca span{font-family:var(--serif);font-size:20px;letter-spacing:.16em;
               text-transform:uppercase;color:var(--mostaza)}
@@ -53,14 +55,14 @@
   .cifra b{display:block;font-family:var(--serif);font-weight:400;
            font-size:clamp(30px,4.4vw,42px);line-height:1;color:var(--mostaza)}
   .cifra span{display:block;margin-top:8px;font-size:12.5px;letter-spacing:.13em;
-              text-transform:uppercase;color:#A99DBC;line-height:1.45}
+              text-transform:uppercase;color:var(--lila);line-height:1.45}
 
   /* el indice de arriba, para saltar de bloque en bloque */
   .indice{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
           padding:38px 0 4px}
   .indice a{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;
             border:1px solid rgba(247,243,236,.2);border-radius:999px;
-            padding:9px 17px;font-size:14px;color:var(--marfil);
+            padding:11px 17px;font-size:14px;color:var(--marfil);
             transition:border-color .18s,background .18s}
   .indice a:hover,.indice a:focus-visible{border-color:var(--mostaza);
             background:rgba(233,190,91,.1)}
@@ -69,9 +71,9 @@
   .bloque{padding:72px 0 8px;scroll-margin-top:20px}
   .bloque + .bloque{border-top:1px solid rgba(247,243,236,.1)}
   .sobretitulo{margin:0;font-size:12.5px;letter-spacing:.19em;text-transform:uppercase;
-               color:var(--coral)}
+               color:var(--coral-texto)}
   h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.6vw,38px);
-     line-height:1.15;margin:12px 0 0;max-width:20ch}
+     line-height:1.15;margin:12px 0 0;max-width:20ch;text-wrap:balance}
   .bajada{max-width:60ch;margin:14px 0 0;font-size:16px;color:#CFC6DC}
   .bajada b{color:var(--marfil);font-weight:600}
 
@@ -94,7 +96,7 @@
           background:var(--indigo);box-shadow:0 18px 44px rgba(0,0,0,.42);
           max-width:760px}
   .pronto .etiqueta{margin:0;font-size:12.5px;letter-spacing:.22em;
-                    text-transform:uppercase;color:var(--coral)}
+                    text-transform:uppercase;color:var(--coral-texto)}
   .pronto h3{font-family:var(--serif);font-weight:400;margin:14px 0 0;
              font-size:clamp(23px,3vw,30px);line-height:1.2;max-width:18ch}
   .pronto p{margin:16px 0 0;font-size:16px;color:#CFC6DC;max-width:54ch}
@@ -142,9 +144,14 @@
        font-family:var(--sans);font-size:13.5px;letter-spacing:.04em;
        color:var(--mostaza);cursor:pointer;border-bottom:1px solid rgba(233,190,91,.45)}
   .mas:hover{border-bottom-color:var(--mostaza)}
+  /* el boton es una linea de texto: el area tactil se agranda sin moverlo */
+  .mas{position:relative}
+  .mas::after{content:"";position:absolute;inset:-14px -10px}
   .quien{margin:18px 0 0;font-size:15px;font-weight:600;color:var(--mostaza)}
-  .donde{margin:3px 0 0;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;
-         color:#A99DBC;line-height:1.4}
+  /* Quien la recomienda y desde donde: hasta cien caracteres, asi que va en
+     caja normal y no en versales. */
+  .donde{margin:4px 0 0;font-size:13.5px;letter-spacing:.01em;
+         color:var(--lila);line-height:1.45}
 
   .flecha{position:absolute;top:calc(50% - 34px);z-index:3;width:46px;height:46px;
           border-radius:50%;border:1px solid rgba(247,243,236,.24);
@@ -164,18 +171,22 @@
 
   /* En movil no hay flechas: la tarjeta que asoma por el borde ya avisa que se
      desliza, pero la frase lo deja sin duda. */
-  .pista{margin:14px 12px 0;font-size:13px;color:#8F84A4}
+  .pista{margin:14px 12px 0;font-size:13px;color:#B4A6CC}
   @media (min-width:761px){.pista{display:none}}
 
-  .fuentes{margin:22px 0 0;padding-bottom:84px;font-size:14px;color:#A99DBC}
+  .fuentes{margin:22px 0 0;padding-bottom:84px;font-size:14px;color:var(--lila)}
   .fuentes a{text-decoration:none;border-bottom:1px solid rgba(233,190,91,.4)}
   .fuentes a:hover{border-bottom-color:var(--mostaza)}
 
   /* El aire de abajo lo pone .fuentes, que es el ultimo elemento: aqui dejaba
      un hueco de 84 px entre las dos notas. */
   .nota{border-top:1px solid rgba(247,243,236,.14);margin-top:56px;
-        padding:34px 0 0;font-size:14.5px;color:#A99DBC;max-width:72ch}
+        padding:34px 0 0;font-size:14.5px;color:var(--lila);max-width:72ch;text-wrap:pretty}
   .nota p + p{margin-top:14px}
+  ::selection{background:rgba(233,190,91,.32);color:var(--marfil)}
+  a{text-underline-offset:3px}
+  :focus-visible{outline:2px solid var(--mostaza);outline-offset:3px}
+  .cifra b{font-variant-numeric:tabular-nums lining-nums}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     *{animation:none!important;transition:none!important}
@@ -219,7 +230,7 @@
     </div>
     <nav class="indice" aria-label="Los 7 bloques de la página">
       <a href="#ahora"><b>5</b> Historia Viva</a>
-      <a href="#eventos"><b>11</b> Eventos con IA</a>
+      <a href="#eventos"><b>13</b> Eventos con IA</a>
       <a href="#video"><b>7</b> En video</a>
       <a href="#corporativo"><b>33</b> Corporativo</a>
       <a href="#nomada"><b>26</b> Carrera y nomadismo</a>
@@ -293,7 +304,7 @@
       <button class="flecha izq" type="button" data-riel="eventos" data-dir="-1"
               aria-label="Ver los anteriores">&#8249;</button>
       <div class="riel" id="riel-eventos" tabindex="0" role="group"
-           aria-label="Deslizable, 11 testimonios">
+           aria-label="Deslizable, 13 testimonios">
       <article class="tarjeta texto">
         <blockquote class="cita" lang="en">You&#x27;re in good hands with Eunice.</blockquote>
         <p class="quien">H. D.</p>
@@ -330,6 +341,11 @@
         <p class="donde">Sobre el entorno virtual del evento</p>
       </article>
       <article class="tarjeta texto">
+        <blockquote class="cita" lang="en">It looks terrific. You folks are really doing a great job with this event. The website and everything looks fantastic.</blockquote>
+        <p class="quien">J. G.</p>
+        <p class="donde">Avaluador, al ver el sitio del evento</p>
+      </article>
+      <article class="tarjeta texto">
         <blockquote class="cita" lang="en">Thank you Eunice&hellip; you were an integral part of this launching ValuSignal.</blockquote>
         <p class="quien">M. H.</p>
         <p class="donde">Speaker, al cerrar la conferencia · septiembre de 2026</p>
@@ -349,11 +365,16 @@
         <p class="quien">V. R.</p>
         <p class="donde">Aliado del evento, pidiendo la grabación de su sesión</p>
       </article>
+      <article class="tarjeta texto">
+        <blockquote class="cita" lang="en">Eunice &ndash; you did a great job! It was an awesome conference! I wish more people could have enjoyed it. I&#x27;m going to do my best to grow this newsletter and still do at least a small conference next fall and will certainly reach out [to you] when that comes around!</blockquote>
+        <p class="quien">H. D.</p>
+        <p class="donde">Mi cliente, unas semanas después del evento</p>
+      </article>
       </div>
       <button class="flecha der" type="button" data-riel="eventos" data-dir="1"
               aria-label="Ver los siguientes">&#8250;</button>
       <div class="progreso"><span id="prog-eventos"></span></div>
-      <p class="pista">Desliza para ver las 11.</p>
+      <p class="pista">Desliza para ver las 13.</p>
     </div>
     </div>
   </section>

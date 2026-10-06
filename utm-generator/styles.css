@@ -31,11 +31,17 @@ body {
   font-family: var(--cuerpo);
   font-size: 16px;
   line-height: 1.5;
+  caret-color: var(--texto);
+  accent-color: var(--texto);
 }
+
+::selection { background: var(--lima); color: var(--texto); }
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
 
 h1, h2, h3, .marca { font-family: var(--titulos); line-height: 1.2; }
 h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 800; margin: 0.25rem 0 1rem; max-width: 22ch; }
-h2 { font-size: 1.2rem; font-weight: 700; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
 h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
 
 a { color: var(--texto); text-underline-offset: 2px; }
@@ -52,7 +58,7 @@ a { color: var(--texto); text-underline-offset: 2px; }
 .cabecera { padding: 2rem 0 1.25rem; }
 .marca { margin: 0; font-weight: 800; font-size: 1rem; letter-spacing: 0.02em; }
 .marca span { font-weight: 600; color: var(--texto-suave); }
-.nota { margin: 0; padding: 0.85rem 1rem; background: var(--tarjeta); border-left: 6px solid var(--lima); border-radius: var(--radio); max-width: 70ch; }
+.nota { margin: 0; padding: 0.85rem 1rem; background: var(--tarjeta); border: 1px solid var(--lima-hover); border-radius: var(--radio); max-width: 70ch; }
 
 .rejilla { display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
 .columna { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
@@ -120,7 +126,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .boton--principal:hover:not(:disabled) { background: var(--lima-hover); border-color: var(--lima-hover); }
 .boton--secundario { background: transparent; border-color: var(--borde-fuerte); }
 .boton--secundario:hover:not(:disabled) { background: #ECEADF; }
-.boton--texto { background: none; border: none; padding: 0.4rem 0; min-height: 0; text-decoration: underline; text-underline-offset: 3px; font-family: var(--cuerpo); font-weight: 700; }
+.boton--texto { background: none; border: none; padding: 0.4rem 0; min-height: 44px; text-decoration: underline; text-underline-offset: 3px; font-family: var(--cuerpo); font-weight: 700; }
 .boton--chico { padding: 0.4rem 0.75rem; font-size: 0.9rem; flex: none; }
 .boton--ancho { width: 100%; margin-top: 0.5rem; font-size: 1.05rem; }
 .boton:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -131,7 +137,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .condiciones p { margin: 0 0 0.5rem; }
 .condiciones p:last-child { margin-bottom: 0; }
 .condiciones .grupo-nota { color: var(--texto-suave); font-size: 0.9rem; }
-.condiciones .alerta { background: var(--aviso-fondo); border-left: 4px solid #C9A227; padding: 0.5rem 0.7rem; border-radius: 4px; font-size: 0.93rem; }
+.condiciones .alerta { background: var(--aviso-fondo); border: 1px solid #E2C76A; padding: 0.5rem 0.7rem; border-radius: 4px; font-size: 0.93rem; }
 .condiciones-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 
 .insignia { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; color: var(--texto); white-space: nowrap; }
@@ -149,7 +155,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .resumen-errores ul { margin: 0; padding-left: 1.2rem; }
 .resumen-errores a { color: var(--error); font-weight: 700; }
 
-.tabla-parametros { width: 100%; border-collapse: collapse; font-size: 0.93rem; table-layout: fixed; }
+.tabla-parametros { width: 100%; border-collapse: collapse; font-size: 0.93rem; table-layout: fixed; font-variant-numeric: tabular-nums; }
 .tabla-parametros th, .tabla-parametros td { text-align: left; padding: 0.45rem 0.3rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
 .tabla-parametros th:first-child { width: 42%; }
 .tabla-parametros td { word-break: break-word; }
@@ -159,11 +165,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .tabla-parametros tr.meta td, .tabla-parametros tr.meta th { color: var(--texto-suave); font-style: italic; border-bottom: none; }
 
 .estado { min-height: 1.5em; margin: 0.6rem 0 0; font-weight: 700; }
+.estado--ok { color: #3D5A12; }
 .estado--ok::before { content: "✓ "; }
 .estado--error { color: var(--error); }
 
 .avisos { margin: 0.25rem 0 0; padding: 0; list-style: none; font-size: 0.92rem; }
-.avisos li { background: var(--aviso-fondo); border-left: 4px solid #C9A227; padding: 0.5rem 0.7rem; border-radius: 4px; margin-top: 0.5rem; }
+.avisos li { background: var(--aviso-fondo); border: 1px solid #E2C76A; padding: 0.5rem 0.7rem; border-radius: 4px; margin-top: 0.5rem; }
 
 .titulo-con-acciones { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; }
 .titulo-con-acciones h2 { margin: 0; }
@@ -219,8 +226,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 .chips { list-style: none; margin: 0.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .chips li { display: inline-flex; align-items: center; gap: 0.3rem; background: var(--web); border-radius: 999px; padding: 0.2rem 0.3rem 0.2rem 0.7rem; font-size: 0.88rem; max-width: 100%; }
 .chips li span { overflow-wrap: anywhere; }
-.chips button { border: none; background: transparent; font: inherit; font-weight: 700; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; color: var(--texto); flex: none; }
+.chips button { position: relative; border: none; background: transparent; font: inherit; font-weight: 700; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; color: var(--texto); flex: none; }
 .chips button:hover { background: rgba(16, 24, 33, 0.12); }
+.chips button::after { content: ""; position: absolute; inset: -8px; }
+.boton:active:not(:disabled), .multi-boton:active { transform: translateY(1px); }
 
 .condiciones ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; }
 .condiciones li p { margin: 0.15rem 0 0; }

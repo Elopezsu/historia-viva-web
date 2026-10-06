@@ -68,7 +68,7 @@ strong,b{color:var(--crema)}
 /* botones */
 .boton{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   background:var(--oro-metal);color:#1A1226;text-decoration:none;font-weight:700;letter-spacing:.01em;
-  border-radius:10px;box-shadow:0 14px 34px -14px rgba(233,185,73,.55),inset 0 1px 0 rgba(255,255,255,.5);
+  border-radius:10px;box-shadow:0 14px 30px -14px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.5);
   transition:transform .15s ease,filter .15s ease}
 .boton:hover{transform:translateY(-1px);filter:brightness(1.05)}
 .boton:focus-visible{outline:2px solid var(--crema);outline-offset:3px}
@@ -88,7 +88,7 @@ strong,b{color:var(--crema)}
 .portada .lead{margin:0 auto 2.4rem;text-align:center;color:var(--texto)}
 .video{position:relative;aspect-ratio:16/9;max-width:880px;margin:0 auto;border-radius:18px;overflow:hidden;
   background:#0E0918;border:1px solid var(--linea);
-  box-shadow:0 40px 90px -30px rgba(0,0,0,.85),0 0 0 8px rgba(233,185,73,.04)}
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.85)}
 .video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
 .sonido{color:var(--tenue);font-size:.82rem;margin:1rem 0 2rem}
 /* reproductor al estilo VSL: sin controles, solo la línea de avance abajo */
@@ -257,6 +257,26 @@ footer .copy{grid-column:1/-1;border-top:1px solid var(--linea-2);padding-top:1.
 .fijo .boton{width:100%;padding:.9rem 1rem;font-size:1rem}
 @media(min-width:760px){.fijo{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}.js .rev{opacity:1;transform:none}}
+/* ===== polish: tamaños mínimos, objetivos táctiles, sombras y superficies ===== */
+::selection{background:rgba(233,185,73,.32);color:var(--crema)}
+html{accent-color:var(--oro);caret-color:var(--oro)}
+a{text-underline-offset:.18em}
+p,li,blockquote{text-wrap:pretty}
+h1,h2,h3{text-wrap:balance}
+:where(a,button,summary):focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:6px}
+.eyebrow,.credencial{font-size:.76rem}
+.sello{min-height:44px}
+.sello span{font-size:.74rem}
+.boton.chico{min-height:44px}
+.cifras b,.precio .cifra{font-variant-numeric:tabular-nums lining-nums}
+.cifras span{font-size:.76rem;letter-spacing:.12em}
+.escena cite{font-size:.76rem}
+.retrato .pie{font-size:.72rem;letter-spacing:.2em}
+.op .donde{font-size:.8rem}
+.todas{padding:.7rem 0;margin-top:1.3rem}
+summary{min-height:44px}
+footer nav a{display:inline-flex;align-items:center;min-height:44px}
+footer .copy{font-size:.8rem}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>

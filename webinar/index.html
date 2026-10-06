@@ -4,27 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--
-  OJO, 6-sep-2026 · Esta página está alineada con el guion «La clase de 1781»
-  (https://claude.ai/code/artifact/0dbd0286-9696-4125-9c2d-4b51c40c3704).
+  REESCRITA el 10-sep-2026 · Esta página dejó de ser el muro de la clase
+  grabada y pasó a ser el registro de la CLASE EN VIVO de inauguración.
 
-  DOS COSAS PENDIENTES, y las dos bloquean:
+  LA FECHA SE CAMBIA EN DOS SITIOS, y solo dos:
+    1. la constante FECHA_CLASE, al final del body
+    2. "startDate" en el JSON-LD, aquí abajo
+  Todo lo demás (reloj del hero, reloj del cierre, barra superior) sale
+  de la constante.
 
-  1. RESUELTO el 6-sep-2026: el formulario es ahora el iframe de
-     GoHighLevel «Clase Gratuita» (1FKOnMHx0nTHzuP9iqE2). Ya captura.
-     Falta arrastrarle el campo «HV Que te trae» en el constructor de
-     GHL: sin él, los bloques 00:50 y 19:30 del guion prometen una
-     pregunta que el formulario no hace.
+  LO QUE SE CORRIGIÓ DE LA VERSIÓN ANTERIOR:
+  · Decía «el cupo fundador está abierto». No lo está: abre el 24 de
+    septiembre y cierra el 29 de octubre. Narraba en pasado algo que no
+    ha pasado, que es justo la regla de la casa.
+  · El precio ahora se dice: 60 dólares al mes las tres clases.
+    La tarifa de fundadora con descuento está muerta desde el 10-sep-2026.
 
-  2. El guion está diseñado como PUERTA ABIERTA: la clase se ve sin dar el
-     correo, y el correo se pide dentro del video, en el minuto 19:30, a
-     cambio de la hoja de las Tres Preguntas. Esta página todavía es un muro
-     de registro. Cuando el video esté grabado hay que darle la vuelta:
-     el reproductor arriba, el formulario debajo como segunda puerta.
-     Mientras el video no exista, el muro se queda porque no hay nada
-     que reproducir.
+  PENDIENTE, y sigue bloqueando igual que antes: al formulario de GHL le
+  falta el campo «HV Que te trae». Existe en el CRM
+  (contact.hv_que_te_trae) y solo hay que arrastrarlo dentro del
+  constructor del formulario.
 -->
-<title>Clase gratuita · La historia de América Latina que te enseñaron mal · Eunice López</title>
-<meta name="description" content="Clase gratuita de 22 minutos con Eunice López. Las tres mentiras que todavía repetimos sobre América Latina, de dónde salieron y quién las escribió. Se ve gratis.">
+<title>Clase gratuita en vivo · La historia de América Latina que te enseñaron mal · Eunice López</title>
+<meta name="description" content="Clase gratuita EN VIVO con Eunice López. Las tres mentiras que todavía repetimos sobre América Latina, de dónde salieron y quién las escribió. Con preguntas en vivo al final. Cupo limitado.">
 <meta name="author" content="Eunice López">
 <link rel="canonical" href="https://eunicelopez.com/webinar/">
 <meta name="theme-color" content="#3B2E5A">
@@ -33,14 +35,14 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Eunice López · Historia Viva">
-<meta property="og:title" content="La historia de América Latina que te enseñaron mal">
-<meta property="og:description" content="Clase gratuita de 22 minutos. Las tres mentiras que todavía repetimos sobre nuestro continente, de dónde salieron y quién las escribió.">
+<meta property="og:title" content="Clase en vivo: la historia de América Latina que te enseñaron mal">
+<meta property="og:description" content="Gratis y en vivo. Las tres mentiras que todavía repetimos sobre nuestro continente, y una demostrada entera. Al final, tus preguntas.">
 <meta property="og:url" content="https://eunicelopez.com/webinar/">
 <meta property="og:image" content="https://eunicelopez.com/webinar/og-webinar.jpg">
-<meta property="og:image:alt" content="La historia de América Latina que te enseñaron mal, clase gratuita con Eunice López">
+<meta property="og:image:alt" content="Clase en vivo con Eunice López sobre la historia de América Latina">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="La historia de América Latina que te enseñaron mal">
-<meta name="twitter:description" content="Clase gratuita de 22 minutos con Eunice López, historiadora de América Latina.">
+<meta name="twitter:title" content="Clase en vivo: la historia de América Latina que te enseñaron mal">
+<meta name="twitter:description" content="Gratis y en vivo, con Eunice López. Al final, tus preguntas.">
 <meta name="twitter:image" content="https://eunicelopez.com/webinar/og-webinar.jpg">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -50,8 +52,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Event",
-  "name": "La historia de América Latina que te enseñaron mal",
-  "description": "Clase gratuita en línea de 22 minutos sobre las tres mentiras fundacionales del relato oficial de América Latina.",
+  "name": "Clase en vivo: la historia de América Latina que te enseñaron mal",
+  "description": "Clase gratuita en vivo sobre las tres mentiras fundacionales del relato oficial de América Latina, con preguntas del público al final.",
+  "startDate": "2026-09-24T19:00:00-05:00",
+  "endDate": "2026-09-24T20:00:00-05:00",
   "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
   "inLanguage": "es",
@@ -60,21 +64,15 @@
     "@type": "VirtualLocation",
     "url": "https://eunicelopez.com/webinar/"
   },
-  "organizer": {
-    "@type": "Person",
-    "name": "Eunice López",
-    "url": "https://eunicelopez.com/"
-  },
-  "performer": {
-    "@type": "Person",
-    "name": "Eunice López"
-  },
+  "organizer": { "@type": "Person", "name": "Eunice López", "url": "https://eunicelopez.com/" },
+  "performer": { "@type": "Person", "name": "Eunice López" },
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
-    "url": "https://eunicelopez.com/webinar/"
+    "url": "https://eunicelopez.com/webinar/",
+    "validFrom": "2026-09-10T00:00:00-05:00"
   }
 }
 </script>
@@ -93,7 +91,9 @@
     --marfil-2: #FBF8F2;
     --cream-warm: #FDF6EC;
     --mute: #6E6478;
-    --mute-on-dark: #B7ADC4;
+    --mute-on-dark: #CFC3E3; /* antes #B7ADC4: gris; ahora lavanda del índigo, 7.3:1 */
+    --coral-ink: #BF3F1A;   /* coral para texto sobre claro (4.8:1) */
+    --coral-fill: #CC4721;  /* coral para botones con texto blanco (4.7:1) */
     --hair: rgba(30, 27, 36, 0.10);
     --hair-dark: rgba(247, 243, 236, 0.14);
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -284,9 +284,15 @@
   .mod .lie { font-family: var(--serif); font-style: italic; font-size: 1.35rem; color: var(--mute); text-decoration: line-through; text-decoration-color: var(--coral-soft); text-decoration-thickness: 2px; }
   .mod h3 { font-size: clamp(1.15rem, 2.6vw, 1.45rem); line-height: 1.18; }
   .mod p { margin: 0; color: var(--mute); font-size: 1rem; }
+  /* El parrafo de cierre caia por colocacion automatica en la columna 1,
+     que es `auto`: al ser texto largo la ensanchaba y dejaba el titular
+     en una columna de ~150px, partido palabra por palabra. Se ancla a la
+     columna 2, con la primera libre para el numero. (10-sep-2026) */
+  .mod > p:last-child { grid-column: 2; }
   @media (max-width: 620px) {
     .mod { grid-template-columns: 1fr; }
     .mod .num { grid-row: auto; padding-top: 0; }
+    .mod > p:last-child { grid-column: 1; }
   }
   .mod.extra { background: var(--indigo); border-color: var(--indigo); }
   .mod.extra .num { color: var(--gold); }
@@ -417,9 +423,104 @@
   .marca-nombrada { margin: .35rem 0 .1rem; font-size: .68rem; font-weight: 800;
     letter-spacing: .14em; text-transform: uppercase; opacity: .55; }
   .marca-nombrada.es-la { opacity: 1; color: var(--coral, #E4572E); }
+
+  /* ---------- contador y barra de urgencia (nuevo, 10-sep-2026) ---------- */
+  .urgencia {
+    background: var(--indigo); color: var(--marfil);
+    text-align: center; padding: 0.6rem 0; font-size: 0.84rem; font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .urgencia b { color: var(--gold); font-weight: 800; }
+  .cuenta { margin: 0 auto 1.9rem; max-width: 520px; }
+  .cuenta-t {
+    font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; color: var(--mute); margin: 0 0 0.7rem;
+  }
+  .reloj { display: flex; gap: 0.5rem; justify-content: center; }
+  .reloj div {
+    background: #fff; border: 1px solid var(--hair); border-radius: 14px;
+    padding: 0.7rem 0.2rem; flex: 1 1 0; min-width: 0;
+    box-shadow: 0 10px 26px -22px rgba(30,27,36,0.9);
+  }
+  .reloj b {
+    display: block; font-size: clamp(1.5rem, 5.4vw, 2.1rem); font-weight: 800;
+    letter-spacing: -0.03em; color: var(--indigo); line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .reloj span {
+    display: block; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mute); margin-top: 0.35rem; font-weight: 700;
+  }
+  .cuenta.on-dark .cuenta-t { color: var(--mute-on-dark); }
+  .cuenta.on-dark .reloj div { background: rgba(247,243,236,0.08); border-color: var(--hair-dark); }
+  .cuenta.on-dark .reloj b { color: var(--gold); }
+  .cuenta.on-dark .reloj span { color: var(--mute-on-dark); }
+  .cuenta-vivo {
+    text-align: center; font-weight: 800; color: var(--coral);
+    font-size: 1.05rem; margin: 0;
+  }
+  .cita-fecha {
+    display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+    background: var(--gold-soft); border-radius: 999px; padding: 0.5rem 1.1rem;
+    font-size: 0.88rem; font-weight: 700; color: var(--indigo); margin: 0 auto 1.4rem;
+  }
+  .porque-vivo { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 0.9rem; }
+  .porque-vivo li {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    font-size: 1rem; line-height: 1.55;
+  }
+  .porque-vivo li::before {
+    content: "→"; color: var(--coral); font-weight: 800; flex: none; line-height: 1.5;
+  }
+
+  /* ---------- pulido (6-oct-2026): contraste, tamaños, superficies ---------- */
+  ::selection { background: var(--gold-soft); color: var(--ink); }
+  html { accent-color: var(--coral-fill); caret-color: var(--coral-ink); }
+  a { text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  p, li { text-wrap: pretty; }
+  summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+  /* coral como texto: el tono de tinta; coral como fondo de botón: el de relleno */
+  .eyebrow, .brand span, .q-hint .arr, .cuenta-vivo, .marca-nombrada.es-la { color: var(--coral-ink); }
+  .eyebrow { font-size: 0.75rem; }
+  .honest .eyebrow, .book .eyebrow, .eyebrow.on-dark { color: var(--gold); }
+  .badges li.hot { background: var(--coral-fill); border-color: var(--coral-fill); }
+  .nav-cta, .btn, .cta-link { background: var(--coral-fill); }
+  .nav-cta:hover, .btn:hover, .cta-link:hover { background: var(--ink); }
+  .form-card.on-dark .btn:hover { background: var(--gold); color: var(--ink); }
+  .cta-link.on-gold { background: var(--ink); }
+  .cta-link.on-gold:hover { background: var(--coral-fill); }
+  .nav-cta { padding: 0.72rem 1.25rem; }
+  /* "Se nombra": gris de texto en vez de opacidad (que bajaba a 3:1) */
+  .marca-nombrada { font-size: 0.72rem; opacity: 1; color: var(--mute); }
+  .entrar-s { opacity: 0.95; }
+  .entrar-n { opacity: 0.9; }
+  /* contador: etiquetas legibles */
+  .reloj span { font-size: 0.75rem; letter-spacing: 0.1em; }
+  .stats span { font-size: 0.82rem; line-height: 1.4; }
+  .stats li { border-left-width: 1px; }
+  .stats b { font-variant-numeric: tabular-nums; }
+  /* la frase de las marcas es una frase, no una etiqueta */
+  .brands p { text-transform: none; letter-spacing: 0.02em; font-size: 0.9rem; font-weight: 600; }
+  /* sombras: más cortas y con desplazamiento, sin halo ancho */
+  .form-card { box-shadow: 0 18px 36px -26px rgba(30,27,36,0.4); }
+  .mod { box-shadow: 0 8px 16px -12px rgba(30,27,36,0.28); }
+  /* enlaces del pie: área táctil de 44px */
+  .foot-links a { display: inline-block; padding: 0.7rem 0; }
+  .fnote, .legal { font-size: 0.8rem; }
+  /* el flex partía «Puedes preguntar por <strong>tu</strong> apellido» en tres columnas */
+  .porque-vivo li { display: block; position: relative; padding-left: 1.75rem; }
+  .porque-vivo li::before { position: absolute; left: 0; top: 0; }
+  /* el enlace a los testimonios salía en azul de navegador */
+  .sec-head a { color: var(--coral-ink); }
+  .sec-head a:hover { color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; }
+    .btn:hover, .cta-link:hover { transform: none; }
+  }
 </style>
-</head>
+
 <body>
+
+<div class="urgencia">Clase en vivo · <b>miércoles 24 de septiembre, 7:00 p.m. (Colombia)</b> · gratis, con cupo</div>
 
 <header class="nav">
   <div class="shell nav-in">
@@ -427,7 +528,7 @@
       <span class="dot" aria-hidden="true"></span>
       <span class="bt"><b>Eunice López</b><span>Historia Viva</span></span>
     </a>
-    <a class="nav-cta" href="#inscribirme">Ver la clase gratis</a>
+    <a class="nav-cta" href="#inscribirme">Guardar mi lugar</a>
   </div>
 </header>
 
@@ -437,23 +538,37 @@
 <section class="hero">
   <div class="shell">
     <ul class="badges">
-      <li class="hot">Clase gratuita</li>
-      <li>22 minutos</li>
+      <li class="hot">En vivo</li>
+      <li>Gratis</li>
+      <li>60 minutos</li>
       <li>En español</li>
-      <li>Se ve gratis</li>
     </ul>
     <h1>La historia de América Latina que te <span class="coral-word">enseñaron mal</span>.</h1>
     <p class="q">¿Y si casi todo lo que crees saber de tu propio continente te lo contó el que ganó?</p>
-    <p class="lede">En veintidós minutos te nombro <strong>las tres mentiras</strong> que todavía repetimos sobre América Latina y te demuestro una entera, de dónde salió, quién la escribió, y qué cambia cuando las sueltas. Sin fechas para memorizar, sin tono de salón de clase.</p>
+
+    <p class="cita-fecha">Miércoles 24 de septiembre · 7:00 p.m. Colombia · 8:00 p.m. Miami · 6:00 p.m. México</p>
+
+    <p class="lede">Una hora en vivo: te nombro <strong>las tres mentiras</strong> que todavía repetimos sobre América Latina, te demuestro una entera —de dónde salió y quién la escribió—, y los últimos veinte minutos son tuyos para preguntar. Sin fechas para memorizar y sin tono de salón de clase.</p>
 
     <p class="byline">
       <span class="face" role="img" aria-label="Eunice López"></span>
       <span><b>Con Eunice López</b><span>Historiadora de América Latina, en cuatro idiomas</span></span>
     </p>
 
+    <div class="cuenta" data-reloj>
+        <p class="cuenta-t">La clase en vivo empieza en</p>
+        <div class="reloj">
+          <div><b data-u>00</b><span>días</span></div>
+          <div><b data-u>00</b><span>horas</span></div>
+          <div><b data-u>00</b><span>min</span></div>
+          <div><b data-u>00</b><span>seg</span></div>
+        </div>
+        <p class="cuenta-vivo" data-vivo hidden></p>
+      </div>
+
     <div class="form-card" id="inscribirme">
-      <p class="ftitle">Te mando la clase y la hoja.</p>
-      <p class="fsub">La clase entera, y la hoja de las Tres Preguntas: las tres preguntas y tres libros con el sesgo de cada uno avisado arriba. No te escribo por nada más.</p>
+      <p class="ftitle">Guarda tu lugar.</p>
+      <p class="fsub">Te mando el enlace de la sala y dos recordatorios. Si te inscribes y no puedes venir, te llega la grabación —pero las preguntas solo se hacen en vivo.</p>
       <div class="ghl-embed">
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/1FKOnMHx0nTHzuP9iqE2"
@@ -469,7 +584,7 @@
             title="Clase Gratuita"
             style="width:100%;height:560px;border:none;border-radius:14px;background:transparent;display:block">
           </iframe>
-          <p class="fnote">Gratis, sin fecha límite. Te escribo cuando tengo algo que contar, y te puedes salir con un clic.</p>
+          <p class="fnote">Gratis. Te llega el enlace de la sala y dos recordatorios, nada más. Te puedes salir con un clic.</p>
         </div>
     </div>
   </div>
@@ -479,7 +594,7 @@
 <section class="band cream">
   <div class="shell">
     <div class="sec-head">
-      <p class="eyebrow">Antes de darle play</p>
+      <p class="eyebrow">Antes de guardar tu lugar</p>
       <h2>Esta clase es para ti si alguna de estas te <span class="mark-hl">suena conocida</span>.</h2>
     </div>
     <ul class="pain">
@@ -499,7 +614,7 @@
     <div class="sec-head">
       <p class="eyebrow">Lo que vas a ver</p>
       <h2>Tres mentiras. Te <span class="mark-hl">demuestro una</span>.</h2>
-      <p>No son opiniones. Son tres frases que casi todos aprendimos en el colegio y que el archivo no sostiene. <strong>Te las nombro las tres y te demuestro la segunda entera</strong>, con nombres y fechas. Las otras dos las vas a poder desarmar tú sola con lo que te doy en el minuto doce: en veintidós minutos, una historia completa convence y tres a la carrera no.</p>
+      <p>No son opiniones. Son tres frases que casi todos aprendimos en el colegio y que el archivo no sostiene. <strong>Te las nombro las tres y te demuestro la segunda entera</strong>, con nombres y fechas. Las otras dos las vas a poder desarmar tú sola con lo que te doy a mitad de la clase: una historia completa convence, y tres a la carrera no.</p>
     </div>
     <div class="mods">
 
@@ -508,13 +623,13 @@
         <p class="lie">&ldquo;Nos descubrieron.&rdquo;</p>
         <p class="marca-nombrada">Se nombra</p>
         <h3>Descubrir es una palabra legal, no geográfica.</h3>
-        <p>Esta la digo en una frase y sigo. No porque no dé para una hora — da para tres —, sino porque prefiero que te lleves una entera antes que tres a medias. Cuando tengas el método del minuto doce, esta la desarmas tú en cinco minutos.</p>
+        <p>Esta la digo en una frase y sigo. No porque no dé para una hora — da para tres —, sino porque prefiero que te lleves una entera antes que tres a medias. Cuando tengas el método, esta la desarmas tú en cinco minutos.</p>
       </article>
 
       <article class="mod">
         <p class="num">02</p>
         <p class="lie">&ldquo;Nos independizamos.&rdquo;</p>
-        <p class="marca-nombrada es-la">Los siete minutos del centro</p>
+        <p class="marca-nombrada es-la">El centro de la clase</p>
         <h3>De quién nos independizamos, y quién quedó mandando el día siguiente.</h3>
         <p><strong>Esta es la que te demuestro entera</strong>, y lo hago con un caso: <strong>1781</strong>. Casi treinta años antes de la fecha que tu país celebra, hubo tres levantamientos en tres puntos del continente en un mismo año, y en dos de los tres quien daba órdenes era una mujer. Vas a saber su nombre, qué hizo, qué le costó, y por qué no lo sabías.</p>
       </article>
@@ -529,17 +644,33 @@
 
       <article class="mod extra">
         <p class="num">+</p>
-        <p class="lie">Lo que no está en el libro de texto</p>
-        <h3>Las otras dos las vas a poder desarmar tú sola.</h3>
-        <p>No te las paso por encima en veintidós minutos: te doy el método con el que se desarman, y lo uso en vivo delante de ti. Una historia completa convence; tres a la carrera no. Y la que sí demuestro la sostiene una mujer que salió del cuadro cuando se pintó el cuadro — que es de lo que trata todo esto.</p>
+        <p class="lie">Los últimos veinte minutos</p>
+        <h3>Y después preguntas tú.</h3>
+        <p>Esta parte no existe en ningún video grabado, y es la razón de venir en vivo: traes tu apellido, tu país o la historia rara de tu familia, y la miramos con el mismo método delante de todas. No sé qué vas a preguntar, y esa es justamente la gracia.</p>
       </article>
 
     </div>
   </div>
 </section>
 
-<!-- ============ LO QUE TE LLEVAS ============ -->
+<!-- ============ POR QUÉ EN VIVO ============ -->
 <section class="band ivory">
+  <div class="shell narrow">
+    <div class="sec-head">
+      <p class="eyebrow">Por qué en vivo y no grabada</p>
+      <h2>Porque esta es la primera vez que <span class="mark-hl">cuento esto en público</span>.</h2>
+      <p>Llevo años armando escenarios para que otros hablaran. Esta clase es la primera vez que me subo yo, con mi propio tema, y quiero hacerlo con gente delante y no con una cámara sola en un cuarto.</p>
+    </div>
+    <ul class="porque-vivo">
+      <li>Puedes preguntar por <strong>tu</strong> apellido, tu país, tu familia — y lo miramos ahí mismo.</li>
+      <li>Vas a ver cómo se busca de verdad, con las dudas y los callejones sin salida incluidos.</li>
+      <li>Si te inscribes te llega la grabación, pero la grabación no te responde.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ LO QUE TE LLEVAS ============ -->
+<section class="band">
   <div class="shell">
     <div class="sec-head">
       <p class="eyebrow">Con qué te quedas</p>
@@ -575,6 +706,7 @@
       <div>
         <p class="eyebrow">Quién te va a hablar</p>
         <h2>Soy Eunice López, y me dedico por completo a la historia de América Latina.</h2>
+        <p class="q" style="text-align:left; margin-left:0; max-width:36ch;">Créeme por lo que viene ahora, no por mi currículum. Y si en diez minutos no te cuadra, no me creas.</p>
         <p>Soy <strong>colombo-venezolana y ciudadana del mundo</strong>. Migré sola a los diecinueve años y pasé más de dieciséis años en corporativo, liderando proyectos y montando eventos globales para que otros hablaran en el escenario, en Cisco, en AT&amp;T, en el Mundial Femenino de la FIFA.</p>
         <p>En medio de eso me tomé un año recorriendo Sudamérica, escuchando a comunidades y a pueblos originarios contar su propia versión, no la versión del libro. Ahí entendí dos cosas: que la historia de este continente está viva, y que casi nadie la está contando de manera que se sienta.</p>
         <p><strong>Hoy eso es lo único que hago.</strong> Investigo, viajo al lugar donde pasó, y lo cuento en cuatro idiomas para que no se olvide.</p>
@@ -583,7 +715,6 @@
           <li><b>+16</b><span>años en corporativo, liderando y produciendo eventos</span></li>
           <li><b>4</b><span>idiomas en los que cuento esto</span></li>
         </ul>
-        <p class="q" style="text-align:left; margin-left:0; max-width:34ch;">Más de dieciséis años montando escenarios para que otros hablaran. Hoy la que habla soy yo.</p>
       </div>
     </div>
   </div>
@@ -660,24 +791,27 @@
   <div class="shell">
     <div class="honest">
       <p class="eyebrow">Te lo digo antes, no después</p>
-      <h2>En los últimos minutos te voy a invitar a algo.</h2>
-      <p>Prefiero decírtelo aquí para que no te tome por sorpresa. Al final de la clase te voy a contar de <strong>las tres clases del mes</strong>, que es donde esto continúa. No es «una comunidad»: son tres clases en vivo, todos los meses, y las tres van sobre <strong>la misma mujer</strong>.</p>
+      <h2>Al final te voy a invitar a algo.</h2>
+      <p>Prefiero decírtelo aquí para que no te tome por sorpresa. Al cerrar la clase te voy a contar de <strong>las tres clases del mes</strong>, que es donde esto continúa. No es «una comunidad»: son tres clases en vivo, todos los meses, y las tres van sobre <strong>la misma mujer</strong>.</p>
       <ul>
         <li><strong>En la primera la buscamos.</strong> Elegimos a una y la buscamos juntas, en pantalla compartida, en archivos de verdad. A veces aparece y a veces no, y las dos cosas enseñan.</li>
         <li><strong>En la segunda ahondamos.</strong> Abrimos sus papeles y los traducimos entre todas: las letras raras, las abreviaturas, y esas palabras que parecen inofensivas y no lo son.</li>
         <li><strong>Y en la tercera bajamos a tierra.</strong> Qué de lo que le pasó a ella se repite en tu familia, y qué vas a hacer distinto. Sales con pasos concretos.</li>
         <li>Si un mes no puedes venir, <strong>te queda la grabación</strong>.</li>
       </ul>
-      <p><strong>Si no te interesa, no pasa nada.</strong> La clase completa es tuya igual, y no hay nada que se te vaya a esconder detrás de un pago a mitad de camino.</p>
+      <p>Son <strong>sesenta dólares al mes</strong>, las tres clases. Te lo digo aquí y no al final, para que no tengas que aguantarte una hora esperando el número.</p>
+      <p><strong>Si no te interesa, no pasa nada.</strong> La clase entera es tuya igual, y no hay nada que se te vaya a esconder detrás de un pago a mitad de camino.</p>
       <p class="kicker">Lo que vale, vale antes de que yo te pida algo.</p>
 
-      <!-- ENTRAR A LAS TRES CLASES · es el enlace que el guion nombra en el 17:30.
-           OJO: todavia no hay pagina de pago. El href es el interino honesto,
-           una conversacion. Cuando exista el checkout, cambialo aqui. -->
+      <!-- CUPO FUNDADOR · corregido el 10-sep-2026.
+           ABRE el 24 de septiembre, cierra el 29 de octubre. Antes decía
+           que ya estaba abierto, y no lo estaba.
+           Sigue sin haber checkout: el href es una conversacion por correo.
+           Cuando exista la pagina de pago, se cambia aqui. -->
       <div class="entrar" id="tres-clases">
-        <p class="entrar-t">El cupo fundador está abierto.</p>
-        <p class="entrar-s">Se cierra el <strong>29 de octubre</strong> o cuando lleguemos a cien personas. No lo vuelvo a abrir.</p>
-        <a class="btn btn-entrar" href="mailto:eunice.historiaviva@gmail.com?subject=Cupo%20fundador%20-%20las%20tres%20clases%20del%20mes&amp;body=Hola%20Eunice%2C%0A%0AQuiero%20el%20cupo%20fundador%20de%20las%20tres%20clases%20del%20mes.%0A%0AMe%20llamo%3A%20%0AY%20lo%20que%20me%20trae%20es%3A%20%0A">Quiero el cupo fundador</a>
+        <p class="entrar-t">El cupo fundador abre el día de la clase.</p>
+        <p class="entrar-s">Cien plazas, <strong>del 24 de septiembre al 29 de octubre</strong>, o antes si se llenan. Después no lo vuelvo a abrir.</p>
+        <a class="btn btn-entrar" href="mailto:eunice.historiaviva@gmail.com?subject=Cupo%20fundador%20-%20las%20tres%20clases%20del%20mes&amp;body=Hola%20Eunice%2C%0A%0AQuiero%20que%20me%20avises%20cuando%20abra%20el%20cupo%20fundador%20de%20las%20tres%20clases%20del%20mes.%0A%0AMe%20llamo%3A%20%0AY%20lo%20que%20me%20trae%20es%3A%20%0A">Avísame cuando abra</a>
         <p class="entrar-n">No es para todo el mundo. No es para quien quiere una frase bonita para ganar una discusión en una cena. Es para quien está dispuesta a mirar sus propios papeles, que casi nunca dicen lo que uno quiere leer.</p>
       </div>
     </div>
@@ -694,15 +828,19 @@
     <div class="faq">
       <details open>
         <summary>¿Es gratis de verdad?</summary>
-        <p>Sí. No pido tarjeta, y no hay una segunda parte de pago escondida. Te pido tu correo porque es la manera de mandarte el enlace y de avisarte cuando publique lo siguiente.</p>
-      </details>
-      <details>
-        <summary>¿Cuánto dura?</summary>
-        <p>Veintidós minutos, y está pensada para verse de corrido. Es corta a propósito: prefiero demostrarte una cosa bien a pasarte tres por encima. Si la partes, córtala en el minuto doce, cuando hay un cierre natural.</p>
+        <p>Sí. No pido tarjeta y no hay una segunda parte de pago escondida. Te pido tu correo porque es la única manera de mandarte el enlace de la sala y de avisarte si algo cambia.</p>
       </details>
       <details>
         <summary>¿Es en vivo o grabada?</summary>
-        <p>Está grabada, sin fecha y sin horario: la ves cuando quieras, la pausas y vuelves. Lo en vivo pasa después, en las tres clases del mes.</p>
+        <p><strong>En vivo</strong>, el miércoles 24 de septiembre a las 7:00 p.m. hora de Colombia. Es la primera vez que doy esta clase en público. Los últimos veinte minutos son de preguntas, y eso solo pasa en vivo.</p>
+      </details>
+      <details>
+        <summary>No puedo a esa hora. ¿Hay grabación?</summary>
+        <p>Sí, si te inscribes. Te llega la grabación aunque no vengas. Pero las preguntas se hacen en vivo y no se pueden hacer después, así que si puedes, ven.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto dura?</summary>
+        <p>Una hora: cuarenta minutos de clase y veinte de preguntas. Si tienes que irte antes, el bloque de la mentira que demuestro entera está en la primera media hora.</p>
       </details>
       <details>
         <summary>¿Necesito saber de historia?</summary>
@@ -730,11 +868,23 @@
     <div class="book">
       <div class="face" role="img" aria-label="Eunice López"></div>
       <p class="eyebrow">Última llamada</p>
-      <h2>Veintidós minutos, y no vuelves a contar tu historia igual.</h2>
-      <p>La clase no tiene fecha ni contador: la ves cuando quieras. Lo que sí tiene fecha es el <strong>cupo fundador</strong> de las tres clases del mes, que se cierra el <strong>29 de octubre</strong> o cuando lleguemos a cien personas, y no se vuelve a abrir. De eso te hablo al final, no ahora.</p>
+      <h2>Una hora, y no vuelves a contar tu historia igual.</h2>
+      <p>Es en vivo y pasa una sola vez. Si te inscribes y no puedes venir te llega la grabación, pero lo que no se recupera son los veinte minutos en que puedes preguntar por lo tuyo.</p>
+
+      <div class="cuenta on-dark" data-reloj>
+        <p class="cuenta-t">La clase en vivo empieza en</p>
+        <div class="reloj">
+          <div><b data-u>00</b><span>días</span></div>
+          <div><b data-u>00</b><span>horas</span></div>
+          <div><b data-u>00</b><span>min</span></div>
+          <div><b data-u>00</b><span>seg</span></div>
+        </div>
+        <p class="cuenta-vivo" data-vivo hidden></p>
+      </div>
+
       <div class="form-card on-dark">
-        <p class="ftitle">Te mando la clase y la hoja.</p>
-        <p class="fsub">No apuntes nada. La hoja de las Tres Preguntas te llega escrita.</p>
+        <p class="ftitle">Guarda tu lugar.</p>
+        <p class="fsub">Te mando el enlace de la sala y dos recordatorios. Nada más.</p>
         <div class="ghl-embed">
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/1FKOnMHx0nTHzuP9iqE2"
@@ -750,7 +900,7 @@
             title="Clase Gratuita"
             style="width:100%;height:560px;border:none;border-radius:14px;background:transparent;display:block">
           </iframe>
-          <p class="fnote">Gratis, sin fecha límite. Te escribo cuando tengo algo que contar, y te puedes salir con un clic.</p>
+          <p class="fnote">Gratis. Te llega el enlace de la sala y dos recordatorios, nada más. Te puedes salir con un clic.</p>
         </div>
       </div>
     </div>
@@ -778,31 +928,62 @@
 </footer>
 
 <script>
+
 /* =======================================================================
-   EL FORMULARIO — dónde vive ahora
+   EL CONTADOR — la fecha se cambia AQUI y en ningun otro sitio.
    -----------------------------------------------------------------------
-   Ya no hay formulario propio. Lo sirve GoHighLevel en un iframe:
+   Formato ISO con offset. -05:00 es hora de Colombia.
+   Cambiala aqui y se actualizan el reloj del hero, el del cierre, el
+   texto de la barra de arriba y el JSON-LD del <head> hay que tocarlo
+   aparte (es una fecha literal, la unica duplicada).
+   ======================================================================= */
+var FECHA_CLASE = "2026-09-24T19:00:00-05:00";
+var DURACION_MIN = 60;
 
-     Formulario   «Clase Gratuita»
-     Id            1FKOnMHx0nTHzuP9iqE2
-     Subcuenta     Historia Viva · KChOT4PW4HG7XF6t2WKM
+(function () {
+  var inicio = new Date(FECHA_CLASE).getTime();
+  var fin = inicio + DURACION_MIN * 60 * 1000;
+  var relojes = document.querySelectorAll("[data-reloj]");
+  if (!relojes.length) return;
 
-   GHL crea el contacto directamente, así que no hay endpoint que configurar
-   ni JSON que enviar desde aquí. Si el formulario deja de aparecer, revisa
-   que link.msgsndr.com/js/form_embed.js siga cargando al final del body.
+  function pinta() {
+    var ahora = Date.now();
+    var falta = inicio - ahora;
 
-   PENDIENTE, y no es cosmético: el formulario de GHL tiene nombre, correo,
-   teléfono y aceptación de términos, pero NO tiene «¿qué te trae?».
-   El campo existe en el CRM (contact.hv_que_te_trae, con las opciones ya
-   alineadas con el guion), solo falta arrastrarlo dentro del constructor
-   del formulario. Sin él, los bloques 00:50 y 19:30 del guion prometen una
-   pregunta que nadie hizo.
-*/
-/* El formulario lo sirve GoHighLevel en un iframe («Clase Gratuita»,
-   1FKOnMHx0nTHzuP9iqE2, subcuenta KChOT4PW4HG7XF6t2WKM). No hay que
-   capturar nada desde aquí: GHL crea el contacto directamente.
-   El JS de validación anterior se retiró el 6-sep-2026 junto con el
-   formulario propio, para que no queden dos verdades en la página. */
+    relojes.forEach(function (caja) {
+      var vivo = caja.querySelector("[data-vivo]");
+      var grid = caja.querySelector(".reloj");
+
+      if (falta > 0) {
+        var s = Math.floor(falta / 1000);
+        var d = Math.floor(s / 86400);
+        var h = Math.floor((s % 86400) / 3600);
+        var m = Math.floor((s % 3600) / 60);
+        var g = s % 60;
+        var pares = [d, h, m, g];
+        caja.querySelectorAll("[data-u]").forEach(function (el, i) {
+          el.textContent = pares[i] < 10 ? "0" + pares[i] : String(pares[i]);
+        });
+        return;
+      }
+
+      /* ya empezo: el reloj deja de mentir y dice lo que esta pasando */
+      if (grid) grid.hidden = true;
+      if (vivo) {
+        vivo.hidden = false;
+        vivo.textContent = ahora < fin
+          ? "Estamos en vivo ahora mismo. Entra."
+          : "Esta clase ya pasó. Déjame tu correo y te aviso de la siguiente.";
+      }
+    });
+
+    if (falta <= 0) clearInterval(tic);
+  }
+
+  pinta();
+  var tic = setInterval(pinta, 1000);
+})();
+
 </script>
 
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
