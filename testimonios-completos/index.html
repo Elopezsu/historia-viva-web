@@ -90,19 +90,8 @@
   .destacada .quien{margin-top:24px;font-size:16px}
   @media (max-width:560px){.destacada{padding:28px 24px 26px}}
 
-  /* «Muy pronto»: el bloque de consultorias mientras no haya videos. Con el
-     primero desaparece y en su lugar sale la rejilla. */
-  .pronto{margin:34px 0 0;padding:44px 40px;border-radius:14px;
-          background:var(--indigo);box-shadow:0 18px 44px rgba(0,0,0,.42);
-          max-width:760px}
-  .pronto .etiqueta{margin:0;font-size:12.5px;letter-spacing:.22em;
-                    text-transform:uppercase;color:var(--coral-texto)}
-  .pronto h3{font-family:var(--serif);font-weight:400;margin:14px 0 0;
-             font-size:clamp(23px,3vw,30px);line-height:1.2;max-width:18ch}
-  .pronto p{margin:16px 0 0;font-size:16px;color:#CFC6DC;max-width:54ch}
-  @media (max-width:560px){.pronto{padding:34px 24px}}
-
-  .sesiones{display:grid;gap:44px 30px;margin-top:34px;
+  /* Consultorías: la rejilla de videos de las sesiones. */
+  .sesiones{display:grid;gap:44px 30px;margin-top:34px;max-width:880px;
             grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
   .sesiones figure{margin:0}
   .sesiones .marco{aspect-ratio:16/9;margin-bottom:18px}
@@ -235,7 +224,7 @@
       <a href="#corporativo"><b>33</b> Corporativo</a>
       <a href="#nomada"><b>26</b> Carrera y nomadismo</a>
       <a href="#contratos"><b>4</b> Contratos</a>
-      <a href="#consultorias">Consultorías de IA</a>
+      <a href="#consultorias"><b>1</b> Consultorías de IA</a>
     </nav>
     <div class="barra"></div>
   </div>
@@ -885,12 +874,20 @@
   </section>
   <section class="bloque" id="consultorias">
     <div class="envoltura">
-      <p class="sobretitulo">Lo que viene</p>
+      <p class="sobretitulo">En la reunión, sin guion</p>
       <h2>Consultorías de IA</h2>
-      <div class="pronto">
-        <p class="etiqueta">Muy pronto</p>
-        <h3>Estos testimonios serán publicados</h3>
-        <p>Son de los negocios con los que he colaborado en consultorías de inteligencia artificial.</p>
+      <p class="bajada">Son de los negocios con los que he colaborado en consultorías de inteligencia artificial.</p>
+      <div class="sesiones">
+        <figure>
+          <div class="marco">
+            <video controls preload="none" playsinline
+                   poster="../testimonios/poster/movik.jpg" width="1280" height="720">
+              <source src="../testimonios/video/movik.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="titulo">Movik · revisión de avances por Zoom</p>
+          <p class="resumen">Movik es un software para transportistas en Estados Unidos. Así reaccionó su equipo el 8 de octubre de 2026, al ver las landings y la estrategia: «No, realmente me impresiona mucho, mucho».</p>
+        </figure>
       </div>
     </div>
   </section>
