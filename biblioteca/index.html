@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biblioteca de recursos · Historia Viva</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F7F3EC">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;700&display=swap');
+:root{--indigo:#3B2E5A;--coral:#E4572E;--coral-ink:#BF4420;--gold:#F2A900;--gold-soft:#FBE5B8;--ink:#1E1B24;--marfil:#F7F3EC;
+  --papel:#FDF6EC;--mute:#6E6478;--hair:rgba(30,27,36,.12);
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Playfair Display','Iowan Old Style',Palatino,Georgia,serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+.hoja{max-width:1040px;margin:0 auto;padding:clamp(1.6rem,5vw,3rem) 16px 3rem}
+.marca{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.4rem}
+.marca .dot{width:28px;height:28px;border-radius:50%;flex:none;
+  background:conic-gradient(from 200deg,var(--coral),var(--gold),var(--indigo),var(--coral))}
+.marca b{font-weight:700;font-size:.92rem;display:block;line-height:1.05}
+.marca i{font-family:var(--serif);font-size:.8rem;color:var(--coral);display:block}
+.k{font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin:0}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,6vw,3rem);line-height:1.05;margin:.4rem 0 .6rem;letter-spacing:-.01em}
+h1 em{color:var(--coral)}
+.bajada{font-size:1.02rem;color:var(--mute);margin:0 0 1rem;max-width:40em}
+.resumen{display:inline-block;background:var(--indigo);color:var(--marfil);border-radius:99px;padding:.35rem .9rem;font-size:.9rem;font-weight:500;margin:0 0 1.4rem}
+.resumen b{color:var(--gold)}
+.controles{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1.2rem}
+.buscar{flex:1 1 260px;min-width:0;font:inherit;font-size:1rem;padding:.65rem .9rem;border:1px solid var(--hair);border-radius:12px;background:#fff;color:var(--ink)}
+.buscar:focus-visible,.chip:focus-visible,.copiar:focus-visible,a:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font:inherit;font-size:.85rem;font-weight:500;padding:.45rem .8rem;border-radius:99px;border:1px solid var(--hair);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--marfil);border-color:var(--ink)}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.tarjeta{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:1.15rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.55rem;min-width:0}
+.tarjeta h2{font-family:var(--serif);font-weight:600;font-size:1.22rem;line-height:1.2;margin:0}
+.tarjeta h2 a{color:inherit;text-decoration:none}
+.tarjeta h2 a:hover{text-decoration:underline}
+.sirve{margin:0;font-size:.93rem}
+.etiquetas{display:flex;flex-wrap:wrap;gap:.35rem;margin:0}
+.et{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:.18rem .55rem;background:var(--papel);color:var(--indigo);border:1px solid var(--hair)}
+.et.tema{background:var(--gold-soft);border-color:transparent;color:var(--ink)}
+.et.puerta{background:var(--indigo);color:var(--marfil);border-color:transparent}
+.et.form-si{background:#E3F1E6;color:#1F5B2C;border-color:transparent}
+.et.form-no{background:#FBE1D9;color:var(--coral-ink);border-color:transparent}
+.palabra{margin:0;font-size:.88rem;color:var(--mute)}
+.palabra b{font-family:var(--sans);letter-spacing:.08em;color:var(--coral-ink);background:var(--papel);border-radius:6px;padding:.05rem .4rem}
+.enlaces{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:auto;padding-top:.4rem}
+.copiar{font:inherit;font-size:.82rem;font-weight:500;text-align:left;padding:.5rem .65rem;border-radius:10px;border:1px solid var(--hair);background:var(--marfil);color:var(--ink);cursor:pointer;min-height:44px;line-height:1.25}
+.copiar span{display:block;font-size:.7rem;color:var(--mute);font-weight:400}
+.copiar:hover{border-color:var(--ink)}
+.copiar.ok{background:var(--ink);color:var(--marfil)}
+.copiar.ok span{color:var(--gold-soft)}
+.copiar.pdf{background:#fff}
+.vacio{display:none;color:var(--mute);margin:1rem 0}
+.notas{margin-top:2rem;padding:1rem 1.2rem;background:var(--gold-soft);border-radius:14px;font-size:.9rem}
+.notas p{margin:.35rem 0 0}
+.notas b{display:block}
+.aviso{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:var(--ink);color:var(--marfil);padding:.6rem 1rem;border-radius:12px;font-size:.9rem;max-width:calc(100% - 32px);opacity:0;pointer-events:none;transition:opacity .2s}
+.aviso.ver{opacity:1}
+.respaldo{position:fixed;left:-9999px;top:0;opacity:0}
+@media (max-width:420px){.enlaces{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="hoja">
+  <div class="marca"><span class="dot" aria-hidden="true"></span><span><b>Eunice López</b><i>Historia Viva</i></span></div>
+
+  <p class="k">Uso interno · no se comparte</p>
+  <h1>Biblioteca de <em>recursos gratis</em></h1>
+  <p class="bajada">Todos los regalos de Historia Viva en un solo lugar: para qué sirve cada uno, a quién se lo mandas y el enlace listo para copiar. Cada enlace ya lleva sus UTM, así sabemos de dónde llegó cada persona.</p>
+  <p class="resumen" id="resumen">Cargando…</p>
+
+  <div class="controles">
+    <input class="buscar" id="buscar" type="search" placeholder="Busca por título, tema o palabra clave" aria-label="Buscar un recurso">
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por tema"></div>
+  </div>
+
+  <div class="rejilla" id="rejilla"></div>
+  <p class="vacio" id="vacio">No hay recursos con esa búsqueda.</p>
+
+  <div class="notas">
+    <b>Cómo leer los botones</b>
+    <p><b style="display:inline">Enlace limpio:</b> para donde no importa medir (tu bio, una conversación tuya). <b style="display:inline">Historia:</b> el sticker de enlace de una historia de Instagram. <b style="display:inline">DM:</b> el que mandas (o manda el agente) cuando alguien te escribe la palabra clave. <b style="display:inline">WhatsApp:</b> para mandarlo por chat.</p>
+    <p>Todos los formularios son el de la carta («Subscribirse al Newsletter»): la persona deja nombre y correo y queda con la etiqueta <b style="display:inline">newsletter</b>. De qué recurso vino lo dice el UTM, que la rutina de las 7:00 convierte en etiqueta.</p>
+    <p><b style="display:inline">Ojo:</b> los enlaces viejos de <b style="display:inline">recursos.eunicelopez.com</b> no abren (dan «Site not found»). Usa siempre los de esta página.</p>
+  </div>
+</main>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var BASE = 'https://eunicelopez.com/';
+  var UTM = 'utm_campaign=lead_magnets_octubre';
+  // tema: trabajo | emprender | desarrollo | origen · puerta: comunidad | carta | conferencias
+  var R = [
+    { slug:'aumento', titulo:'Antes de pedir tu aumento, lee esto', palabra:'AUMENTO', tema:'trabajo', puerta:['conferencias','carta'], tipo:'Hoja', pdf:true, form:true,
+      sirve:'Un guion de tres pasos para pedir un aumento y qué contestar al «no hay presupuesto». Para la mujer que lleva tiempo sin atreverse a pedirlo.' },
+    { slug:'decir-no', titulo:'Siete frases para decir que no en el trabajo', palabra:'NO', nota:'Si el agente se confunde con cualquier «no», usa LÍMITE.', tema:'trabajo', puerta:['conferencias','carta'], tipo:'Hoja', pdf:true, form:true,
+      sirve:'Siete frases cortas para decir que no al jefe o a un cliente sin pedir perdón. Para quien dice que sí a todo y está agotada.' },
+    { slug:'a-tu-edad', titulo:'¿Qué no podía hacer tu abuela a tu edad?', palabra:'EDAD', tema:'desarrollo', puerta:['carta'], tipo:'Herramienta', pdf:true, form:true,
+      sirve:'Eliges país y edad y ves qué derechos no tenía tu abuela a tus años. Para alguien que nunca ha pensado en la historia: es la puerta más fácil.' },
+    { slug:'emprender', titulo:'Emprendieron sin permiso', palabra:'NEGOCIO', tema:'emprender', puerta:['conferencias','carta'], tipo:'Hoja', pdf:true, form:true,
+      sirve:'Cinco mujeres que vendieron su trabajo cuando la ley no las dejaba, y cinco preguntas para tu primer paso. Para la que quiere emprender y no arranca.' },
+    { slug:'decision', titulo:'7 días para la decisión que estás postergando', palabra:'DECIDO', tema:'desarrollo', puerta:['comunidad'], tipo:'Hoja', pdf:true, form:true,
+      sirve:'Un diario de siete días, cinco minutos al día, para la decisión que llevas meses aplazando. Lleva al Encuentro 2 del 29 de octubre.' },
+    { slug:'herencia', titulo:'Test: ¿qué mandatos de trabajo y dinero heredaste?', palabra:'HERENCIA', tema:'desarrollo', puerta:['comunidad','carta'], tipo:'Test', pdf:true, form:true,
+      sirve:'Un test de dos minutos con frases que oímos en casa. Te dice qué mandato de trabajo y dinero cargas y de dónde viene. Para quien siente que algo la frena con la plata.' },
+    { slug:'dinero', titulo:'Hasta 1989, tu billetera no era tuya', palabra:'DINERO', tema:'desarrollo', puerta:['carta'], tipo:'Hoja', pdf:true, form:true,
+      sirve:'Las dos leyes que le devolvieron a la casada el manejo de su dinero (Colombia 1932, Chile 1989), con sus fuentes. Para quien vio el reel de la billetera.' },
+    { slug:'estudio-apellido', titulo:'¿De dónde viene el «de»?', palabra:'APELLIDO', tema:'origen', puerta:['carta'], tipo:'Hoja', pdf:true, form:true,
+      sirve:'Por qué la casada en Colombia se ponía el «de» y desde cuándo es opcional. Para la que duda si ponérselo o quitárselo.' },
+    { slug:'guia-de-entrevista', titulo:'Guía de entrevista familiar', palabra:'', tema:'origen', puerta:['comunidad','carta'], tipo:'Herramienta', pdf:false, form:true,
+      sirve:'Veinticinco preguntas, una a la vez, para sentarte con la persona más vieja de tu familia antes de que sea tarde. Para quien quiere guardar la historia de su abuela.' },
+    { slug:'arbol', titulo:'Tu árbol', palabra:'', tema:'origen', puerta:['comunidad'], tipo:'Herramienta', pdf:false, form:true,
+      sirve:'Un árbol de cuatro generaciones que guarda qué decidió cada persona y qué le costó, no solo nombres y fechas. Para quien ya empezó a buscar a su familia.' },
+    { slug:'espiral', titulo:'La Espiral', palabra:'', tema:'desarrollo', puerta:['comunidad'], tipo:'Herramienta', pdf:false, form:true,
+      sirve:'Tres preguntas para una decisión difícil: quién la tomó antes que tú, qué le costó y qué cambió. Es el método de Historia Viva en pequeño.' },
+    { slug:'generaciones', titulo:'Calculadora de generaciones', palabra:'', tema:'origen', puerta:['carta'], tipo:'Herramienta', pdf:false, form:true,
+      sirve:'Pones tu año de nacimiento y ves cuántas generaciones te separan del voto femenino o de la abolición. Para mostrar que esa historia está más cerca de lo que parece.' },
+    { slug:'nombradas', titulo:'Las nombradas', palabra:'', tema:'desarrollo', puerta:['carta','conferencias'], tipo:'Catálogo', pdf:false, form:true,
+      sirve:'Un catálogo de 88 mujeres ordenadas por la decisión que tomaron: irse, el cuerpo, la plata, decir que no. Para quien busca referentes o una historia para contar.' },
+    { slug:'palabras', titulo:'Palabras heredadas', palabra:'', tema:'origen', puerta:['carta'], tipo:'Diccionario', pdf:false, form:true,
+      sirve:'Cuarenta palabras de todos los días que vienen del quechua, el náhuatl, el taíno, el árabe o lenguas africanas. Para la curiosa que disfruta un dato.' },
+    { slug:'mapa-de-archivos', titulo:'Mapa de archivos', palabra:'', tema:'origen', puerta:['comunidad'], tipo:'Herramienta', pdf:false, form:true,
+      sirve:'Dónde buscar partidas y registros familiares en 21 países de América Latina, y desde qué año existe cada archivo. Para quien ya quiere buscar de verdad.' },
+    { slug:'leer-un-documento', titulo:'Cómo leer un documento de archivo', palabra:'', tema:'origen', puerta:['comunidad'], tipo:'Herramienta', pdf:false, form:true,
+      sirve:'Ayuda a descifrar partidas de bautismo y registros viejos, con 32 abreviaturas. Para quien ya tiene un documento en la mano y no lo entiende.' }
+  ];
+  var TEMAS = { todos:'Todos', trabajo:'Trabajo', emprender:'Emprender', desarrollo:'Desarrollo personal', origen:'Origen familiar' };
+  var PUERTAS = { comunidad:'Comunidad', carta:'Carta', conferencias:'Conferencias' };
+
+  function pieza(slug) { return 'lm_' + slug.replace(/-/g, '_'); }
+  function enlace(slug, fuente, medio, prefijo) {
+    return BASE + slug + '/?utm_source=' + fuente + '&utm_medium=' + medio + '&' + UTM + '&utm_content=' + prefijo + pieza(slug);
+  }
+  function enlacesDe(r) {
+    var l = [
+      { k:'Enlace limpio', d:'sin UTM', u: BASE + r.slug + '/' },
+      { k:'Historia', d:'sticker de enlace', u: enlace(r.slug, 'instagram', 'social', 'story_') },
+      { k:'DM', d:'palabra clave', u: enlace(r.slug, 'instagram', 'social', 'reel_dm_') },
+      { k:'WhatsApp', d:'chat', u: enlace(r.slug, 'whatsapp', 'messaging', 'chat_') }
+    ];
+    if (r.pdf) l.push({ k:'PDF', d:'la hoja para imprimir', u: BASE + r.slug + '/hoja.pdf', pdf:true });
+    return l;
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+
+  var rejilla = document.getElementById('rejilla');
+  rejilla.innerHTML = R.map(function (r) {
+    var texto = [r.titulo, r.sirve, r.palabra, TEMAS[r.tema], r.tipo, r.slug].concat(r.puerta.map(function (p) { return PUERTAS[p]; })).join(' ');
+    return '<article class="tarjeta" data-tema="' + r.tema + '" data-texto="' + esc(texto.toLowerCase()) + '">'
+      + '<h2><a href="' + BASE + r.slug + '/" target="_blank" rel="noopener">' + esc(r.titulo) + '</a></h2>'
+      + '<p class="etiquetas"><span class="et tema">' + TEMAS[r.tema] + '</span>'
+      + r.puerta.map(function (p) { return '<span class="et puerta">' + PUERTAS[p] + '</span>'; }).join('')
+      + '<span class="et">' + r.tipo + '</span>'
+      + '<span class="et ' + (r.form ? 'form-si">Con formulario' : 'form-no">Sin formulario') + '</span></p>'
+      + '<p class="sirve">' + esc(r.sirve) + '</p>'
+      + '<p class="palabra">Palabra clave: ' + (r.palabra ? '<b>' + r.palabra + '</b>' : 'no tiene todavía') + (r.nota ? ' · ' + esc(r.nota) : '') + '</p>'
+      + '<div class="enlaces">' + enlacesDe(r).map(function (e) {
+          return '<button type="button" class="copiar' + (e.pdf ? ' pdf' : '') + '" data-url="' + esc(e.u) + '">Copiar ' + e.k + '<span>' + e.d + '</span></button>';
+        }).join('') + '</div>'
+      + '</article>';
+  }).join('');
+
+  var conForm = R.filter(function (r) { return r.form; }).length;
+  document.getElementById('resumen').innerHTML = '<b>' + R.length + '</b> recursos · <b>' + conForm + '</b> con formulario';
+
+  // filtro por tema + buscador
+  var tema = 'todos', chips = document.getElementById('chips');
+  chips.innerHTML = Object.keys(TEMAS).map(function (t) {
+    return '<button type="button" class="chip" data-tema="' + t + '" aria-pressed="' + (t === 'todos') + '">' + TEMAS[t] + '</button>';
+  }).join('');
+  var buscar = document.getElementById('buscar');
+  function filtrar() {
+    var q = buscar.value.trim().toLowerCase(), visibles = 0;
+    rejilla.querySelectorAll('.tarjeta').forEach(function (t) {
+      var ok = (tema === 'todos' || t.dataset.tema === tema) && (!q || t.dataset.texto.indexOf(q) > -1);
+      t.style.display = ok ? '' : 'none'; if (ok) visibles++;
+    });
+    document.getElementById('vacio').style.display = visibles ? 'none' : 'block';
+  }
+  chips.addEventListener('click', function (e) {
+    var b = e.target.closest('.chip'); if (!b) return;
+    tema = b.dataset.tema;
+    chips.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c === b); });
+    filtrar();
+  });
+  buscar.addEventListener('input', filtrar);
+
+  // copiar: navigator.clipboard y, si no deja, selección + execCommand
+  var aviso = document.getElementById('aviso'), tAviso;
+  function avisar(m) { aviso.textContent = m; aviso.classList.add('ver'); clearTimeout(tAviso); tAviso = setTimeout(function () { aviso.classList.remove('ver'); }, 2200); }
+  function respaldo(texto) {
+    var ta = document.createElement('textarea');
+    ta.value = texto; ta.setAttribute('readonly', ''); ta.className = 'respaldo';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, texto.length);
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    return ok;
+  }
+  function copiar(texto) {
+    if (navigator.clipboard && window.isSecureContext) {
+      // si el portapapeles no contesta en un segundo, se usa el respaldo
+      var espera = new Promise(function (r) { setTimeout(function () { r('lento'); }, 1000); });
+      return Promise.race([navigator.clipboard.writeText(texto).then(function () { return true; }), espera])
+        .then(function (v) { return v === true ? true : respaldo(texto); }, function () { return respaldo(texto); });
+    }
+    return Promise.resolve(respaldo(texto));
+  }
+  rejilla.addEventListener('click', function (e) {
+    var b = e.target.closest('.copiar'); if (!b) return;
+    var u = b.dataset.url;
+    copiar(u).then(function (ok) {
+      if (ok) {
+        b.classList.add('ok'); setTimeout(function () { b.classList.remove('ok'); }, 1500);
+        avisar('Copiado: ' + u.replace('https://', '').slice(0, 60) + (u.length > 68 ? '…' : ''));
+      } else {
+        window.prompt('Cópialo a mano:', u);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
