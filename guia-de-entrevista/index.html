@@ -175,7 +175,7 @@ p,li,blockquote{text-wrap:pretty}
 </div></header>
 
 <main class="shell">
-  <!-- puerta: lo único que pide correo, porque es lo que promete la guía -->
+  <!-- puerta: sin pedir datos; el formulario de la carta va al final, junto al registro -->
   <section class="paso activo" data-paso="puerta">
     <div class="hero" style="max-width:780px;padding-bottom:0">
       <h1 style="margin-top:.6rem">Antes de que sea tarde</h1>
@@ -187,19 +187,9 @@ p,li,blockquote{text-wrap:pretty}
     </div>
     <div class="puerta">
       <p class="eyebrow">Empezar</p>
-      <div class="fila">
-        <div><label for="g-nombre" style="font-weight:700">Tu nombre</label>
-          <input id="g-nombre" class="campo" autocomplete="given-name" style="margin-top:.4rem"></div>
-        <div><label for="g-correo" style="font-weight:700">Tu correo</label>
-          <input id="g-correo" class="campo" type="email" autocomplete="email" style="margin-top:.4rem"></div>
-      </div>
-      <p class="mute" style="font-size:.9rem;margin-top:1rem">Te mando la guía en PDF y una historia
-        cada martes. Si no te sirve, te sales en un clic.</p>
-      <p class="error mute" id="g-error" style="color:var(--coral);font-size:.9rem;display:none"></p>
       <div style="margin-top:1.2rem"><button class="btn btn-primary" id="g-empezar">Empezar la guía</button></div>
-      <p class="privacidad"><b>Tus respuestas no salen de aquí.</b> Lo único que viaja es tu nombre y
-        tu correo. Lo que escribas de tu familia se guarda solo en este navegador, y por eso al final
-        está el botón de imprimir.</p>
+      <p class="privacidad"><b>Tus respuestas no salen de aquí.</b> Lo que escribas de tu familia se
+        guarda solo en este navegador, y por eso al final está el botón de imprimir.</p>
     </div>
   </section>
 
@@ -253,6 +243,25 @@ p,li,blockquote{text-wrap:pretty}
         buscar en los archivos. Empieza por el
         <a href="/mapa-de-archivos/">Mapa de archivos</a> de tu país, y pasa lo que te contó a
         <a href="/arbol/">Tu árbol</a>, que guarda qué decidió cada quien y qué le costó.</p>
+    </div>
+    <div class="no-print" style="margin-top:2rem;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:1.3rem 1.2rem 1rem">
+      <h3 style="margin:0 0 .2rem">¿Te gustó?</h3>
+      <p class="mute" style="margin:0 0 .6rem">Cada semana te mando una historia así a tu correo. Gratis.</p>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/KVb5CMeyLGmCqV6dRpvm"
+        id="inline-KVb5CMeyLGmCqV6dRpvm"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-activation-type="alwaysActivated"
+        data-deactivation-type="neverDeactivate"
+        data-form-name="Subscribirse al Newsletter"
+        data-form-id="KVb5CMeyLGmCqV6dRpvm"
+        data-layout-iframe-id="inline-KVb5CMeyLGmCqV6dRpvm"
+        data-height="260"
+        title="Subscribirse al Newsletter"
+        style="width:100%;min-height:260px;border:none;display:block;background:transparent"
+        scrolling="no"></iframe>
+      <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     </div>
   </section>
 </main>
@@ -368,33 +377,9 @@ p,li,blockquote{text-wrap:pretty}
     estado.indice = 0; guardar(); pintarPregunta();
   });
 
-  // la puerta: nombre y correo -> GHL, y solo eso
+  // la puerta: ya no pide datos; el formulario de la carta está al final
   $('g-empezar').addEventListener('click', function () {
-    var nombre = $('g-nombre').value.trim(), correo = $('g-correo').value.trim();
-    if (!nombre || correo.indexOf('@') < 1) {
-      $('g-error').textContent = 'Necesito tu nombre y un correo válido para mandarte la guía.';
-      $('g-error').style.display = 'block';
-      (!nombre ? $('g-nombre') : $('g-correo')).focus();
-      return;
-    }
-    $('g-error').style.display = 'none';
-    estado.nombre = nombre; estado.correo = correo; estado.registrado = true;
-    estado.indice = 0; guardar();
-    var boton = $('g-empezar');
-    boton.disabled = true; boton.textContent = 'Un segundo…';
-    function seguir() { boton.disabled = false; boton.textContent = 'Empezar la guía'; pintarPregunta(); }
-    if (!WEBHOOK) {
-      // Sin webhook todavía: se abre el correo para que el registro no se pierda.
-      window.open('mailto:' + CONTACTO
-        + '?subject=' + encodeURIComponent('Quiero la guía de entrevista')
-        + '&body=' + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + correo), '_blank');
-      seguir(); return;
-    }
-    fetch(WEBHOOK, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName: nombre, email: correo,
-        tags: ['lm-guia-de-entrevista'], source: 'eunicelopez.com/guia-de-entrevista' })
-    }).then(seguir, seguir);
+    estado.registrado = true; estado.indice = 0; guardar(); pintarPregunta();
   });
 
   // si ya se registró antes, entra directo por donde iba
