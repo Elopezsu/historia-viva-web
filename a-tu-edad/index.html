@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Qué no podía hacer tu abuela a tu edad? · Historia Viva</title>
+<meta name="description" content="Elige tu país y tu edad y mira qué derechos todavía no tenía tu abuela cuando tenía tus años: votar, ir a la universidad, manejar su dinero, divorciarse. Con la fuente de cada dato.">
+<meta name="author" content="Eunice López">
+<link rel="canonical" href="https://eunicelopez.com/a-tu-edad/">
+<meta name="theme-color" content="#F7F3EC">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="¿Qué no podía hacer tu abuela a tu edad?">
+<meta property="og:description" content="Pon tu edad y tu país. Te sorprende lo cerca que está.">
+<meta property="og:url" content="https://eunicelopez.com/a-tu-edad/">
+<meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;700&display=swap');
+:root{--indigo:#3B2E5A;--coral:#E4572E;--gold:#F2A900;--gold-soft:#FBE5B8;--ink:#1E1B24;--marfil:#F7F3EC;
+  --papel:#FDF6EC;--mute:#6E6478;--hair:rgba(30,27,36,.12);
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Playfair Display','Iowan Old Style',Palatino,Georgia,serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+.hoja{max-width:720px;margin:0 auto;padding:clamp(1.6rem,5vw,3rem) 16px 3rem}
+.marca{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.4rem}
+.marca .dot{width:28px;height:28px;border-radius:50%;flex:none;
+  background:conic-gradient(from 200deg,var(--coral),var(--gold),var(--indigo),var(--coral))}
+.marca b{font-weight:700;font-size:.92rem;display:block;line-height:1.05}
+.marca i{font-family:var(--serif);font-size:.8rem;color:var(--coral);display:block}
+.k{font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin:0}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.05;margin:.4rem 0 .6rem;letter-spacing:-.01em}
+h1 em{color:var(--coral)}
+h2{font-family:var(--serif);font-weight:600;font-size:1.35rem;line-height:1.2;margin:2.2rem 0 .5rem}
+.bajada{font-size:1.06rem;color:var(--mute);margin:0 0 1.6rem;max-width:36em}
+
+/* Formulario de la herramienta */
+.tool{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:1.2rem 1.1rem 1.1rem}
+.campo{margin:0 0 .95rem}
+.campo label{display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.campo small{display:block;color:var(--mute);font-size:.8rem;margin-top:.3rem}
+select,input{width:100%;font:inherit;font-size:1.05rem;padding:.7rem .8rem;border:1.5px solid var(--hair);border-radius:12px;background:var(--papel);color:var(--ink)}
+select:focus,input:focus{outline:none;border-color:var(--indigo)}
+.fila2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.8rem}
+button{font:inherit;cursor:pointer}
+.btn{display:block;width:100%;border:0;border-radius:99px;padding:.9rem 1rem;background:var(--coral);color:#fff;font-weight:700;font-size:1.02rem}
+.btn:active{transform:translateY(1px)}
+.error{color:var(--coral);font-size:.9rem;margin:.6rem 0 0;min-height:1em}
+
+/* Tarjeta de resultado: pensada para la captura */
+.res{margin-top:1.4rem;display:none}
+.res.on{display:block}
+.tarjeta{background:var(--indigo);color:var(--marfil);border-radius:22px;padding:1.5rem 1.3rem 1.2rem;position:relative;overflow:hidden}
+.tarjeta::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;
+  background:conic-gradient(from 200deg,var(--coral),var(--gold),var(--indigo),var(--coral));opacity:.35}
+.tarjeta .k{color:var(--gold);position:relative}
+.tarjeta h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,6vw,1.9rem);line-height:1.12;margin:.45rem 0 1rem;position:relative}
+.tarjeta h3 em{color:var(--gold)}
+.no{list-style:none;margin:0;padding:0}
+.no li{background:rgba(247,243,236,.08);border-radius:14px;padding:.7rem .85rem .7rem 2.6rem;margin-bottom:.55rem;position:relative}
+.no li::before{content:"✕";position:absolute;left:.85rem;top:.62rem;width:1.3rem;height:1.3rem;border-radius:50%;
+  background:var(--coral);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.no li b{display:block;font-size:1.04rem}
+.no li span{display:block;font-size:.86rem;opacity:.85}
+.no li .nt{font-size:.78rem;opacity:.7;margin-top:.15rem}
+.si{margin:.9rem 0 0;font-size:.9rem;opacity:.9}
+.si b{color:var(--gold)}
+.firma{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-top:1.1rem;padding-top:.8rem;
+  border-top:1px solid rgba(247,243,236,.2);font-size:.82rem}
+.firma i{font-family:var(--serif);color:var(--gold);font-size:.95rem}
+.comparte{margin:.9rem 0 0;padding:1rem 1.1rem;background:var(--gold-soft);border-radius:14px;font-size:.95rem}
+.comparte p{margin:.2rem 0 0}
+.acciones{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.btn2{border:1.5px solid var(--indigo);background:transparent;color:var(--indigo);border-radius:99px;padding:.55rem .95rem;font-weight:700;font-size:.88rem}
+
+/* Tabla resumen */
+.tablawrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--hair);border-radius:14px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th,td{padding:.55rem .6rem;text-align:left;border-bottom:1px solid var(--hair);vertical-align:top}
+thead th{background:var(--ink);color:var(--marfil);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+tbody th{font-weight:700}
+td.vac{color:var(--mute)}
+sup{font-size:.68em;color:var(--coral);font-weight:700}
+@media (max-width:560px){table{min-width:0;font-size:.82rem}th,td{padding:.5rem .35rem}thead th{font-size:.62rem;letter-spacing:.06em}td sup{display:block;line-height:1.1}}
+.nota-t{font-size:.8rem;color:var(--mute);margin:.5rem 0 0}
+
+.ojo{margin:1.4rem 0 0;padding:1rem 1.2rem;background:var(--gold-soft);border-radius:14px;font-size:.92rem}
+.ojo p{margin:.3rem 0 0}
+.fuentes{margin:.6rem 0 0;padding:0 0 0 1.1rem;font-size:.82rem;color:var(--mute)}
+.fuentes li{margin-bottom:.4rem}.fuentes a{color:inherit;word-break:break-word}
+.fuente{margin-top:1.4rem;font-size:.85rem;color:var(--mute)}
+.fuente a{color:var(--indigo);font-weight:700}
+.card{margin-top:2rem;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:1.3rem 1.2rem 1rem}
+.card h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:0 0 .2rem}
+.card p{margin:0 0 .6rem;color:var(--mute);font-size:.95rem}
+.card iframe{width:100%;min-height:260px;border:none;display:block;background:transparent}
+.solo-print{display:none}
+
+/* Hoja imprimible: una página carta con la tabla resumen */
+@media print{
+  @page{size:letter;margin:9mm 11mm}
+  html,body{background:#fff;font-size:13px}
+  .hoja{max-width:none;padding:0}
+  .card,.noprint,.tool,.res,.bajada,.ojo{display:none!important}
+  .solo-print{display:block}
+  .marca{margin-bottom:.3rem}
+  h1{font-size:1.85rem;margin:.1rem 0 .25rem}
+  .pb{font-size:.86rem;color:var(--mute);margin:0 0 .5rem;line-height:1.35}
+  h2{font-size:1.1rem;margin:.8rem 0 .3rem}
+  .tablawrap{overflow:visible;border-radius:8px}
+  table{min-width:0;font-size:.8rem}
+  th,td{padding:.42rem .5rem}
+  thead th{font-size:.62rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .nota-t{font-size:.66rem;margin-top:.25rem;line-height:1.3}
+  .fuentes{columns:2;column-gap:1.2rem;font-size:.6rem;line-height:1.3;margin-top:.2rem}
+  .fuentes li{margin-bottom:.12rem;break-inside:avoid}
+  .fuentes a{text-decoration:none}
+  .pie{margin-top:.45rem;padding:.45rem .7rem;background:var(--indigo);color:var(--marfil);border-radius:8px;font-size:.78rem;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pie b{color:var(--gold)}
+}
+</style>
+</head>
+<body>
+<main class="hoja">
+  <div class="marca"><span class="dot" aria-hidden="true"></span><span><b>Eunice López</b><i>Historia Viva</i></span></div>
+
+  <p class="k">Pon tu edad. Mira la suya.</p>
+  <h1>¿Qué no podía hacer <em>tu abuela a tu edad?</em></h1>
+  <p class="bajada">Tienes la edad que tienes y tomas tus decisiones: con tu plata, tu voto, tus estudios. Mira lo que pasaba cuando tu abuela tenía esos mismos años. Te va a sorprender lo cerca que está.</p>
+  <p class="pb solo-print">Votar, estudiar en la universidad, manejar su propio dinero estando casada y divorciarse: el año en que cada derecho llegó a la ley en ocho países. Si tu abuela tenía tu edad antes de ese año, ella todavía no lo tenía.</p>
+
+  <form class="tool noprint" id="f" novalidate>
+    <div class="campo">
+      <label for="pais">¿De qué país es tu abuela?</label>
+      <select id="pais" required></select>
+    </div>
+    <div class="fila2">
+      <div class="campo">
+        <label for="edad">Tu edad</label>
+        <input id="edad" type="number" inputmode="numeric" min="12" max="99" placeholder="Ej.: 34" required>
+      </div>
+      <div class="campo">
+        <label for="nace">Año en que nació tu abuela</label>
+        <input id="nace" type="number" inputmode="numeric" min="1850" max="2000" placeholder="Si no sabes, déjalo">
+      </div>
+    </div>
+    <small style="display:block;color:var(--mute);font-size:.8rem;margin:-.4rem 0 .9rem">Si no sabes cuándo nació, lo calculo: 50 años antes que tú.</small>
+    <button class="btn" type="submit">Ver qué no podía hacer</button>
+    <p class="error" id="err" role="alert"></p>
+  </form>
+
+  <section class="res" id="res" aria-live="polite">
+    <div class="tarjeta" id="tarjeta"></div>
+    <div class="comparte noprint">
+      <b>Hazle captura y súbela a tus historias.</b>
+      <p>Etiquétame en <b>@eunice.historiaviva</b> y cuéntame cuál te dolió más. Después pregúntale a tu mamá o a tu abuela si lo sabía.</p>
+      <div class="acciones">
+        <button class="btn2" type="button" id="mama">Probar con su mamá</button>
+        <button class="btn2" type="button" id="otra">Probar otro país</button>
+      </div>
+    </div>
+  </section>
+
+  <h2>La tabla completa</h2>
+  <div class="tablawrap"><table id="tabla"></table></div>
+  <p class="nota-t" id="notas-t"></p>
+
+  <div class="ojo noprint">
+    <b>Cómo leer esto</b>
+    <p>Cada año es el de la ley o la norma que abrió el derecho. La ley llega primero; la vida de cada mujer, a veces, mucho después. Donde hay una raya es porque no encontré una fuente seria para ese dato, y prefiero dejarlo en blanco a inventarlo.</p>
+    <p>¿Te quedaste con ganas del tema del dinero? Lee <a href="/dinero/">las dos leyes de la billetera</a>.</p>
+  </div>
+
+  <h2>Fuentes</h2>
+  <ol class="fuentes" id="fuentes"></ol>
+  <div class="pie solo-print">Haz la prueba con tu edad en <b>eunicelopez.com/a-tu-edad</b> · Eunice López, historiadora y consteladora familiar · Historia Viva</div>
+
+  <p class="fuente noprint"><a href="hoja.pdf" download>Descargar en PDF</a> · la tabla de los ocho países en una hoja.</p>
+  <div class="card noprint">
+    <h3>¿Te gustó?</h3>
+    <p>Cada semana te mando una historia así a tu correo. Gratis.</p>
+    <iframe
+      src="https://api.leadconnectorhq.com/widget/form/KVb5CMeyLGmCqV6dRpvm"
+      id="inline-KVb5CMeyLGmCqV6dRpvm"
+      data-layout='{"id":"INLINE"}'
+      data-trigger-type="alwaysShow"
+      data-activation-type="alwaysActivated"
+      data-deactivation-type="neverDeactivate"
+      data-form-name="Subscribirse al Newsletter"
+      data-form-id="KVb5CMeyLGmCqV6dRpvm"
+      data-layout-iframe-id="inline-KVb5CMeyLGmCqV6dRpvm"
+      data-height="260"
+      title="Subscribirse al Newsletter"
+      scrolling="no"></iframe>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  </div>
+</main>
+
+<script>
+/* Derechos que se consultan. «verbo» es cómo se lee en la tarjeta. */
+var DERECHOS = [
+  {id:'voto',   nombre:'Votar',                         verbo:'votar en una elección nacional'},
+  {id:'uni',    nombre:'Universidad',                   verbo:'estudiar en la universidad'},
+  {id:'dinero', nombre:'Su dinero (casada)',     verbo:'manejar su propio dinero y sus bienes sin permiso del marido'},
+  {id:'div',    nombre:'Divorcio',                   verbo:'divorciarse y volver a casarse'}
+];
+
+/* Un hito por fila, con su fuente. Si no hay fuente seria, la fila no existe.
+   desde = año en que la norma abre el derecho. hueco = años en que se quitó otra vez. */
+var DATOS = {
+  'Colombia': {
+    voto:   {desde:1954, ley:'Acto Legislativo 3 de 1954', f:[1]},
+    uni:    {desde:1933, ley:'Decreto 227 de 1933', f:[2]},
+    dinero: {desde:1932, ley:'Ley 28 de 1932, art. 5', f:[3]},
+    div:    {desde:1976, ley:'Ley 1 de 1976', nota:'solo matrimonio civil; el católico, desde 1992 (Ley 25)', f:[4]}
+  },
+  'México': {
+    voto:   {desde:1953, ley:'Reforma constitucional del 17 de octubre de 1953', f:[5]},
+    dinero: {desde:1917, ley:'Ley sobre Relaciones Familiares de 1917', nota:'con límites', f:[6]},
+    div:    {desde:1914, ley:'Ley del Divorcio, 29 de diciembre de 1914', f:[7]}
+  },
+  'Chile': {
+    voto:   {desde:1949, ley:'Ley 9.292 de 1949', f:[8]},
+    uni:    {desde:1877, ley:'Decreto 547 de 1877 («Decreto Amunátegui»)', f:[9]},
+    dinero: {desde:1989, ley:'Ley 18.802 de 1989', f:[10,11]},
+    div:    {desde:2004, ley:'Ley 19.947 de 2004', f:[12]}
+  },
+  'Perú': {
+    voto:   {desde:1955, ley:'Ley 12391 de 1955', nota:'solo si sabía leer y escribir; para todas, desde 1979', f:[13]},
+    uni:    {desde:1908, ley:'Ley 801 de 1908', f:[14]},
+    dinero: {desde:1984, ley:'Código Civil de 1984', f:[15]},
+    div:    {desde:1930, ley:'Decretos leyes 6889 y 6890 de 1930', f:[16]}
+  },
+  'Argentina': {
+    voto:   {desde:1947, ley:'Ley 13.010 de 1947', f:[17]},
+    dinero: {desde:1968, ley:'Ley 17.711 de 1968', f:[18]},
+    div:    {desde:1987, ley:'Ley 23.515 de 1987', nota:'hubo un divorcio muy limitado entre 1954 y 1956', f:[19]}
+  },
+  'Ecuador': {
+    voto:   {desde:1929, ley:'Constitución de 1929, art. 13', f:[20]},
+    dinero: {desde:1970, ley:'Reformas al Código Civil, R. O. 446 de 1970', f:[21]},
+    div:    {desde:1902, ley:'Ley de Matrimonio Civil de 1902', nota:'al principio, por muy pocas causas', f:[22]}
+  },
+  'Venezuela': {
+    voto:   {desde:1946, ley:'Estatuto Electoral de 1946; Constitución de 1947', f:[23,24]},
+    dinero: {desde:1982, ley:'Reforma del Código Civil de 1982', f:[25]}
+  },
+  'España': {
+    voto:   {desde:1931, ley:'Constitución de 1931, art. 36', f:[26]},
+    uni:    {desde:1910, ley:'Real Orden del 8 de marzo de 1910', f:[27]},
+    dinero: {desde:1975, ley:'Ley 14/1975', f:[28]},
+    div:    {desde:1932, hueco:[1939,1981], ley:'Ley de 1932; derogada en 1939; Ley 30/1981', nota:'existió de 1932 a 1939 y volvió en 1981', f:[29]}
+  }
+};
+
+var FUENTES = [
+  null,
+  'Colombia. Registraduría Nacional del Estado Civil, «60 años del voto femenino» (programa conmemorativo, 2017): Acto Legislativo 3 de 1954; primer voto el 1 de diciembre de 1957. <a href="https://www.registraduria.gov.co/IMG/pdf/programa_60anosvotofemenino_carta.pdf">registraduria.gov.co</a>.',
+  'Colombia. Decreto 227 de 1933 (bachillerato femenino y acceso a la universidad), en la sección «Mujer» de la Corte Suprema de Justicia. <a href="https://cortesuprema.gov.co/corte/wp-content/uploads/subpage/mujer/mujer1/Decreto%20227%20de%201933.html">cortesuprema.gov.co</a>. Las primeras alumnas de la Universidad Nacional entraron en 1935.',
+  'Colombia. Ley 28 de 1932, «sobre reformas civiles (régimen patrimonial en el matrimonio)», art. 5, <i>Diario Oficial</i> 22.139. <a href="https://www.dmsjuridica.com/buscador_20179478954/legislacion/leyes/?p=3038">dmsjuridica.com</a>.',
+  'Colombia. Ley 1 de 1976, «por la cual se establece el divorcio en el matrimonio civil». <a href="https://cortesuprema.gov.co/corte/wp-content/uploads/subpage/exequatur/Instrumentos%20Internacionales/LEY%201%20DE%201976.pdf">cortesuprema.gov.co</a>. Para el matrimonio religioso: Ley 25 de 1992, art. 5.',
+  'México. Gobierno de México, «Las mujeres en la Constitución», línea de tiempo: reforma publicada el 17 de octubre de 1953 (arts. 34 y 115). <a href="https://constitucion1917.gob.mx/sitios/mujeres/timeline/linea_de_tiempo.pdf">constitucion1917.gob.mx</a>. Primer voto federal: 3 de julio de 1955.',
+  'México. Ley sobre Relaciones Familiares (Venustiano Carranza, 1917): plena capacidad de ambos cónyuges para administrar sus bienes, según tesis aislada de la Suprema Corte (Quinta Época), reg. 817553. <a href="https://sdv.com.mx/compendio/scjn-jurisprudencias-mercantiles/ius-817553/">sdv.com.mx</a>. Mantuvo otras sujeciones de la esposa al marido.',
+  'México. CNDH, efeméride del 2 de enero: Ley del Divorcio decretada el 29 de diciembre de 1914, en vigor el 2 de enero de 1915. <a href="https://www.cndh.org.mx/sites/default/files/documentos/2023-12/FRN_ENE_02-2.pdf">cndh.org.mx</a>.',
+  'Chile. Memoria Chilena (Biblioteca Nacional), «Ley Número 9.292. Modifica la ley General sobre inscripciones electorales (1949)», promulgada el 8 de enero de 1949. <a href="https://www.memoriachilena.gob.cl/602/w3-article-96054.html">memoriachilena.gob.cl</a>.',
+  'Chile. Memoria Chilena, «Defensa de la educación superior para la mujer y el Decreto Amunátegui», decreto 547 del 6 de febrero de 1877. <a href="https://www.memoriachilena.gob.cl/602/w3-article-636812.html">memoriachilena.gob.cl</a>.',
+  'Chile. Ley 18.802, <i>Diario Oficial</i>, 9 de junio de 1989. Texto oficial en <a href="https://www.bcn.cl/leychile">bcn.cl/leychile</a> (buscar «18802»).',
+  '«Evolución de los derechos civiles de la mujer en la legislación chilena (1855-2015)». <a href="https://www.scielo.org.bo/scielo.php?script=sci_arttext&pid=S2070-81572016000100004">scielo.org.bo</a>.',
+  'Chile. Ley 19.947, Nueva Ley de Matrimonio Civil, publicada el 17 de mayo de 2004, en vigor el 18 de noviembre de 2004. <a href="https://chile.justia.com/nacionales/leyes/ley-n-19-947/gdoc">chile.justia.com</a>.',
+  'Perú. Ley 12391 del 7 de septiembre de 1955 (mujeres alfabetas); primer voto el 17 de junio de 1956. <i>El Peruano</i>, «El voto femenino en el Perú». <a href="https://elperuano.pe/noticia/56802-el-voto-femenino-en-el-peru">elperuano.pe</a>. El voto sin requisito de saber leer llegó con la Constitución de 1979.',
+  'Perú. Ley 801 del 7 de noviembre de 1908, citada en <i>Revista Educación</i> (UNIFE). <a href="https://revistas.unife.edu.pe/index.php/educacion/article/download/1006/918/2914">revistas.unife.edu.pe</a>.',
+  'Perú. Código Civil de 1984 (D. Leg. 295, en vigor el 14 de noviembre de 1984), art. 234: igualdad de los cónyuges; el de 1936 se basaba en la potestad marital. <i>Foro Jurídico</i> (PUCP). <a href="https://revistas.pucp.edu.pe/index.php/forojuridico/article/download/30184/27072">revistas.pucp.edu.pe</a>.',
+  'Perú. Decreto Ley 6890 del 8 de octubre de 1930, que reglamenta la ley de divorcio absoluto (Decreto Ley 6889); ratificados por las leyes 7893 y 7894 de 1934. <a href="https://peru.justia.com/federales/decretos-leyes/6890-oct-8-1930/gdoc">peru.justia.com</a>.',
+  'Argentina. Ley 13.010, promulgada el 23 de septiembre de 1947; primer voto el 11 de noviembre de 1951. Biblioteca del Congreso de la Nación, <i>Parlamentarias</i>. <a href="https://digitales.bcn.gob.ar/files/textos/Parlamentarias.pdf">bcn.gob.ar</a>.',
+  'Argentina. Ley 17.711 de 1968, reforma del Código Civil: plena capacidad civil de la mujer casada. «Un repaso por las leyes que ampliaron los derechos de las mujeres», <i>Palabras del Derecho</i>. <a href="https://www.palabrasdelderecho.com.ar/articulo/2310/Un-repaso-por-las-leyes-que-ampliaron-los-derechos-de-las-mujeres">palabrasdelderecho.com.ar</a>.',
+  'Argentina. Ley 23.515 de 1987 (divorcio vincular); antes, la Ley 14.394 de 1954, suspendida en 1956. <i>Unidiversidad</i> (UNCuyo). <a href="https://www.unidiversidad.com.ar/divorcio-vincular-34-anos-de-una-norma-considerada-de-avanzada-para-la-epoca">unidiversidad.com.ar</a>.',
+  'Ecuador. Constitución de 1929, art. 13. «El derecho al sufragio de la mujer», <i>Derecho Ecuador</i>. <a href="https://derechoecuador.com/el-derecho-al-sufragio-de-la-mujer/">derechoecuador.com</a>.',
+  'Ecuador. Reformas al Código Civil, Registro Oficial 446 del 4 de junio de 1970: se suprimen la incapacidad de la mujer casada y la potestad marital. K. Murrieta, «Régimen patrimonial de la sociedad conyugal», <i>Revista Jurídica</i> (1984). <a href="https://www.revistajuridicaonline.com/wp-content/uploads/1984/02/05_Regimen_Patrimonial_De_Sociedad_Conyugal.pdf">revistajuridicaonline.com</a>.',
+  'Ecuador. Ley de Matrimonio Civil de 1902 (en vigor el 1 de enero de 1903); divorcio por mutuo consentimiento desde 1910. «El juicio de divorcio en el Ecuador», <i>Derecho Ecuador</i>. <a href="https://derechoecuador.com/el-juicio-de-divorcio-en-el-ecuador/">derechoecuador.com</a>.',
+  'Venezuela. Estatuto electoral (Decreto 217 del 15 de marzo de 1946): voto sin distinción de sexo; primer voto el 27 de octubre de 1946; Constitución del 5 de julio de 1947. «Women\'s suffrage in Venezuela». <a href="https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Venezuela">wikipedia.org</a>.',
+  'J. Flores, «Mujeres en la política venezolana: las pioneras que abrieron el camino», <i>El Diario</i>, 18 de abril de 2024. <a href="https://eldiario.com/2024/04/18/mujeres-politica-venezolana-pioneras-abrieron-camino/">eldiario.com</a>.',
+  'Venezuela. <i>Hacia la igualdad jurídica de la mujer (Reforma del Código Civil, 1982)</i>. Ficha en <a href="https://crai.iis.ucr.ac.cr/catalogo/Record/1146">crai.iis.ucr.ac.cr</a>.',
+  'España. Constitución de la República Española de 1931, art. 36: «Los ciudadanos de uno y otro sexo, mayores de veintitrés años, tendrán los mismos derechos electorales». <i>Gaceta de Madrid</i> n.º 344, 10 de diciembre de 1931. <a href="https://www.boe.es/datos/pdfs/BOE//1931/344/A01578-01588.pdf">boe.es</a>.',
+  'España. Real Orden del 8 de marzo de 1910, <i>Gaceta de Madrid</i> n.º 68: matrícula sin permiso especial. Ministerio de Educación, Biblioteca Central, «Las primeras universitarias». <a href="https://www.educacionfpydeportes.gob.es/biblioteca-central/blog/2019/las-primeras-universitarias.html">educacionfpydeportes.gob.es</a>.',
+  'España. Ley 14/1975, de 2 de mayo, sobre la situación jurídica de la mujer casada, <i>BOE</i> del 5 de mayo de 1975 (suprime la licencia marital). <a href="https://boe.es/boe/dias/1975/05/05/pdfs/A09413-09419.pdf">boe.es</a>.',
+  'España. Ley de Divorcio del 2 de marzo de 1932, derogada por la Ley del 23 de septiembre de 1939; Ley 30/1981, de 7 de julio. «40 años de la Ley del Divorcio», <i>Economist &amp; Jurist</i>. <a href="https://www.economistjurist.es/articulos-juridicos-destacados/40-anos-de-la-ley-del-divorcio-ley-30-1981-de-7-de-julio/">economistjurist.es</a>.'
+];
+
+function tenia(d, anio){
+  if(!d) return null;
+  if(anio < d.desde) return false;
+  if(d.hueco && anio >= d.hueco[0] && anio < d.hueco[1]) return false;
+  return true;
+}
+function faltan(d, anio){
+  if(anio < d.desde) return d.desde - anio;
+  return d.hueco[1] - anio;
+}
+function aproxDist(n){ /* distancia en palabras, redondeada */
+  if(n <= 1) return 'un año';
+  if(n < 10) return n + ' años';
+  return 'casi ' + (Math.ceil(n/5)*5) + ' años';
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+var HOY = new Date().getFullYear();
+var sel = document.getElementById('pais');
+Object.keys(DATOS).forEach(function(p){var o=document.createElement('option');o.value=p;o.textContent=p;sel.appendChild(o)});
+
+function pintar(pais, edad, nace, estimado){
+  var anio = nace + edad;
+  var d = DATOS[pais], no = [], si = [];
+  DERECHOS.forEach(function(r){
+    var x = d[r.id]; if(!x) return;
+    if(tenia(x, anio)) si.push(r); else no.push({r:r, x:x, n:faltan(x, anio)});
+  });
+  var h = '<p class="k">' + esc(pais) + ' · ' + (estimado ? 'abuela calculada' : 'mi abuela') + '</p>';
+  if(no.length){
+    h += '<h3>Cuando mi abuela tenía <em>mis ' + edad + ' años</em>, todavía no podía…</h3><ul class="no">';
+    no.forEach(function(o){
+      var cuando = o.x.desde > anio || !o.x.hueco
+        ? 'Le faltaban ' + aproxDist(o.n) + '. Ella habría tenido ' + (edad + o.n) + '.'
+        : 'Se lo habían quitado. Le faltaban ' + aproxDist(o.n) + '.';
+      h += '<li><b>' + esc(o.r.verbo.charAt(0).toUpperCase() + o.r.verbo.slice(1)) + '</b><span>' + cuando +
+           (o.x.nota ? ' (' + esc(o.x.nota) + ')' : '') + '</span></li>';
+    });
+    h += '</ul>';
+    if(si.length) h += '<p class="si">Lo que sí podía: <b>' + si.map(function(r){return r.verbo}).join(', ') + '</b>.</p>';
+    h += '<p class="si">Yo hoy puedo todo eso. Ella no pudo elegir.</p>';
+  } else {
+    h += '<h3>A <em>mis ' + edad + ' años</em>, mi abuela ya tenía estos derechos en la ley.</h3>' +
+         '<p class="si">Pero alguien de mi familia no los tuvo. Toca «Probar con su mamá».</p>';
+  }
+  h += '<div class="firma"><span>¿Y la tuya? eunicelopez.com/a-tu-edad</span><i>@eunice.historiaviva</i></div>';
+  document.getElementById('tarjeta').innerHTML = h;
+  var res = document.getElementById('res'); res.classList.add('on');
+  res.dataset.pais = pais; res.dataset.edad = edad; res.dataset.nace = nace; res.dataset.est = estimado ? '1' : '';
+  res.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.getElementById('f').addEventListener('submit', function(e){
+  e.preventDefault();
+  var err = document.getElementById('err'); err.textContent = '';
+  var edad = parseInt(document.getElementById('edad').value, 10);
+  var naceV = document.getElementById('nace').value.trim();
+  if(!(edad >= 12 && edad <= 99)){ err.textContent = 'Pon tu edad en números, entre 12 y 99.'; return; }
+  var est = !naceV, nace = est ? HOY - edad - 50 : parseInt(naceV, 10);
+  if(!est && !(nace >= 1850 && nace <= 2000)){ err.textContent = 'El año de tu abuela, en cuatro cifras (por ejemplo, 1948).'; return; }
+  if(nace + edad > HOY){ err.textContent = 'Tu abuela todavía no llega a tu edad. Prueba con su mamá: un año de nacimiento más atrás.'; return; }
+  pintar(sel.value, edad, nace, est);
+});
+document.getElementById('mama').addEventListener('click', function(){
+  var r = document.getElementById('res');
+  var nace = parseInt(r.dataset.nace,10) - 25;
+  document.getElementById('nace').value = nace;
+  pintar(r.dataset.pais, parseInt(r.dataset.edad,10), nace, false);
+  document.querySelector('#tarjeta .k').textContent = r.dataset.pais + ' · su mamá (25 años antes)';
+  var h3 = document.querySelector('#tarjeta h3'); if(h3) h3.innerHTML = h3.innerHTML.replace('mi abuela','la mamá de mi abuela');
+});
+document.getElementById('otra').addEventListener('click', function(){
+  sel.focus(); window.scrollTo({top: document.getElementById('f').offsetTop - 16, behavior:'smooth'});
+});
+
+/* Tabla resumen y fuentes */
+(function(){
+  var t = '<thead><tr><th>País</th>' + DERECHOS.map(function(r){return '<th>'+esc(r.nombre)+'</th>'}).join('') + '</tr></thead><tbody>';
+  var notas = [], letra = 0;
+  Object.keys(DATOS).forEach(function(p){
+    t += '<tr><th>' + esc(p) + '</th>';
+    DERECHOS.forEach(function(r){
+      var x = DATOS[p][r.id];
+      if(!x){ t += '<td class="vac">—</td>'; return; }
+      var txt = x.hueco ? x.desde + '–' + x.hueco[0] + ' y ' + x.hueco[1] : String(x.desde);
+      var marca = '';
+      if(x.nota){ letra++; var l = String.fromCharCode(96 + letra); marca = '<sup>' + l + '</sup>'; notas.push('<sup>'+l+'</sup> ' + esc(p) + ': ' + esc(x.nota) + '.'); }
+      t += '<td>' + txt + marca + ' <sup>[' + x.f.join(',') + ']</sup></td>';
+    });
+    t += '</tr>';
+  });
+  document.getElementById('tabla').innerHTML = t + '</tbody>';
+  document.getElementById('notas-t').innerHTML = 'Año de la norma que abrió el derecho; entre corchetes, la fuente. «—»: sin fuente seria verificada, se deja en blanco. ' + notas.join(' ');
+  document.getElementById('fuentes').innerHTML = FUENTES.slice(1).map(function(s){return '<li>'+s+'</li>'}).join('');
+})();
+</script>
+</body>
+</html>
