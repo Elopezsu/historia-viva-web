@@ -1,0 +1,57 @@
+/* Movik · landings v3 (8 oct 2026): lo que se suma a movik.css.
+   Variante B = titulares en Bebas Neue (a Leo le gustó) y una banda con degradado violeta (Johnny). */
+body.bebas h1,body.bebas h2,body.bebas .big{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.005em;line-height:.95;text-transform:none}
+body.bebas h1{font-size:clamp(56px,8.4vw,104px)}
+body.bebas h2{font-size:clamp(44px,5.6vw,68px);max-width:16ch}
+body.bebas h1 .dim,body.bebas h2 .dim{color:#73737F}
+.grad{background:radial-gradient(120% 140% at 0% 0%,#5200FF 0%,#4100CC 55%,#2B0087 100%);color:#fff}
+.grad h2,.grad h3{color:#fff}.grad .lead,.grad p{color:#fff}
+.grad .btn{background:#fff;color:var(--accent)}.grad .btn:hover{background:var(--accent-50)}
+.money3{display:grid;gap:16px;margin-top:44px}
+@media(min-width:720px){.money3{grid-template-columns:repeat(3,1fr)}}
+.mcard{background:var(--surface);border-radius:var(--r-xl);padding:26px;box-shadow:inset 0 0 0 1px var(--border),var(--sh-sm)}
+.grad .mcard{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.mcard .big{font-size:clamp(26px,2.6vw,34px);line-height:1;font-weight:500;letter-spacing:-.02em;margin:14px 0 8px}
+.mcard h3{margin-top:4px}.mcard p{font-size:15px;line-height:22px;color:var(--fg-muted);margin-top:6px}
+.grad .mcard p{color:#fff}
+.chat{display:grid;gap:10px}
+.msg{max-width:88%;padding:10px 12px;border-radius:12px;font-size:14px;line-height:20px}
+.msg.me{justify-self:end;background:var(--accent-50);box-shadow:inset 0 0 0 1px var(--accent-100)}
+.msg.ai{background:var(--recessed)}
+.msg b{font-weight:600}
+.calc{display:grid;gap:14px}
+.calc label{font-size:13px;font-weight:600;color:var(--fg-muted);display:flex;justify-content:space-between}
+.calc input[type=range]{width:100%;accent-color:var(--accent)}
+.calc .out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calc .out>div{padding:12px;border-radius:var(--r-md);box-shadow:inset 0 0 0 1px var(--border)}
+.form{display:grid;gap:10px;margin-top:20px;max-width:460px}
+.form input,.form select{height:44px;border-radius:var(--r-sm);border:0;box-shadow:inset 0 0 0 1px var(--border-strong);padding:0 12px;font:inherit;font-size:15px;background:var(--surface);color:var(--fg)}
+.form .btn{width:100%}
+.form .fine{font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.grad .form .fine{color:#D8CCFF}
+
+/* --- arreglos de la auditoría (8 oct) --- */
+section.band{padding:clamp(72px,9vw,120px) 0}
+.surface{background:#F6F6F8}
+.grad :focus-visible{outline-color:#fff}
+.mcard{padding:22px}
+.mcard .soon{display:inline-block;margin-left:6px;font:600 11px/16px "Plus Jakarta Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--recessed);color:var(--fg-muted);vertical-align:middle}
+.grad .mcard .soon{background:rgba(255,255,255,.18);color:#fff}
+.photo-card .float{right:auto;left:-28px}
+@media(max-width:959px){.photo-card .float{left:auto}}
+.photo-card .photo img{object-position:65% 22%}
+.win .chrome{color:var(--fg-muted)}
+.pill.warn{color:#8A5200}
+.sticky{transition:opacity .2s,transform .2s}
+.sticky.off{opacity:0;transform:translateY(120%);pointer-events:none}
+@media(max-width:700px){.bar nav .btn.sm{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.form label{font-size:13px;font-weight:600;color:var(--fg-muted);display:grid;gap:4px}
+.form input:user-invalid{box-shadow:inset 0 0 0 1px #B42318}
+.form .check{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.form .check input{height:16px;width:16px;margin-top:2px;flex:none;box-shadow:none}
+.calc input[type=range]{height:32px}
+.legal{font-size:12px;line-height:18px;color:var(--fg-subtle);margin-top:8px}
+.legal a{color:var(--fg-muted)}
+.pending{background:#FFF7E0;box-shadow:inset 0 0 0 1px #E8C770;border-radius:4px;padding:0 3px}
+.grad .pending{background:rgba(255,214,102,.28);box-shadow:inset 0 0 0 1px rgba(255,214,102,.7);color:#fff}
