@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Horas · MAT Marketing Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f5f7; --card: #fff; --ink: #1f2b33; --muted: #6b7a85; --line: #e1e7eb;
+    --accent: #03a9f4; --accent-soft: #e1f4fd; --bar-empty: #eef2f4;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 Inter, system-ui, sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 24px; }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin-top: 4px; }
+  .rango { color: var(--muted); font-size: 14px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; }
+  .kpi b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
+  .kpi span { color: var(--muted); font-size: 13px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; margin-bottom: 16px; }
+  .bar-top { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); gap: 12px; flex-wrap: wrap; }
+  .tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .tabs button { border: 0; background: #fff; padding: 7px 16px; font: inherit; font-size: 14px; color: var(--muted); cursor: pointer; }
+  .tabs button + button { border-left: 1px solid var(--line); }
+  .tabs button[aria-pressed="true"] { background: var(--accent-soft); color: #0277bd; font-weight: 600; }
+  .total { font-size: 14px; color: var(--muted); }
+  .total b { color: var(--ink); font-size: 18px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .chart { padding: 20px 16px 8px; overflow-x: auto; }
+  .chart svg { display: block; min-width: 100%; }
+  .chart text { font: 11px Inter, sans-serif; fill: var(--muted); }
+  .chart .val { fill: var(--ink); font-weight: 600; }
+  .grupo-cab { display: flex; justify-content: space-between; padding: 10px 16px; background: #f7f9fa; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .grupo-cab b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .fila { display: grid; grid-template-columns: 1fr auto 72px; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--line); align-items: center; }
+  .fila:last-child { border-bottom: 0; }
+  .fila .tarea { min-width: 0; }
+  .fila .proy { color: var(--accent); font-size: 12px; font-weight: 600; }
+  .fila .franja { color: var(--muted); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .fila .dur { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 24px; }
+  @media (max-width: 640px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .fila { grid-template-columns: 1fr 64px; }
+    .fila .franja { grid-column: 1; grid-row: 2; }
+    .fila .dur { grid-row: 1 / span 2; grid-column: 2; }
+  }
+  @media print { body { background: #fff; } .tabs { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Horas · MAT Marketing Agency</h1>
+      <div class="sub">Eunice López</div>
+    </div>
+    <div class="rango" id="rango"></div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section class="card">
+    <div class="bar-top">
+      <div class="tabs" role="group" aria-label="Agrupar por">
+        <button data-vista="dia" aria-pressed="true">Día</button>
+        <button data-vista="semana" aria-pressed="false">Semana</button>
+        <button data-vista="mes" aria-pressed="false">Mes</button>
+      </div>
+      <div class="total">Total <b id="total"></b></div>
+    </div>
+    <div class="chart" id="chart"></div>
+  </section>
+
+  <section class="card" id="lista"></section>
+
+  <footer>Actualizado el 9 de octubre de 2026 · </footer>
+</div>
+
+<script>
+const DATOS = {"hoy": "2026-10-09", "filas": [{"fecha": "2026-10-05", "horas": 2.5, "tarea": "PM Movik con MAT", "franja": "8–10:30 AM", "orden": 0}, {"fecha": "2026-10-06", "horas": 1.0, "tarea": "Meeting de avance con MAT", "franja": "10–11 AM", "orden": 1}, {"fecha": "2026-10-06", "horas": 2.5, "tarea": "Armado del repositorio de MAT con todo lo hecho (branding, muestras, landings, skills)", "franja": "11 AM–1:30 PM", "orden": 2}, {"fecha": "2026-10-01", "horas": 1.0, "tarea": "Kick off con el cliente (Movik)", "franja": "8:30–9:30 AM", "orden": 3}, {"fecha": "2026-10-02", "horas": 1.0, "tarea": "Reunión de producto con Movik", "franja": "8:30–9:30 AM", "orden": 4}, {"fecha": "2026-10-07", "horas": 1.0, "tarea": "Seguimiento con MAT y preparación de la reunión", "franja": "7–8 AM", "orden": 5}, {"fecha": "2026-10-07", "horas": 1.0, "tarea": "Reunión con el cliente (Movik)", "franja": "8:30–9:30 AM", "orden": 6}, {"fecha": "2026-10-07", "horas": 2.0, "tarea": "Ajustes a la estrategia con base en lo que dijo el cliente en la reunión de la mañana: dos verticales, reason why v2, deck, anuncios, landings y Drive", "franja": "2:30–4:30 PM", "orden": 7}, {"fecha": "2026-10-08", "horas": 2.0, "tarea": "Revisión de la auditoría del CRM y preparación de la reunión con Juanfer", "franja": "6–8 AM", "orden": 8}, {"fecha": "2026-10-08", "horas": 1.0, "tarea": "Reunión con Juanfer y Sara sobre el CRM", "franja": "8–9 AM", "orden": 9}, {"fecha": "2026-10-08", "horas": 1.0, "tarea": "Alineación con el equipo de MAT", "franja": "9–10 AM", "orden": 10}, {"fecha": "2026-10-08", "horas": 1.0, "tarea": "Reunión de revisión con Movik", "franja": "10–11 AM", "orden": 11}, {"fecha": "2026-10-08", "horas": 2.0, "tarea": "Creación de landings y actualización del CRM", "franja": "11 AM–1 PM", "orden": 12}, {"fecha": "2026-10-09", "horas": 2.5, "tarea": "Skills de viralidad e imágenes para Tributo", "franja": "10 AM–12:30 PM", "orden": 13}]};
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const MESES_L = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DIAS = ["dom","lun","mar","mié","jue","vie","sáb"];
+
+const fecha = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const lunes = d => { const x = new Date(d); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; };
+const masDias = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const hm = h => { const m = Math.round(h * 60); return `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`; };
+const corto = d => `${d.getDate()} ${MESES[d.getMonth()]}`;
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+const filas = DATOS.filas.slice().sort((a, b) => a.fecha.localeCompare(b.fecha) || (a.orden - b.orden));
+const total = filas.reduce((s, r) => s + r.horas, 0);
+const ini = fecha(filas[0].fecha), fin = fecha(DATOS.hoy);
+
+function claves(vista) {
+  const out = [];
+  if (vista === "dia") for (let d = new Date(ini); d <= fin; d = masDias(d, 1)) out.push(iso(d));
+  if (vista === "semana") for (let d = lunes(ini); d <= fin; d = masDias(d, 7)) out.push(iso(d));
+  if (vista === "mes") for (let d = new Date(ini.getFullYear(), ini.getMonth(), 1); d <= fin; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) out.push(iso(d));
+  return out;
+}
+function claveDe(s, vista) {
+  const d = fecha(s);
+  if (vista === "dia") return s;
+  if (vista === "semana") return iso(lunes(d));
+  return iso(new Date(d.getFullYear(), d.getMonth(), 1));
+}
+function etiqueta(k, vista, larga) {
+  const d = fecha(k);
+  if (vista === "dia") return larga ? `${DIAS[d.getDay()]} ${d.getDate()} de ${MESES_L[d.getMonth()]}` : `${DIAS[d.getDay()]} ${d.getDate()}`;
+  if (vista === "semana") { const f = masDias(d, 6); return `${larga ? "Semana del " : ""}${corto(d)} – ${corto(f)}`; }
+  return larga ? `${MESES_L[d.getMonth()][0].toUpperCase() + MESES_L[d.getMonth()].slice(1)} ${d.getFullYear()}` : MESES[d.getMonth()];
+}
+
+function kpis() {
+  const semana = iso(lunes(fin));
+  const estaSemana = filas.filter(r => claveDe(r.fecha, "semana") === semana).reduce((s, r) => s + r.horas, 0);
+  const semanas = claves("semana").length;
+  const dias = new Set(filas.map(r => r.fecha)).size;
+  document.getElementById("kpis").innerHTML = [
+    [hm(total), "horas en total"],
+    [hm(estaSemana), "esta semana"],
+    [hm(total / semanas), "promedio por semana"],
+    [dias, "días con trabajo"],
+  ].map(([v, t]) => `<div class="kpi"><b>${v}</b><span>${t}</span></div>`).join("");
+  document.getElementById("rango").textContent = `${corto(ini)} – ${corto(fin)} ${fin.getFullYear()}`;
+  document.getElementById("total").textContent = hm(total);
+}
+
+function grafico(vista) {
+  const ks = claves(vista);
+  const suma = Object.fromEntries(ks.map(k => [k, 0]));
+  filas.forEach(r => suma[claveDe(r.fecha, vista)] += r.horas);
+  const max = Math.max(1, ...Object.values(suma));
+  const caja = document.getElementById("chart").clientWidth - 52;
+  const paso = Math.max(vista === "dia" ? 52 : 110, caja / ks.length), ancho = Math.min(48, paso * 0.6), alto = 180, top = 22, base = top + alto;
+  const W = Math.max(ks.length * paso + 20, 300);
+  let svg = `<svg viewBox="0 0 ${W} ${base + 30}" width="${W}" height="${base + 30}" role="img" aria-label="Horas por ${vista}">`;
+  [0.5, 1].forEach(f => { const y = base - alto * f; svg += `<line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-dasharray="3 3"/><text x="0" y="${y - 4}">${hm(max * f)}</text>`; });
+  svg += `<line x1="0" x2="${W}" y1="${base}" y2="${base}" stroke="var(--line)"/>`;
+  ks.forEach((k, i) => {
+    const h = suma[k], x = 20 + i * paso + (paso - ancho) / 2, bh = h ? Math.max(2, alto * h / max) : 0;
+    const finde = vista === "dia" && [0, 6].includes(fecha(k).getDay());
+    svg += `<rect x="${x}" y="${base - bh}" width="${ancho}" height="${bh}" rx="2" fill="var(--accent)"><title>${etiqueta(k, vista, true)}: ${hm(h)} h</title></rect>`;
+    if (h) svg += `<text class="val" x="${x + ancho / 2}" y="${base - bh - 6}" text-anchor="middle">${hm(h)}</text>`;
+    svg += `<text x="${x + ancho / 2}" y="${base + 18}" text-anchor="middle"${finde ? ' opacity=".5"' : ""}>${etiqueta(k, vista, false)}</text>`;
+  });
+  document.getElementById("chart").innerHTML = svg + "</svg>";
+}
+
+function lista(vista) {
+  const grupos = {};
+  filas.forEach(r => (grupos[claveDe(r.fecha, vista)] ||= []).push(r));
+  const ks = Object.keys(grupos).sort().reverse();
+  document.getElementById("lista").innerHTML = ks.map(k => {
+    const rs = grupos[k].slice().sort((a, b) => b.fecha.localeCompare(a.fecha) || (a.orden - b.orden));
+    const t = rs.reduce((s, r) => s + r.horas, 0);
+    return `<div class="grupo-cab"><span>${etiqueta(k, vista, true)}</span><span>Total: <b>${hm(t)}</b></span></div>` +
+      rs.map(r => `<div class="fila"><div class="tarea">${vista === "dia" ? "" : `<div class="proy">${etiqueta(r.fecha, "dia", false)}</div>`}${esc(r.tarea)}</div><div class="franja">${esc(r.franja || "")}</div><div class="dur">${hm(r.horas)}</div></div>`).join("");
+  }).join("");
+}
+
+let mostrar = function (vista) {
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.vista === vista));
+  grafico(vista); lista(vista);
+};
+let vistaActual = "dia";
+const _mostrar = mostrar;
+mostrar = v => { vistaActual = v; _mostrar(v); };
+window.addEventListener("resize", () => grafico(vistaActual));
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => mostrar(b.dataset.vista)));
+kpis(); mostrar("dia");
+</script>
+</body>
+</html>
