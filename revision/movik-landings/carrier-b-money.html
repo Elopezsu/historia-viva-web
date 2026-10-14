@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="movik.css"><link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="movik.css?v=10141606"><link rel="stylesheet" href="v3.css?v=10141606">
 </head>
 <body class="bebas">
 <header class="bar"><div class="wrap"><a class="logo" href="#top" aria-label="Movik"><img src="logo/movik-violeta.png" alt="Movik" width="87" height="22"></a>
@@ -28,7 +28,7 @@
 <div class="pie" id="sav">
 <div class="pbar" id="sStage1">
 <p class="pl">I invoice</p>
-<div class="pslide"><output id="sTip" for="sAmt">$60,000</output>
+<div class="pslide"><svg class="pcurve" aria-hidden="true"><path id="sCurve"/></svg><output id="sTip" for="sAmt">$60,000</output>
 <input id="sAmt" type="range" min="5000" max="300000" step="5000" value="60000" aria-label="Monthly invoice volume" aria-valuetext="$60,000 per month">
 <span class="pper">per month</span></div>
 <button type="button" class="btn pgo" id="sGo">See my savings</button>
@@ -93,7 +93,16 @@ const vis=new Map();const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set
 [hero,...hide].filter(Boolean).forEach(el=>io.observe(el));
 (()=>{const f=document.getElementById("sav");if(!f)return;let pct=0,tr=0;const $=i=>document.getElementById(i);
 const fmt=n=>"$"+Math.round(n).toLocaleString("en-US"),r=$("sAmt"),num=el=>+(el.value.replace(/[^0-9]/g,"")||0);
-function tip(){const p=(r.value-r.min)/(r.max-r.min),w=r.offsetWidth,t=64;$("sTip").style.left=(t/2+p*(w-t))+"px"}
+let H=0,goal=0,raf=0;const cv=$("sCurve"),sl=r.parentNode;
+function draw(){const w=r.offsetWidth,p=(r.value-r.min)/(r.max-r.min),cx=32+p*(w-64),b=32,s=Math.max(70,w*.16);let d="M0 "+b;
+for(let x=0;x<=w;x+=4)d+="L"+x+" "+(b-H*Math.exp(-(((x-cx)/s)**2))).toFixed(1);cv.setAttribute("d",d);cv.parentNode.setAttribute("viewBox","0 0 "+w+" 64");
+$("sTip").style.left=cx+"px";$("sTip").style.transform="translate(-50%,"+(-H*.35).toFixed(1)+"px)"}
+function anim(){H+=(goal-H)*.18;draw();if(Math.abs(goal-H)>.3)raf=requestAnimationFrame(anim);else{H=goal;draw();raf=0}}
+function bend(on){goal=on?36:0;sl.classList.toggle("drag",on);if(!raf)raf=requestAnimationFrame(anim)}
+["pointerdown","touchstart"].forEach(e=>r.addEventListener(e,()=>bend(true),{passive:true}));
+["pointerup","pointercancel","touchend","blur","change"].forEach(e=>r.addEventListener(e,()=>bend(false)));
+r.addEventListener("keydown",()=>{bend(true);clearTimeout(r._t);r._t=setTimeout(()=>bend(false),400)});
+function tip(){draw()}
 function calc(){const m=+r.value,P=pct||80,t=tr>=6?num($("sTr")):tr,trad=m*0.03,mov=m*P/100*0.03,save=trad-mov;
 $("sTip").textContent=fmt(m);r.setAttribute("aria-valuetext",fmt(m)+" per month");tip();$("xAmt").textContent=fmt(m);
 $("sTrad").textContent=fmt(trad)+"/mo";$("sMov").textContent=fmt(mov)+"/mo";$("sSave").textContent=fmt(save);$("sYr").textContent=fmt(save*12);$("sPctL").textContent=P+"%";
