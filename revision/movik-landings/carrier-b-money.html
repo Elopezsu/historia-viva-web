@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="movik.css?v=10141609"><link rel="stylesheet" href="v3.css?v=10141609">
+<link rel="stylesheet" href="movik.css?v=10141611"><link rel="stylesheet" href="v3.css?v=10141611">
 </head>
 <body class="bebas">
 <header class="bar"><div class="wrap"><a class="logo" href="#top" aria-label="Movik"><img src="logo/movik-violeta.png" alt="Movik" width="87" height="22"></a>
@@ -49,14 +49,6 @@
 <div class="prow"><span>With Movik, financing <span id="sPctL">80%</span></span><b id="sMov">$1,440/mo</b></div>
 <p class="fine">At a <span class="pending" title="Por confirmar con Movik">3%</span> fee. Estimate only; your actual fee depends on your carrier profile.</p>
 <a class="btn" href="https://test.movik.us/signup">Start free and choose what you finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<button type="button" class="mail-t" id="mailT">Email me this breakdown</button>
-<form class="gate" id="sGate" novalidate hidden>
-<label for="gN">Name<input id="gN" name="name" autocomplete="name" required></label>
-<label for="gE">Email<input id="gE" name="email" type="email" autocomplete="email" required></label>
-<label for="gP">Phone (optional)<input id="gP" name="phone" type="tel" autocomplete="tel"></label>
-<p class="err" id="gErr" hidden>Enter your name and a valid email.</p>
-<button class="btn" type="submit">Send it to me</button></form>
-<p class="ok" id="sOk" hidden>Done. Check your inbox in a few minutes.</p>
 </div></div></div></div>
 </div></section>
 
@@ -118,12 +110,6 @@ s.querySelector(".next").addEventListener("click",()=>{if(steps[i+1]&&!(i+1===1&
 function pick(k,set){f.querySelectorAll("[data-"+k+"]").forEach(c=>c.addEventListener("click",()=>{set(+c.getAttribute("data-"+k));f.querySelectorAll("[data-"+k+"]").forEach(x=>x.classList.toggle("on",x===c));c.closest(".pbody").querySelector(".next").disabled=false;calc()}))}
 pick("pct",v=>pct=v);pick("tr",v=>{tr=v;$("trMore").hidden=v<6});
 r.addEventListener("input",calc);$("sTr").addEventListener("input",e=>{const d=e.target.value.replace(/[^0-9]/g,"");e.target.value=d;calc()});addEventListener("resize",tip);
-$("mailT").addEventListener("click",()=>{$("sGate").hidden=false;$("mailT").hidden=true;$("gN").focus()});
-$("sGate").addEventListener("submit",e=>{e.preventDefault();const n=$("gN").value.trim(),em=$("gE").value.trim();
-if(!n||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){$("gErr").hidden=false;return}
-const c=calc(),lead={name:n,email:em,phone:$("gP").value.trim(),trucks:c.t,monthly_invoices:c.m,pct_financed:pct,est_monthly_savings:Math.round(c.save),source:"movik-savings-calculator",landing:"carrier-b-money"};
-if("")fetch("",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}).catch(()=>{});
-window.clarity&&clarity("event","calc_lead");$("sGate").hidden=true;$("sOk").hidden=false});
 calc()})();
 </script>
 </body></html>
