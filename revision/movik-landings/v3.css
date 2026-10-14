@@ -155,3 +155,4 @@ section.band{padding:clamp(72px,9vw,120px) 0}
 .pslide.drag output{background:var(--accent)}.pslide.drag output::after{border-top-color:var(--accent)}
 .pstage .psum.fixed:hover,.pstep .psum:hover{background:rgba(255,255,255,.16)}
 .pstage .pres .btn{background:var(--accent);color:#fff}.pstage .pres .btn:hover{background:var(--accent-hover)}
+body.bebas h1.h1-fit{font-size:clamp(48px,6vw,84px)}
