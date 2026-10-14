@@ -23,32 +23,32 @@
 <div class="rise d2 photo"><picture><source media="(max-width:700px)" srcset="img/X-boxtruck-muelle-01-m.webp"><img src="img/X-boxtruck-muelle-01.webp" alt="Box truck owner checking his phone at the dock" fetchpriority="high"></picture></div>
 </div></section>
 
-<section class="band pie-band" id="calc"><div class="wrap">
+<section class="band surface pie-band" id="calc"><div class="wrap">
 <p class="eyebrow">Movik savings calculator</p><h2>What does financing <span class="dim">every invoice cost you?</span></h2>
 <div class="pie" id="sav">
-<div class="pie-steps"><div class="pstep open" data-step="1">
-<button type="button" class="psum" aria-expanded="true"><span class="t">I run <b id="xTr">2 trucks</b></span><span class="pen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></button>
-<div class="pbody"><p class="ph">I run…</p><p class="psub">Pick your fleet size</p><div class="chips" role="group"><button type="button" data-tr="1">1 truck</button><button type="button" data-tr="2" class=on>2 trucks</button><button type="button" data-tr="3">3</button><button type="button" data-tr="4">4</button><button type="button" data-tr="5">5</button><button type="button" data-tr="6">6+</button></div><label class="more" id="trMore" hidden>How many trucks?<input id="sTr" inputmode="numeric" value="6" autocomplete="off"></label><button type="button" class="btn next">Continue</button></div></div><div class="pstep" data-step="2">
-<button type="button" class="psum" aria-expanded="false"><span class="t">I invoice <b id="xAmt">$60,000</b> <span id="xPer">a month</span></span><span class="pen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></button>
-<div class="pbody"><p class="ph">I invoice…</p><div class="seg" role="group" aria-label="Billing period"><button type="button" class="on" data-per="m">A month</button><button type="button" data-per="y">A year</button></div><label for="sAmt" class="psub">Your invoice volume</label><div class="money-in"><span>$</span><input id="sAmt" inputmode="numeric" value="60,000" autocomplete="off"></div><button type="button" class="btn next">Continue</button></div></div><div class="pstep" data-step="3">
-<button type="button" class="psum" aria-expanded="false"><span class="t">I'd finance <b id="xPct">80%</b> of my invoices</span><span class="pen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></button>
-<div class="pbody"><p class="ph">I'd finance…</p><p class="psub">Most factors make you finance 100%. With Movik you choose.</p><div class="chips" role="group"><button type="button" data-pct="50">50%</button><button type="button" data-pct="60">60%</button><button type="button" data-pct="70">70%</button><button type="button" data-pct="80" class=on>80%</button><button type="button" data-pct="90">90%</button><button type="button" data-pct="100">100%</button></div><button type="button" class="btn next">See my savings</button></div></div></div>
-<div class="pie-res" aria-live="polite">
-<div class="pcard hi"><p>Financing 100% costs you</p><b id="sTrad">$1,800</b><small>a month in fees, at a <span class="pending" title="Por confirmar con Movik">3%</span> fee</small></div>
-<div class="pminus"><span>Minus <b id="sSave">$360</b> because you choose what to finance</span><i aria-hidden="true">−</i></div>
-<div class="pcard"><p>With Movik you'd pay</p><b id="sMov" class="v">$1,440</b>
-<small>That's <b id="sYr">$4,320</b> a year back in your business<span id="sPer">, about <b>$180</b> per truck a month</span>.</small>
-<a class="btn" href="https://test.movik.us/signup">Start free and choose what you finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<button type="button" class="mail-t" id="mailT">Email me this breakdown</button>
+<div class="pbar">
+<p class="pl">I invoice</p>
+<div class="pslide"><output id="sTip" for="sAmt">$60,000</output>
+<input id="sAmt" type="range" min="5000" max="300000" step="5000" value="60000" aria-label="Monthly invoice volume" aria-valuetext="$60,000 per month">
+<span class="pper">per month</span></div>
+<button type="button" class="btn pgo" id="sGo">See my savings</button>
+</div>
+<div class="pout" id="sOut" hidden aria-live="polite">
+<div class="pfin"><span>I'd finance</span><div class="chips" role="group" aria-label="Share of invoices you finance"><button type="button" data-pct="50">50%</button><button type="button" data-pct="60">60%</button><button type="button" data-pct="70">70%</button><button type="button" data-pct="80" class=on>80%</button><button type="button" data-pct="90">90%</button><button type="button" data-pct="100">100%</button></div><span>of my invoices</span></div>
+<div class="pcards">
+<div class="pcard"><p>Financing 100% costs you</p><b id="sTrad">$1,800</b><small>a month, at a <span class="pending" title="Por confirmar con Movik">3%</span> fee</small></div>
+<div class="pcard"><p>With Movik you'd pay</p><b id="sMov">$1,440</b><small>a month, financing <span id="sPctL">80%</span></small></div>
+<div class="pcard hi"><p>You keep</p><b id="sSave">$360</b><small><b id="sYr">$4,320</b> a year back in your business</small></div>
+</div>
+<div class="pact"><a class="btn" href="https://test.movik.us/signup">Start free and choose what you finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><button type="button" class="mail-t" id="mailT">Email me this breakdown</button></div>
 <form class="gate" id="sGate" novalidate hidden>
 <label for="gN">Name<input id="gN" name="name" autocomplete="name" required></label>
 <label for="gE">Email<input id="gE" name="email" type="email" autocomplete="email" required></label>
 <label for="gP">Phone (optional)<input id="gP" name="phone" type="tel" autocomplete="tel"></label>
 <p class="err" id="gErr" hidden>Enter your name and a valid email.</p>
-<button class="btn line" type="submit">Send it to me</button></form>
+<button class="btn" type="submit">Send it to me</button></form>
 <p class="ok" id="sOk" hidden>Done. Check your inbox in a few minutes.</p>
-</div>
-<p class="sample">Estimate only. The fee shown is illustrative; your actual fee depends on your carrier profile.</p>
+<p class="sample">Estimate only. The fee shown is illustrative; your actual fee depends on your carrier profile. Most factors make you finance 100% of your invoices; with Movik you choose.</p>
 </div></div>
 </div></section>
 
@@ -83,27 +83,20 @@ document.querySelectorAll("form[data-go]").forEach(f=>f.addEventListener("submit
 const st=document.querySelector(".sticky"),hero=document.querySelector(".hero .actions"),hide=[...document.querySelectorAll("#apply,.closer,.band.grad:last-of-type")];
 const vis=new Map();const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target,e.isIntersecting));st.classList.toggle("off",[...vis.values()].some(Boolean))});
 [hero,...hide].filter(Boolean).forEach(el=>io.observe(el));
-(()=>{const f=document.getElementById("sav");if(!f)return;let per="m",tr=2,pct=80;const $=i=>document.getElementById(i);
-const num=el=>+(el.value.replace(/[^0-9]/g,"")||0),fmt=n=>"$"+Math.round(n).toLocaleString("en-US");
-function fmtIn(el){const d=el.value.replace(/[^0-9]/g,"");el.value=d?(+d).toLocaleString("en-US"):""}
-function calc(){const amt=num($("sAmt")),m=per==="y"?amt/12:amt,t=tr>=6?num($("sTr")):tr;
-const trad=m*0.03,mov=m*pct/100*0.03,save=trad-mov;
-$("sTrad").textContent=fmt(trad);$("sMov").textContent=fmt(mov);$("sSave").textContent=fmt(save);$("sYr").textContent=fmt(save*12);
-$("sPer").innerHTML=t>0&&save>0?", about <b>"+fmt(save/t)+"</b> per truck a month":"";
-$("xTr").textContent=t+(t===1?" truck":" trucks");$("xAmt").textContent=fmt(amt);$("xPer").textContent=per==="y"?"a year":"a month";$("xPct").textContent=pct+"%";
-return{m,t,save}}
-const steps=[...f.querySelectorAll(".pstep")];
-function openStep(s){steps.forEach(x=>{const o=x===s;x.classList.toggle("open",o);x.querySelector(".psum").setAttribute("aria-expanded",o)})}
-steps.forEach((s,i)=>{s.querySelector(".psum").addEventListener("click",()=>openStep(s));
-s.querySelector(".next").addEventListener("click",()=>{if(steps[i+1])openStep(steps[i+1]);else{openStep(null);f.classList.add("done");window.clarity&&clarity("event","calc_done")}})});
-f.querySelectorAll("[data-tr]").forEach(c=>c.addEventListener("click",()=>{tr=+c.dataset.tr;f.querySelectorAll("[data-tr]").forEach(x=>x.classList.toggle("on",x===c));$("trMore").hidden=tr<6;calc()}));
+(()=>{const f=document.getElementById("sav");if(!f)return;let pct=80;const $=i=>document.getElementById(i);
+const fmt=n=>"$"+Math.round(n).toLocaleString("en-US"),r=$("sAmt");
+function tip(){const p=(r.value-r.min)/(r.max-r.min),w=r.offsetWidth,t=64;$("sTip").style.left=(t/2+p*(w-t))+"px"}
+function calc(){const m=+r.value,trad=m*0.03,mov=m*pct/100*0.03,save=trad-mov;
+$("sTip").textContent=fmt(m);r.setAttribute("aria-valuetext",fmt(m)+" per month");tip();
+$("sTrad").textContent=fmt(trad);$("sMov").textContent=fmt(mov);$("sSave").textContent=fmt(save);$("sYr").textContent=fmt(save*12);$("sPctL").textContent=pct+"%";
+return{m,save}}
+r.addEventListener("input",calc);addEventListener("resize",tip);
+$("sGo").addEventListener("click",()=>{$("sOut").hidden=false;f.classList.add("done");window.clarity&&clarity("event","calc_done");$("sOut").scrollIntoView({behavior:"smooth",block:"nearest"})});
 f.querySelectorAll("[data-pct]").forEach(c=>c.addEventListener("click",()=>{pct=+c.dataset.pct;f.querySelectorAll("[data-pct]").forEach(x=>x.classList.toggle("on",x===c));calc()}));
-f.querySelectorAll("[data-per]").forEach(c=>c.addEventListener("click",()=>{per=c.dataset.per;f.querySelectorAll("[data-per]").forEach(x=>x.classList.toggle("on",x===c));calc()}));
-["sAmt","sTr"].forEach(i=>$(i).addEventListener("input",e=>{fmtIn(e.target);calc()}));
 $("mailT").addEventListener("click",()=>{$("sGate").hidden=false;$("mailT").hidden=true;$("gN").focus()});
 $("sGate").addEventListener("submit",e=>{e.preventDefault();const n=$("gN").value.trim(),em=$("gE").value.trim();
 if(!n||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){$("gErr").hidden=false;return}
-const r=calc(),lead={name:n,email:em,phone:$("gP").value.trim(),trucks:r.t,period:per,monthly_invoices:Math.round(r.m),pct_financed:pct,est_monthly_savings:Math.round(r.save),source:"movik-savings-calculator",landing:"carrier-b-money"};
+const c=calc(),lead={name:n,email:em,phone:$("gP").value.trim(),monthly_invoices:c.m,pct_financed:pct,est_monthly_savings:Math.round(c.save),source:"movik-savings-calculator",landing:"carrier-b-money"};
 if("")fetch("",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}).catch(()=>{});
 window.clarity&&clarity("event","calc_lead");$("sGate").hidden=true;$("sOk").hidden=false});
 calc()})();
