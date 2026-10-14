@@ -26,21 +26,30 @@
 <section class="band surface pie-band" id="calc"><div class="wrap">
 <p class="eyebrow">Movik savings calculator</p><h2>What does financing <span class="dim">every invoice cost you?</span></h2>
 <div class="pie" id="sav">
-<div class="pbar">
+<div class="pbar" id="sStage1">
 <p class="pl">I invoice</p>
 <div class="pslide"><output id="sTip" for="sAmt">$60,000</output>
 <input id="sAmt" type="range" min="5000" max="300000" step="5000" value="60000" aria-label="Monthly invoice volume" aria-valuetext="$60,000 per month">
 <span class="pper">per month</span></div>
 <button type="button" class="btn pgo" id="sGo">See my savings</button>
 </div>
-<div class="pout" id="sOut" hidden aria-live="polite">
-<div class="pfin"><span>I'd finance</span><div class="chips" role="group" aria-label="Share of invoices you finance"><button type="button" data-pct="50">50%</button><button type="button" data-pct="60">60%</button><button type="button" data-pct="70">70%</button><button type="button" data-pct="80" class=on>80%</button><button type="button" data-pct="90">90%</button><button type="button" data-pct="100">100%</button></div><span>of my invoices</span></div>
-<div class="pcards">
-<div class="pcard"><p>Financing 100% costs you</p><b id="sTrad">$1,800</b><small>a month, at a <span class="pending" title="Por confirmar con Movik">3%</span> fee</small></div>
-<div class="pcard"><p>With Movik you'd pay</p><b id="sMov">$1,440</b><small>a month, financing <span id="sPctL">80%</span></small></div>
-<div class="pcard hi"><p>You keep</p><b id="sSave">$360</b><small><b id="sYr">$4,320</b> a year back in your business</small></div>
-</div>
-<div class="pact"><a class="btn" href="https://test.movik.us/signup">Start free and choose what you finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><button type="button" class="mail-t" id="mailT">Email me this breakdown</button></div>
+<div class="pstage" id="sStage2" hidden>
+<div class="pleft"><button type="button" class="pback" id="sBack">← Go back</button>
+<div><p class="pk">Get your savings estimate</p><h3 id="sHead">Tell us a little bit about your fleet</h3></div></div>
+<div class="pright">
+<button type="button" class="psum fixed" id="sEdit"><span class="t">I invoice… <u id="xAmt">$60,000</u> <span class="dim">/ per month</span></span><span class="pen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></button>
+<div class="pstep open" data-step="1">
+<button type="button" class="psum" aria-expanded="true"><span class="t">I'd finance <b id="xPct">…</b> of my invoices</span><span class="pen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></button>
+<div class="pbody"><p class="ph">I'd finance…</p><p class="psub">Choose one</p><div class="chips" role="group"><button type="button" data-pct="50">50%</button><button type="button" data-pct="60">60%</button><button type="button" data-pct="70">70%</button><button type="button" data-pct="80">80%</button><button type="button" data-pct="90">90%</button><button type="button" data-pct="100">100% of my invoices</button></div><p class="fine">Most factors make you finance 100%. With Movik you choose.</p><button type="button" class="btn next" disabled>Continue</button></div></div><div class="pstep" data-step="2">
+<button type="button" class="psum" aria-expanded="false"><span class="t">I run <b id="xTr">…</b></span><span class="pen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></button>
+<div class="pbody"><p class="ph">I run…</p><p class="psub">Choose one</p><div class="chips" role="group"><button type="button" data-tr="1">1 truck</button><button type="button" data-tr="2">2 trucks</button><button type="button" data-tr="3">3 trucks</button><button type="button" data-tr="4">4 trucks</button><button type="button" data-tr="5">5 trucks</button><button type="button" data-tr="6">6 or more</button></div><label class="more" id="trMore" hidden>How many trucks?<input id="sTr" inputmode="numeric" value="6" autocomplete="off"></label><button type="button" class="btn next" disabled>See my savings</button></div></div>
+<div class="pres" id="sRes" hidden aria-live="polite">
+<div class="pkeep"><p>You'd keep</p><b id="sSave">$360</b><small>a month, <b id="sYr">$4,320</b> a year<span id="sPer"></span></small></div>
+<div class="prow"><span>Financing 100% today</span><b id="sTrad">$1,800/mo</b></div>
+<div class="prow"><span>With Movik, financing <span id="sPctL">80%</span></span><b id="sMov">$1,440/mo</b></div>
+<p class="fine">At a <span class="pending" title="Por confirmar con Movik">3%</span> fee. Estimate only; your actual fee depends on your carrier profile.</p>
+<a class="btn" href="https://test.movik.us/signup">Start free and choose what you finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<button type="button" class="mail-t" id="mailT">Email me this breakdown</button>
 <form class="gate" id="sGate" novalidate hidden>
 <label for="gN">Name<input id="gN" name="name" autocomplete="name" required></label>
 <label for="gE">Email<input id="gE" name="email" type="email" autocomplete="email" required></label>
@@ -48,8 +57,7 @@
 <p class="err" id="gErr" hidden>Enter your name and a valid email.</p>
 <button class="btn" type="submit">Send it to me</button></form>
 <p class="ok" id="sOk" hidden>Done. Check your inbox in a few minutes.</p>
-<p class="sample">Estimate only. The fee shown is illustrative; your actual fee depends on your carrier profile. Most factors make you finance 100% of your invoices; with Movik you choose.</p>
-</div></div>
+</div></div></div></div>
 </div></section>
 
 <section class="band grad"><div class="wrap">
@@ -83,20 +91,28 @@ document.querySelectorAll("form[data-go]").forEach(f=>f.addEventListener("submit
 const st=document.querySelector(".sticky"),hero=document.querySelector(".hero .actions"),hide=[...document.querySelectorAll("#apply,.closer,.band.grad:last-of-type")];
 const vis=new Map();const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target,e.isIntersecting));st.classList.toggle("off",[...vis.values()].some(Boolean))});
 [hero,...hide].filter(Boolean).forEach(el=>io.observe(el));
-(()=>{const f=document.getElementById("sav");if(!f)return;let pct=80;const $=i=>document.getElementById(i);
-const fmt=n=>"$"+Math.round(n).toLocaleString("en-US"),r=$("sAmt");
+(()=>{const f=document.getElementById("sav");if(!f)return;let pct=0,tr=0;const $=i=>document.getElementById(i);
+const fmt=n=>"$"+Math.round(n).toLocaleString("en-US"),r=$("sAmt"),num=el=>+(el.value.replace(/[^0-9]/g,"")||0);
 function tip(){const p=(r.value-r.min)/(r.max-r.min),w=r.offsetWidth,t=64;$("sTip").style.left=(t/2+p*(w-t))+"px"}
-function calc(){const m=+r.value,trad=m*0.03,mov=m*pct/100*0.03,save=trad-mov;
-$("sTip").textContent=fmt(m);r.setAttribute("aria-valuetext",fmt(m)+" per month");tip();
-$("sTrad").textContent=fmt(trad);$("sMov").textContent=fmt(mov);$("sSave").textContent=fmt(save);$("sYr").textContent=fmt(save*12);$("sPctL").textContent=pct+"%";
-return{m,save}}
-r.addEventListener("input",calc);addEventListener("resize",tip);
-$("sGo").addEventListener("click",()=>{$("sOut").hidden=false;f.classList.add("done");window.clarity&&clarity("event","calc_done");$("sOut").scrollIntoView({behavior:"smooth",block:"nearest"})});
-f.querySelectorAll("[data-pct]").forEach(c=>c.addEventListener("click",()=>{pct=+c.dataset.pct;f.querySelectorAll("[data-pct]").forEach(x=>x.classList.toggle("on",x===c));calc()}));
+function calc(){const m=+r.value,P=pct||80,t=tr>=6?num($("sTr")):tr,trad=m*0.03,mov=m*P/100*0.03,save=trad-mov;
+$("sTip").textContent=fmt(m);r.setAttribute("aria-valuetext",fmt(m)+" per month");tip();$("xAmt").textContent=fmt(m);
+$("sTrad").textContent=fmt(trad)+"/mo";$("sMov").textContent=fmt(mov)+"/mo";$("sSave").textContent=fmt(save);$("sYr").textContent=fmt(save*12);$("sPctL").textContent=P+"%";
+$("sPer").innerHTML=t>0&&save>0?", about <b>"+fmt(save/t)+"</b> per truck":"";
+if(pct)$("xPct").textContent=pct+"%";if(tr)$("xTr").textContent=t+(t===1?" truck":" trucks");return{m,t,save}}
+const s1=$("sStage1"),s2=$("sStage2"),steps=[...f.querySelectorAll(".pstep")];
+function openStep(s){steps.forEach(x=>{const o=x===s;x.classList.toggle("open",o);x.querySelector(".psum").setAttribute("aria-expanded",o)})}
+function stage(n){s1.hidden=n!==1;s2.hidden=n!==2;if(n===1)tip();f.scrollIntoView({behavior:"smooth",block:"start"})}
+$("sGo").addEventListener("click",()=>{stage(2);window.clarity&&clarity("event","calc_step2")});
+$("sBack").addEventListener("click",()=>stage(1));$("sEdit").addEventListener("click",()=>stage(1));
+steps.forEach((s,i)=>{s.querySelector(".psum").addEventListener("click",()=>{$("sRes").hidden=true;openStep(s)});
+s.querySelector(".next").addEventListener("click",()=>{if(steps[i+1]&&!(i+1===1&&tr))openStep(steps[i+1]);else{openStep(null);$("sRes").hidden=false;$("sHead").textContent="Here's what you'd keep";window.clarity&&clarity("event","calc_done")}})});
+function pick(k,set){f.querySelectorAll("[data-"+k+"]").forEach(c=>c.addEventListener("click",()=>{set(+c.getAttribute("data-"+k));f.querySelectorAll("[data-"+k+"]").forEach(x=>x.classList.toggle("on",x===c));c.closest(".pbody").querySelector(".next").disabled=false;calc()}))}
+pick("pct",v=>pct=v);pick("tr",v=>{tr=v;$("trMore").hidden=v<6});
+r.addEventListener("input",calc);$("sTr").addEventListener("input",e=>{const d=e.target.value.replace(/[^0-9]/g,"");e.target.value=d;calc()});addEventListener("resize",tip);
 $("mailT").addEventListener("click",()=>{$("sGate").hidden=false;$("mailT").hidden=true;$("gN").focus()});
 $("sGate").addEventListener("submit",e=>{e.preventDefault();const n=$("gN").value.trim(),em=$("gE").value.trim();
 if(!n||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){$("gErr").hidden=false;return}
-const c=calc(),lead={name:n,email:em,phone:$("gP").value.trim(),monthly_invoices:c.m,pct_financed:pct,est_monthly_savings:Math.round(c.save),source:"movik-savings-calculator",landing:"carrier-b-money"};
+const c=calc(),lead={name:n,email:em,phone:$("gP").value.trim(),trucks:c.t,monthly_invoices:c.m,pct_financed:pct,est_monthly_savings:Math.round(c.save),source:"movik-savings-calculator",landing:"carrier-b-money"};
 if("")fetch("",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}).catch(()=>{});
 window.clarity&&clarity("event","calc_lead");$("sGate").hidden=true;$("sOk").hidden=false});
 calc()})();
