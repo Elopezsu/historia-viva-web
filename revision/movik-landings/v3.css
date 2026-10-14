@@ -156,3 +156,4 @@ section.band{padding:clamp(72px,9vw,120px) 0}
 .pstage .psum.fixed:hover,.pstep .psum:hover{background:rgba(255,255,255,.16)}
 .pstage .pres .btn{background:var(--accent);color:#fff}.pstage .pres .btn:hover{background:var(--accent-hover)}
 body.bebas h1.h1-fit{font-size:clamp(48px,6vw,84px)}
+.ghl-form{margin-top:20px;background:#fff;border-radius:12px;box-shadow:var(--sh-sm),inset 0 0 0 1px var(--border)}
