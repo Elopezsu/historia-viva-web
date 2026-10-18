@@ -43,6 +43,16 @@
   .fila .proy { color: var(--accent); font-size: 12px; font-weight: 600; }
   .fila .franja { color: var(--muted); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .fila .dur { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .interc { padding: 16px; }
+  .interc h2 { margin: 0 0 4px; font-size: 17px; }
+  .interc .nota { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .interc table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .interc td { padding: 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .interc td:last-child { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 12px; }
+  .interc tr.clave td { color: var(--ink); background: var(--accent-soft); padding-left: 8px; padding-right: 8px; }
+  .interc .barra { height: 10px; background: var(--bar-empty); border-radius: 5px; margin: 16px 0 6px; overflow: hidden; }
+  .interc .barra i { display: block; height: 100%; background: var(--accent); }
+  .interc .leyenda { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; }
   footer { color: var(--muted); font-size: 12px; margin-top: 24px; }
   @media (max-width: 640px) {
     .kpis { grid-template-columns: repeat(2, 1fr); }
@@ -76,6 +86,8 @@
     </div>
     <div class="chart" id="chart"></div>
   </section>
+
+  <section class="card interc"><h2>Intercambio por edición de video</h2><p class="nota">Cuántas horas de PM en Movik pagan la edición de los videos de Historia Viva.</p><table><tr><td>30 videos al mes × 40.000 COP</td><td>1.200.000 COP</td></tr><tr><td>÷ 3.169,76 COP por dólar</td><td>378,58 USD</td></tr><tr><td>÷ 40 USD la hora = horas de PM por mes de edición</td><td>9:28 h</td></tr><tr><td>Meta: 6 meses (180 videos, 7.200.000 COP = 2.271,47 USD)</td><td>56:47 h</td></tr><tr><td>Horas hechas: cubren 3,8 meses (114 videos)</td><td>36:00 h</td></tr><tr class="clave"><td>Faltan para cubrir 6 meses</td><td>20:47 h</td></tr></table><div class="barra"><i style="width:63.4%"></i></div><div class="leyenda"><span>36:00 de 56:47 h</span><span>63 %</span></div></section>
 
   <section class="card" id="lista"></section>
 
