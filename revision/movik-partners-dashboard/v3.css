@@ -163,3 +163,6 @@ body.bebas h1.h1-fit{font-size:clamp(48px,6vw,84px)}
 .wa .btn.wa-btn:hover{background:linear-gradient(135deg,#4600D9 0%,#6A2BF5 100%);transform:translateY(-1px);box-shadow:0 12px 28px #5200ff55}
 .wa .btn.wa-btn svg{width:20px;height:20px}
 @media (max-width:560px){.wa .btn.wa-btn{width:100%;height:auto;min-height:52px;padding:12px 18px;white-space:normal;text-align:center;line-height:1.25}}
+/* botón del dashboard: oscuro para que se distinga del violeta y no se pierda en blanco */
+.btn.dash{background:#0B0A0F;color:#fff;box-shadow:0 8px 22px #0b0a0f33}
+.btn.dash:hover{background:#2A2833}
