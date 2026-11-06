@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#140E21">
-<title>Una mujer al mes · Historia Viva</title>
-<meta name="description" content="Una clase en vivo cada semana sobre una mujer del pasado y lo que nos enseña hoy. Con Eunice López.">
+<title>Una mujer real, tres pasos para tu vida · Historia Viva</title>
+<meta name="description" content="Convierte la historia de una mujer real en tres pasos para tu propia vida, en un mes. Una clase en vivo cada semana con Eunice López.">
 <link rel="icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap">
-<meta property="og:title" content="Cada mes, una mujer del pasado y una enseñanza para tu vida hoy">
+<meta property="og:title" content="Convierte la historia de una mujer real en tres pasos para tu propia vida">
 <meta property="og:description" content="Una clase en vivo cada semana. No necesitas saber de historia.">
 <meta property="og:image" content="https://eunicelopez.com/te-espero/img/eunice-saco.jpg">
 <style>
@@ -84,7 +84,7 @@ strong,b{color:var(--crema)}
   background:radial-gradient(closest-side,rgba(233,185,73,.10),transparent);pointer-events:none}
 .portada .in{position:relative;z-index:1}
 .credencial{font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--oro);margin:0 0 1.3rem}
-.portada h1{font-size:clamp(2.2rem,6.6vw,4rem);line-height:1.06;max-width:17ch;margin:0 auto 1.1rem;font-weight:500}
+.portada h1{font-size:clamp(2.1rem,5.8vw,3.6rem);line-height:1.08;max-width:21ch;margin:0 auto 1.1rem;font-weight:500}
 .portada .lead{margin:0 auto 2.4rem;text-align:center;color:var(--texto)}
 .video{position:relative;aspect-ratio:16/9;max-width:880px;margin:0 auto;border-radius:18px;overflow:hidden;
   background:#0E0918;border:1px solid var(--linea);
@@ -165,14 +165,6 @@ strong,b{color:var(--crema)}
 .clase h3{margin:0 0 .25rem;font-size:1.22rem}
 .clase p{margin:0;font-size:.97rem}
 
-/* lo que te llevas */
-.llevas{display:grid;gap:0;margin-top:2.6rem;border-top:1px solid var(--linea-2)}
-@media(min-width:760px){.llevas{grid-template-columns:1fr 1fr;column-gap:4rem}}
-.llevas div{padding:1.7rem 0;border-bottom:1px solid var(--linea-2);display:grid;grid-template-columns:3rem 1fr;gap:.2rem 1rem}
-.llevas .n{grid-row:span 2;font-family:var(--serif);font-size:1.5rem;color:var(--oro);line-height:1.2}
-.llevas h3{font-size:1.3rem}
-.llevas p{margin:0;font-size:.97rem}
-
 /* opiniones */
 .opiniones{display:grid;gap:16px;margin-top:2.6rem}
 @media(min-width:760px){.opiniones{grid-template-columns:repeat(3,1fr)}.opiniones .larga{grid-column:span 2}}
@@ -208,12 +200,27 @@ strong,b{color:var(--crema)}
 .precio::before{content:"";position:absolute;left:50%;top:-1px;width:40%;height:2px;transform:translateX(-50%);background:var(--oro-metal)}
 .precio .eyebrow{justify-content:center}
 .precio .eyebrow::after{display:none}
-.precio .cifra{font-family:var(--serif);font-weight:500;font-size:4rem;line-height:1;margin:.2rem 0 .3rem}
+.precio .cifra{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,10vw,4rem);line-height:1;margin:.2rem 0 .3rem}
 .precio .cifra small{font-size:1rem;font-family:var(--sans);color:var(--tenue);font-weight:400}
 .precio ul{list-style:none;padding:0;margin:1.8rem auto 0;max-width:34ch;text-align:left}
 .precio li{padding:.6rem 0 .6rem 1.8rem;position:relative;border-top:1px solid var(--linea-2);color:var(--texto)}
 .precio li::before{content:"✓";position:absolute;left:0;color:var(--oro);font-weight:700}
 .precio .ancla{font-size:.88rem;color:var(--tenue);margin:1.4rem 0 1.6rem}
+
+/* nota del video */
+.nota-video{max-width:620px;margin:-1.1rem auto 2rem;font-size:.86rem;line-height:1.5;color:var(--tenue)}
+.nota-video b{color:var(--texto);font-weight:600}
+/* antes y después */
+.cambios{margin-top:2.4rem;border-top:1px solid var(--linea-2)}
+.cambio{display:grid;gap:.5rem;padding:1.4rem 0;border-bottom:1px solid var(--linea-2)}
+@media(min-width:760px){.cambio{grid-template-columns:1fr 1fr;gap:3rem}}
+.cambio span{color:var(--tenue);font-size:1rem}
+.cambio strong{font-weight:500;font-size:1.08rem}
+/* qué pasa al tocar el botón */
+.pasos{max-width:580px;margin:2.6rem auto 0}
+.pasos ol{list-style:none;counter-reset:p;margin:0;padding:0}
+.pasos li{counter-increment:p;position:relative;padding:.9rem 0 .9rem 2.6rem;border-top:1px solid var(--linea-2);color:var(--texto);font-size:1rem}
+.pasos li::before{content:counter(p);position:absolute;left:0;top:.8rem;font-family:var(--serif);font-size:1.5rem;line-height:1.2;color:var(--oro)}
 
 /* preguntas */
 .faq{max-width:780px;margin:2rem auto 0}
@@ -288,7 +295,7 @@ footer .copy{font-size:.8rem}
 <header class="portada">
   <div class="in">
     <p class="credencial">Historiadora y consteladora familiar · 18 países · 4 idiomas</p>
-    <h1>Cada mes, una mujer del pasado y una <span class="oro">enseñanza</span> para tu vida hoy.</h1>
+    <h1>Convierte la historia de una mujer real en <span class="oro">tres pasos</span> para tu propia vida, en un mes.</h1>
     <p class="lead">Una clase en vivo cada semana, conmigo. No necesitas saber de historia.</p>
 
     <div class="video" id="video">
@@ -303,6 +310,7 @@ footer .copy{font-size:.8rem}
       <div class="avance" aria-hidden="true"><i id="avance"></i></div>
     </div>
     <p class="sonido">Dura menos de 7 minutos. Mejor con sonido.</p>
+    <p class="nota-video"><b>Antes de verlo:</b> grabé este video cuando el plan era otro. Hoy nos vemos cada semana, dentro de la comunidad y sin Zoom, y el cupo fundador ya cerró.</p>
 
     <a class="boton grande" data-cta href="#">Quiero entrar</a>
   </div>
@@ -312,21 +320,21 @@ footer .copy{font-size:.8rem}
   <div class="in">
     <div><b>+100</b><span>personas en mis programas</span></div>
     <div><b>5,0</b><span>en las tres plataformas</span></div>
-    <div><b>81</b><span>lo escribieron o lo grabaron</span></div>
+    <div><b>81</b><span>opiniones escritas o en video</span></div>
   </div>
 </div>
 
 <section class="banda">
   <div class="in rev">
     <p class="eyebrow">¿Te identificas?</p>
-    <h2>¿A ti también te <span class="oro">pasa</span>?</h2>
+    <h2>¿A ti también te <span class="oro">pasa</span>? Nos pasa a muchas.</h2>
     <div class="dolores">
-      <div class="dolor"><strong>Ves algo clarísimo y no dices nada</strong><em>«No me toca a mí.»</em></div>
-      <div class="dolor"><strong>Te sabes los próceres, pero no tres mujeres de tu país</strong><em>«¿Quién?»</em></div>
-      <div class="dolor"><strong>La historia en la escuela te aburría</strong><em>Fechas y un examen.</em></div>
       <div class="dolor"><strong>Tomas decisiones sola y sientes que nadie pasó por ahí</strong><em>«¿Y ahora qué hago?»</em></div>
       <div class="dolor"><strong>Te toca empezar de nuevo, otra vez</strong><em>Desde cero.</em></div>
+      <div class="dolor"><strong>Ves algo clarísimo y no dices nada</strong><em>«No me toca a mí.»</em></div>
       <div class="dolor"><strong>Te fuiste de tu país y te contaron la versión corta dos veces</strong><em>El continente en un párrafo.</em></div>
+      <div class="dolor"><strong>Te sabes los próceres, pero no tres mujeres de tu país</strong><em>«¿Quién?»</em></div>
+      <div class="dolor"><strong>La historia en la escuela te aburría</strong><em>Fechas y un examen.</em></div>
     </div>
   </div>
 </section>
@@ -343,20 +351,13 @@ footer .copy{font-size:.8rem}
 </section>
 
 <section class="banda alt">
-  <div class="in dosc">
-    <div class="retrato rev"><img src="img/eunice-de-pie.jpg" alt="Eunice López, con saco rojo, sonriendo" loading="lazy" width="734" height="1100"><div class="pie"><b>Eunice López</b>Historiadora y consteladora familiar</div></div>
-    <div class="rev">
-      <p class="eyebrow">Quién da las clases</p>
-      <h2>De liderar proyectos en empresas a contar la historia que <span class="oro">no nos contaron</span>.</h2>
-      <p class="subt">Soy Eunice López, historiadora y consteladora familiar. Cuento las historias de las mujeres que no salen en los libros.</p>
-      <p>Pasé más de dieciséis años en empresas, liderando proyectos y armando eventos. Durante un año dejé para después lo que sentía que era lo mío. Lo que aprendí de ese año es sencillo: hay que ser fiel a lo que una siente.</p>
-      <p>Pero créeme por lo que ves en el video, no por mi currículum.</p>
-      <ul class="datos">
-        <li><span><b>18 países</b> recorridos</span></li>
-        <li><span><b>+16 años</b> en empresas, liderando proyectos y eventos</span></li>
-        <li><span><b>4 idiomas</b></span></li>
-        <li><span><b>+100 personas</b> en mis programas</span></li>
-      </ul>
+  <div class="in rev">
+    <p class="eyebrow">Lo que cambia en un mes</p>
+    <h2>De decidir sola a tener <span class="oro">tres pasos</span> escritos.</h2>
+    <div class="cambios">
+      <div class="cambio"><span>Hoy: sientes que nadie pasó por lo que estás viviendo.</span><strong>Al terminar el mes: conoces a una mujer que enfrentó algo parecido, y lo que le costó.</strong></div>
+      <div class="cambio"><span>Hoy: la historia te suena a fechas y a un examen.</span><strong>Al terminar el mes: te acuerdas de una mujer con nombre y con fuentes.</strong></div>
+      <div class="cambio"><span>Hoy: «¿y ahora qué hago?»</span><strong>Al terminar el mes: tienes tres pasos escritos para lo tuyo.</strong></div>
     </div>
   </div>
 </section>
@@ -371,26 +372,14 @@ footer .copy{font-size:.8rem}
       <div class="clases">
         <div class="clase"><span class="n">1</span><div><h3>Quién fue</h3><p>Su historia completa, con fuentes. La que no salía en el libro de la escuela.</p></div></div>
         <div class="clase"><span class="n">2</span><div><h3>Qué decidió</h3><p>Lo que eligió, en qué momento y lo que le costó.</p></div></div>
-        <div class="clase"><span class="n">3</span><div><h3>Qué nos enseña hoy</h3><p>Lo llevamos a tu vida: qué harías tú en su lugar y qué te llevas para tus decisiones.</p></div></div>
+        <div class="clase"><span class="n">3</span><div><h3>Qué nos enseña hoy</h3><p>Lo llevamos a tu vida: qué harías tú en su lugar. Sales con tres pasos escritos para lo que estás viviendo.</p></div></div>
       </div>
+      <a class="boton grande" data-cta href="#" style="margin-top:1.8rem">Quiero entrar</a>
     </div>
   </div>
 </section>
 
 <section class="banda alt">
-  <div class="in rev">
-    <p class="eyebrow">Lo que te llevas cada mes</p>
-    <h2>Una mujer nueva, y algo <span class="oro">tuyo</span> para decidir mejor.</h2>
-    <div class="llevas">
-      <div><span class="n">01</span><h3>Conoces a una mujer de verdad</h3><p>Con nombre, fecha y fuentes. No una frase suelta de internet.</p></div>
-      <div><span class="n">02</span><h3>Entiendes por qué no te la contaron</h3><p>Quién escribió la historia y por qué ella no entraba en la foto.</p></div>
-      <div><span class="n">03</span><h3>La llevas a tu vida</h3><p>Qué harías tú en su lugar, y qué te llevas para tus propias decisiones.</p></div>
-      <div><span class="n">04</span><h3>No te pierdes nada</h3><p>Las clases quedan grabadas. Si un mes no puedes venir, la ves después.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="banda filete">
   <div class="in">
     <div class="rev">
       <p class="eyebrow">Opiniones reales · en sus propias palabras</p>
@@ -427,7 +416,51 @@ footer .copy{font-size:.8rem}
   </div>
 </section>
 
+<section class="banda filete" id="precio">
+  <div class="in">
+    <div class="precio rev">
+      <p class="eyebrow">Lo que recibes</p>
+      <div class="cifra">Cada semana <small>en vivo</small></div>
+      <ul>
+        <li>60 minutos conmigo, a las 6 PM de Colombia</li>
+        <li>Una mujer distinta cada mes</li>
+        <li>Tres pasos escritos para tu vida</li>
+        <li>Todas las clases quedan grabadas</li>
+        <li>No necesitas saber de historia</li>
+      </ul>
+      <a class="boton grande" data-cta href="#" style="margin-top:1.8rem">Quiero entrar</a>
+    </div>
+    <div class="pasos rev">
+      <p class="eyebrow" style="justify-content:center">Qué pasa cuando tocas el botón</p>
+      <ol>
+        <li><b>Entras a la comunidad</b> y ves el precio antes de pagar.</li>
+        <li><b>Pagas con PayPal.</b> Si no puedes con PayPal, escríbeme y lo resolvemos.</li>
+        <li><b>Te llega un recordatorio</b> un día antes de cada clase. Entras desde la pestaña Eventos.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="banda alt">
+  <div class="in dosc">
+    <div class="retrato rev"><img src="img/eunice-de-pie.jpg" alt="Eunice López, con saco rojo, sonriendo" loading="lazy" width="734" height="1100"><div class="pie"><b>Eunice López</b>Historiadora y consteladora familiar</div></div>
+    <div class="rev">
+      <p class="eyebrow">Quién da las clases</p>
+      <h2>De liderar proyectos en empresas a contar la historia que <span class="oro">no nos contaron</span>.</h2>
+      <p class="subt">Soy Eunice López, historiadora y consteladora familiar. Cuento las historias de las mujeres que no salen en los libros.</p>
+      <p>Pasé más de dieciséis años en empresas, liderando proyectos y armando eventos. Durante un año dejé para después lo que sentía que era lo mío. Lo que aprendí de ese año es sencillo: hay que ser fiel a lo que una siente.</p>
+      <p>Pero créeme por lo que ves en el video, no por mi currículum.</p>
+      <ul class="datos">
+        <li><span><b>18 países</b> recorridos</span></li>
+        <li><span><b>+16 años</b> en empresas, liderando proyectos y eventos</span></li>
+        <li><span><b>4 idiomas</b></span></li>
+        <li><span><b>+100 personas</b> en mis programas</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="banda filete">
   <div class="in rev">
     <p class="eyebrow">Para quién es</p>
     <h2>Pensado para quien se <span class="oro">aburría</span> en la escuela.</h2>
@@ -451,22 +484,6 @@ footer .copy{font-size:.8rem}
   </div>
 </section>
 
-<section class="banda filete" id="precio">
-  <div class="in">
-    <div class="precio rev">
-      <p class="eyebrow">La comunidad</p>
-      <div class="cifra">Cada semana <small>en vivo</small></div>
-      <ul>
-        <li>60 minutos conmigo, a las 6 PM de Colombia</li>
-        <li>Una mujer distinta cada mes</li>
-        <li>Todas las clases quedan grabadas</li>
-        <li>No necesitas saber de historia</li>
-      </ul>
-      <a class="boton grande" data-cta href="#" style="margin-top:1.8rem">Quiero entrar</a>
-    </div>
-  </div>
-</section>
-
 <section class="banda alt">
   <div class="in centro rev">
     <p class="eyebrow">Preguntas frecuentes</p>
@@ -478,6 +495,12 @@ footer .copy{font-size:.8rem}
         <p>Es una clase de 60 minutos a la semana. Y si una semana no llegas, queda grabada para que la veas cuando puedas.</p></details>
       <details><summary>¿Dónde son las clases?</summary>
         <p>En vivo, dentro de la comunidad: entras desde la pestaña Eventos y te llega un recordatorio un día antes. A las 6 PM de Colombia, Perú y Ecuador, 5 PM de México, 7 PM de Venezuela y Bolivia, y 8 PM de Argentina, Chile y Uruguay.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary>
+        <p>Lo digo en el video, y lo ves al entrar a la comunidad, antes de pagar.</p></details>
+      <details><summary>¿Cómo pago?</summary>
+        <p>Desde la página de la comunidad, con PayPal. Si no puedes con PayPal, escríbeme y lo resolvemos.</p></details>
+      <details><summary>¿Es solo para mujeres?</summary>
+        <p>Hablamos de mujeres de la historia, pero está abierta a cualquier persona que quiera aprender de ellas.</p></details>
       <details><summary>¿Por qué mujeres del pasado?</summary>
         <p>Porque lo que vivieron se parece mucho a lo que vivimos hoy: decidir, empezar de nuevo, hablar cuando nadie quiere oír. Y casi nunca nos las contaron.</p></details>
       <details><summary>¿Tengo otra duda?</summary>
@@ -489,8 +512,8 @@ footer .copy{font-size:.8rem}
 <section class="final">
   <div class="fondo" aria-hidden="true"></div>
   <div class="in rev">
-    <p class="eyebrow" style="justify-content:center">El mes que viene</p>
-    <h2>Ya vas a estar conociendo a otra mujer que te va a <span class="oro">acompañar</span> mucho tiempo.</h2>
+    <p class="eyebrow" style="justify-content:center">Tu próximo mes</p>
+    <h2>Una mujer que te va a <span class="oro">acompañar</span> mucho tiempo, y tres pasos escritos para tu vida.</h2>
     <p class="lead">Una clase en vivo cada semana, conmigo.</p>
     <a class="boton grande" data-cta href="#">Quiero entrar</a>
     <p class="firma">Te espero adentro. — Eunice</p>
