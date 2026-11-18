@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Movik TMS · Dispatcher onboarding</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:780px;margin:32px auto;padding:0 16px;color:#0B0A0F;line-height:1.55;background:#fff}
+h1{font-size:26px;margin-bottom:4px}h2{color:#5200FF;font-size:19px;margin-top:36px}h3{font-size:16px;margin:22px 0 6px}
+a{color:#5200FF}li{margin:5px 0}.n{color:#555;font-size:14px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:2px}
+.ok{background:#E3F6EE;color:#0D6647}.wip{background:#FFF1D6;color:#8A5200}.new{background:#EDE6FF;color:#5200FF}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0}td,th{border:1px solid #e6e6ee;padding:8px 10px;text-align:left;vertical-align:top}th{background:#f6f6f8}
+.box{background:#f6f6f8;border-radius:10px;padding:14px 16px;margin:14px 0}
+ol.flow li{margin:3px 0}
+</style>
+<p class="n"><a href="../">← Back to the dispatcher proposals</a></p>
+<h1>Movik TMS · Dispatcher onboarding</h1>
+<p class="n">Walkthrough of tms.movik.us on Nov 18, 2026, as a new dispatcher, synced with the Nov 17 meeting (Leo, Klayton, Juan Fernando, Eunice). Tags: <span class="tag ok">Agreed</span> <span class="tag wip">In progress</span> <span class="tag new">Proposal</span></p>
+
+<div class="box"><b>Four actions for this week</b>
+<ol>
+<li><b>Email-only sign up.</b> Ask for the phone later, in Settings. Test it for 2–3 weeks.</li>
+<li><b>Gmail without the scare.</b> Google review in progress; until then, warn before the click and land on the Email tab after connecting.</li>
+<li><b>A shorter checklist, in the right order.</b> Merge the duplicated driver step and let people import carriers in bulk.</li>
+<li><b>Fix the small stuff.</b> Tour skips steps, one carrier still asks to pick a carrier, two names for the same button, empty fee field.</li>
+</ol></div>
+
+<h2>1 · Sign up <span class="tag ok">Agreed</span></h2>
+<p>Today it takes 6 steps before the dispatcher sees the product:</p>
+<ol class="flow"><li>Name</li><li>Company name</li><li>Work email <b>and</b> mobile phone</li><li>Password with 5 rules + terms</li><li><b>SMS code</b> ("Check your phone")</li><li>Into the TMS ("Welcome to Movik TMS, add your first carrier"; no plans for now)</li></ol>
+<ul>
+<li><b>Remove the phone from sign up and send the code by email.</b> Leo agreed on Nov 17. Most of it already exists: the "Didn't receive the SMS? Try email instead" path and the "Confirm your email" message. The phone moves to Settings › You.</li>
+<li><b>Measure it for 2–3 weeks:</b> sign ups started vs. completed, before and after. If it doesn't help, it goes back.</li>
+<li><span class="tag new">Proposal</span> Put name, company and email on one screen (3 steps → 1). "Your own name works too" already says the company can be skipped.</li>
+<li><span class="tag new">Proposal</span> Password: keep "8+ characters" only, or move to a magic link later.</li>
+<li><span class="tag new">Proposal</span> Step 2: the "Your company invited you to Movik" card looks like a button. Label it "Preview" or make it lighter.</li>
+</ul>
+
+<h2>2 · Connecting Gmail <span class="tag wip">In progress</span></h2>
+<p>Gmail shows "Google hasn't verified this app … Go to Movik Email (unsafe)". Movik submitted the app for review (about 10 days). Outlook and the other providers don't show it. Connecting does work once you click through: the mailbox loads.</p>
+<ul>
+<li><b>Before the Google button</b>, one line: "Google will show a notice while we finish their review. Click Advanced, then Go to Movik Email."</li>
+<li><b>After connecting</b>, land on Inbox › Email with "Gmail connected ✓". Today it lands on Messages (Telegram), and it looks like nothing happened.</li>
+<li>Until Google approves, list <b>Microsoft first</b> and keep "Other email (IMAP)" visible.</li>
+</ul>
+
+<h2>3 · First minutes inside: checklist and tour <span class="tag ok">Agreed</span></h2>
+<h3>The checklist (Today › All steps)</h3>
+<p>"Invite your drivers" (step 3) opens /dashboard/drivers, the same page as "Add a driver" (step 5), and its text ("Send a driver their first load sheet") repeats "Send a load to your driver". Proposed order, 9 steps instead of 10:</p>
+<table><tr><th>#</th><th>Step</th><th>Note</th></tr>
+<tr><td>1</td><td>Add or import your carriers</td><td>Point to "Import carriers" too: paste USDOT/MC numbers or a CSV, checked with FMCSA.</td></tr>
+<tr><td>2</td><td>Invite the carrier's owner</td><td>Keep.</td></tr>
+<tr><td>3</td><td>Add a truck</td><td>Or connect the ELD.</td></tr>
+<tr><td>4</td><td>Add a driver</td><td>Name and phone is enough.</td></tr>
+<tr><td>5</td><td>Book a load</td><td>Drop a rate con, or book it from the load board.</td></tr>
+<tr><td>6</td><td>Send a load to your driver</td><td>Replaces "Invite your drivers".</td></tr>
+<tr><td>7–9</td><td>Optional: Install Miles · Connect Gmail or Outlook · Offer e-mail</td><td>Keep as optional. Gmail already ticks itself when connected.</td></tr></table>
+<p>Show the referral block ("Know another dispatch company?") after the first delivered load, not on day one.</p>
+<h3>The guided tour ("Take the tour")</h3>
+<ul>
+<li><b>Bug:</b> it opens on "2 of 5" (Loads), Next jumps to "4 of 5" (Inbox), and "5 of 5" (Settings) renders off screen at the bottom.</li>
+<li><b>Content (Juan Fernando):</b> the first stop is <b>Add carrier + dispatch fee</b>, because the fee is what turns on gross, net and "Your fees" on Today.</li>
+<li>Suggested stops (4, not 20): Add carrier + fee → Loads (drop a rate con) → Load board (install Miles) → Inbox (connect email). Leo's idea fits here: Miles can narrate it.</li>
+</ul>
+
+<h2>4 · Load board <span class="tag wip">In progress</span></h2>
+<p>The load board is the feature the consultancy said was missing, and it now works through the Miles extension (the same extension as Miles). Pending, per Leo: the screen that tells the user to install it.</p>
+<ul>
+<li>"Your boards" already has the right screen ("DAT One opens here with Miles", <i>Add Miles to Chrome</i> / <i>Check again</i>). Reuse it as the empty state of <b>Load board › Search</b>, which today only says "One search across your boards".</li>
+<li>Add Miles, DAT One, Truckstop and the ELD to <b>Settings › Integrations</b>. Today it only lists Email and Telegram.</li>
+<li>Landings and emails now say it: "Your load board, inside your TMS" (proposals 3 and 4).</li>
+</ul>
+
+<h2>5 · Small fixes <span class="tag new">Proposal</span></h2>
+<table><tr><th>Where</th><th>What we saw</th><th>Fix</th></tr>
+<tr><td>Add load (Today)</td><td>With one carrier it still asks "Choose a carrier".</td><td>Skip the picker when there's only one.</td></tr>
+<tr><td>Buttons</td><td>"Add load" on Today, "Book a load" on Loads.</td><td>One name.</td></tr>
+<tr><td>Carrier › Settings › Your fee</td><td>Empty field with a grey "8" placeholder that looks saved; the carrier says "No fee set".</td><td>Prefill 8 % (like the Add carrier modal) or show "e.g. 8".</td></tr>
+<tr><td>Drivers</td><td>/dashboard/drivers exists but isn't in the sidebar.</td><td>Add it, or keep drivers only inside each carrier and fix the link.</td></tr>
+<tr><td>Insights</td><td>7 empty tabs saying "Nothing yet in this period"; Overview uses 30d/90d/12m, the rest This month/30 days/quarter/year.</td><td>One empty state with "Book your first load" and the same period filter everywhere.</td></tr>
+<tr><td>Inbox</td><td>7 tabs; "Rate cons" also appears under Email.</td><td>On a new account, show only "Connect your email" and Telegram.</td></tr></table>
+<p class="n">What already works well: the Add carrier modal (USDOT + fee, 8 % default), Import carriers, and the empty states of Loads, Planner, Offers, Drivers and Trucks.</p>
+
+<h2>6 · Video library <span class="tag ok">Agreed</span></h2>
+<p>Short clips (1–1.5 min) on the website and YouTube, embedded in the emails with the avatar. They back up the tour; they don't replace it. First five, in onboarding order:</p>
+<ol><li>Add your first carrier and your fee</li><li>Your load board with Miles (DAT One / Truckstop)</li><li>From rate con to load (drop the PDF or connect your email)</li><li>Send a load to your driver</li><li>Ask Miles: routes and broker calls</li></ol>
+<p>The new activation emails (<a href="../correos/#activacion">a1–a4</a>) already leave a spot for each clip.</p>
+
+<h2>7 · What to measure</h2>
+<table><tr><th>Event</th><th>Why</th></tr>
+<tr><td>signup_started → signup_completed</td><td>Shows whether email-only sign up works.</td></tr>
+<tr><td>first_carrier_added (+ fee set)</td><td>The first real step; skips email a1.</td></tr>
+<tr><td>miles_installed</td><td>Load board on; skips a2.</td></tr>
+<tr><td>email_connected / first_load_booked</td><td>Skips a3.</td></tr>
+<tr><td>load_sent_to_driver</td><td>Activation; skips a4.</td></tr></table>
+<p class="n">Event names are a proposal: please confirm the real ones so GHL can stop each email.</p>
