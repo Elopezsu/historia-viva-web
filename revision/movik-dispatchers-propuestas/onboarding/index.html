@@ -17,7 +17,7 @@ ol.flow li{margin:3px 0}
 <ol>
 <li><b>Email-only sign up.</b> Ask for the phone later, in Settings. Test it for 2–3 weeks.</li>
 <li><b>Gmail without the scare.</b> Google review in progress; until then, warn before the click and land on the Email tab after connecting.</li>
-<li><b>A shorter checklist, in the right order.</b> Merge the duplicated driver step and let people import carriers in bulk.</li>
+<li><b>A shorter checklist, in the right order.</b> Make Miles a required step before "Book a load", merge the duplicated driver step and let people import carriers in bulk.</li>
 <li><b>Fix the small stuff.</b> Tour skips steps, one carrier still asks to pick a carrier, two names for the same button, empty fee field.</li>
 </ol></div>
 
@@ -48,15 +48,16 @@ ol.flow li{margin:3px 0}
 <tr><td>2</td><td>Invite the carrier's owner</td><td>Keep.</td></tr>
 <tr><td>3</td><td>Add a truck</td><td>Or connect the ELD.</td></tr>
 <tr><td>4</td><td>Add a driver</td><td>Name and phone is enough.</td></tr>
-<tr><td>5</td><td>Book a load</td><td>Drop a rate con, or book it from the load board.</td></tr>
-<tr><td>6</td><td>Send a load to your driver</td><td>Replaces "Invite your drivers".</td></tr>
-<tr><td>7–9</td><td>Optional: Install Miles · Connect Gmail or Outlook · Offer e-mail</td><td>Keep as optional. Gmail already ticks itself when connected.</td></tr></table>
+<tr><td>5</td><td><b>Install and pin Miles</b></td><td><b>Required, not optional.</b> Without the Miles extension there are no loads from DAT One or Truckstop to book. It goes right before "Book a load".</td></tr>
+<tr><td>6</td><td>Book a load</td><td>From the load board with Miles, or drop a rate con.</td></tr>
+<tr><td>7</td><td>Send a load to your driver</td><td>Replaces "Invite your drivers".</td></tr>
+<tr><td>8–9</td><td>Optional: Connect Gmail or Outlook · Offer e-mail</td><td>Keep as optional. Gmail already ticks itself when connected.</td></tr></table>
 <p>Show the referral block ("Know another dispatch company?") after the first delivered load, not on day one.</p>
 <h3>The guided tour ("Take the tour")</h3>
 <ul>
 <li><b>Bug:</b> it opens on "2 of 5" (Loads), Next jumps to "4 of 5" (Inbox), and "5 of 5" (Settings) renders off screen at the bottom.</li>
 <li><b>Content (Juan Fernando):</b> the first stop is <b>Add carrier + dispatch fee</b>, because the fee is what turns on gross, net and "Your fees" on Today.</li>
-<li>Suggested stops (4, not 20): Add carrier + fee → Loads (drop a rate con) → Load board (install Miles) → Inbox (connect email). Leo's idea fits here: Miles can narrate it.</li>
+<li>Suggested stops (4, not 20): Add carrier + fee → Load board (install Miles) → Loads (book the load) → Inbox (connect email). Miles comes before Loads because without it there are no loads to book. Leo's idea fits here: Miles can narrate it.</li>
 </ul>
 
 <h2>4 · Load board <span class="tag wip">In progress</span></h2>
