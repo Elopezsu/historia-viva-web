@@ -111,6 +111,8 @@ strong,b{color:var(--crema)}
 .sonido{color:var(--tenue);font-size:.82rem;margin:1rem 0 2rem}
 /* reproductor al estilo VSL: sin controles, solo la línea de avance abajo */
 .video video{object-fit:cover;cursor:pointer}
+.video iframe{pointer-events:none}
+.video{cursor:pointer}
 .video .aviso{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:1rem;
   background:rgba(14,9,24,.35);border:0;cursor:pointer;font:inherit;color:inherit}
 .video .aviso span{display:flex;flex-direction:column;align-items:center;gap:.7rem;max-width:300px;
@@ -317,7 +319,7 @@ footer .copy{font-size:.8rem}
     <p class="lead">Una clase en vivo cada semana, conmigo. No necesitas saber de historia.</p>
 
     <div class="video" id="video">
-      <video id="vsl" src="video/vsl.mp4" poster="video/vsl-portada.jpg" muted autoplay playsinline preload="auto"></video>
+      <div id="vsl" data-yt="5sx02_ioEbE" style="background:#1A1226 url(video/vsl-portada.jpg) center/cover"></div>
       <button class="aviso" id="aviso" type="button">
         <span>
           <b>Tu video ya empezó</b>
@@ -573,32 +575,61 @@ document.querySelectorAll("[data-cta]").forEach(function(a){
   addEventListener("scroll", mirar, {passive:true}); mirar();
 })();
 
-// El video arranca en silencio con el aviso encima. Al tocarlo vuelve al inicio con sonido.
-// Después, tocar el video lo pausa o lo sigue. La línea de abajo corre rápido al principio y
-// se frena al final, para que nunca parezca que falta mucho.
+// El VSL es un video no listado de YouTube. Arranca en silencio con el aviso encima; al tocarlo
+// vuelve al inicio con sonido. Después, tocar el video lo pausa o lo sigue. La línea de abajo corre
+// rápido al principio y se frena al final, para que nunca parezca que falta mucho.
+// Medición (GA4): vsl_sonido al tocar el aviso; vsl_25, vsl_50, vsl_75, vsl_90 y vsl_completo según
+// cuánto se ve CON sonido; cta_click en cada «Quiero entrar» con el % visto en ese momento.
+var VSL_VISTO = 0;
+function evento(nombre, extra){ if (window.gtag) gtag("event", nombre, extra || {}); }
+document.querySelectorAll("[data-cta]").forEach(function(a, i){
+  a.addEventListener("click", function(){ evento("cta_click", {vsl_visto: VSL_VISTO, boton: i + 1}); });
+});
 (function(){
-  var v = document.getElementById("vsl"), aviso = document.getElementById("aviso"), barra = document.getElementById("avance");
-  var conSonido = false;
+  var caja = document.getElementById("vsl"), aviso = document.getElementById("aviso"), barra = document.getElementById("avance");
+  var p, conSonido = false, hitos = [25, 50, 75, 90], marcados = {};
+  window.onYouTubeIframeAPIReady = function(){
+    p = new YT.Player(caja, {
+      videoId: caja.getAttribute("data-yt"), host: "https://www.youtube-nocookie.com",
+      playerVars: {autoplay: 1, mute: 1, controls: 0, rel: 0, playsinline: 1, modestbranding: 1, disablekb: 1, iv_load_policy: 3, fs: 0},
+      events: {
+        onReady: function(){ p.mute(); p.playVideo(); },
+        onStateChange: function(e){
+          if (e.data === YT.PlayerState.ENDED) {
+            if (!conSonido) { p.seekTo(0); p.playVideo(); return; }
+            if (!marcados.fin) { marcados.fin = 1; VSL_VISTO = 100; evento("vsl_completo"); }
+          }
+          if (e.data === YT.PlayerState.PAUSED && conSonido) {
+            aviso.querySelector("b").textContent = "Pausaste el video";
+            aviso.querySelector("small").textContent = "Toca para seguir viendo";
+            aviso.hidden = false;
+          }
+        }
+      }
+    });
+  };
   aviso.addEventListener("click", function(){
-    if (!conSonido) { conSonido = true; v.currentTime = 0; v.muted = false; v.play(); aviso.hidden = true; }
-    else { v.play(); aviso.hidden = true; }
+    if (!p || !p.playVideo) return;
+    if (!conSonido) { conSonido = true; p.seekTo(0); p.unMute(); p.setVolume(100); evento("vsl_sonido"); }
+    p.playVideo(); aviso.hidden = true;
   });
-  v.addEventListener("click", function(){
+  // El iframe no recibe clics (así YouTube no muestra su título ni su logo); el clic lo maneja la caja.
+  document.getElementById("video").addEventListener("click", function(e){
+    if (e.target.closest("#aviso") || !p || !p.getPlayerState) return;
     if (!conSonido) return aviso.click();
-    if (v.paused) v.play(); else v.pause();
+    if (p.getPlayerState() === YT.PlayerState.PLAYING) p.pauseVideo(); else { p.playVideo(); aviso.hidden = true; }
   });
-  v.addEventListener("pause", function(){
-    if (!conSonido || v.ended) return;
-    aviso.querySelector("b").textContent = "Pausaste el video";
-    aviso.querySelector("small").textContent = "Toca para seguir viendo";
-    aviso.hidden = false;
-  });
-  v.addEventListener("ended", function(){ if (!conSonido) { v.currentTime = 0; v.play(); } });
-  v.addEventListener("timeupdate", function(){
-    if (!conSonido || !v.duration) { barra.style.width = "0"; return; }
-    var x = v.currentTime / v.duration;
+  setInterval(function(){
+    if (!p || !p.getDuration || !conSonido) { barra.style.width = "0"; return; }
+    var d = p.getDuration(), t = p.getCurrentTime();
+    if (!d) return;
+    var x = t / d;
     barra.style.width = (100 * (1 - Math.pow(1 - x, 2.2))) + "%";
-  });
+    var pct = Math.floor(100 * x);
+    if (pct > VSL_VISTO) VSL_VISTO = pct;
+    hitos.forEach(function(h){ if (pct >= h && !marcados[h]) { marcados[h] = 1; evento("vsl_" + h); } });
+  }, 500);
+  var s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(s);
 })();
 
 // Aparecer al bajar. Si el navegador no tiene IntersectionObserver, se muestra todo.
