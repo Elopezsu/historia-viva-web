@@ -98,7 +98,7 @@ header.nav {
 .nav-cta { flex: none; min-height: 44px; padding: 0.55rem 1.1rem; font-size: 0.88rem; background: var(--ink); color: var(--marfil); box-shadow: none; }
 .nav-cta:hover { background: var(--coral-ink); }
 .menu-btn { display: none; }
-@media (max-width: 1060px) {
+@media (max-width: 1180px) {
   .nav-links { display: none; }
   .langs { margin-left: auto; }
 }
@@ -242,6 +242,30 @@ main > section { padding: clamp(4rem, 9vw, 7rem) 0; }
 .tl .tl-body { padding: 0 0.2rem 1.2rem 7.5rem; color: var(--mute); font-size: 0.98rem; max-width: 66ch; }
 @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } .about .photo { position: static; aspect-ratio: 4 / 3; } .about .photo img { object-position: center 20%; } }
 @media (max-width: 520px) { .tl summary { grid-template-columns: 1fr auto; } .tl .yr { grid-column: 1 / -1; } .tl .tl-body { padding-left: 0.2rem; } .facts { grid-template-columns: 1fr; } }
+
+/* ---------- biblioteca (tarjetas compartidas con /regalos/) ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.1rem; }
+.rec { position: relative; display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: #fff; border: 1px solid var(--hair); border-radius: var(--radius); overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+.rec:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--coral) 45%, transparent); box-shadow: 0 26px 44px -36px rgba(30,27,36,0.55); }
+.rec .cover { height: 116px; display: grid; place-items: center; font-size: 3rem; position: relative; }
+.rec .cover span { transition: transform 0.4s cubic-bezier(.2,.7,.3,1); }
+.rec:hover .cover span { transform: scale(1.08); }
+.coral .cover { background: linear-gradient(135deg, #FBD9CC, #F6A98E); }
+.indigo .cover { background: linear-gradient(135deg, #DCD5EC, #B4A6D6); }
+.gold .cover { background: linear-gradient(135deg, #FDF0CF, #F7D27A); }
+.rec .tag { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(255,255,255,0.9); color: var(--ink); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.6rem; border-radius: 999px; }
+.rec .tag.free { background: var(--ink); color: var(--marfil); }
+.rec .lock { position: absolute; top: 0.75rem; right: 0.75rem; width: 34px; height: 34px; border-radius: 50%; background: rgba(30,27,36,0.82); color: #fff; display: grid; place-items: center; font-size: 0.95rem; }
+.rec .in { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+.rec .tipo { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral-ink); }
+.rec b { font-size: 1.1rem; line-height: 1.25; letter-spacing: -0.01em; }
+.rec p { color: var(--mute); font-size: 0.95rem; }
+.rec .ir { margin-top: auto; padding-top: 0.6rem; font-weight: 700; color: var(--coral-ink); }
+.lib-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+.lib-grid .rec .cover { height: 150px; font-size: 3.6rem; }
+.lib-cta { margin-top: clamp(1.6rem, 4vw, 2.4rem); }
+@media (max-width: 980px) { .lib-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .lib-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; } .lib-grid .rec .cover { height: 96px; font-size: 2.4rem; } .lib-grid .rec b { font-size: 0.98rem; } .lib-grid .rec .tag { font-size: 0.66rem; } }
 
 /* ---------- historia viva ---------- */
 .hv-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }

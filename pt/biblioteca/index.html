@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (GA4 · Historia Viva) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGYF1D7XB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZGYF1D7XB4');
+</script>
+<!-- Microsoft Clarity · Historia Viva -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zepaawzcqb");
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biblioteca grátis da Historia Viva · Eunice López</title>
+<meta name="description" content="16 guias, testes e ferramentas grátis de Eunice López para o trabalho, o dinheiro, suas decisões e a história da sua família.">
+<link rel="canonical" href="https://eunicelopez.com/pt/biblioteca/">
+<meta name="theme-color" content="#F7F3EC">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="Biblioteca grátis da Historia Viva">
+<meta property="og:description" content="16 guias, testes e ferramentas para o trabalho, o dinheiro, suas decisões e a história da sua família.">
+<meta property="og:url" content="https://eunicelopez.com/pt/biblioteca/">
+<meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="es" href="https://eunicelopez.com/regalos/">
+<link rel="alternate" hreflang="en" href="https://eunicelopez.com/en/library/">
+<link rel="alternate" hreflang="pt-BR" href="https://eunicelopez.com/pt/biblioteca/">
+<link rel="stylesheet" href="/home.css">
+<style>
+.lib-hero { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem); }
+.lib-hero h1 { font-size: clamp(2.4rem, 5.6vw, 4.2rem); margin: 0.9rem 0 1.1rem; max-width: 16ch; }
+.lib-hero .lead { font-size: clamp(1.06rem, 1.7vw, 1.22rem); color: var(--mute); max-width: 56ch; }
+.lib-hero .count { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--hair); background: #fff; border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.88rem; font-weight: 600; }
+.pill.ok { border-color: color-mix(in srgb, var(--coral) 40%, transparent); color: var(--coral-ink); }
+.elige { background: #fff; border: 1px solid var(--hair); border-radius: 22px; padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: 0 30px 60px -50px rgba(30,27,36,0.5); }
+.elige h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 1.1rem; }
+.opciones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.opcion { font: inherit; font-weight: 600; font-size: 0.98rem; border: 1.5px solid var(--hair); background: var(--marfil-2); color: var(--ink); border-radius: 999px; padding: 0.65rem 1.1rem; min-height: 46px; cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+.opcion:hover { transform: translateY(-2px); border-color: var(--coral); }
+.opcion[aria-pressed="true"] { background: var(--ink); color: var(--marfil); border-color: var(--ink); }
+.sugerencia { margin-top: 1.4rem; }
+.sugerencia .k { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--coral-ink); margin-bottom: 0.8rem; }
+.progreso[hidden], .sugerencia[hidden] { display: none; }
+.progreso { margin-top: 1.4rem; display: flex; align-items: center; gap: 1rem; }
+.barra { flex: 1; height: 8px; background: var(--hair); border-radius: 999px; overflow: hidden; max-width: 320px; }
+.barra span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--coral)); transition: width 0.4s ease; }
+.cat { padding: clamp(2.6rem, 6vw, 4rem) 0 0; }
+.cat-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.6rem 2rem; margin-bottom: 1.4rem; }
+.cat-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+.cat-head p { color: var(--mute); max-width: 48ch; }
+.rec.visto .ir::after { content: "  ✓ ya lo abriste"; color: var(--mute); font-weight: 600; }
+body.acceso .rec .lock { display: none; }
+body.acceso .pill.ok { display: inline-flex; }
+.pill.ok { display: none; }
+body.acceso .pill.lockinfo { display: none; }
+.cta-carta { margin: clamp(3rem, 7vw, 5rem) 0 0; }
+/* ventana de acceso */
+dialog.acceso { border: 0; padding: 0; border-radius: 24px; width: min(520px, calc(100vw - 2rem)); max-height: calc(100svh - 2rem); background: var(--marfil); color: var(--ink); box-shadow: 0 40px 100px -30px rgba(30,27,36,0.6); }
+dialog.acceso::backdrop { background: rgba(30,27,36,0.55); backdrop-filter: blur(3px); }
+.acc-in { padding: clamp(1.6rem, 4vw, 2.2rem); position: relative; }
+.acc-in h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); margin: 0.6rem 0 0.7rem; }
+.acc-in .sub { color: var(--mute); margin-bottom: 1rem; }
+.acc-in .perks { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.35rem; font-size: 0.95rem; }
+.acc-in iframe { width: 100%; height: 300px; border: none; border-radius: 12px; background: #fff; }
+.acc-in .fine { font-size: 0.82rem; color: var(--mute); margin-top: 0.6rem; text-align: center; }
+.cerrar { position: absolute; top: 0.6rem; right: 0.6rem; width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; font-size: 1.4rem; cursor: pointer; color: var(--mute); }
+.cerrar:hover { background: var(--marfil-2); color: var(--ink); }
+.listo { display: none; text-align: center; }
+dialog.ok .form-paso { display: none; }
+dialog.ok .listo { display: block; }
+.listo .big { font-size: 3rem; }
+</style>
+</head>
+<body>
+<!-- Generada con 02-contenido/web/biblioteca.py (repo privado). No editar a mano. -->
+<a class="skip" href="#main">Pular para o conteúdo</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/pt/" aria-label="Eunice López, Historia Viva">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="bt"><b>Eunice López</b><span>Historia Viva</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Menú">
+      <a href="/#charlas">Palestras</a>
+      <a href="/#eventos">Eventos</a>
+      <a href="/#biblioteca">Biblioteca</a>
+      <a href="/#historia-viva">Historia Viva</a>
+      <a href="/#quien-soy">Quem sou</a>
+      <a href="/#contacto">Contato</a>
+    </nav>
+    <div class="langs" aria-label="Idioma"><a href="/regalos/" lang="es" hreflang="es">ES</a><a href="/en/library/" lang="en" hreflang="en">EN</a><span aria-current="page" lang="pt-BR">PT</span></div>
+    <a class="btn nav-cta" href="mailto:eunice.historiaviva@gmail.com?subject=Convite%20para%20palestra&amp;body=Ol%C3%A1%2C%20Eunice%2C%0A%0AQueremos%20convidar%20voc%C3%AA%20para%20palestrar%20no%20nosso%20evento.%0A%0AEmpresa%3A%0AData%3A%0AP%C3%BAblico%20%28quantas%20pessoas%2C%20qual%20%C3%A1rea%29%3A%0AIdioma%3A%0A%0AObrigado%2C">Convide-me para seu evento</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="lib-hero">
+    <div class="wrap">
+      <div data-enter>
+        <p class="eyebrow">Biblioteca da Historia Viva</p>
+        <h1>16 ferramentas grátis para <span class="coral-word">sua melhor versão</span>.</h1>
+        <p class="lead">Duas estão abertas. O resto eu libero com seu e-mail, junto com a carta de sexta (em espanhol).</p>
+        <div class="count"><span class="pill">📚 16 recursos</span><span class="pill lockinfo">🔓 2 abertos · 🔒 14 com seu e-mail</span><span class="pill ok">✓ Você tem acesso a tudo</span></div>
+      </div>
+      <div class="elige" style="margin-top:clamp(2rem,4vw,2.8rem)">
+        <h2>O que você gostaria de mudar hoje?</h2>
+        <div class="opciones" role="group" aria-label="Escolha uma opção">
+        <button type="button" class="opcion" data-ruta="aumento,decir-no">💼 Ser valorizada no trabalho</button>
+        <button type="button" class="opcion" data-ruta="herencia,dinero">💰 Minha relação com o dinheiro</button>
+        <button type="button" class="opcion" data-ruta="decision,espiral">🧭 Uma decisão que venho adiando</button>
+        <button type="button" class="opcion" data-ruta="emprender,nombradas">🚀 Empreender o meu</button>
+        <button type="button" class="opcion" data-ruta="guia-de-entrevista,arbol">🌳 Conhecer a história da minha família</button>
+        <button type="button" class="opcion" data-ruta="a-tu-edad,generaciones">✨ Só tenho curiosidade</button>
+        </div>
+        <div class="sugerencia" id="sugerencia" aria-live="polite" hidden>
+          <p class="k">Para você, comece por aqui</p>
+          <div class="grid" id="sugeridos"></div>
+        </div>
+        <div class="progreso" id="progreso" hidden><div class="barra" aria-hidden="true"><span id="barra"></span></div><p id="progreso-texto"></p></div>
+      </div>
+    </div>
+  </section>
+  <section class="cat" id="trabajo">
+    <div class="wrap">
+      <div class="cat-head"><h2>Trabalho e dinheiro</h2><p>Para pedir o que você merece, colocar limites e ganhar com o que é seu.</p></div>
+      <div class="grid">
+        <a class="rec coral" data-slug="herencia" data-libre="1" href="/pt/herencia/">
+          <span class="cover"><span aria-hidden="true">🧾</span><span class="tag free">Grátis</span></span>
+          <span class="in">
+            <span class="tipo">Teste · 2 minutos</span>
+            <b>Que crenças sobre trabalho e dinheiro você herdou?</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec coral" data-slug="aumento" data-libre="0" href="/pt/aumento/">
+          <span class="cover"><span aria-hidden="true">💼</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia</span>
+            <b>Antes de pedir aumento, leia isto</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec coral" data-slug="decir-no" data-libre="0" href="/pt/decir-no/">
+          <span class="cover"><span aria-hidden="true">✋</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia</span>
+            <b>Sete frases para dizer não no trabalho</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec coral" data-slug="emprender" data-libre="0" href="/pt/emprender/">
+          <span class="cover"><span aria-hidden="true">🚀</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia</span>
+            <b>Empreenderam sem permissão</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec coral" data-slug="dinero" data-libre="0" href="/pt/dinero/">
+          <span class="cover"><span aria-hidden="true">👛</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia</span>
+            <b>Até 1989, sua carteira não era sua</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="cat" id="decisiones">
+    <div class="wrap">
+      <div class="cat-head"><h2>Suas decisões</h2><p>Para aquilo que você pensa há meses e não se atreve a fazer.</p></div>
+      <div class="grid">
+        <a class="rec indigo" data-slug="decision" data-libre="0" href="/pt/decision/">
+          <span class="cover"><span aria-hidden="true">🧭</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Exercício · 7 dias</span>
+            <b>7 dias para a decisão que você está adiando</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec indigo" data-slug="espiral" data-libre="0" href="/pt/espiral/">
+          <span class="cover"><span aria-hidden="true">🌀</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Exercício</span>
+            <b>A Espiral</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec indigo" data-slug="nombradas" data-libre="0" href="/pt/nombradas/">
+          <span class="cover"><span aria-hidden="true">📜</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Catálogo · 88 mulheres</span>
+            <b>Las nombradas</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="cat" id="familia">
+    <div class="wrap">
+      <div class="cat-head"><h2>Sua família e suas raízes</h2><p>Para saber de onde você vem e guardar a história dos seus.</p></div>
+      <div class="grid">
+        <a class="rec gold" data-slug="a-tu-edad" data-libre="1" href="/pt/a-tu-edad/">
+          <span class="cover"><span aria-hidden="true">👵🏽</span><span class="tag free">Grátis</span></span>
+          <span class="in">
+            <span class="tipo">Ferramenta</span>
+            <b>O que sua avó não podia fazer na sua idade?</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="guia-de-entrevista" data-libre="0" href="/pt/guia-de-entrevista/">
+          <span class="cover"><span aria-hidden="true">🎙️</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia · 25 perguntas</span>
+            <b>Guia de entrevista familiar</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="arbol" data-libre="0" href="/pt/arbol/">
+          <span class="cover"><span aria-hidden="true">🌳</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Ferramenta</span>
+            <b>Sua árvore</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="generaciones" data-libre="0" href="/pt/generaciones/">
+          <span class="cover"><span aria-hidden="true">🗳️</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Calculadora</span>
+            <b>Calculadora de gerações</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="estudio-apellido" data-libre="0" href="/pt/estudio-apellido/">
+          <span class="cover"><span aria-hidden="true">💍</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia</span>
+            <b>De onde vem o «de»?</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="palabras" data-libre="0" href="/pt/palabras/">
+          <span class="cover"><span aria-hidden="true">🗣️</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Dicionário · 40 palavras</span>
+            <b>Palavras herdadas</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="mapa-de-archivos" data-libre="0" href="/pt/mapa-de-archivos/">
+          <span class="cover"><span aria-hidden="true">🗺️</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Mapa · 21 países</span>
+            <b>Mapa de arquivos</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec gold" data-slug="leer-un-documento" data-libre="0" href="/pt/leer-un-documento/">
+          <span class="cover"><span aria-hidden="true">🔍</span><span class="lock" aria-label="Libera com seu e-mail">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Guia</span>
+            <b>Como ler um documento de arquivo</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="cta-carta" id="carta">
+    <div class="wrap">
+      <div class="book dark">
+        <div>
+          <p class="eyebrow">A carta de sexta</p>
+          <h2>Uma história nova <span class="serif-em">toda semana</span>.</h2>
+          <p>Uma história curta toda sexta, em espanhol, e a chave de toda a biblioteca.</p>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" data-abrir-acceso>Quero a carta e a biblioteca</button>
+          <p class="mail">Sem spam. Cancele com um clique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="acceso" id="acceso" aria-labelledby="acc-t">
+  <div class="acc-in">
+    <button type="button" class="cerrar" aria-label="Fechar" data-cerrar>×</button>
+    <div class="form-paso">
+      <p class="eyebrow">Acesso grátis</p>
+      <h2 id="acc-t">Libero os 16 recursos</h2>
+      <p class="sub">Deixe seu nome e e-mail uma vez só. Ficam abertos neste navegador e toda sexta chega a carta.</p>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/XZX5MZu0EgEzevVHgPBc"
+        id="inline-XZX5MZu0EgEzevVHgPBc"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-activation-type="alwaysActivated"
+        data-deactivation-type="neverDeactivate"
+        data-form-name="Newsletter PT · Biblioteca"
+        data-form-id="XZX5MZu0EgEzevVHgPBc"
+        data-layout-iframe-id="inline-XZX5MZu0EgEzevVHgPBc"
+        data-height="300"
+        title="Receber a carta e abrir a biblioteca"
+        loading="lazy"
+        scrolling="no"></iframe>
+      <p class="fine">Sem spam. Cancele com um clique.</p>
+    </div>
+    <div class="listo" aria-live="polite">
+      <p class="big" aria-hidden="true">🔓</p>
+      <h2>Pronto! É toda sua.</h2>
+      <p class="sub">Confira seu e-mail: a carta de sexta chega lá.</p>
+      <a class="btn btn-primary" id="seguir" href="#trabajo">Abrir o recurso</a>
+    </div>
+  </div>
+</dialog>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script>
+(function () {
+  var LIBRES = ["a-tu-edad", "herencia"], CLAVE_ACC = 'hv_biblioteca_acceso', CLAVE_VIS = 'hv_regalos_vistos';
+  var q = new URLSearchParams(location.search), dlg = document.getElementById('acceso'), pendiente = null;
+  function tiene() { try { return localStorage.getItem(CLAVE_ACC) === '1'; } catch (e) { return false; } }
+  function abrirAcceso(origen) {
+    try { localStorage.setItem(CLAVE_ACC, '1'); } catch (e) {}
+    document.body.classList.add('acceso');
+    if (window.gtag) gtag('event', 'correo_dejado', { origen: origen });
+  }
+  if (q.get('acceso') === '1') abrirAcceso('enlace');
+  if (tiene()) document.body.classList.add('acceso');
+
+  // UTM de llegada → cada recurso (así se sabe que vino de la biblioteca y desde dónde)
+  var base = {};
+  ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { if (q.get(k)) base[k] = q.get(k); });
+  if (!base.utm_source) { base.utm_source = 'eunicelopez'; base.utm_medium = 'referral'; base.utm_campaign = 'regalos_pt'; }
+  function conUtm(a) {
+    var p = new URLSearchParams(base); p.set('utm_content', 'pt_regalos_' + a.dataset.slug.replace(/-/g, '_'));
+    return a.getAttribute('href').split('?')[0] + '?' + p.toString();
+  }
+  document.querySelectorAll('a.rec').forEach(function (a) { a.href = conUtm(a); });
+
+  // Progreso guardado en el navegador
+  var vistos = {}, total = document.querySelectorAll('section.cat a.rec').length;
+  function leer() { try { vistos = JSON.parse(localStorage.getItem(CLAVE_VIS)) || {}; } catch (e) { vistos = {}; } }
+  function pintar() {
+    document.querySelectorAll('a.rec').forEach(function (a) { a.classList.toggle('visto', !!vistos[a.dataset.slug]); });
+    var n = Object.keys(vistos).filter(function (s) { return s !== 'carta'; }).length;
+    if (!n) return;
+    document.getElementById('progreso').hidden = false;
+    document.getElementById('barra').style.width = Math.min(100, n / total * 100) + '%';
+    document.getElementById('progreso-texto').innerHTML = n >= total ? '<b>Você abriu todos!</b> Obrigada por ficar 💛'
+      : 'Você abriu <b>' + n + ' de ' + total + '</b>. Eu guardo seu progresso aqui.';
+  }
+
+  // Clic en un recurso: libre o con acceso → abre; si no, pide el correo
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a.rec'); if (!a) return;
+    var slug = a.dataset.slug;
+    if (LIBRES.indexOf(slug) === -1 && !tiene()) {
+      e.preventDefault(); pendiente = a.href;
+      document.getElementById('seguir').href = a.href;
+      dlg.classList.remove('ok'); dlg.showModal();
+      if (window.gtag) gtag('event', 'candado_tocado', { regalo: slug });
+      return;
+    }
+    vistos[slug] = 1; try { localStorage.setItem(CLAVE_VIS, JSON.stringify(vistos)); } catch (err) {}
+    if (window.gtag) gtag('event', 'abrir_regalo', { regalo: slug });
+    pintar();
+  });
+  document.querySelectorAll('[data-abrir-acceso]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      pendiente = null; document.getElementById('seguir').href = '#trabajo';
+      dlg.classList.toggle('ok', tiene()); dlg.showModal();
+    });
+  });
+  document.querySelector('[data-cerrar]').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  document.getElementById('seguir').addEventListener('click', function () { dlg.close(); });
+
+  // El formulario de GHL avisa con «set-sticky-contacts» cuando alguien se suscribe
+  window.addEventListener('message', function (e) {
+    if (!/leadconnectorhq\.com$|msgsndr\.com$/.test((e.origin || '').replace(/^https?:\/\//, ''))) return;
+    var d = e.data; if (typeof d === 'string') { try { d = JSON.parse(d); } catch (x) {} }
+    if (Array.isArray(d) && d[0] === 'set-sticky-contacts') {
+      abrirAcceso(pendiente ? 'candado' : 'boton');
+      dlg.classList.add('ok');
+    }
+  });
+
+  // Selector «O que você gostaria de mudar hoje?»
+  var caja = document.getElementById('sugerencia'), sug = document.getElementById('sugeridos');
+  document.querySelectorAll('.opcion').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.opcion').forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+      sug.innerHTML = '';
+      b.dataset.ruta.split(',').forEach(function (slug) {
+        var orig = document.querySelector('section.cat a.rec[data-slug="' + slug + '"]');
+        if (orig) sug.appendChild(orig.cloneNode(true));
+      });
+      caja.hidden = false;
+      if (window.gtag) gtag('event', 'elegir_necesidad', { opcion: b.textContent.trim() });
+    });
+  });
+  window.addEventListener('pageshow', function () { leer(); pintar(); if (tiene()) document.body.classList.add('acceso'); });
+  leer(); pintar();
+})();
+</script>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="fbrand"><b>Eunice López</b> · <span>Historia Viva</span></div>
+    <div class="social">
+      <a href="https://www.instagram.com/eunice.historiaviva" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@eunice.historiaviva" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@eunice.historiaviva" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.linkedin.com/in/eunice-lopez-suarez/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:eunice.historiaviva@gmail.com">Email</a>
+    </div>
+    <div class="social"><a href="/privacidad/">Privacidad</a><a href="/terminos/">Términos</a></div>
+  </div>
+</footer>
+<!-- Chat widget de Go High Level · Historia Viva · Chat -->
+<script src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6a987280673e2602e69fdd0f">
+</script>
+</body>
+</html>

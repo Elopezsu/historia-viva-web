@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (GA4 · Historia Viva) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGYF1D7XB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZGYF1D7XB4');
+</script>
+<!-- /Google tag -->
+<!-- Microsoft Clarity · Historia Viva -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zepaawzcqb");
+</script>
+<!-- /Microsoft Clarity -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generations calculator · Historia Viva</title>
+<meta name="description" content="Enter your birth year and count how many generations stand between you and the abolition of slavery, independence, women’s suffrage, or the first woman at university.">
+<meta name="author" content="Eunice López">
+<link rel="canonical" href="https://eunicelopez.com/en/generaciones/">
+<link rel="alternate" hreflang="es" href="https://eunicelopez.com/generaciones/">
+<link rel="alternate" hreflang="en" href="https://eunicelopez.com/en/generaciones/">
+<link rel="alternate" hreflang="pt-BR" href="https://eunicelopez.com/pt/generaciones/">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#3B2E5A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Eunice López · Historia Viva">
+<meta property="og:title" content="Generations calculator · Historia Viva">
+<meta property="og:description" content="Enter your birth year and count how many generations stand between you and the abolition of slavery, independence, women’s suffrage, or the first woman at university.">
+<meta property="og:url" content="https://eunicelopez.com/en/generaciones/">
+<meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --indigo:#3B2E5A; --indigo-deep:#2A2040; --coral:#E4572E; --coral-soft:#F6A98E;
+  --gold:#F2A900; --gold-soft:#FBE5B8; --ink:#1E1B24; --marfil:#F7F3EC;
+  --marfil-2:#FBF8F2; --cream-warm:#FDF6EC; --mute:#6E6478; --mute-on-dark:#CDC2E0;
+  --coral-ink:#BF4420; --gold-ink:#8C6200;
+  --hair:rgba(30,27,36,.10); --hair-dark:rgba(247,243,236,.14);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--marfil);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.shell{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+h1,h2,h3{font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.06}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15}
+h3{font-size:1.18rem}
+p{margin:0 0 1rem}
+a{color:inherit}
+.eyebrow{font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:700;color:var(--coral-ink);margin:0}
+.eyebrow.on-dark{color:var(--gold)}
+.serif-em{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0}
+.mark-hl{background:linear-gradient(120deg,transparent 6%,var(--gold-soft) 6%,
+  var(--gold-soft) 94%,transparent 94%);padding:0 .12em;border-radius:2px}
+.coral-word{color:var(--coral)}
+.mute{color:var(--mute)}
+.meta{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb,var(--marfil) 86%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.8rem clamp(1.1rem,4vw,2.5rem);gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand .dot{width:34px;height:34px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 30%,var(--gold) 0%,var(--coral) 62%,var(--indigo) 130%);
+  box-shadow:0 4px 14px -4px rgba(228,87,46,.55)}
+.brand .bt{display:flex;flex-direction:column;line-height:1.03}
+.brand b{font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.brand span{font-family:var(--serif);font-style:italic;font-size:.8125rem;color:var(--coral-ink)}
+.nav-back{text-decoration:none;color:var(--mute);font-size:.9rem;font-weight:600;
+  min-height:44px;display:inline-flex;align-items:center}
+.nav-back:hover{color:var(--ink)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;
+  font:inherit;font-weight:700;border-radius:999px;padding:.8rem 1.5rem;
+  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--coral-ink);color:#fff;box-shadow:0 8px 20px -12px rgba(30,27,36,.45)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair)}
+
+/* tarjetas */
+.card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:1.4rem}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.g2{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* hero */
+.hero{padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2.5rem)}
+.lede{font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--mute);max-width:62ch}
+
+/* captura */
+.captura{background:var(--indigo);color:var(--marfil);border-radius:18px;
+  padding:clamp(1.6rem,4vw,2.6rem);margin:3rem 0}
+.captura h2{color:var(--marfil);margin:.45rem 0 .7rem}
+.captura p{color:var(--mute-on-dark)}
+.captura form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.captura input{flex:1 1 12rem;min-width:0;border:1px solid var(--hair-dark);
+  background:rgba(255,255,255,.06);color:var(--marfil);border-radius:999px;
+  padding:.8rem 1.1rem;font:inherit}
+.captura input::placeholder{color:var(--mute-on-dark)}
+.captura input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.captura .nota{font-size:.8125rem;margin:.8rem 0 0}
+.captura .ok{display:none;background:rgba(242,169,0,.14);border:1px solid var(--gold);
+  border-radius:12px;padding:1rem;margin-top:1rem;color:var(--marfil)}
+
+/* pie */
+footer.pie{border-top:1px solid var(--hair);margin-top:4rem;padding:2rem 0 3rem;
+  color:var(--mute);font-size:.88rem}
+footer.pie a{color:var(--coral-ink);text-decoration:none}
+footer.pie a:hover{text-decoration:underline}
+/* superficies del navegador */
+html{accent-color:var(--coral-ink);caret-color:var(--coral-ink)}
+::selection{background:var(--gold-soft);color:var(--ink)}
+.captura ::selection{background:var(--gold);color:var(--indigo-deep)}
+:focus-visible{outline:2px solid var(--coral-ink);outline-offset:3px}
+.captura :focus-visible{outline-color:var(--gold)}
+a{text-underline-offset:.18em}
+p,li{text-wrap:pretty}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+.form-g{display:flex;flex-direction:column;gap:1.4rem;margin-top:1.6rem}
+.campo{border:1px solid var(--hair);background:#fff;border-radius:10px;padding:.8rem 1rem;
+  font:inherit;color:var(--ink)}
+.campo:focus{outline:2px solid var(--coral);outline-offset:1px}
+#anio{font-variant-numeric:tabular-nums;max-width:11rem;font-size:1.3rem;font-family:var(--mono);letter-spacing:.06em}
+#pais{max-width:26rem}
+.supuesto{border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);background:var(--cream-warm);padding:.9rem 1.1rem;
+  border-radius:10px;font-size:.93rem;color:var(--mute);margin-top:1.8rem}
+.error{color:var(--coral-ink);font-size:.9rem;margin:.4rem 0 0}
+.fichas{display:grid;gap:1.1rem;margin-top:1.6rem}
+.f-g{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:1.3rem;
+  display:flex;gap:1.3rem;align-items:flex-start}
+.cadena{display:flex;flex-direction:column;align-items:center;gap:3px;flex:none;padding-top:.3rem}
+.cadena i{width:11px;height:11px;display:block;border:1px solid var(--hair);background:var(--marfil-2)}
+.cadena i.tu{border:2px solid var(--coral);background:var(--coral)}
+.cadena i.hecho{border:2px solid var(--indigo);background:var(--gold)}
+.num{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:clamp(2.4rem,7vw,3.4rem);line-height:1;color:var(--coral);
+  letter-spacing:-.03em}
+.num small{font-family:var(--sans);font-size:.85rem;color:var(--mute);margin-left:.5rem;letter-spacing:0}
+.f-g p.meta{text-transform:none;letter-spacing:.01em;font-size:.8125rem}
+.f-g h3{font-size:1.3rem;margin-top:.6rem;line-height:1.25}
+.aviso-pc{border:1px solid color-mix(in srgb,var(--coral) 28%,transparent);background:var(--cream-warm);padding:.8rem 1rem;
+  border-radius:8px;font-size:.9rem;color:var(--mute);margin-top:.8rem}
+.oculto{display:none!important}
+</style>
+</head>
+<body>
+<header class="nav"><div class="shell nav-in">
+  <a class="brand" href="https://eunicelopez.com/en/"><span class="dot"></span><span class="bt">
+    <b>Eunice López</b><span>Historia Viva</span></span></a>
+  <a class="nav-back" href="https://eunicelopez.com/en/">← back to the site</a>
+</div></header>
+
+<main class="shell">
+  <div class="hero" style="max-width:780px">
+    <h1 style="margin-top:.6rem">Generations calculator</h1>
+    <p class="lede" style="margin-top:1.1rem">History feels far away until you count it in people. Enter your birth year and see how many women and men of one family fit between you and events that seem to belong to another world.</p>
+  </div>
+
+  <section style="border-top:1px solid var(--hair);padding-top:1.8rem;max-width:780px">
+    <form class="form-g" id="form-g" novalidate>
+      <div>
+        <label for="anio" style="font-weight:700;display:block">Your birth year</label>
+        <input id="anio" class="campo" inputmode="numeric" autocomplete="bday-year"
+          placeholder="1990" style="margin-top:.6rem">
+        <p class="error oculto" id="err" role="alert"></p>
+      </div>
+      <div>
+        <label for="pais" style="font-weight:700;display:block">Country
+          <span class="mute" style="font-weight:400">(optional)</span></label>
+        <select id="pais" class="campo" style="margin-top:.6rem">
+          <option value="">No country: shared events only</option><option value="ar">Argentina</option><option value="bo">Bolivia</option><option value="cl">Chile</option><option value="co">Colombia</option><option value="cr">Costa Rica</option><option value="cu">Cuba</option><option value="do">Dominican Republic</option><option value="ec">Ecuador</option><option value="gt">Guatemala</option><option value="hn">Honduras</option><option value="mx">Mexico</option><option value="ni">Nicaragua</option><option value="pa">Panama</option><option value="py">Paraguay</option><option value="pe">Peru</option><option value="pr">Puerto Rico</option><option value="sv">El Salvador</option><option value="uy">Uruguay</option><option value="ve">Venezuela</option></select>
+      </div>
+      <div><button class="btn btn-primary" type="submit">Calculate</button></div>
+    </form>
+
+    <p class="supuesto" id="supuesto">Calculated with 25-year generations. It’s an average: your family may be different. We round down: 25 years is a convention, not a fact from your family tree.</p>
+  </section>
+
+  <section id="resultado" class="oculto" style="border-top:1px solid var(--hair);margin-top:2.5rem;
+    padding-top:2rem;max-width:780px" aria-live="polite">
+    <p class="eyebrow" id="r-cab"></p>
+    <h2 style="margin-top:.5rem">This is what separates you</h2>
+    <div class="fichas" id="r-fichas"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.9rem;margin-top:1.6rem">
+      <button class="btn btn-ghost" id="copiar">Copy my result</button>
+      <span class="meta" id="copiado" role="status"></span>
+    </div>
+  </section>
+
+  <p class="mute" style="border-top:1px solid var(--hair);margin-top:3rem;padding-top:1.4rem;
+    font-size:.9rem;max-width:780px">Dates change depending on what counts as the event: a law, when it took effect, or the first time someone exercised it. When there’s more than one reading, we note it. When there’s no solid data, we say it’s unknown.</p>
+</main>
+
+<section class="shell"><div class="captura narrow">
+  <h2>The number you just got has names</h2>
+  <p>Every week I tell the story of one of those women who are two or three generations from you. I send it to your inbox (in Spanish).</p>
+  <div class="form-carta" style="background:#fff;border-radius:14px;padding:.6rem .6rem .2rem;margin-top:1.1rem">
+    <iframe
+      src="https://api.leadconnectorhq.com/widget/form/I6C5wegvidRQOcnE5k8U"
+      id="inline-I6C5wegvidRQOcnE5k8U"
+      data-layout='{"id":"INLINE"}'
+      data-trigger-type="alwaysShow"
+      data-activation-type="alwaysActivated"
+      data-deactivation-type="neverDeactivate"
+      data-form-name="Newsletter EN · Biblioteca"
+      data-form-id="I6C5wegvidRQOcnE5k8U"
+      data-layout-iframe-id="inline-I6C5wegvidRQOcnE5k8U"
+      data-height="260"
+      title="Subscribe to the newsletter"
+      style="width:100%;min-height:260px;border:none;display:block;background:transparent"
+      scrolling="no"></iframe>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  </div>
+  <p class="nota">No spam. I only write when I have something truly useful.</p>
+</div></section>
+
+<footer class="pie"><div class="shell">
+  <p><b>More tools:</b> <a href="/en/guia-de-entrevista/">Family interview guide</a> · <a href="/en/mapa-de-archivos/">Archive map</a> · <a href="/en/espiral/">The Spiral</a> · <a href="/en/nombradas/">Las nombradas</a> · <a href="/en/palabras/">Inherited words</a> · <a href="/en/leer-un-documento/">How to read a document</a> · <a href="/en/arbol/">Your tree</a></p>
+  <p class="mute">© Eunice López · Historia Viva · <a href="https://eunicelopez.com/en/">eunicelopez.com</a></p>
+</div></footer>
+
+<script>
+(function () {
+  var D = {"ANIOS_POR_GENERACION": 25, "PAISES": [{"id": "ar", "nombre": "Argentina", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Argentina", "anio": 1853, "detalle": "Free-womb law in 1813; full abolition came with the 1853 Constitution.", "fuentes": [{"titulo": "Decreto de libertad de vientres, Asamblea del Año XIII (1813)", "url": "https://es.wikisource.org/wiki/Decreto_del_2_de_febrero_de_1813"}]}, {"id": "independencia", "titulo": "The independence of Argentina", "anio": 1816, "detalle": null, "fuentes": [{"titulo": "Declaración de la Independencia, 9 de julio de 1816 (argentina.gob.ar)", "url": "https://www.argentina.gob.ar/noticias/9-de-julio-de-1816-declaracion-de-la-independencia-de-la-argentina"}]}, {"id": "voto", "titulo": "Women’s suffrage in Argentina", "anio": 1947, "detalle": "Law 13.010, passed in 1947. The first vote came in 1951.", "fuentes": [{"titulo": "Sufragio femenino en Argentina (Ley 13.010)", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Argentina"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Argentina", "anio": 1889, "detalle": "Cecilia Grierson graduated as a doctor in 1889. The first female student enrolled earlier, and that year isn’t well documented.", "fuentes": [{"titulo": "Cecilia Grierson, primera médica argentina", "url": "https://es.wikipedia.org/wiki/Cecilia_Grierson"}]}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "bo", "nombre": "Bolivia", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Bolivia", "anio": 1851, "detalle": "Decree by Manuel Isidoro Belzu, written into the 1851 Constitution.", "fuentes": [{"titulo": "Constitución Política de Bolivia de 1851 (Lexivox)", "url": "https://www.lexivox.org/norms/BO-CPE-18510921.xhtml"}]}, {"id": "independencia", "titulo": "The independence of Bolivia", "anio": 1825, "detalle": null, "fuentes": [{"titulo": "Bolivia, foundation and early national period (Britannica)", "url": "https://www.britannica.com/place/Bolivia/Foundation-and-early-national-period"}]}, {"id": "voto", "titulo": "Women’s suffrage in Bolivia", "anio": 1952, "detalle": "Universal suffrage with the 1952 Revolution.", "fuentes": [{"titulo": "Decreto Supremo 3128 de 1952 (voto universal)", "url": "https://www.derechoteca.com/gacetabolivia/decreto-supremo-3128-del-21-julio-1952"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Bolivia", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "cl", "nombre": "Chile", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Chile", "anio": 1823, "detalle": null, "fuentes": [{"titulo": "La abolición de la esclavitud en Chile (Archivo Nacional)", "url": "https://www.archivonacional.gob.cl/la-abolicion-de-la-esclavitud-en-chile"}]}, {"id": "independencia", "titulo": "The independence of Chile", "anio": 1818, "detalle": null, "fuentes": [{"titulo": "Chile, struggle for independence (Britannica)", "url": "https://www.britannica.com/place/Chile/Struggle-for-independence"}]}, {"id": "voto", "titulo": "Women’s suffrage in Chile", "anio": 1949, "detalle": "Municipal in 1935; presidential and parliamentary in 1949.", "fuentes": [{"titulo": "El sufragio de las mujeres en Chile (Memoria Chilena)", "url": "https://www.memoriachilena.gob.cl/602/w3-article-686839.html"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Chile", "anio": 1887, "detalle": "The Amunátegui decree opened the university to women in 1877; Eloísa Díaz graduated as a doctor in 1887.", "fuentes": [{"titulo": "Eloísa Díaz, primera médica de Chile", "url": "https://es.wikipedia.org/wiki/Elo%C3%ADsa_D%C3%ADaz"}]}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "co", "nombre": "Colombia", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Colombia", "anio": 1851, "detalle": "Law 2 of 1851, in effect on January 1, 1852.", "fuentes": [{"titulo": "Ley 2 de 1851 (Gestor Normativo, Función Pública)", "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=12623"}]}, {"id": "independencia", "titulo": "The independence of Colombia", "anio": 1810, "detalle": "Celebrated on July 20, 1810; military independence was secured in 1819.", "fuentes": [{"titulo": "Colombia, revolution and independence (Britannica)", "url": "https://www.britannica.com/place/Colombia/Revolution-and-independence"}]}, {"id": "voto", "titulo": "Women’s suffrage in Colombia", "anio": 1954, "detalle": "Recognized in 1954. The first vote came in 1957.", "fuentes": [{"titulo": "Acto Legislativo 3 de 1954 (Corte Suprema de Justicia)", "url": "https://cortesuprema.gov.co/corte/wp-content/uploads/subpage/mujer/mujer/Leyes%20Mujer%20PDF/Acto%20legislativo%20%203%20de%201954.pdf"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Colombia", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "cr", "nombre": "Costa Rica", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Costa Rica", "anio": 1824, "detalle": "Abolition by the United Provinces of Central America, 1824.", "fuentes": [{"titulo": "Constitución de la República Federal de Centroamérica de 1824", "url": "https://es.wikisource.org/wiki/Constituci%C3%B3n_de_la_Rep%C3%BAblica_Federal_de_Centroam%C3%A9rica_de_1824"}]}, {"id": "independencia", "titulo": "The independence of Costa Rica", "anio": 1821, "detalle": null, "fuentes": [{"titulo": "Acta de Independencia de Costa Rica (1821)", "url": "https://es.wikipedia.org/wiki/Acta_de_Independencia_de_Costa_Rica"}]}, {"id": "voto", "titulo": "Women’s suffrage in Costa Rica", "anio": 1949, "detalle": null, "fuentes": [{"titulo": "Constitución Política de Costa Rica de 1949", "url": "https://es.wikipedia.org/wiki/Constituci%C3%B3n_Pol%C3%ADtica_de_Costa_Rica"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Costa Rica", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "cu", "nombre": "Cuba", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Cuba", "anio": 1886, "detalle": "Spanish law of 1880 with a transitional patronage system; slavery was abolished for good in 1886.", "fuentes": [{"titulo": "Ley de abolición de la esclavitud en España (1880)", "url": "https://es.wikisource.org/wiki/Ley_de_Abolici%C3%B3n_de_la_esclavitud_en_Espa%C3%B1a"}]}, {"id": "independencia", "titulo": "The independence of Cuba", "anio": 1902, "detalle": "End of Spanish rule in 1898; independent republic in 1902.", "fuentes": [{"titulo": "Cuba, the struggle for independence (Britannica)", "url": "https://www.britannica.com/place/Cuba/Filibustering-and-the-struggle-for-independence"}]}, {"id": "voto", "titulo": "Women’s suffrage in Cuba", "anio": 1934, "detalle": null, "fuentes": [{"titulo": "Constitución de Cuba de 1934 (Biblioteca Virtual Cervantes)", "url": "https://www.cervantesvirtual.com/obra-visor/constitucion-de-la-republica-de-cuba-del-3-de-febrero-de-1934/html/fc28e7f3-3bb1-40a2-ba0a-18953b5b8bb7_2.html"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Cuba", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "do", "nombre": "Dominican Republic", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in the Dominican Republic", "anio": 1822, "detalle": "Abolished during the Haitian occupation, in 1822. There was an earlier abolition in 1801.", "fuentes": [{"titulo": "La primera abolición de la esclavitud en Santo Domingo (Clío, ADH)", "url": "https://idg.org.do/clio/clio/clio170/Clio_2005_No_170-06.pdf"}]}, {"id": "independencia", "titulo": "The independence of the Dominican Republic", "anio": 1844, "detalle": null, "fuentes": [{"titulo": "Independencia de la República Dominicana (1844)", "url": "https://es.wikipedia.org/wiki/Independencia_de_la_Rep%C3%BAblica_Dominicana"}]}, {"id": "voto", "titulo": "Women’s suffrage in the Dominican Republic", "anio": 1942, "detalle": null, "fuentes": [{"titulo": "Elecciones dominicanas de 1942, primer voto femenino", "url": "https://en.wikipedia.org/wiki/1942_Dominican_Republic_general_election"}]}, {"id": "universidad", "titulo": "The first woman to enter university in the Dominican Republic", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "ec", "nombre": "Ecuador", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Ecuador", "anio": 1851, "detalle": "Decree of 1851, with manumission taking effect in 1852. We haven’t found a primary source online yet.", "fuentes": []}, {"id": "independencia", "titulo": "The independence of Ecuador", "anio": 1822, "detalle": "Battle of Pichincha in 1822; Ecuador as a separate republic, in 1830.", "fuentes": [{"titulo": "Ecuador, independence (Britannica)", "url": "https://www.britannica.com/summary/Ecuador"}]}, {"id": "voto", "titulo": "Women’s suffrage in Ecuador", "anio": 1929, "detalle": "The first country in Latin America to recognize it.", "fuentes": [{"titulo": "Sufragio femenino en Ecuador (Constitución de 1929)", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Ecuador"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Ecuador", "anio": 1921, "detalle": "Matilde Hidalgo graduated as a doctor in 1921; she had entered secondary school and university years earlier.", "fuentes": [{"titulo": "Matilde Hidalgo, primera universitaria del Ecuador", "url": "https://es.wikipedia.org/wiki/Matilde_Hidalgo"}]}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "gt", "nombre": "Guatemala", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Guatemala", "anio": 1824, "detalle": "Central American abolition of 1824.", "fuentes": [{"titulo": "Constitución de la República Federal de Centroamérica de 1824", "url": "https://es.wikisource.org/wiki/Constituci%C3%B3n_de_la_Rep%C3%BAblica_Federal_de_Centroam%C3%A9rica_de_1824"}]}, {"id": "independencia", "titulo": "The independence of Guatemala", "anio": 1821, "detalle": null, "fuentes": [{"titulo": "Acta de Independencia de América Central (1821)", "url": "https://es.wikipedia.org/wiki/Acta_de_Independencia_de_Am%C3%A9rica_Central"}]}, {"id": "voto", "titulo": "Women’s suffrage in Guatemala", "anio": 1945, "detalle": "In 1945 only for literate women; universal since 1965.", "fuentes": [{"titulo": "Unión Femenina Guatemalteca Pro-ciudadanía", "url": "https://en.wikipedia.org/wiki/Uni%C3%B3n_Femenina_Guatemalteca_Pro-ciudadan%C3%ADa"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Guatemala", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "hn", "nombre": "Honduras", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Honduras", "anio": 1824, "detalle": "Central American abolition of 1824.", "fuentes": [{"titulo": "Constitución de la República Federal de Centroamérica de 1824", "url": "https://es.wikisource.org/wiki/Constituci%C3%B3n_de_la_Rep%C3%BAblica_Federal_de_Centroam%C3%A9rica_de_1824"}]}, {"id": "independencia", "titulo": "The independence of Honduras", "anio": 1821, "detalle": null, "fuentes": [{"titulo": "History of Honduras (Britannica)", "url": "https://www.britannica.com/topic/history-of-Honduras"}]}, {"id": "voto", "titulo": "Women’s suffrage in Honduras", "anio": 1955, "detalle": "Recognized in 1955; the first vote came in 1957.", "fuentes": [{"titulo": "Constitución de Honduras de 1957", "url": "https://es.wikipedia.org/wiki/Constituci%C3%B3n_de_Honduras_de_1957"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Honduras", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "mx", "nombre": "Mexico", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Mexico", "anio": 1829, "detalle": "Decree by Vicente Guerrero, September 15, 1829.", "fuentes": [{"titulo": "Decreto de Vicente Guerrero (Memoria Política de México)", "url": "https://memoriapoliticademexico.org/Textos/2ImpDictadura/1829AER.html"}]}, {"id": "independencia", "titulo": "The independence of Mexico", "anio": 1821, "detalle": "Began in 1810; completed in 1821.", "fuentes": [{"titulo": "Plan de Iguala, 1821 (Britannica)", "url": "https://www.britannica.com/event/Iguala-Plan"}]}, {"id": "voto", "titulo": "Women’s suffrage in Mexico", "anio": 1953, "detalle": "Federal in 1953; municipal since 1947.", "fuentes": [{"titulo": "Sufragio femenino en México (1953)", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_M%C3%A9xico"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Mexico", "anio": 1887, "detalle": "Matilde Montoya graduated as a doctor in 1887, after entering medical school in 1882.", "fuentes": [{"titulo": "Matilde Montoya, primera médica de México", "url": "https://es.wikipedia.org/wiki/Matilde_Montoya"}]}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "ni", "nombre": "Nicaragua", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Nicaragua", "anio": 1824, "detalle": "Central American abolition of 1824.", "fuentes": [{"titulo": "Constitución de la República Federal de Centroamérica de 1824", "url": "https://es.wikisource.org/wiki/Constituci%C3%B3n_de_la_Rep%C3%BAblica_Federal_de_Centroam%C3%A9rica_de_1824"}]}, {"id": "independencia", "titulo": "The independence of Nicaragua", "anio": 1821, "detalle": null, "fuentes": [{"titulo": "Acta de Independencia (Asamblea Nacional de Nicaragua)", "url": "http://legislacion.asamblea.gob.ni/Normaweb.nsf/xpIndice.xsp?action=openDocument&documentId=0D57F48ECA6A326B062588080054EC03"}]}, {"id": "voto", "titulo": "Women’s suffrage in Nicaragua", "anio": 1955, "detalle": null, "fuentes": [{"titulo": "Reforma constitucional de 1955 (La Gaceta)", "url": "https://nicaragua.justia.com/nacionales/constituciones-politicas-de-nicaragua/reformase-parcialmente-la-constitucion-de-la-republica-apr-21-1955/gdoc/"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Nicaragua", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "pa", "nombre": "Panama", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Panama", "anio": 1852, "detalle": "As part of New Granada, Law 2 of 1851, in effect in 1852.", "fuentes": [{"titulo": "Ley 2 de 1851 (Gestor Normativo, Función Pública)", "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=12623"}]}, {"id": "independencia", "titulo": "The independence of Panama", "anio": 1903, "detalle": "Separation from Colombia in 1903; from Spain, in 1821.", "fuentes": [{"titulo": "Independencia de Panamá", "url": "https://es.wikipedia.org/wiki/Independencia_de_Panam%C3%A1"}]}, {"id": "voto", "titulo": "Women’s suffrage in Panama", "anio": 1941, "detalle": "With limits in 1941; without restrictions since 1946.", "fuentes": [{"titulo": "Constitución de la República de Panamá (1941)", "url": "https://es.wikisource.org/wiki/Constituci%C3%B3n_de_la_Rep%C3%BAblica_de_Panam%C3%A1_(1941)"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Panama", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "py", "nombre": "Paraguay", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Paraguay", "anio": 1869, "detalle": "Free-womb law in 1842; full abolition in 1869.", "fuentes": [{"titulo": "Decreto sobre libertad de vientre (Archivo Nacional de Asunción)", "url": "https://historia.archivonacional.gov.py/index.php/decreto-sobre-libertad-de-vientre-de-las-esclavas"}]}, {"id": "independencia", "titulo": "The independence of Paraguay", "anio": 1811, "detalle": null, "fuentes": [{"titulo": "History of Paraguay (Britannica)", "url": "https://www.britannica.com/topic/history-of-Paraguay"}]}, {"id": "voto", "titulo": "Women’s suffrage in Paraguay", "anio": 1961, "detalle": "Law 704 of 1961. The last country in South America to recognize it.", "fuentes": [{"titulo": "Sufragio femenino en Paraguay (Ley 704/61)", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Paraguay"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Paraguay", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "pe", "nombre": "Peru", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Peru", "anio": 1854, "detalle": "Decree by Ramón Castilla, 1854.", "fuentes": [{"titulo": "Decreto de abolición de la esclavitud, Ramón Castilla (1854)", "url": "https://www.ensayistas.org/antologia/XIXE/castelar/esclavitud/peru.htm"}]}, {"id": "independencia", "titulo": "The independence of Peru", "anio": 1821, "detalle": null, "fuentes": [{"titulo": "Peru, achievement of independence (Britannica)", "url": "https://www.britannica.com/place/Peru/Achievement-of-independence"}]}, {"id": "voto", "titulo": "Women’s suffrage in Peru", "anio": 1955, "detalle": "Law 12391 of 1955.", "fuentes": [{"titulo": "Sufragio femenino en Perú (Ley 12391)", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Per%C3%BA"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Peru", "anio": 1900, "detalle": "Laura Rodríguez Dulanto graduated as a doctor in 1900. Trinidad María Enríquez had been studying in Cusco since 1875.", "fuentes": [{"titulo": "Laura Rodríguez Dulanto, primera médica del Perú", "url": "https://es.wikipedia.org/wiki/Laura_Rodr%C3%ADguez_Dulanto"}]}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "pr", "nombre": "Puerto Rico", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Puerto Rico", "anio": 1873, "detalle": null, "fuentes": [{"titulo": "Ley de abolición de la esclavitud en Puerto Rico (1873)", "url": "https://legishca.umh.es/1873/03/22/1873-03-22-abolicion-de-la-esclavitud-en-la-isla-de-puerto-rico/"}]}, {"id": "independencia", "titulo": "The independence of Puerto Rico", "anio": null, "detalle": "Doesn’t apply: it’s still an unincorporated territory of the United States.", "fuentes": []}, {"id": "voto", "titulo": "Women’s suffrage in Puerto Rico", "anio": 1929, "detalle": "In 1929 only for literate women; without restrictions since 1935.", "fuentes": [{"titulo": "In Puerto Rico, Women Won the Vote… (Smithsonian Magazine)", "url": "https://www.smithsonianmag.com/history/puerto-rico-women-won-vote-bittersweet-game-colonial-politics-180976181/"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Puerto Rico", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "sv", "nombre": "El Salvador", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in El Salvador", "anio": 1824, "detalle": "Central American abolition of 1824.", "fuentes": [{"titulo": "Constitución de El Salvador de 1824 (Biblioteca Virtual Cervantes)", "url": "https://www.cervantesvirtual.com/obra-visor/constitucion-politica-de-la-republica-de-el-salvador-de-1824/html/9215c899-4b99-40cf-8960-f18fb644c894_2.html"}, {"titulo": "Constitución de la República Federal de Centroamérica de 1824", "url": "https://es.wikisource.org/wiki/Constituci%C3%B3n_de_la_Rep%C3%BAblica_Federal_de_Centroam%C3%A9rica_de_1824"}]}, {"id": "independencia", "titulo": "The independence of El Salvador", "anio": 1821, "detalle": null, "fuentes": [{"titulo": "History of El Salvador (Britannica)", "url": "https://www.britannica.com/topic/history-of-El-Salvador"}]}, {"id": "voto", "titulo": "Women’s suffrage in El Salvador", "anio": 1939, "detalle": "With restrictions in 1939; without them since 1950.", "fuentes": [{"titulo": "Constitución de El Salvador de 1939 (jurisprudencia.gob.sv)", "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda%2FD%2F2%2F1930-1939%2F1939%2F01%2F886F1.PDF"}]}, {"id": "universidad", "titulo": "The first woman to enter university in El Salvador", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "uy", "nombre": "Uruguay", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Uruguay", "anio": 1842, "detalle": "Law 242 of 1842.", "fuentes": [{"titulo": "Ley N° 242 de 1842, abolición de la esclavitud (IMPO)", "url": "http://www.impo.com.uy/bases/leyes/242-1842"}]}, {"id": "independencia", "titulo": "The independence of Uruguay", "anio": 1825, "detalle": "Declared in 1825; recognized in 1828.", "fuentes": [{"titulo": "Uruguay, the struggle for national identity (Britannica)", "url": "https://www.britannica.com/place/Uruguay/The-struggle-for-national-identity"}]}, {"id": "voto", "titulo": "Women’s suffrage in Uruguay", "anio": 1932, "detalle": "Law 8.927 of 1932. The first vote came in 1938.", "fuentes": [{"titulo": "Sufragio femenino en Uruguay (Ley 8.927)", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Uruguay"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Uruguay", "anio": 1908, "detalle": "Paulina Luisi graduated as a doctor in 1908.", "fuentes": [{"titulo": "Paulina Luisi, primera médica de Uruguay", "url": "https://es.wikipedia.org/wiki/Paulina_Luisi"}]}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}, {"id": "ve", "nombre": "Venezuela", "hechos": [{"id": "abolicion", "titulo": "The abolition of slavery in Venezuela", "anio": 1854, "detalle": "Decree by José Gregorio Monagas, 1854.", "fuentes": [{"titulo": "Ley de abolición de la esclavitud (1854)", "url": "https://es.wikisource.org/wiki/Ley_de_Abolici%C3%B3n_de_la_Esclavitud"}]}, {"id": "independencia", "titulo": "The independence of Venezuela", "anio": 1811, "detalle": "Declared in 1811; secured in 1821.", "fuentes": [{"titulo": "Venezuela, the independence movement (Britannica)", "url": "https://www.britannica.com/place/Venezuela/The-independence-movement"}]}, {"id": "voto", "titulo": "Women’s suffrage in Venezuela", "anio": 1946, "detalle": null, "fuentes": [{"titulo": "Sufragio femenino en Venezuela", "url": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Venezuela"}]}, {"id": "universidad", "titulo": "The first woman to enter university in Venezuela", "anio": null, "detalle": "POR CONFIRMAR", "fuentes": []}, {"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]}], "HECHOS_SIN_PAIS": [{"id": "colon", "titulo": "Columbus’s arrival in the Americas", "anio": 1492, "detalle": "First landing in the Caribbean. The same for every country.", "fuentes": [{"titulo": "Christopher Columbus — Encyclopaedia Britannica", "url": "https://www.britannica.com/biography/Christopher-Columbus"}]}]};
+  var G = D.ANIOS_POR_GENERACION;
+  var SUPUESTO = 'Calculated with ' + G + '-year generations. It’s an average: your family may be different.';
+  var $ = function (id) { return document.getElementById(id); };
+  var ultimo = null;
+
+  function calcular(anio, hechos) {
+    return hechos.map(function (h) {
+      if (h.anio === null) return { hecho: h, gen: null, nota: 'Year NOT CONFIRMED: we don’t calculate it.' };
+      var d = anio - h.anio;
+      if (d < 0) return { hecho: h, gen: null, nota: 'It happened after you were born.' };
+      if (d < G) return { hecho: h, gen: 0, nota: 'It happened less than one generation before you were born.' };
+      return { hecho: h, gen: Math.floor(d / G), nota: null };
+    });
+  }
+  function frase(r) {
+    if (r.gen === null) return r.hecho.titulo;
+    if (r.gen === 0) return r.hecho.titulo + ' happened within your own generation.';
+    if (r.gen === 1) return r.hecho.titulo + ' is one generation away from you.';
+    return r.hecho.titulo + ' is ' + r.gen + ' generations away from you.';
+  }
+  function cadena(n) {
+    if (n === null || n <= 0) return '';
+    var tope = Math.min(n, 40), medio = '';
+    for (var i = 0; i < tope; i++) medio += '<i></i>';
+    return '<span class="cadena" aria-hidden="true"><i class="tu"></i>' + medio + '<i class="hecho"></i></span>';
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function ficha(r, pais) {
+    var h = r.hecho;
+    var fuentes = (h.fuentes || []).map(function (f) {
+      return '<a href="' + esc(f.url) + '" target="_blank" rel="noopener noreferrer">' + esc(f.titulo) + '</a>';
+    }).join(' · ');
+    var pc = (h.detalle === 'POR CONFIRMAR' || h.anio === null)
+      ? '<p class="aviso-pc">We don’t have a confirmed year for this event in this country. It’s unknown, '
+        + 'and we’d rather say so than show a made-up number.</p>' : '';
+    var det = (h.detalle && h.detalle !== 'POR CONFIRMAR')
+      ? '<p class="mute" style="font-size:.92rem;margin:.6rem 0 0">' + esc(h.detalle) + '</p>' : '';
+    return '<article class="f-g">' + cadena(r.gen) + '<div style="min-width:0">'
+      + '<p class="eyebrow">' + (h.anio === null ? 'Year NOT CONFIRMED' : h.anio) + ' · ' + esc(pais) + '</p>'
+      + '<p class="num" style="margin:.5rem 0 0">' + (r.gen === null ? '—' : r.gen)
+      + (r.gen === null ? '' : '<small>' + (r.gen === 1 ? 'generation' : 'generations') + '</small>') + '</p>'
+      + '<h3>' + esc(frase(r)) + '</h3>'
+      + (r.nota ? '<p class="mute" style="font-size:.92rem;margin:.5rem 0 0">' + esc(r.nota) + '</p>' : '')
+      + det + pc
+      + (fuentes ? '<p class="meta" style="margin:.8rem 0 0"><span class="eyebrow">Source</span> ' + fuentes + '</p>' : '')
+      + '</div></article>';
+  }
+
+  $('form-g').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = $('anio').value.trim(), n = Number(v), hoy = new Date().getFullYear();
+    if (!/^\d{4}$/.test(v) || n < 1900 || n > hoy) {
+      $('err').textContent = 'Enter a birth year between 1900 and ' + hoy + '.';
+      $('err').classList.remove('oculto');
+      $('resultado').classList.add('oculto');
+      return;
+    }
+    $('err').classList.add('oculto');
+    var pid = $('pais').value;
+    var p = D.PAISES.filter(function (x) { return x.id === pid; })[0];
+    var nombre = p ? p.nombre : 'The Americas';
+    var lista = calcular(n, p ? p.hechos : D.HECHOS_SIN_PAIS);
+    $('r-cab').textContent = 'Born in ' + n + ' · ' + nombre;
+    $('r-fichas').innerHTML = lista.map(function (r) { return ficha(r, nombre); }).join('');
+    $('resultado').classList.remove('oculto');
+    $('copiado').textContent = '';
+    ultimo = { lista: lista, nombre: nombre };
+    try { localStorage.setItem('historia-viva:generaciones', JSON.stringify({ anio: v, pais: pid })); } catch (err) {}
+    $('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  $('copiar').addEventListener('click', function () {
+    if (!ultimo) return;
+    var utiles = ultimo.lista.filter(function (r) { return r.gen !== null && r.gen > 0; });
+    var texto = utiles.slice(0, 3).map(frase).concat([SUPUESTO, location.href]).join('\n');
+    navigator.clipboard.writeText(texto).then(function () {
+      $('copiado').textContent = 'Copied.';
+    }, function () {
+      $('copiado').textContent = 'Couldn’t copy. Select the text and copy it by hand.';
+    });
+  });
+
+  try {
+    var g = JSON.parse(localStorage.getItem('historia-viva:generaciones') || 'null');
+    if (g && g.anio) { $('anio').value = g.anio; $('pais').value = g.pais || ''; }
+  } catch (e) {}
+})();
+</script>
+
+<script>
+(function () {
+  var WEBHOOK = '';
+  var CONTACTO = 'eunice.historiaviva@gmail.com';
+  document.querySelectorAll('form[data-iman]').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = f.nombre.value.trim(), email = f.email.value.trim();
+      if (!nombre || !email || email.indexOf('@') < 1) {
+        f.querySelector('input:invalid, input[value=""]').focus();
+        return;
+      }
+      var ok = f.parentElement.querySelector('.ok');
+      var boton = f.querySelector('button');
+      boton.disabled = true; boton.textContent = 'Sending…';
+      var datos = {
+        firstName: nombre, email: email,
+        tags: ['lm-' + f.dataset.iman],
+        source: 'eunicelopez.com' + '/' + f.dataset.iman
+      };
+      // campos propios del imán (la palabra sugerida, por ejemplo)
+      Array.prototype.forEach.call(f.elements, function (el) {
+        if (el.name && el.name !== 'nombre' && el.name !== 'email' && el.value.trim()) {
+          datos[el.name] = el.value.trim();
+        }
+      });
+      function listo(mensaje) {
+        f.style.display = 'none';
+        ok.textContent = mensaje; ok.style.display = 'block';
+      }
+      if (!WEBHOOK) {
+        // Sin webhook configurado todavía: no perdemos el lead, abre el correo.
+        window.location.href = 'mailto:' + CONTACTO
+          + '?subject=' + encodeURIComponent('I want: ' + f.dataset.iman)
+          + '&body=' + encodeURIComponent('Name: ' + nombre + '\nEmail: ' + email);
+        boton.disabled = false; boton.textContent = 'Send it to me';
+        return;
+      }
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      }).then(function () {
+        listo('Done, ' + nombre + '. Check your inbox in a moment.');
+      }).catch(function () {
+        listo('Something went wrong. Write to me at ' + CONTACTO + ' and I’ll send it to you.');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
