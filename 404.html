@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada · Eunice López</title>
+<script>
+  // Las revisiones se mudaron a revision.eunicelopez.com (privado, con contraseña).
+  (function () {
+    var p = location.pathname;
+    if (p.indexOf('/revision/') === 0) {
+      location.replace('https://revision.eunicelopez.com/' + p.slice('/revision/'.length) + location.search + location.hash);
+    }
+  })();
+</script>
+<style>
+  body { font: 17px/1.6 Georgia, serif; color: #2b2320; background: #faf6f0; margin: 0; display: grid; place-items: center; min-height: 100vh; text-align: center; padding: 1.5rem; }
+  a { color: #8a3b2a; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace haya cambiado.</p>
+    <p><a href="/">Ir a eunicelopez.com</a></p>
+  </main>
+</body>
+</html>
