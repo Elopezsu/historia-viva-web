@@ -20,14 +20,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biblioteca gratis de Historia Viva · Eunice López</title>
-<meta name="description" content="16 guías, tests y herramientas gratis de Eunice López para el trabajo, el dinero, tus decisiones y la historia de tu familia.">
+<meta name="description" content="17 guías, tests y herramientas gratis de Eunice López para el trabajo, el dinero, tus decisiones y la historia de tu familia.">
 <link rel="canonical" href="https://eunicelopez.com/regalos/">
 <meta name="theme-color" content="#F7F3EC">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Eunice López · Historia Viva">
 <meta property="og:title" content="Biblioteca gratis de Historia Viva">
-<meta property="og:description" content="16 guías, tests y herramientas para el trabajo, el dinero, tus decisiones y la historia de tu familia.">
+<meta property="og:description" content="17 guías, tests y herramientas para el trabajo, el dinero, tus decisiones y la historia de tu familia.">
 <meta property="og:url" content="https://eunicelopez.com/regalos/">
 <meta property="og:image" content="https://eunicelopez.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -109,9 +109,9 @@ dialog.ok .listo { display: block; }
     <div class="wrap">
       <div data-enter>
         <p class="eyebrow">Biblioteca de Historia Viva</p>
-        <h1>16 herramientas gratis para <span class="coral-word">tu mejor versión</span>.</h1>
+        <h1>17 herramientas gratis para <span class="coral-word">tu mejor versión</span>.</h1>
         <p class="lead">Dos están abiertas. El resto te las abro con tu correo, junto con la carta de los viernes.</p>
-        <div class="count"><span class="pill">📚 16 recursos</span><span class="pill lockinfo">🔓 2 abiertos · 🔒 14 con tu correo</span><span class="pill ok">✓ Tienes acceso a todo</span></div>
+        <div class="count"><span class="pill">📚 17 recursos</span><span class="pill lockinfo">🔓 2 abiertos · 🔒 15 con tu correo</span><span class="pill ok">✓ Tienes acceso a todo</span></div>
       </div>
       <div class="elige" style="margin-top:clamp(2rem,4vw,2.8rem)">
         <h2>¿Qué te gustaría cambiar hoy?</h2>
@@ -203,6 +203,14 @@ dialog.ok .listo { display: block; }
           <span class="in">
             <span class="tipo">Catálogo · 88 mujeres</span>
             <b>Las nombradas</b>
+            <span class="ir">Abrir →</span>
+          </span>
+        </a>
+        <a class="rec indigo" data-slug="firmas" data-libre="1" href="/firmas/">
+          <span class="cover"><span aria-hidden="true">✍️</span><span class="lock" aria-label="Se abre con tu correo">🔒</span></span>
+          <span class="in">
+            <span class="tipo">Historias · 8 mujeres · 2 abiertas</span>
+            <b>Las que firmaron con su vida</b>
             <span class="ir">Abrir →</span>
           </span>
         </a>
@@ -302,7 +310,7 @@ dialog.ok .listo { display: block; }
     <button type="button" class="cerrar" aria-label="Cerrar" data-cerrar>×</button>
     <div class="form-paso">
       <p class="eyebrow">Acceso gratis</p>
-      <h2 id="acc-t">Te abro los 16 recursos</h2>
+      <h2 id="acc-t">Te abro los 17 recursos</h2>
       <p class="sub">Déjame tu nombre y tu correo una sola vez. Quedan abiertos en este navegador y cada viernes te llega la carta.</p>
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/KVb5CMeyLGmCqV6dRpvm"
@@ -331,7 +339,7 @@ dialog.ok .listo { display: block; }
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 <script>
 (function () {
-  var LIBRES = ["a-tu-edad", "herencia"], CLAVE_ACC = 'hv_biblioteca_acceso', CLAVE_VIS = 'hv_regalos_vistos';
+  var LIBRES = ["a-tu-edad", "firmas", "herencia"], CLAVE_ACC = 'hv_biblioteca_acceso', CLAVE_VIS = 'hv_regalos_vistos';
   var q = new URLSearchParams(location.search), dlg = document.getElementById('acceso'), pendiente = null;
   function tiene() { try { return localStorage.getItem(CLAVE_ACC) === '1'; } catch (e) { return false; } }
   function abrirAcceso(origen) {
